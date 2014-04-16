@@ -20,17 +20,6 @@ body{
 
 /*mobile first CSS */
 
-section{
-	min-height:480px;
-}
-
-/*img{
-	-webkit-transform: scale(0.5);
-	-moz-transform: scale(0.5);
-	-o-transform: scale(0.5);
-	transform: scale(0.5);
-}*/
-
 img{
 	-webkit-transition: -webkit-transform 0.3s ease-in;
 	-moz-transition: -moz-transform 0.3s ease-in;
@@ -127,45 +116,6 @@ footer{
 	padding-top:0;
 }
 
-.group1{
-	background: #4096ee; /* Old browsers */
-	background: -moz-linear-gradient(top,  #4096ee 0%, #376dcc 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4096ee), color-stop(100%,#376dcc)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #4096ee 0%,#376dcc 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #4096ee 0%,#376dcc 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #4096ee 0%,#376dcc 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #4096ee 0%,#376dcc 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#376dcc',GradientType=0 ); /* IE6-9 */
-	color:white;
-}
-
-.group3{
-	background: #7d7e7d; /* Old browsers */
-	background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
-	color:white;
-}
-
-.group2{
-	background: rgb(246,248,249); /* Old browsers */
-	background: -moz-linear-gradient(-45deg,  rgba(246,248,249,1) 0%, rgba(229,235,238,1) 50%, rgba(215,222,227,1) 51%, rgba(245,247,249,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(246,248,249,1)), color-stop(50%,rgba(229,235,238,1)), color-stop(51%,rgba(215,222,227,1)), color-stop(100%,rgba(245,247,249,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(-45deg,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(-45deg,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(-45deg,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* IE10+ */
-	background: linear-gradient(135deg,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-	background-color:white;
-	color:black;
-	text-shadow: 1px 1px 1px rgba(0,0,0,.5);
-}
-
-
 
 .container h2{
 	font-size:3em;
@@ -221,54 +171,10 @@ footer{
 	width:100%;
 }
 
-.splash #ionsysSplash{
-	-webkit-transform:rotate(90deg);
-	-moz-transform:rotate(90deg);
-	transform:rotate(90deg);
-	z-index:20;
-	background:url(img-ionsys2.png) top left no-repeat;
-	background-size:100%;;
-}
-
 .caption{
 	padding:.5em;
 }
 
-/*@media only screen and (min-width: 30em) and (max-width: 47.5em) and (orientation:landscape){
-	section{
-		height:37.5em;
-	}
-
-	#headerLogo{
-		width:242px;
-		height:100px;
-	}
-
-	#medcoLogo{
-		width:auto;
-	}
-	
-	.container{
-		padding-top:8em;
-	}
-
-	.container h2{
-		font-size:4em;
-	}
-
-	.container-anim{
-		width:30em;
-	}
-
-	.container-anim-vert{
-		width:15em;
-	}
-
-	.container-anim img{
-		width:auto;
-	}
-
-}*/
 
 @media only screen and (min-width: 60em){
 
@@ -356,83 +262,106 @@ footer{
 		padding-top:1em;
 	}
 
-	.ionsysFront, .ionsysBack{
-		/* Enable 3D transforms */
-		-webkit-transform-style: preserve-3d;
-		-moz-transform-style: preserve-3d;
-		transform-style: preserve-3d;
-		-webkit-transition: -webkit-transform 0.8s;
-		-moz-transition: -moz-transform 0.8s;
-		transition: transform 0.8s;
-		
-		/* We are using two separate divs for the front and back of the
-		   phone. This will hide the divs when they are flipped, so that the
-		   opposite side can be seen:  */
-
-		-webkit-backface-visibility: hidden;
-		-moz-backface-visibility: hidden;
-		backface-visibility: hidden;
-
-		width:295px;
-		height:500px;
-
-		position:absolute;
-		top:50%;
-		left:50%;
-		margin: -250px 0 0 -150px;
-
-		background:url(img-ionsys-flip.png) no-repeat left center;
-	}
-
-	.ionsysBack{
-		-webkit-transform:rotateY(180deg);
-		-moz-transform:rotateY(180deg);
-		transform:rotateY(180deg);
-		background-position:right center;
-	}
-
-	.container-anim-vert:hover .ionsysFront{
-		-webkit-transform:rotateY(180deg);
-		-moz-transform:rotateY(180deg);
-		transform:rotateY(180deg);
-	}
-
-	.container-anim-vert:hover .ionsysBack{
-		-webkit-transform:rotateY(360deg);
-		-moz-transform:rotateY(360deg);
-		transform:rotateY(360deg);
-	}
-
-	.group1 img:hover{
-		-webkit-transform:scale(1.25);
-		-moz-transform:scale(1.25);
-		transform: scale(1.25);
-	}
-
-	.group2 .container-anim img, .splash img{
-		-webkit-transform-style: preserve-3d;
-		-moz-transform-style: preserve-3d;
-		transform-style: preserve-3d;
-		-webkit-transition: -webkit-transform 1s ease-in;
-		-moz-transition: -webkit-transform 1s ease-in;
-		transition: transform 1s ease-in;
-	}
-
-	.group2 .container-anim:hover img{
-		-webkit-transform:rotateY(180deg);
-		-moz-transform:rotateY(180deg);
-		transform:rotateY(180deg);
-	}
-
-	.splash #ionsysSplash:hover img{
-		-webkit-transform:rotateY(360deg);
-		-moz-transform:rotateY(360deg);
-		transform:rotateY(360deg);
-	}
-
-	.group3 img:hover{
-		-webkit-transform:rotate(360deg);
-		-moz-transform:rotate(360deg);
-		transform:rotate(360deg);
-	}
 }
+
+
+/*START SEVEN SEGMENT DISPLAY CSS */
+.seven-segment {
+	z-index:99;
+  position: relative;
+  -webkit-transform:scale(0.15);
+}
+.seven-segment .a {
+  position: absolute;
+  left: 10px;
+  height: 0;
+  width: 100px;
+  border-top: 30px solid #FF3636;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+}
+.seven-segment .b {
+  position: absolute;
+  left: 150px;
+  top: 10px;
+  height: 100px;
+  width: 0;
+  border-right: 30px solid #FF3636;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+.seven-segment .c {
+  position: absolute;
+  left: 150px;
+  top: 180px;
+  height: 100px;
+  width: 0;
+  border-right: 30px solid #FF3636;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+.seven-segment .d {
+  position: absolute;
+  top: 320px;
+  left: 10px;
+  height: 0;
+  width: 100px;
+  border-bottom: 30px solid #FF3636;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+}
+.seven-segment .e {
+  position: absolute;
+  left: 0;
+  top: 180px;
+  height: 100px;
+  width: 0;
+  border-left: 30px solid #FF3636;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+.seven-segment .f {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  height: 100px;
+  width: 0;
+  border-left: 30px solid #FF3636;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+
+.seven-segment .g:before{
+	position:absolute;
+	content: " ";
+	height:14px;
+	left:0px;
+	top:-34px;
+	width:120px;
+	border-bottom: 20px solid #FF3636;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+}
+
+.seven-segment .g{
+	position: relative;
+	top: 175px;
+  	left: 10px;
+	height: 0px;
+	margin:0;
+	padding:0;
+	width: 160px;
+	background-color: #FF3636;
+}
+
+.seven-segment .g:after{
+	position:absolute;
+	content: " ";
+	height:14px;
+	width:120px;
+	left:0px;
+	bottom:-34px;
+	border-top: 20px solid #FF3636;
+	border-left: 20px solid transparent;
+	border-right: 020px solid transparent;
+};
