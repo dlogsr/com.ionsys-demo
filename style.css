@@ -1,0 +1,438 @@
+
+/* --------------- START IONSYS CSS ----------------*/
+
+html{
+	overflow-x:hidden;
+}
+
+*{
+	margin:0;
+}
+
+body{
+	font-family: 'Raleway', Georgia, Arial, Verdana;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-font-smoothing: subpixel-antialiased;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+	margin: 0;
+}
+
+
+/*mobile first CSS */
+
+section{
+	min-height:480px;
+}
+
+/*img{
+	-webkit-transform: scale(0.5);
+	-moz-transform: scale(0.5);
+	-o-transform: scale(0.5);
+	transform: scale(0.5);
+}*/
+
+img{
+	-webkit-transition: -webkit-transform 0.3s ease-in;
+	-moz-transition: -moz-transform 0.3s ease-in;
+	transition: transform 0.3s ease-in;
+
+}
+
+header{
+	clear:both;;
+}
+
+footer{
+	clear:both;
+	margin:1em;
+}
+
+.container{
+	text-align:center;
+	width:100%;
+	height:100%;
+	padding-top:5em;
+}
+
+/* HEADER LOGO CSS */
+
+.pageHeader{
+	position:fixed;
+	padding-top:0px;
+	width:100%;
+}
+
+.frontHeader{
+	position:fixed;
+	z-index:100;
+}
+
+.backHeader{
+	z-index:1;
+	background-color:rgba(0,0,0,.5);
+}
+
+#headerLogo{
+	width:161px;
+	height:50px;
+	background-image:url('img-ionsyslogo4.png');
+	background-repeat:no-repeat;
+	background-size:100%;
+}
+
+#headerLogoCircle{
+	width:44px;
+	height:50px;
+	/*margin: 1em 0 0 1em;*/
+	background-image:url('logo-ionsys-circle2.png');
+	background-size:100%;
+}
+
+/* SCROLL BAR CSS */
+
+.pageFooter{
+	display:none;
+	position:fixed;
+	bottom:0px;
+	height:4em;
+	width:100%;
+	z-index:100;
+}
+
+.scrollBar{
+	background-image:url('bg-scrollbutton.png');
+}
+
+.scrollButton{
+	float:left;
+	height:100%;
+	width:50%;
+	box-sizing:border-box;
+	border:1px solid #333;
+}
+
+/* MAIN PAGE CSS */
+
+.splash{
+	position:relative;
+	color:white;
+	background: url(bg-hospitalroom2.jpg);
+	background-size: auto 100%;
+	background-color:black;
+	z-index:10;
+}
+
+.splash container{
+	z-index:10;
+	padding-top:0;
+}
+
+.group1{
+	background: #4096ee; /* Old browsers */
+	background: -moz-linear-gradient(top,  #4096ee 0%, #376dcc 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4096ee), color-stop(100%,#376dcc)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #4096ee 0%,#376dcc 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #4096ee 0%,#376dcc 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #4096ee 0%,#376dcc 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #4096ee 0%,#376dcc 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#376dcc',GradientType=0 ); /* IE6-9 */
+	color:white;
+}
+
+.group3{
+	background: #7d7e7d; /* Old browsers */
+	background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+	color:white;
+}
+
+.group2{
+	background: rgb(246,248,249); /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  rgba(246,248,249,1) 0%, rgba(229,235,238,1) 50%, rgba(215,222,227,1) 51%, rgba(245,247,249,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(246,248,249,1)), color-stop(50%,rgba(229,235,238,1)), color-stop(51%,rgba(215,222,227,1)), color-stop(100%,rgba(245,247,249,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(-45deg,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(-45deg,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(-45deg,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* IE10+ */
+	background: linear-gradient(135deg,  rgba(246,248,249,1) 0%,rgba(229,235,238,1) 50%,rgba(215,222,227,1) 51%,rgba(245,247,249,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background-color:white;
+	color:black;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+}
+
+
+
+.container h2{
+	font-size:3em;
+}
+
+.container h3{
+	/*padding:.5em 0 .5em;*/
+}
+
+.container h4{
+	padding:1em;
+}
+
+.container h2 sup{
+	position:relative;
+	top:-3.5em;
+	font-size: .15em;
+}
+
+.container p{
+	text-align:justify;
+}
+
+.container article{
+	padding:1em 2em 1em;
+}
+
+.container-anim{
+	max-width:18.75em;
+	margin:auto;
+}
+
+.container-anim-vert{
+	width:9.4em;
+	height:16em;
+	margin:-2em auto 2em;
+}
+
+
+.container-anim img, .container-anim-vert img{
+	width:100%;
+}
+
+#medcoLogo{
+	position:relative;
+	width:15em;
+	margin:auto;
+	bottom:2em;
+	/*margin-top:25%;*/
+}
+
+#medcoLogo img{
+	width:100%;
+}
+
+.splash #ionsysSplash{
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	transform:rotate(90deg);
+	z-index:20;
+	background:url(img-ionsys2.png) top left no-repeat;
+	background-size:100%;;
+}
+
+.caption{
+	padding:.5em;
+}
+
+/*@media only screen and (min-width: 30em) and (max-width: 47.5em) and (orientation:landscape){
+	section{
+		height:37.5em;
+	}
+
+	#headerLogo{
+		width:242px;
+		height:100px;
+	}
+
+	#medcoLogo{
+		width:auto;
+	}
+	
+	.container{
+		padding-top:8em;
+	}
+
+	.container h2{
+		font-size:4em;
+	}
+
+	.container-anim{
+		width:30em;
+	}
+
+	.container-anim-vert{
+		width:15em;
+	}
+
+	.container-anim img{
+		width:auto;
+	}
+
+}*/
+
+@media only screen and (min-width: 60em){
+
+	section{
+		/*height:56.25em;*/
+	}
+
+	#headerLogo{
+		width:242px;
+		height:75px;
+	}
+
+	#headerLogoCircle{
+		width:66px;
+		height:75px;
+	}
+
+	#medcoLogo{
+		width:30em;
+		clear:both;	
+	}
+
+	.container{
+		padding:7em 0 0;
+		margin:auto;
+		width:60em;
+	}
+
+	.container h2{
+		font-size:4em;
+	}
+
+	.container h3{
+		font-size:1.5em;
+	}
+
+	.container h4{
+		font-size:2em;
+		padding: 1em;
+	}
+
+	.container header{
+		display:inline-block;
+		padding:0 0 2em;
+		width:100%;
+	}
+
+	.container article{
+		vertical-align:top;
+		display:inline-block;
+		line-height:1.5em;
+		margin:0;
+		width:calc(49% - 4em);
+		height:25em;
+	}
+
+	.container-anim{
+		max-width:30em;
+	}
+
+	.container-anim-vert{
+		clear:both;
+		margin:auto;
+		width:15em;
+		height:30em;
+		margin-bottom:2em;
+	}
+
+	.container-anim img{
+		width:100%;
+	}
+
+	.splash #ionsysSplash{
+		position:relative;
+		background:none;
+		-webkit-transform:rotate(0deg);
+		-moz-transform:rotate(0deg);
+		transform:rotate(0deg);
+		/*-webkit-transition: -webkit-transform 2s linear;
+		-moz-transition: -moz-transform 2s linear;
+		transition: transform 2s linear;*/
+	}
+
+	.splash .container{
+		padding-top:1em;
+	}
+
+	.ionsysFront, .ionsysBack{
+		/* Enable 3D transforms */
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		-webkit-transition: -webkit-transform 0.8s;
+		-moz-transition: -moz-transform 0.8s;
+		transition: transform 0.8s;
+		
+		/* We are using two separate divs for the front and back of the
+		   phone. This will hide the divs when they are flipped, so that the
+		   opposite side can be seen:  */
+
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+		backface-visibility: hidden;
+
+		width:295px;
+		height:500px;
+
+		position:absolute;
+		top:50%;
+		left:50%;
+		margin: -250px 0 0 -150px;
+
+		background:url(img-ionsys-flip.png) no-repeat left center;
+	}
+
+	.ionsysBack{
+		-webkit-transform:rotateY(180deg);
+		-moz-transform:rotateY(180deg);
+		transform:rotateY(180deg);
+		background-position:right center;
+	}
+
+	.container-anim-vert:hover .ionsysFront{
+		-webkit-transform:rotateY(180deg);
+		-moz-transform:rotateY(180deg);
+		transform:rotateY(180deg);
+	}
+
+	.container-anim-vert:hover .ionsysBack{
+		-webkit-transform:rotateY(360deg);
+		-moz-transform:rotateY(360deg);
+		transform:rotateY(360deg);
+	}
+
+	.group1 img:hover{
+		-webkit-transform:scale(1.25);
+		-moz-transform:scale(1.25);
+		transform: scale(1.25);
+	}
+
+	.group2 .container-anim img, .splash img{
+		-webkit-transform-style: preserve-3d;
+		-moz-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		-webkit-transition: -webkit-transform 1s ease-in;
+		-moz-transition: -webkit-transform 1s ease-in;
+		transition: transform 1s ease-in;
+	}
+
+	.group2 .container-anim:hover img{
+		-webkit-transform:rotateY(180deg);
+		-moz-transform:rotateY(180deg);
+		transform:rotateY(180deg);
+	}
+
+	.splash #ionsysSplash:hover img{
+		-webkit-transform:rotateY(360deg);
+		-moz-transform:rotateY(360deg);
+		transform:rotateY(360deg);
+	}
+
+	.group3 img:hover{
+		-webkit-transform:rotate(360deg);
+		-moz-transform:rotate(360deg);
+		transform:rotate(360deg);
+	}
+}
