@@ -18,7 +18,7 @@ body{
 }
 
 
-/*deviceCSS */
+/*mobile first CSS */
 
 img{
 	-webkit-transition: -webkit-transform 0.3s ease-in;
@@ -27,21 +27,21 @@ img{
 
 }
 
+header{
+	clear:both;;
+}
+
+footer{
+	clear:both;
+	margin:1em;
+}
+
 .container{
 	text-align:center;
 	width:100%;
 	height:100%;
-	/*padding-top:5em;*/
+	padding-top:5em;
 }
-
-.device{
-	position:relative;
-	margin:auto;
-	max-width:295px;
-	max-height:500px;
-}
-
-
 
 /* HEADER LOGO CSS */
 
@@ -77,6 +77,29 @@ img{
 	background-size:100%;
 }
 
+/* SCROLL BAR CSS */
+
+.pageFooter{
+	display:none;
+	position:fixed;
+	bottom:0px;
+	height:4em;
+	width:100%;
+	z-index:100;
+}
+
+.scrollBar{
+	background-image:url('bg-scrollbutton.png');
+}
+
+.scrollButton{
+	float:left;
+	height:100%;
+	width:50%;
+	box-sizing:border-box;
+	border:1px solid #333;
+}
+
 /* MAIN PAGE CSS */
 
 .splash{
@@ -105,6 +128,13 @@ img{
 .container h4{
 	padding:1em;
 }
+
+.container h2 sup{
+	position:relative;
+	top:-3.5em;
+	font-size: .15em;
+}
+
 .container p{
 	text-align:justify;
 }
@@ -113,11 +143,27 @@ img{
 	padding:1em 2em 1em;
 }
 
+.container-anim{
+	max-width:18.75em;
+	margin:auto;
+}
+
+.container-anim-vert{
+	width:9.4em;
+	height:16em;
+	margin:-2em auto 2em;
+}
+
+
+.container-anim img, .container-anim-vert img{
+	width:100%;
+}
+
 #medcoLogo{
 	position:relative;
 	width:15em;
 	margin:auto;
-	/*bottom:2em;*/
+	bottom:2em;
 	/*margin-top:25%;*/
 }
 
@@ -130,103 +176,174 @@ img{
 }
 
 
+@media only screen and (min-width: 60em){
+
+	section{
+		/*height:56.25em;*/
+	}
+
+	#headerLogo{
+		width:242px;
+		height:75px;
+	}
+
+	#headerLogoCircle{
+		width:66px;
+		height:75px;
+	}
+
+	#medcoLogo{
+		width:30em;
+		clear:both;	
+	}
+
+	.container{
+		padding:7em 0 0;
+		margin:auto;
+		width:60em;
+	}
+
+	.container h2{
+		font-size:4em;
+	}
+
+	.container h3{
+		font-size:1.5em;
+	}
+
+	.container h4{
+		font-size:2em;
+		padding: 1em;
+	}
+
+	.container header{
+		display:inline-block;
+		padding:0 0 2em;
+		width:100%;
+	}
+
+	.container article{
+		vertical-align:top;
+		display:inline-block;
+		line-height:1.5em;
+		margin:0;
+		width:calc(49% - 4em);
+		height:25em;
+	}
+
+	.container-anim{
+		max-width:30em;
+	}
+
+	.container-anim-vert{
+		clear:both;
+		margin:auto;
+		width:15em;
+		height:30em;
+		margin-bottom:2em;
+	}
+
+	.container-anim img{
+		width:100%;
+	}
+
+	.splash #ionsysSplash{
+		position:relative;
+		background:none;
+		-webkit-transform:rotate(0deg);
+		-moz-transform:rotate(0deg);
+		transform:rotate(0deg);
+		/*-webkit-transition: -webkit-transform 2s linear;
+		-moz-transition: -moz-transform 2s linear;
+		transition: transform 2s linear;*/
+	}
+
+	.splash .container{
+		padding-top:1em;
+	}
+
+}
+
 
 /*START SEVEN SEGMENT DISPLAY CSS */
 .seven-segment {
 	z-index:99;
-  	position: absolute;
-  	margin:auto;
-  	width:500px;
-  	left:-100px;
-  	top:110px;
-  	-webkit-transform:scale(0.12);
+  position: relative;
+  -webkit-transform:scale(0.15);
 }
-
-.digit{
-	position:relative;
-	display:inline-block;
-	width:180px;
-	height:350px;
-	margin: 1.5em;
-}
-
-.digit ones{
-
-}
-
-.digit .a {
+.seven-segment .a {
   position: absolute;
   left: 10px;
   height: 0;
   width: 100px;
-  border-top: 30px solid #000;
+  border-top: 30px solid #FF3636;
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
 }
-.digit .b {
+.seven-segment .b {
   position: absolute;
   left: 150px;
   top: 10px;
   height: 100px;
   width: 0;
-  border-right: 30px solid #000;
+  border-right: 30px solid #FF3636;
   border-top: 30px solid transparent;
   border-bottom: 30px solid transparent;
 }
-.digit .c {
+.seven-segment .c {
   position: absolute;
   left: 150px;
   top: 180px;
   height: 100px;
   width: 0;
-  border-right: 30px solid #000;
+  border-right: 30px solid #FF3636;
   border-top: 30px solid transparent;
   border-bottom: 30px solid transparent;
 }
-.digit .d {
+.seven-segment .d {
   position: absolute;
   top: 320px;
   left: 10px;
   height: 0;
   width: 100px;
-  border-bottom: 30px solid #000;
+  border-bottom: 30px solid #FF3636;
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
 }
-.digit .e {
+.seven-segment .e {
   position: absolute;
   left: 0;
   top: 180px;
   height: 100px;
   width: 0;
-  border-left: 30px solid #000;
+  border-left: 30px solid #FF3636;
   border-top: 30px solid transparent;
   border-bottom: 30px solid transparent;
 }
-.digit .f {
+.seven-segment .f {
   position: absolute;
   left: 0;
   top: 10px;
   height: 100px;
   width: 0;
-  border-left: 30px solid #000;
+  border-left: 30px solid #FF3636;
   border-top: 30px solid transparent;
   border-bottom: 30px solid transparent;
 }
 
-.digit .g:before{
+.seven-segment .g:before{
 	position:absolute;
 	content: " ";
 	height:14px;
 	left:0px;
 	top:-34px;
 	width:120px;
-	border-bottom: 20px solid #000;
+	border-bottom: 20px solid #FF3636;
 	border-left: 20px solid transparent;
 	border-right: 20px solid transparent;
 }
 
-.digit .g{
+.seven-segment .g{
 	position: relative;
 	top: 175px;
   	left: 10px;
@@ -234,61 +351,17 @@ img{
 	margin:0;
 	padding:0;
 	width: 160px;
-	background-color: #000;
+	background-color: #FF3636;
 }
 
-.digit .g:after{
+.seven-segment .g:after{
 	position:absolute;
 	content: " ";
 	height:14px;
 	width:120px;
 	left:0px;
 	bottom:-34px;
-	border-top: 20px solid #000;
+	border-top: 20px solid #FF3636;
 	border-left: 20px solid transparent;
 	border-right: 020px solid transparent;
-}
-
-/* controls for the display (temp) */
-
-.control {
-	position:relative;
-	text-align: center;
-	top:1em;
-	padding:1em;
-}
-
-.control button, .control input{
-	border:none;
-	outline: 0;
-	border-radius:20px;
-	padding:.5em 1em;
-	margin: .2em;
-	background:linear-gradient(to bottom, #4096ee 0%,#376dcc 100%);
-	font: 1.2em 'Raleway';
-	color:white;
-}
-
-.control input[type=number]::-webkit-inner-spin-button, 
-.control input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}
-
-.control button:hover{
-	background:linear-gradient(to bottom, #4096ff 0%,#33f 100%);
-}
-
-.control button:active{
-	background:linear-gradient(to bottom, #000 100%,#376dcc 0%);
-}
-
-.digitOff, .digitOff:before, .digitOff:after {
-	border: none !important;
-}
-
-/* utility classes */
-
-.hidden{
-	display:none !important;
-}
+};

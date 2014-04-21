@@ -21,36 +21,47 @@
 	</div>
 </header>
 
-<div class="pageFooter scrollBar">
-	<div class="scrollButton" id="scrollUp">
-	</div>
-	<div class="scrollButton" id="scrollDown">
-	</div>
-</div>
-
 <section class="splash">
 	<div class="container">
 		<header>
 			<img src="logo-ionsys-text.png">
-			<p class="caption">
-				<h3>the next generation of PCA.</h3>
-			</p>
+			<h3>the next generation of PCA.</h3>
 		</header>
-		<div class="seven-segment">
-			  <div class="a"></div>
-			  <div class="b"></div>
-			  <div class="c"></div>
-			  <div class="d"></div>
-			  <div class="e"></div>
-			  <div class="f"></div>
-			  <div class="g"></div>
-		</div>
 		<div class="device" id="ionsysSplash">
+			<div class="seven-segment">
+				<div class="digit tens">
+					  <div class="a"></div>
+					  <div class="b"></div>
+					  <div class="c"></div>
+					  <div class="d"></div>
+					  <div class="e"></div>
+					  <div class="f"></div>
+					  <div class="g"></div>
+				</div>
+				<div class="digit ones">
+					  <div class="a"></div>
+					  <div class="b"></div>
+					  <div class="c"></div>
+					  <div class="d"></div>
+					  <div class="e"></div>
+					  <div class="f"></div>
+					  <div class="g"></div>
+				</div>
+			</div>
 			<img src="img-ionsys2-blank.png">
 		</div>
-		<div id="medcoLogo">
+		<div id="medcoLogo" class="hidden">
 			<img src="img-medcologo-long-black-clr.png">
 		</div>
+	</div>
+	<div class="control">
+		<button id="powerButton">Power On</button>
+		<p></p>
+		<button id="flashButton">Flash</button>
+		<button id="walkButton">Walk</button>
+		<button id="doseButton">Dose</button>
+		<p></p>
+		<input type="number" name="doseNumber" id="doseNumber" min="0" max="99" value="0"></input>
 	</div>
 </section>
 
