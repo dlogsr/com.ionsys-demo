@@ -219,6 +219,7 @@ function setDose(){
 		doseCount++;
 		setLCDNum(doseCount);
 		$doseNumber.val(doseCount);
+		doseLockout = false;
 	},20000)
 	
 }
