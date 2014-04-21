@@ -25,9 +25,15 @@
 	<div class="container">
 		<header>
 			<img src="logo-ionsys-text.png">
-			<h3>the next generation of PCA.</h3>
+			<h3 class="hidden">the next generation of PCA.</h3>
 		</header>
 		<div class="device" id="ionsysSplash">
+			<div class="led ledGreen hidden">
+			</div>
+			<div class="led ledRed hidden">
+			</div>
+			<div class="doseButton">
+			</div>
 			<div class="seven-segment">
 				<div class="digit tens">
 					  <div class="a"></div>
@@ -48,7 +54,6 @@
 					  <div class="g"></div>
 				</div>
 			</div>
-			<img src="img-ionsys2-blank.png">
 		</div>
 		<div id="medcoLogo" class="hidden">
 			<img src="img-medcologo-long-black-clr.png">
@@ -56,13 +61,21 @@
 	</div>
 	<div class="control">
 		<button id="powerButton">Power On</button>
+		<button id="powerButtonOff">Power Off</button>
 		<p></p>
 		<button id="flashButton">Flash</button>
 		<button id="walkButton">Walk</button>
-		<button id="doseButton">Dose</button>
+		<button id="doseUpButton">Dose+</button>
 		<p></p>
-		<input type="number" name="doseNumber" id="doseNumber" min="0" max="99" value="0"></input>
+		<label for="doseNumber">Set Dose #: </label>
+		<input type="number" name="doseNumber" id="doseNumber" min="0" max="99" value="0" ></input>
 	</div>
+	<audio id="beeper" preload="auto">
+		<source src="beep.mp3"></source>
+	</audio>
+	<audio id="beeper-long" preload="auto">
+		<source src="beep_long.mp3"></source>
+	</audio>
 </section>
 
 </body>
