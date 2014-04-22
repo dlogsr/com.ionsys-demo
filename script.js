@@ -2,15 +2,23 @@ var flashCounter = 0;
 var $flashButton = $('#flashButton');
 var $powerButton = $('#powerButton');
 var $powerButtonOff = $('#powerButtonOff');
-var $display = $('.seven-segment');
 var $walkButton = $('#walkButton');
 var $doseUpButton = $('#doseUpButton');
-var $doseNumber = $('#doseNumber');
 var $doseButton = $('.doseButton');
+var $poorSkinButton = $('#poorSkin');
+var $EOLButton = $('#EOL');
+var $EOUButton = $('#EOU');
+var $readyButton = $('#readyButton');
+var $deviceStatus = $('#deviceStatus');
+
+var $doseNumber = $('#doseNumber');
+var $display = $('.seven-segment');
 var $greenLED = $('.ledGreen');
 var $redLED = $('.ledRed');
 var $beeper = $('#beeper')[0];
 var $beeperLong = $('#beeper-long')[0];
+var $logoCircle = $('#headerLogoCircle');
+var $extraButtons = $('.extraButtons');
 var powered = false;
 var on = 'on';
 var off = 'off';
@@ -18,6 +26,7 @@ var doseButtonFirstPress = false;
 var doseLockout = false;
 var doseCount = 0;
 var greenLEDFlash, redLEDFlash;
+var beeperTimer, flashTimer, timer, doseRepeatTimer, walkPatternTimer
 
 var digits = new Array;
 digits[0] = ['a', 'b', 'c', 'd', 'e', 'f'];
@@ -31,15 +40,11 @@ digits[7] = ['a','b','c'];
 digits[8] = ['a','b','c','d','e','f','g'];
 digits[9] = ['a','f','g','b','c','d'];
 
-var walkpattern = [
-	['ones','a'],
-	['ones','b'],
-	['ones','c'],
-	['ones','d'],
-	['tens','d'],
-	['tens','e'],
-	['tens','f'],
-	['tens','a']];
+var walkpattern = [['ones','a'],['ones','b'],['ones','c'],['ones','d'],['tens','d'],
+	['tens','e'],['tens','f'],['tens','a']];
+
+var doseStage = ['Dose 1','Dose 2','Poor Skin 1','Poor Skin 2','EOU','EOL','Power Off'];
+var doseStageNum = 0;
 
 function getWindowHeight(){
 	return $(window).height();
@@ -52,33 +57,52 @@ function adjustContentSpacing(currSection) {
 
 $(document).ready(function(){
 	adjustContentSpacing('section');
+	$powerButtonOff.hide();
 	$display.find('*').addClass('digitOff');
 
 	$powerButton.click('submit',function(){
-		if(!powered)
+		if(!powered){
 			powerUp();
+			$powerButton.fadeOut('fast', function(){$powerButtonOff.fadeIn();});
+		};
 	})
 
 	$powerButtonOff.click('submit',function(){
-		powered = false;
-		turnOffLCD();
-		turnOffAllLED();
-		doseCount = 0;
-		clearInterval(timer);
-		clearInterval(walkPatternTimer);
-		clearInterval(doseRepeatTimer);
+		if(powered){
+			powerDown();
+			$powerButtonOff.fadeOut('fast',function(){$powerButton.fadeIn();});
+		};
+	})
+
+	$poorSkinButton.click('submit',function(){
+		if(powered) doseModeEnter('Poor Skin 1');
+	})
+
+	$EOUButton.click('submit',function(){
+		if(powered) doseModeEnter('EOU');
+	})
+
+	$EOLButton.click('submit',function(){
+		if(powered) doseModeEnter('EOL');
 	})
 
 	$flashButton.click('submit',function(){
-		if(powered) flashLCD(9);
+		if(powered) flashLCD(88,9);
+	});
+
+	$walkButton.click('submit',function(){
+		if(powered) walkLCD();
 	});
 
 	$doseUpButton.click('submit',function(){
 		if(powered && !doseLockout) setDose();
 	});
 
-	$walkButton.click('submit',function(){
-		if(powered) walkLCD();
+	$readyButton.click('submit',function(){
+		if(powered){
+			setReadyMode();
+			changeStatus('Current mode: Ready');
+		};
 	});
 
 	$doseNumber.change(function(){
@@ -89,61 +113,85 @@ $(document).ready(function(){
 		};
 	});
 
+	$logoCircle.click(function(){
+		$extraButtons.toggleClass('hidden');
+	});
+
 	$doseButton.mousedown(function(){
 		$doseButton.addClass('doseButtonPressed');
-		if(powered && !doseLockout){
-			if (doseButtonFirstPress){
-				setDose();
-				doseButtonFirstPress = false;
-			}
-			else{
-				setTimeout(function(){ doseButtonFirstPress = true; }, 200);
-			};
-		};
 	});
 	$doseButton.mouseup(function(){
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
+		if(powered && !doseLockout){
+			if (doseButtonFirstPress){
+				doseModeEnter(doseStage[doseStageNum]);
+				doseButtonFirstPress = false;
+			}
+			else{
+				setTimeout(function(){ doseButtonFirstPress = true; }, 200);
+				setTimeout(function(){ doseButtonFirstPress = false;}, 3000);
+			};
+		};
 	});
 
 })
 
 $(window).resize(function(){
-	//find a way to query the value after xx seconds
-	// if it has only moved like 50 pixels, then it must
-	// be an address ar hide, and DON'T adjust spacing
 	adjustContentSpacing('section');
 })
 
+function changeStatus(status){
+	$deviceStatus.fadeOut('fast',function() {$deviceStatus.html(status);});
+	$deviceStatus.fadeIn('fast');
+}
+
 function powerUp(){
+	changeStatus('Powering On...');
 	flashCounter = 0;
 	$beeper.play();
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
 			$redLED.addClass('hidden');
-			flashLCD(9);
+			changeStatus('Current mode: POST');
+			flashLCD(88,9);
 		},500);
 	},500);
 	powered = true;
 	setTimeout(function(){
 		flashGreenLED(500,3000);
+		setTimeout(function(){changeStatus('Current mode: Ready')},2000);
 	},4000);
 }
 
-function flashLCD(limit){
+function powerDown(){
+	powered = false;
+	turnOffLCD();
+	turnOffAllLED();
+	doseCount = 0;
+	clearInterval(flashTimer);
+	clearInterval(walkPatternTimer);
+	clearInterval(doseRepeatTimer);
+	clearInterval(beeperTimer);
+	clearInterval(redLEDFlash);
+	clearInterval(greenLEDFlash);
+	doseStageNum = 0;
+	changeStatus('Powered Off');
+}
+
+function flashLCD(number,limit){
 	flashCounter = 0;
 	turnOffLCD();
-	var timer = setInterval(function(){
+	flashTimer = setInterval(function(){
 		if(flashCounter < limit){
-			//$display.find('*').toggleClass('digitOff');
-			segmentToggle(digits[8],'tens');
-			segmentToggle(digits[8],'ones');
+			segmentToggle(digits[Math.floor(number/10)],'tens');
+			segmentToggle(digits[number%10],'ones');
 			flashCounter++;
 		}
 		else{
-			clearInterval(timer);
+			clearInterval(flashTimer);
 			setLCDNum(doseCount);
 		};
 	},500);
@@ -162,7 +210,7 @@ function setLCDNum(number){
 	//console.log('setting dose counter to '+number);
 	if(number>9)
 		segmentToggle(digits[Math.floor(number/10)],'tens',on);
-		segmentToggle(digits[number%10],'ones',on);
+	segmentToggle(digits[number%10],'ones',on);
 }
 
 //take in an array of segments to toggle, place (tens or ones), and toggle just those
@@ -186,7 +234,7 @@ function segmentToggle(input,place,explicit){
 function walkLCD(){
 	var walkCounter = 0;
 	var wtPlace, wtNumber;
-	var walkPatternTimer = setInterval(function(){
+	walkPatternTimer = setInterval(function(){
 		turnOffLCD();
 		wtPlace = walkpattern[walkCounter][0];
 		wtNumber = walkpattern[walkCounter][1];
@@ -199,7 +247,19 @@ function walkLCD(){
 	var walkTimer = setTimeout(function(){
 		clearInterval(walkPatternTimer);
 		setLCDNum(doseCount);
-	},3200);
+	},3400);
+}
+
+function setReadyMode(){
+	//changeStatus('Current mode: Ready');
+	turnOffAllLED();
+	flashGreenLED(500,3000);
+	setLCDNum(doseCount);
+	doseLockout = false;
+	clearInterval(flashTimer);
+	clearInterval(walkPatternTimer);
+	clearInterval(doseRepeatTimer);
+	clearInterval(beeperTimer);
 }
 
 function setDose(){
@@ -214,14 +274,79 @@ function setDose(){
 	},5600);
 	var doseTimer = setTimeout(function(){
 		clearInterval(doseRepeatTimer);
-		turnOffAllLED();
-		flashGreenLED(500,3000);
 		doseCount++;
-		setLCDNum(doseCount);
+		setReadyMode();
 		$doseNumber.val(doseCount);
-		doseLockout = false;
 	},20000)
-	
+}
+
+function setPoorskin(){
+	doseLockout = true;
+	turnOffAllLED();
+	flashRedLED(400,800);
+	var beeperCounter = 0;
+	$beeperLong.play();
+	setTimeout(function(){
+		$beeper.play();
+	},900);
+	beeperTimer = setInterval(function(){
+		$beeperLong.play();
+		setTimeout(function(){
+			$beeper.play();
+		},900);
+		if(beeperCounter >= 6){
+			clearInterval(beeperTimer);
+			setTimeout(function(){ setReadyMode() }, 1000);
+		}
+		else beeperCounter++;
+	},2400);
+}
+
+function setEOU(){
+	turnOffAllLED();
+	turnOffLCD();
+	setLCDNum(80);
+	flashLCD(80,100000);
+}
+
+function setEOL(){
+	turnOffAllLED();
+	turnOffLCD();
+	setLCDNum(17);
+	flashLCD(17,100000);
+	flashRedLED(500,1000);
+	var beepCounter = 0;
+	beeperTimer = setInterval(function(){
+		setTimeout(function(){
+			if(beepCounter<=4) $beeper.play();
+			else beepCounter = 0;
+		},150);
+		beepCounter++;
+	},750);
+}
+
+function doseModeEnter(stage){
+	console.log('entering dose mode stage: '+stage);
+	changeStatus('Current mode: '+stage);
+	if(stage == 'Dose 1' || stage == 'Dose 2' || stage == 'Normal Operation'){
+		setDose();
+	}
+	else if(stage == 'Poor Skin 1' || stage == 'Poor Skin 2'){
+		setPoorskin();
+	}
+	else if(stage == 'EOU'){
+		setEOU();
+	}
+	else if(stage == 'EOL'){
+		clearInterval(beeperTimer);
+		clearInterval(flashTimer);
+		setReadyMode();
+		setEOL();
+	}
+	else if (stage =='Power Off'){
+		powerDown();
+	};
+	doseStageNum++;
 }
 
 function flashGreenLED(ontime,offtime){
@@ -235,6 +360,19 @@ function flashGreenLED(ontime,offtime){
 	}
 }
 
+function flashRedLED(ontime,offtime){
+	if(powered){
+		redLEDFlash = setInterval(function(){
+			$redLED.removeClass('hidden');
+			setTimeout(function(){
+				$redLED.addClass('hidden');
+			},ontime);
+		},offtime);
+	}
+}
+
+
 function turnOffAllLED(){
 	clearInterval(greenLEDFlash);
+	clearInterval(redLEDFlash);
 }

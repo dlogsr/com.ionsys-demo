@@ -55,6 +55,9 @@
 				</div>
 			</div>
 		</div>
+		<div id="deviceStatus">
+			Powered Off
+		</div>
 		<div id="medcoLogo" class="hidden">
 			<img src="img-medcologo-long-black-clr.png">
 		</div>
@@ -63,12 +66,17 @@
 		<button id="powerButton">Power On</button>
 		<button id="powerButtonOff">Power Off</button>
 		<p></p>
-		<button id="flashButton">Flash</button>
-		<button id="walkButton">Walk</button>
-		<button id="doseUpButton">Dose+</button>
+		<button id="poorSkin" class="extraButtons hidden">Poor Skin Contact</button>
+		<button id="EOU" class="extraButtons hidden">EOU</button>		
+		<button id="EOL" class="extraButtons hidden">EOL</button>
 		<p></p>
-		<label for="doseNumber">Set Dose #: </label>
-		<input type="number" name="doseNumber" id="doseNumber" min="0" max="99" value="0" ></input>
+		<button id="flashButton" class="extraButtons hidden">Flash</button>
+		<button id="walkButton" class="extraButtons hidden">Walk</button>
+		<button id="doseUpButton" class="extraButtons hidden">Dose+</button>
+		<button id="readyButton" class="extraButtons hidden">Ready</button>
+		<p></p>
+		<label for="doseNumber"  class="extraButtons hidden" >Set Dose #: </label>
+		<input type="number" name="doseNumber" id="doseNumber"  class="extraButtons hidden" min="0" max="99" value="0" ></input>
 	</div>
 	<audio id="beeper" preload="auto">
 		<source src="beep.mp3"></source>

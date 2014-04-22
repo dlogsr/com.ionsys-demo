@@ -58,6 +58,7 @@ img{
 
 .doseButton{
 	position:absolute;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	cursor:pointer;
 	margin-left:107px;
 	margin-top:76px;
@@ -170,6 +171,9 @@ img{
   	left:-100px;
   	top:110px;
   	-webkit-transform:scale(0.12);
+  	-moz-transform:scale(0.12);
+  	-ms-transform:scale(0.12);
+  	transform:scale(0.12);
 }
 
 .digit{
@@ -293,6 +297,7 @@ img{
 	padding:.5em 1em;
 	margin: .2em;
 	background:linear-gradient(to bottom, #4096ee 0%,#376dcc 100%);
+	background-color:#4096EE;
 	font: 1.2em 'Raleway';
 	color:white;
 }
@@ -304,15 +309,22 @@ img{
 }
 
 .control button:hover{
+	cursor:pointer;
 	background:linear-gradient(to bottom, #4096ff 0%,#33f 100%);
+	background-color:#33F;
 }
 
 .control button:active{
 	background:linear-gradient(to bottom, #000 100%,#376dcc 0%);
+	background-color:#376dcc;
 }
 
 .digitOff, .digitOff:before, .digitOff:after {
 	border: none !important;
+}
+
+#deviceStatus{
+	padding:.5em;
 }
 
 /* utility classes */
