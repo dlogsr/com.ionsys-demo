@@ -67,14 +67,7 @@ function playAudio(src) {
 	$deviceStatus.html("Playing file "+src);
     if (my_media == null) {
         // Create Media object from src
-        my_media = new Media(src, 
-        function(){
-        	$deviceStatus.html("playAudio():Audio Success");
-        }, 
-        function(){
-        	$deviceStatus.html('error');
-}
-        });
+        my_media = new Media(src, onSuccess, onError);
         $deviceStatus.append("<br>Created Media File");
     } // else play current audio
     // Play audio
@@ -92,6 +85,14 @@ function onError(error) {
     $deviceStatus.html('code: '    + error.code    + '\n' + 
           'message: ' + error.message + '\n');
 }
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+        // PhoneGap is ready
+        //
+        function onDeviceReady() {
+            playAudio("beep.mp3");
+        }
 
 
 function adjustContentSpacing(currSection) {
