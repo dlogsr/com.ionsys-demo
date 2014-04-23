@@ -10,6 +10,7 @@ var $EOLButton = $('#EOL');
 var $EOUButton = $('#EOU');
 var $readyButton = $('#readyButton');
 var $deviceStatus = $('#deviceStatus');
+var $testSoundPG = $('#testSoundPG');
 
 var $doseNumber = $('#doseNumber');
 var $display = $('.seven-segment');
@@ -55,6 +56,16 @@ function adjustContentSpacing(currSection) {
 	$(currSection).css({'min-height':windowHeight});
 }
 
+var my_media = null;
+
+function playAudio(src){
+	console.log('playing audio '+src);
+	if (my_media == null)
+		changeStatus('creating media file '+src);
+		my_media = new Media(src,function(){changeStatus('ok')},function(){changeStatus('bad')});
+	my_media.play();
+}
+
 $(document).ready(function(){
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
@@ -72,6 +83,12 @@ $(document).ready(function(){
 			powerDown();
 			$powerButtonOff.fadeOut('fast',function(){$powerButton.fadeIn();});
 		};
+	})
+
+	$testSoundPG.click('submit',function(){
+		console.log('clicked test');
+		playAudio('beep.mp3');
+		playAudio('/android_asset/www/beep.mp3');
 	})
 
 	$poorSkinButton.click('submit',function(){
