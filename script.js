@@ -67,7 +67,14 @@ function playAudio(src) {
 	$deviceStatus.html("Playing file "+src);
     if (my_media == null) {
         // Create Media object from src
-        my_media = new Media(src, onSuccess, onError);
+        my_media = new Media(src, 
+        function(){
+        	$deviceStatus.html("playAudio():Audio Success");
+        }, 
+        function(){
+        	$deviceStatus.html('error');
+}
+        });
         $deviceStatus.append("<br>Created Media File");
     } // else play current audio
     // Play audio
