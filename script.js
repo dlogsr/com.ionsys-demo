@@ -80,6 +80,7 @@ function playAudio(id) {
     );
     // Play audio
     my_media.play();
+    my_media.release();
 }
 /*
 function onSuccess() {
