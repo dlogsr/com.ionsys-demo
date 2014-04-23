@@ -1,0 +1,14 @@
+ <widget id="com.example.hello" version="0.0.1">
+        <name>IONSYS Demo Unit</name>
+        <description>
+            An application containing the web demo of IT101
+        </description>
+        <author email="ryan.dumlao@themedco.com" href="http://www.ryandumlao.com">
+            Ryan Dumlao, IONSYS Team, The Medicines Company
+        </author>
+        <content src="index.html" />
+        <access origin="*" />
+        <preference name="Fullscreen" value="true" />
+        <preference name="WebViewBounce" value="true" />
+        <gap:plugin name="Media" value="org.apache.cordova.core.AudioHandler" />
+    </widget>
