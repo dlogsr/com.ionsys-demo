@@ -54,6 +54,25 @@ function getWindowHeight(){
 	return $(window).height();
 }
 
+/* PHONEGAP audio functions */
+
+// Audio player
+//
+var my_media = null;
+var mediaTimer = null;
+
+// Play audio
+//
+function playAudio(src) {
+    if (my_media == null) {
+        // Create Media object from src
+        my_media = new Media(src, onSuccess, onError);
+    } // else play current audio
+    // Play audio
+    my_media.play();
+};
+
+
 function adjustContentSpacing(currSection) {
 	var windowHeight = getWindowHeight();
 	$(currSection).css({'min-height':windowHeight});
@@ -380,21 +399,3 @@ function turnOffAllLED(){
 	clearInterval(greenLEDFlash);
 	clearInterval(redLEDFlash);
 }
-
-/* PHONEGAP audio functions */
-
-// Audio player
-//
-var my_media = null;
-var mediaTimer = null;
-
-// Play audio
-//
-function playAudio(src) {
-    if (my_media == null) {
-        // Create Media object from src
-        my_media = new Media(src, onSuccess, onError);
-    } // else play current audio
-    // Play audio
-    my_media.play();
-};
