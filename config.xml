@@ -14,5 +14,5 @@
         <access origin="*" />
         <preference name="Fullscreen" value="true" />
         <preference name="WebViewBounce" value="true" />
-        <gap:plugin name="Media" value="org.apache.cordova.core.AudioHandler" />
+        <feature name="http://api.phonegap.com/1.0/media"/> 
 </widget>
