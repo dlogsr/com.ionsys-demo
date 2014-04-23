@@ -72,6 +72,17 @@ function playAudio(src) {
     my_media.play();
 };
 
+function onSuccess() {
+    $deviceStatus.html("playAudio():Audio Success");
+}
+
+// onError Callback 
+//
+function onError(error) {
+    $deviceStatus.html('code: '    + error.code    + '\n' + 
+          'message: ' + error.message + '\n');
+}
+
 
 function adjustContentSpacing(currSection) {
 	var windowHeight = getWindowHeight();
