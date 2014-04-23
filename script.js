@@ -28,6 +28,10 @@ var doseCount = 0;
 var greenLEDFlash, redLEDFlash;
 var beeperTimer, flashTimer, timer, doseRepeatTimer, walkPatternTimer
 
+//phonegap variables
+var pgBeeper = '/android_asset/www/beep.mp3';
+var pgBeeperLong = '/android_asset/www/beep_long.mp3';
+
 var digits = new Array;
 digits[0] = ['a', 'b', 'c', 'd', 'e', 'f'];
 digits[1] = ['b', 'c'];
@@ -150,7 +154,7 @@ function changeStatus(status){
 function powerUp(){
 	changeStatus('Powering On...');
 	flashCounter = 0;
-	$beeper.play();
+	playAudio(pgBeeper); // $beeper.play();
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
@@ -266,7 +270,7 @@ function setDose(){
 	doseLockout = true;
 	turnOffLCD();
 	turnOffAllLED();
-	$beeperLong.play();
+	playAudio(pgBeeperLong); // $beeperLong.play();
 	flashGreenLED(400,800);
 	walkLCD();
 	var doseRepeatTimer = setInterval(function(){
@@ -285,14 +289,14 @@ function setPoorskin(){
 	turnOffAllLED();
 	flashRedLED(400,800);
 	var beeperCounter = 0;
-	$beeperLong.play();
+	playAudio(pgBeeperLong); // $beeperLong.play();
 	setTimeout(function(){
-		$beeper.play();
+		playAudio(pgBeeper); // $beeper.play();
 	},900);
 	beeperTimer = setInterval(function(){
-		$beeperLong.play();
+		playAudio(pgBeeperLong); // $beeperLong.play();
 		setTimeout(function(){
-			$beeper.play();
+			playAudio(pgBeeper); // $beeper.play();
 		},900);
 		if(beeperCounter >= 6){
 			clearInterval(beeperTimer);
@@ -318,7 +322,7 @@ function setEOL(){
 	var beepCounter = 0;
 	beeperTimer = setInterval(function(){
 		setTimeout(function(){
-			if(beepCounter<=4) $beeper.play();
+			if(beepCounter<=4) playAudio(pgBeeper); // $beeper.play();
 			else beepCounter = 0;
 		},150);
 		beepCounter++;
@@ -376,3 +380,21 @@ function turnOffAllLED(){
 	clearInterval(greenLEDFlash);
 	clearInterval(redLEDFlash);
 }
+
+/* PHONEGAP audio functions */
+
+// Audio player
+//
+var my_media = null;
+var mediaTimer = null;
+
+// Play audio
+//
+function playAudio(src) {
+    if (my_media == null) {
+        // Create Media object from src
+        my_media = new Media(src, onSuccess, onError);
+    } // else play current audio
+    // Play audio
+    my_media.play();
+};
