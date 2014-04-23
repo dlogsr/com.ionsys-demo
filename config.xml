@@ -1,4 +1,8 @@
- <widget id="com.example.hello" version="0.0.1">
+ <?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns       = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id="com.example.hello" 
+        version="1.0.0">
         <name>IONSYS Demo Unit</name>
         <description>
             An application containing the web demo of IT101
@@ -11,4 +15,4 @@
         <preference name="Fullscreen" value="true" />
         <preference name="WebViewBounce" value="true" />
         <gap:plugin name="Media" value="org.apache.cordova.core.AudioHandler" />
-    </widget>
+</widget>
