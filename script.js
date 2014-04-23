@@ -58,23 +58,28 @@ function getWindowHeight(){
 
 // Audio player
 //
-var my_media = null;
-var mediaTimer = null;
+//var my_media = null;
+//var mediaTimer = null;
 
 // Play audio
 //
-function playAudio(src) {
-	$deviceStatus.html("Playing file "+src);
-    if (my_media == null) {
-        // Create Media object from src
-        my_media = new Media(src, onSuccess, onError);
-        $deviceStatus.append("<br>Created Media File");
-    } // else play current audio
+function playAudio(url) {
+    // Play the audio file at url
+    $deviceStatus.html("playing file "+url);
+    var my_media = new Media(url,
+        // success callback
+        function () {
+            $deviceStatus.html("playAudio():Audio Success");
+        },
+        // error callback
+        function (err) {
+            $deviceStatus.html("playAudio():Audio Error: " + err);
+        }
+    );
     // Play audio
-    $deviceStatus.append("<br>Playing media file")
     my_media.play();
-};
-
+}
+/*
 function onSuccess() {
     $deviceStatus.html("playAudio():Audio Success");
 }
@@ -84,7 +89,7 @@ function onSuccess() {
 function onError(error) {
     $deviceStatus.html('code: '    + error.code    + '\n' + 
           'message: ' + error.message + '\n');
-}
+}*/
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
