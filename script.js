@@ -63,9 +63,11 @@ function getWindowHeight(){
 
 // Play audio
 //
-function playAudio(url) {
+function playAudio(id) {
     // Play the audio file at url
     $deviceStatus.html("playing file "+url);
+    var audioElement = document.getElementById('beeper');
+    var url = audioElement.getAttribute('src');
     var my_media = new Media(url,
         // success callback
         function () {
@@ -96,7 +98,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
         // PhoneGap is ready
         //
         function onDeviceReady() {
-            playAudio("beep.mp3");
+            playAudio('beeper');
         }
 
 
