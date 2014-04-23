@@ -17,7 +17,9 @@ var $display = $('.seven-segment');
 var $greenLED = $('.ledGreen');
 var $redLED = $('.ledRed');
 var $beeper = $('#beeper')[0];
-var $beeperLong = $('#beeper-long')[0];
+var playAudio(BeeperLongPG); // $beeperLong.play() = $('#beeper-long')[0];
+var beeperPG = document.getElementById('beeper').getAttribute('src');
+var beeperLongPG = document.getElementById('beeper-long').getAttribute('src');
 var $logoCircle = $('#headerLogoCircle');
 var $extraButtons = $('.extraButtons');
 var powered = false;
@@ -58,21 +60,19 @@ function adjustContentSpacing(currSection) {
 
 function playAudio(url) {
     // Play the audio file at url
-    changeStatus('playing audio '+url);
+    url = '/android_asset/www/'+url;
     var my_media = new Media(url,
         // success callback
         function () {
-            $deviceStatus.append("playAudio():Audio Success");
+            console.log("playAudio():Audio Success");
         },
         // error callback
         function (err) {
-            $deviceStatus.append("playAudio():Audio Error: " + err);
+            console.log("playAudio():Audio Error: " + err);
         }
     );
     // Play audio
-    changeStatus('audio created, playing');
     my_media.play();
-    $deviceStatus.append('<br>done playing.');
 }
 
 $(document).ready(function(){
@@ -96,7 +96,6 @@ $(document).ready(function(){
 
 	$testSoundPG.click('submit',function(){
 		console.log('clicked test');
-		playAudio('/android_asset/www/beep.mp3');
 		playAudio('beep.mp3');
 	})
 
@@ -176,7 +175,7 @@ function changeStatus(status){
 function powerUp(){
 	changeStatus('Powering On...');
 	flashCounter = 0;
-	$beeper.play();
+	playAudio(BeeperPG); // $beeper.play()
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
@@ -292,7 +291,7 @@ function setDose(){
 	doseLockout = true;
 	turnOffLCD();
 	turnOffAllLED();
-	$beeperLong.play();
+	playAudio(BeeperLongPG); // $beeperLong.play().play();
 	flashGreenLED(400,800);
 	walkLCD();
 	var doseRepeatTimer = setInterval(function(){
@@ -311,14 +310,14 @@ function setPoorskin(){
 	turnOffAllLED();
 	flashRedLED(400,800);
 	var beeperCounter = 0;
-	$beeperLong.play();
+	playAudio(BeeperLongPG); // $beeperLong.play().play();
 	setTimeout(function(){
-		$beeper.play();
+		playAudio(BeeperPG); // $beeper.play()
 	},900);
 	beeperTimer = setInterval(function(){
-		$beeperLong.play();
+		playAudio(BeeperLongPG); // $beeperLong.play().play();
 		setTimeout(function(){
-			$beeper.play();
+			playAudio(BeeperPG); // $beeper.play()
 		},900);
 		if(beeperCounter >= 6){
 			clearInterval(beeperTimer);
@@ -344,7 +343,7 @@ function setEOL(){
 	var beepCounter = 0;
 	beeperTimer = setInterval(function(){
 		setTimeout(function(){
-			if(beepCounter<=4) $beeper.play();
+			if(beepCounter<=4) playAudio(BeeperPG); // $beeper.play()
 			else beepCounter = 0;
 		},150);
 		beepCounter++;
