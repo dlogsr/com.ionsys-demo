@@ -175,7 +175,7 @@ function changeStatus(status){
 function powerUp(){
 	changeStatus('Powering On...');
 	flashCounter = 0;
-	playAudio(BeeperPG); // $beeper.play()
+	playAudio(beeperPG); // $beeper.play()
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
@@ -291,7 +291,7 @@ function setDose(){
 	doseLockout = true;
 	turnOffLCD();
 	turnOffAllLED();
-	playAudio(BeeperLongPG); // $beeperLong.play().play();
+	playAudio(beeperLongPG); // $beeperLong.play().play();
 	flashGreenLED(400,800);
 	walkLCD();
 	var doseRepeatTimer = setInterval(function(){
@@ -310,14 +310,14 @@ function setPoorskin(){
 	turnOffAllLED();
 	flashRedLED(400,800);
 	var beeperCounter = 0;
-	playAudio(BeeperLongPG); // $beeperLong.play().play();
+	playAudio(beeperLongPG); // $beeperLong.play().play();
 	setTimeout(function(){
-		playAudio(BeeperPG); // $beeper.play()
+		playAudio(beeperPG); // $beeper.play()
 	},900);
 	beeperTimer = setInterval(function(){
-		playAudio(BeeperLongPG); // $beeperLong.play().play();
+		playAudio(beeperLongPG); // $beeperLong.play().play();
 		setTimeout(function(){
-			playAudio(BeeperPG); // $beeper.play()
+			playAudio(beeperPG); // $beeper.play()
 		},900);
 		if(beeperCounter >= 6){
 			clearInterval(beeperTimer);
@@ -343,7 +343,7 @@ function setEOL(){
 	var beepCounter = 0;
 	beeperTimer = setInterval(function(){
 		setTimeout(function(){
-			if(beepCounter<=4) playAudio(BeeperPG); // $beeper.play()
+			if(beepCounter<=4) playAudio(beeperPG); // $beeper.play()
 			else beepCounter = 0;
 		},150);
 		beepCounter++;
