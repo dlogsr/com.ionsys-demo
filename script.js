@@ -64,11 +64,14 @@ var mediaTimer = null;
 // Play audio
 //
 function playAudio(src) {
+	$deviceStatus.html("Playing file "+src)
     if (my_media == null) {
         // Create Media object from src
+        $deviceStatus.append("<br>Created Media File")
         my_media = new Media(src, onSuccess, onError);
     } // else play current audio
     // Play audio
+    $deviceStatus.append("<br>Playing media file")
     my_media.play();
 };
 
