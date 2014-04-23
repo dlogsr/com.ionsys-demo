@@ -56,14 +56,23 @@ function adjustContentSpacing(currSection) {
 	$(currSection).css({'min-height':windowHeight});
 }
 
-var my_media = null;
-
-function playAudio(src){
-	console.log('playing audio '+src);
-	if (my_media == null)
-		changeStatus('creating media file '+src);
-		my_media = new Media(src,function(){changeStatus('ok')},function(){changeStatus('bad')});
-	my_media.play();
+function playAudio(url) {
+    // Play the audio file at url
+    changeStatus('playing audio '+url);
+    var my_media = new Media(url,
+        // success callback
+        function () {
+            $deviceStatus.append("playAudio():Audio Success");
+        },
+        // error callback
+        function (err) {
+            $deviceStatus.append("playAudio():Audio Error: " + err);
+        }
+    );
+    // Play audio
+    changeStatus('audio created, playing');
+    my_media.play();
+    $deviceStatus.append('<br>done playing.');
 }
 
 $(document).ready(function(){
@@ -87,8 +96,8 @@ $(document).ready(function(){
 
 	$testSoundPG.click('submit',function(){
 		console.log('clicked test');
-		playAudio('beep.mp3');
 		playAudio('/android_asset/www/beep.mp3');
+		playAudio('beep.mp3');
 	})
 
 	$poorSkinButton.click('submit',function(){
