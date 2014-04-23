@@ -64,11 +64,11 @@ var mediaTimer = null;
 // Play audio
 //
 function playAudio(src) {
-	$deviceStatus.html("Playing file "+src)
+	$deviceStatus.html("Playing file "+src);
     if (my_media == null) {
         // Create Media object from src
-        $deviceStatus.append("<br>Created Media File")
         my_media = new Media(src, onSuccess, onError);
+        $deviceStatus.append("<br>Created Media File");
     } // else play current audio
     // Play audio
     $deviceStatus.append("<br>Playing media file")
@@ -188,6 +188,7 @@ function powerUp(){
 	changeStatus('Powering On...');
 	flashCounter = 0;
 	playAudio(pgBeeper); // $beeper.play();
+	changeStatus('exiting beeper mode');
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
