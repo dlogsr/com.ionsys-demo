@@ -1,0 +1,4 @@
+<feature name="Media">
+    <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+</feature>
+<gap:plugin name="org.apache.cordova.media" />
