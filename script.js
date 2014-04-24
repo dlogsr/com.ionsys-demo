@@ -18,6 +18,7 @@ var $greenLED = $('.ledGreen');
 var $redLED = $('.ledRed');
 var $beeper = $('#beeper')[0];
 var $beeperLong = $('#beeper-long')[0];
+var $buttonPress = $('#button-press')[0];
 var $logoCircle = $('#headerLogoCircle');
 var $extraButtons = $('.extraButtons');
 var powered = false;
@@ -32,6 +33,7 @@ var beeperTimer, flashTimer, timer, doseRepeatTimer, walkPatternTimer
 //phoengap specific
 var beeperPG = document.getElementById('beeper').getAttribute('src');
 var beeperLongPG = document.getElementById('beeper-long').getAttribute('src');
+var buttonPressPG = document.getElementById('button-press').getAttribute('src');
 var usingPhonegap = false;
 
 var digits = new Array;
@@ -149,6 +151,7 @@ $(document).ready(function(){
 
 	$doseButton.mousedown(function(){
 		$doseButton.addClass('doseButtonPressed');
+		usingPhonegap ? playAudio(buttonPressPG) : $buttonPress.play();
 	});
 	$doseButton.mouseup(function(){
 		setTimeout(function(){
