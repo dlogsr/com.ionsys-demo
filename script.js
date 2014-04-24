@@ -61,17 +61,11 @@ $(document).ready(function(){
 	$display.find('*').addClass('digitOff');
 
 	$powerButton.click('submit',function(){
-		if(!powered){
-			powerUp();
-			$powerButton.fadeOut('fast', function(){$powerButtonOff.fadeIn();});
-		};
+		if(!powered) powerUp();
 	})
 
 	$powerButtonOff.click('submit',function(){
-		if(powered){
-			powerDown();
-			$powerButtonOff.fadeOut('fast',function(){$powerButton.fadeIn();});
-		};
+		if(powered)	powerDown();
 	})
 
 	$poorSkinButton.click('submit',function(){
@@ -164,6 +158,7 @@ function powerUp(){
 		flashGreenLED(500,3000);
 		setTimeout(function(){changeStatus('Current mode: Ready')},2000);
 	},4000);
+	$powerButton.fadeOut('fast', function(){$powerButtonOff.fadeIn();});
 }
 
 function powerDown(){
@@ -179,6 +174,7 @@ function powerDown(){
 	clearInterval(greenLEDFlash);
 	doseStageNum = 0;
 	changeStatus('Powered Off');
+	$powerButtonOff.fadeOut('fast',function(){$powerButton.fadeIn();});
 }
 
 function flashLCD(number,limit){
