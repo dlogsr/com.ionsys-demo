@@ -15,4 +15,5 @@
         <preference name="Fullscreen" value="true" />
         <preference name="WebViewBounce" value="true" />
         <feature name="http://api.phonegap.com/1.0/media"/> 
+        <gap:plugin name="org.apache.cordova.media" />
 </widget>

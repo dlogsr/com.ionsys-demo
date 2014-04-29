@@ -10,6 +10,7 @@ var $EOLButton = $('#EOL');
 var $EOUButton = $('#EOU');
 var $readyButton = $('#readyButton');
 var $deviceStatus = $('#deviceStatus');
+var $testSoundPG = $('#testSoundPG');
 
 var $doseNumber = $('#doseNumber');
 var $display = $('.seven-segment');
@@ -17,6 +18,7 @@ var $greenLED = $('.ledGreen');
 var $redLED = $('.ledRed');
 var $beeper = $('#beeper')[0];
 var $beeperLong = $('#beeper-long')[0];
+var $buttonPress = $('#button-press')[0];
 var $logoCircle = $('#headerLogoCircle');
 var $extraButtons = $('.extraButtons');
 var powered = false;
@@ -27,6 +29,12 @@ var doseLockout = false;
 var doseCount = 0;
 var greenLEDFlash, redLEDFlash;
 var beeperTimer, flashTimer, timer, doseRepeatTimer, walkPatternTimer
+
+//phoengap specific
+var beeperPG = document.getElementById('beeper').getAttribute('src');
+var beeperLongPG = document.getElementById('beeper-long').getAttribute('src');
+var buttonPressPG = document.getElementById('button-press').getAttribute('src');
+var usingPhonegap = false;
 
 var digits = new Array;
 digits[0] = ['a', 'b', 'c', 'd', 'e', 'f'];
@@ -55,6 +63,28 @@ function adjustContentSpacing(currSection) {
 	$(currSection).css({'min-height':windowHeight});
 }
 
+function playAudio(url) {
+    // Play the audio file at url
+    url = '/android_asset/www/'+url;
+    var my_media = new Media(url,
+        // success callback
+        function () {
+            console.log("playAudio():Audio Success");
+        },
+        // error callback
+        function (err) {
+            console.log("playAudio():Audio Error: " + err);
+        }
+    );
+    // Play audio
+    my_media.play();
+    setTimeout(function(){my_media.release();},1000)
+}
+
+document.addEventListener("deviceready", function(){
+	usingPhonegap = true;
+}, false);
+
 $(document).ready(function(){
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
@@ -63,15 +93,17 @@ $(document).ready(function(){
 	$powerButton.click('submit',function(){
 		if(!powered){
 			powerUp();
-			$powerButton.fadeOut('fast', function(){$powerButtonOff.fadeIn();});
 		};
 	})
 
 	$powerButtonOff.click('submit',function(){
 		if(powered){
 			powerDown();
-			$powerButtonOff.fadeOut('fast',function(){$powerButton.fadeIn();});
 		};
+	})
+
+	$testSoundPG.click('submit',function(){
+		playAudio('beep.mp3');
 	})
 
 	$poorSkinButton.click('submit',function(){
@@ -119,6 +151,7 @@ $(document).ready(function(){
 
 	$doseButton.mousedown(function(){
 		$doseButton.addClass('doseButtonPressed');
+		usingPhonegap ? playAudio(buttonPressPG) : $buttonPress.play();
 	});
 	$doseButton.mouseup(function(){
 		setTimeout(function(){
@@ -149,8 +182,9 @@ function changeStatus(status){
 
 function powerUp(){
 	changeStatus('Powering On...');
+	$powerButton.fadeOut('fast', function(){$powerButtonOff.fadeIn();});
 	flashCounter = 0;
-	$beeper.play();
+	usingPhonegap ? playAudio(beeperPG) : $beeper.play();
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
@@ -167,6 +201,7 @@ function powerUp(){
 }
 
 function powerDown(){
+	$powerButtonOff.fadeOut('fast',function(){$powerButton.fadeIn();});
 	powered = false;
 	turnOffLCD();
 	turnOffAllLED();
@@ -207,7 +242,6 @@ function turnOnLCD(){
 
 function setLCDNum(number){
 	turnOffLCD();
-	//console.log('setting dose counter to '+number);
 	if(number>9)
 		segmentToggle(digits[Math.floor(number/10)],'tens',on);
 	segmentToggle(digits[number%10],'ones',on);
@@ -215,12 +249,10 @@ function setLCDNum(number){
 
 //take in an array of segments to toggle, place (tens or ones), and toggle just those
 function segmentToggle(input,place,explicit){ 
-	//console.log('toggling '+input);
 	for(var segment in input)
 	{
 		segmentClass = '.'+input[segment];
 		placeClass = '.'+place;
-		//console.log('segment '+input[segment]+' '+explicit+' (class '+segmentClass+')');
 		if(explicit == on)
 			$(placeClass).find(segmentClass).removeClass('digitOff');
 		else if (explicit == off)
@@ -266,7 +298,7 @@ function setDose(){
 	doseLockout = true;
 	turnOffLCD();
 	turnOffAllLED();
-	$beeperLong.play();
+	usingPhonegap ? playAudio(beeperLongPG) : $beeperLong.play();
 	flashGreenLED(400,800);
 	walkLCD();
 	var doseRepeatTimer = setInterval(function(){
@@ -285,14 +317,14 @@ function setPoorskin(){
 	turnOffAllLED();
 	flashRedLED(400,800);
 	var beeperCounter = 0;
-	$beeperLong.play();
+	usingPhonegap ? playAudio(beeperLongPG) : $beeperLong.play();
 	setTimeout(function(){
-		$beeper.play();
+		usingPhonegap ? playAudio(beeperPG) : $beeper.play();
 	},900);
 	beeperTimer = setInterval(function(){
-		$beeperLong.play();
+		usingPhonegap ? playAudio(beeperLongPG) : $beeperLong.play();
 		setTimeout(function(){
-			$beeper.play();
+			usingPhonegap ? playAudio(beeperPG) : $beeper.play();
 		},900);
 		if(beeperCounter >= 6){
 			clearInterval(beeperTimer);
@@ -318,7 +350,9 @@ function setEOL(){
 	var beepCounter = 0;
 	beeperTimer = setInterval(function(){
 		setTimeout(function(){
-			if(beepCounter<=4) $beeper.play();
+			if(beepCounter<=4){
+				usingPhonegap ? playAudio(beeperPG) : $beeper.play();
+			}
 			else beepCounter = 0;
 		},150);
 		beepCounter++;
@@ -326,7 +360,6 @@ function setEOL(){
 }
 
 function doseModeEnter(stage){
-	console.log('entering dose mode stage: '+stage);
 	changeStatus('Current mode: '+stage);
 	if(stage == 'Dose 1' || stage == 'Dose 2' || stage == 'Normal Operation'){
 		setDose();

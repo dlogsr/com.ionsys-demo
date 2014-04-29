@@ -74,19 +74,18 @@
 		<button id="walkButton" class="extraButtons hidden">Walk</button>
 		<button id="doseUpButton" class="extraButtons hidden">Dose+</button>
 		<button id="readyButton" class="extraButtons hidden">Ready</button>
+		<button id="testSoundPG" class="extraButtons hidden">PG Test!</button> 
 		<p></p>
 		<label for="doseNumber"  class="extraButtons hidden" >Set Dose #: </label>
 		<input type="number" name="doseNumber" id="doseNumber"  class="extraButtons hidden" min="0" max="99" value="0" ></input>
 	</div>
-	<audio id="beeper" preload="auto">
-		<source src="beep.mp3"></source>
-	</audio>
-	<audio id="beeper-long" preload="auto">
-		<source src="beep_long.mp3"></source>
-	</audio>
+	<audio id="beeper" preload="auto" src="beep.mp3"></audio>
+	<audio id="beeper-long" preload="auto" src="beep_long.mp3">	</audio>+
+	<audio id="button-press" preload="auto" src="buttonpress.mp3"></audio>
 </section>
 
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="phonegap.js"></script>
 <script type="text/javascript" src="script.js"></script>
 </html>
