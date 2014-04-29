@@ -17,6 +17,17 @@ body{
 	margin: 0;
 }
 
+@font-face {
+    font-family: 'Raleway';
+    src: url('raleway-webfont.eot');
+    src: url('raleway-webfont.eot?#iefix') format('embedded-opentype'),
+         url('raleway-webfont.woff') format('woff'),
+         url('raleway-webfont.ttf') format('truetype'),
+         url('raleway-webfont.svg#ralewaythin') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
 
 /*deviceCSS */
 
