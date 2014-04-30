@@ -70,7 +70,6 @@ function adjustContentSpacing(currSection) {
 
 function playAudio(url) {
     // Play the audio file at url
-    //url = '/android_asset/www/'+url;
     var path = window.location.pathname;
     path = path.substr(0, path.length-10);
     url = path+url;
