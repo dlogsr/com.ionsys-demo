@@ -96,7 +96,7 @@ $(document).ready(function(){
 
 	//functions for description text
 	$contextContent.css({'left':-$contextContent.outerWidth()});
-	$contextArrow.click(function(){
+	$contextArrow.on('tap',function(){
 		if (window.matchMedia("(min-width: 900px)").matches){
 			$contextContent.show();
 		    $contextContent.animate({
@@ -123,47 +123,47 @@ $(document).ready(function(){
 
 	$display.find('*').addClass('digitOff');
 
-	$powerButton.click('submit',function(){
+	$powerButton.on('tap',function(){
 		if(!powered){
 			powerUp();
 		};
 	})
 
-	$powerButtonOff.click('submit',function(){
+	$powerButtonOff.on('tap',function(){
 		if(powered){
 			powerDown();
 		};
 	})
 
-	$testSoundPG.click('submit',function(){
+	$testSoundPG.on('tap',function(){
 		playAudio('beep.mp3');
 	})
 
-	$poorSkinButton.click('submit',function(){
+	$poorSkinButton.on('tap',function(){
 		if(powered) doseModeEnter('Poor Skin 1');
 	})
 
-	$EOUButton.click('submit',function(){
+	$EOUButton.on('tap',function(){
 		if(powered) doseModeEnter('EOU');
 	})
 
-	$EOLButton.click('submit',function(){
+	$EOLButton.on('tap',function(){
 		if(powered) doseModeEnter('EOL');
 	})
 
-	$flashButton.click('submit',function(){
+	$flashButton.on('tap',function(){
 		if(powered) flashLCD(88,9);
 	});
 
-	$walkButton.click('submit',function(){
+	$walkButton.on('tap',function(){
 		if(powered) walkLCD();
 	});
 
-	$doseUpButton.click('submit',function(){
+	$doseUpButton.on('tap',function(){
 		if(powered && !doseLockout) setDose();
 	});
 
-	$readyButton.click('submit',function(){
+	$readyButton.on('tap',function(){
 		if(powered){
 			setReadyMode();
 			changeStatus('Mode: Ready');
@@ -178,15 +178,17 @@ $(document).ready(function(){
 		};
 	});
 
-	$logoCircle.click(function(){
+	$logoCircle.on('tap',function(){
 		$extraButtons.toggleClass('hidden');
 	});
 
-	$doseButton.mousedown(function(){
+	$doseButton.on('touchstart mousedown',function(e){
+		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
 		usingPhonegap ? playAudio(buttonPressPG) : $buttonPress.play();
 	});
-	$doseButton.mouseup(function(){
+	$doseButton.on('touchend mouseup touchcancel',function(e){
+		e.preventDefault();
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
