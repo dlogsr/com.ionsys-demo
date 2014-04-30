@@ -45,6 +45,17 @@ span {
 	font-style: normal;
 }
 
+/* CSS animations */
+
+@-webkit-keyframes 'slideRight' {
+	0%{
+		-webkit-transform:translateX(0%);
+	}
+	100%{
+		-webkit-transform:translateX(500px);
+	}
+}
+
 /*deviceCSS */
 
 img{
@@ -533,3 +544,4 @@ img{
 	}
 
 }
+

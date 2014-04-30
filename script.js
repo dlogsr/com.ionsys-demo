@@ -101,14 +101,14 @@ $(document).ready(function(){
 	$contextArrow.on('tap',function(){
 		if (window.matchMedia("(min-width: 900px)").matches){
 			$contextContent.show();
-		    $contextContent.animate({
+		    $contextContent.transition({
 		      left: parseInt($contextContent.css('left'),10) == 0 ?
 		        -$contextContent.outerWidth() :
 		        0
 		    },500,function(){
 		    	$contextArrow.toggleClass('contextArrowOpen').toggleClass('contextArrowClosed');
 		    });
-		    $('.contextArrowContainer').animate({
+		    $('.contextArrowContainer').transition({
 		      left: parseInt($contextContent.css('left'),10) != 0 ?
 		        $contextContent.outerWidth() :
 		        0
