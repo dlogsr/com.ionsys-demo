@@ -30,7 +30,12 @@ var doseCount = 0;
 var greenLEDFlash, redLEDFlash;
 var beeperTimer, flashTimer, timer, doseRepeatTimer, walkPatternTimer
 
-//phoengap specific
+//description animations
+var $contextContent = $('.contextContent');
+var $contextArrow = $('.contextArrow');
+var $deviceContent = $('.device');
+
+//phonegap specific
 var beeperPG = document.getElementById('beeper').getAttribute('src');
 var beeperLongPG = document.getElementById('beeper-long').getAttribute('src');
 var buttonPressPG = document.getElementById('button-press').getAttribute('src');
@@ -88,6 +93,31 @@ document.addEventListener("deviceready", function(){
 $(document).ready(function(){
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
+
+	//functions for description text
+	$contextContent.css({'left':-$contextContent.outerWidth()});
+	$contextArrow.click(function(){
+		if (window.matchMedia("(min-width: 900px)").matches){
+			$contextContent.show();
+		    $contextContent.animate({
+		      left: parseInt($contextContent.css('left'),10) == 0 ?
+		        -$contextContent.outerWidth() :
+		        0
+		    });
+		    $('.contextArrowContainer').animate({
+		      left: parseInt($contextContent.css('left'),10) != 0 ?
+		        $contextContent.outerWidth() :
+		        0
+		    });
+			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+		}
+		else{
+			$contextContent.slideToggle();
+			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+		}
+
+	});
+
 	$display.find('*').addClass('digitOff');
 
 	$powerButton.click('submit',function(){
@@ -133,7 +163,7 @@ $(document).ready(function(){
 	$readyButton.click('submit',function(){
 		if(powered){
 			setReadyMode();
-			changeStatus('Current mode: Ready');
+			changeStatus('Mode: Ready');
 		};
 	});
 
@@ -189,14 +219,14 @@ function powerUp(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
 			$redLED.addClass('hidden');
-			changeStatus('Current mode: POST');
+			changeStatus('Mode: POST');
 			flashLCD(88,9);
 		},500);
 	},500);
 	powered = true;
 	setTimeout(function(){
 		flashGreenLED(500,3000);
-		setTimeout(function(){changeStatus('Current mode: Ready')},2000);
+		setTimeout(function(){changeStatus('Mode: Ready')},2000);
 	},4000);
 }
 
@@ -283,7 +313,6 @@ function walkLCD(){
 }
 
 function setReadyMode(){
-	//changeStatus('Current mode: Ready');
 	turnOffAllLED();
 	flashGreenLED(500,3000);
 	setLCDNum(doseCount);
@@ -360,7 +389,7 @@ function setEOL(){
 }
 
 function doseModeEnter(stage){
-	changeStatus('Current mode: '+stage);
+	changeStatus('Mode: '+stage);
 	if(stage == 'Dose 1' || stage == 'Dose 2' || stage == 'Normal Operation'){
 		setDose();
 	}
