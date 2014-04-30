@@ -338,7 +338,7 @@ img{
 	background-color:rgba(0,0,0,0);
 	font: 1.2em 'Raleway';
 	color:white;
-	text-shadow: 2px 1px 1px rgba(0,0,0.5);
+	/*text-shadow: 2px 1px 1px rgba(0,0,0.5);*/
 }
 
 .control input[type=number]::-webkit-inner-spin-button, 

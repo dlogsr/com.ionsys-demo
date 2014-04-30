@@ -103,17 +103,20 @@ $(document).ready(function(){
 		      left: parseInt($contextContent.css('left'),10) == 0 ?
 		        -$contextContent.outerWidth() :
 		        0
+		    },500,function(){
+		    	$contextArrow.toggleClass('contextArrowOpen').toggleClass('contextArrowClosed');
 		    });
 		    $('.contextArrowContainer').animate({
 		      left: parseInt($contextContent.css('left'),10) != 0 ?
 		        $contextContent.outerWidth() :
 		        0
-		    });
-			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+		    },500);
+			// $contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
 		}
 		else{
-			$contextContent.slideToggle();
-			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+			$contextContent.slideToggle(500, function(){
+				$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+			});
 		}
 
 	});
