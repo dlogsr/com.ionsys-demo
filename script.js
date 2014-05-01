@@ -123,6 +123,12 @@ $(document).ready(function(){
 
 	});
 
+	$('#testSlide').on('tap',function(){
+		$contextContent.transition({left:parseInt($contextContent.css('left'),10) == 0 ?
+		        -$contextContent.outerWidth() :
+		        0});
+	})
+
 	$display.find('*').addClass('digitOff');
 
 	$powerButton.on('tap',function(){
