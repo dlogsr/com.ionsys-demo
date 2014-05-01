@@ -35,6 +35,10 @@ var $contextContent = $('.contextContent');
 var $contextArrow = $('.contextArrow');
 var $contextArrowContainer = $('.contextArrowContainer');
 var $deviceContent = $('.device');
+var isFullScreen, contextSize;
+var moveDistance = 0;
+var tempContentStyle;
+var tempArrowStyle;
 
 //phonegap specific
 var beeperPG = document.getElementById('beeper').getAttribute('src');
@@ -98,37 +102,32 @@ $(document).ready(function(){
 	$powerButtonOff.hide();
 
 	//functions for description text
-	$contextContent.css({'left':-$contextContent.outerWidth()});
+	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
+	if(isFullScreen){
+		$contextContent.addClass('notransition');
+		//$contextContent.css({'left':-$contextContent.outerWidth()});
+		tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
+		tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+$contextContent.outerWidth()+'px}');
+		setTimeout(function(){$contextContent.removeClass('notransition');},500);
+	}
+	else{
+		$contextContent.css({'top':-$contextContent.outerHeight()});
+	}
+
 	$contextArrow.on('tap',function(){
-		if (window.matchMedia("(min-width: 900px)").matches){
-			$contextContent.show();
-		    $contextContent.transition({
-		      left: parseInt($contextContent.css('left'),10) == 0 ?
-		        -$contextContent.outerWidth() :
-		        0
-		    },500,function(){
-		    	$contextArrow.toggleClass('contextArrowOpen').toggleClass('contextArrowClosed');
-		    });
-		    $contextArrowContainer.transition({
-		      left: parseInt($contextContent.css('left'),10) != 0 ?
-		        $contextContent.outerWidth() :
-		        0
-		    },500);
-			// $contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
+		contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
+		moveDistance = (moveDistance == 0) ? contextSize : 0;
+		if(isFullScreen){
+			$contextContent.toggleClass('slideRight');
+			$contextArrow.toggleClass('slideRight');
 		}
 		else{
-			$contextContent.slideToggle(500, function(){
-				$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
-			});
-		}
-
-	});
-	
-	var distance = -$contextContent.outerWidth();
-	$('#testSlide').on('tap',function(){
-		distance = -distance;
-		$contextContent.transition({x:distance});
-		//$contextArrowContainer.transition({x:distance});
+			$contextContent.toggleClass('slideDown');
+			$contextArrow.toggleClass('slideDown');
+			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+		};
+		
 	})
 
 	$display.find('*').addClass('digitOff');
@@ -218,6 +217,19 @@ $(document).ready(function(){
 
 $(window).resize(function(){
 	adjustContentSpacing('section');
+	setStyle('',tempArrowStyle);
+	setStyle('',tempContentStyle);
+	isFullScreen = window.matchMedia("(min-width: 900px)".matches);
+	contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
+	if(isFullScreen){
+		$contextContent.addClass('notransition');
+		tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
+		tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+$contextContent.outerWidth()+'px}');
+		setTimeout(function(){$contextContent.removeClass('notransition');},500);
+	}
+	else{
+		$contextContent.css({'top':-$contextContent.outerHeight()});
+	}
 })
 
 function changeStatus(status){
@@ -453,3 +465,16 @@ function turnOffAllLED(){
 	clearInterval(greenLEDFlash);
 	clearInterval(redLEDFlash);
 }
+
+function setStyle(cssText) {
+    var sheet = document.createElement('style');
+    sheet.type = 'text/css';
+    /* Optional */ window.customSheet = sheet;
+    (document.head || document.getElementsByTagName('head')[0]).appendChild(sheet);
+    return (setStyle = function(cssText, node) {
+        if(!node || node.parentNode !== sheet)
+            return sheet.appendChild(document.createTextNode(cssText));
+        node.nodeValue = cssText;
+        return node;
+    })(cssText);
+};

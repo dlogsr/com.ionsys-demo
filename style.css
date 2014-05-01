@@ -47,7 +47,7 @@ span {
 
 /* CSS animations */
 
-@-webkit-keyframes 'slideRight' {
+/*@-webkit-keyframes 'slideRight' {
 	0%{
 		-webkit-transform:translateX(0%);
 	}
@@ -55,7 +55,7 @@ span {
 		-webkit-transform:translateX(500px);
 	}
 }
-
+*/
 /*deviceCSS */
 
 img{
@@ -388,6 +388,14 @@ img{
 	display:none !important;
 }
 
+.notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  -ms-transition: none !important;
+  transition: none !important;
+}
+
 
 /* classes for description text*/
 
@@ -397,9 +405,27 @@ img{
 	text-align: center;
 }
 
-.contextContent{
+/*.contextOverflow{
+	overflow:hidden;
 	display:none;
+	padding-bottom: 1em;
 }
+*/
+.contextContent{
+	/*display:none;*/
+	position:relative;
+	overflow:hidden;
+	height:0;
+	-webkit-transition: height 0.4s ease-out;
+	-moz-transition: height 0.4s ease-out;
+	-o-transition: height 0.4s ease-out;
+	transition: height 0.4s ease-out;
+}
+
+.contextContent.slideDown{
+	height:350px;
+}
+
 
 .contextArrowContainer{
 	position:relative;
@@ -520,13 +546,24 @@ img{
 		-moz-transform:rotate(0deg);
 	}
 
+	.contextContent.slideRight{
+		left:0px !important;
+	}
+
+	.contextArrow.slideRight{
+	}
+
 	.contextContent{
 		position:relative;
-		/*float:left;*/
+		height:auto;
 		left:0;
 		top:1em;
 		display:inline-block;
 		width:100%;
+		-webkit-transition: left 0.4s cubic-bezier(.45,.59,.96,.84);
+		-moz-transition: left 0.4s ease-out;
+		-o-transition: left 0.4s ease-out;
+		transition: left 0.4s ease-out;
 	}
 
 	.contextArrowContainer{
@@ -540,7 +577,13 @@ img{
 	}
 
 	.contextArrow{
+		left:0;
 		display:block;
+		position:relative;
+		-webkit-transition: left 0.4s cubic-bezier(.45,.59,.96,.84);
+		-moz-transition: left 0.4s ease-out;
+		-o-transition: left 0.4s ease-out;
+		transition: left 0.4s ease-out;
 	}
 
 }
