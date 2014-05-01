@@ -33,6 +33,7 @@ var beeperTimer, flashTimer, timer, doseRepeatTimer, walkPatternTimer
 //description animations
 var $contextContent = $('.contextContent');
 var $contextArrow = $('.contextArrow');
+var $contextArrowContainer = $('.contextArrowContainer');
 var $deviceContent = $('.device');
 
 //phonegap specific
@@ -108,7 +109,7 @@ $(document).ready(function(){
 		    },500,function(){
 		    	$contextArrow.toggleClass('contextArrowOpen').toggleClass('contextArrowClosed');
 		    });
-		    $('.contextArrowContainer').transition({
+		    $contextArrowContainer.transition({
 		      left: parseInt($contextContent.css('left'),10) != 0 ?
 		        $contextContent.outerWidth() :
 		        0
@@ -122,11 +123,12 @@ $(document).ready(function(){
 		}
 
 	});
-
+	
+	var distance = -$contextContent.outerWidth();
 	$('#testSlide').on('tap',function(){
-		$contextContent.transition({left:parseInt($contextContent.css('left'),10) == 0 ?
-		        -$contextContent.outerWidth() :
-		        0});
+		distance = -distance;
+		$contextContent.transition({x:distance});
+		//$contextArrowContainer.transition({x:distance});
 	})
 
 	$display.find('*').addClass('digitOff');
