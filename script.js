@@ -41,6 +41,7 @@ var tempContentStyle;
 var tempArrowStyle;
 var contextOpen = false;
 var $debugLog = $('.debugLog');
+var $testSlideButton = $('#testSlide');
 
 //phonegap specific
 var beeperPG = document.getElementById('beeper').getAttribute('src');
@@ -154,6 +155,10 @@ $(document).ready(function(){
 		};
 		
 	})
+
+	$testSlideButton.on('tap',function(){
+		$contextContent.toggleClass('slideRight');
+	});
 
 	$display.find('*').addClass('digitOff');
 
