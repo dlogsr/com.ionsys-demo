@@ -47,15 +47,7 @@ span {
 
 /* CSS animations */
 
-/*@-webkit-keyframes 'slideRight' {
-	0%{
-		-webkit-transform:translateX(0%);
-	}
-	100%{
-		-webkit-transform:translateX(500px);
-	}
-}
-*/
+
 /*deviceCSS */
 
 img{
@@ -430,7 +422,12 @@ img{
 	-moz-transition: all 0.4s ease-out;
 	-o-transition: all 0.4s ease-out;
 	transition: all 0.4s ease-out;
-}
+
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	}
 
 .contextContent.docked{
 	visibility:hidden;
@@ -568,9 +565,6 @@ img{
 		left:0px !important;
 	}
 
-	.contextArrow.slideRight{
-	}
-
 	.contextContent.docked{
 		visibility:initial;
 		height:auto;
@@ -583,10 +577,6 @@ img{
 		top:1em;
 		display:inline-block;
 		width:100%;
-		-webkit-transition: left 0.4s cubic-bezier(.45,.59,.96,.84);
-		-moz-transition: left 0.4s ease-out;
-		-o-transition: left 0.4s ease-out;
-		transition: left 0.4s ease-out;
 	}
 
 	.contextArrowContainer{
@@ -607,6 +597,11 @@ img{
 		-moz-transition: left 0.4s ease-out;
 		-o-transition: left 0.4s ease-out;
 		transition: left 0.4s ease-out;
+
+		-webkit-transform: translate3d(0, 0, 0);	
+		-moz-transform: translate3d(0, 0, 0);
+		-ms-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
 	}
 
 }
