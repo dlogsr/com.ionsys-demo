@@ -241,8 +241,8 @@ $(document).ready(function(){
 })
 
 $(window).resize(function(){
-	clearTimeout(timer);
-	timer=setTimeout(function(){
+	//clearTimeout(timer);
+	//timer=setTimeout(function(){
 		adjustContentSpacing('section');
 		setStyle('',tempArrowStyle);
 		setStyle('',tempContentStyle);
@@ -260,7 +260,7 @@ $(window).resize(function(){
 			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
 			tempContentStyle = setStyle('.contextContent{top:0px}');
 		}
-	},100)
+	//},100)
 
 })
 
