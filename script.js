@@ -39,6 +39,8 @@ var isFullScreen, contextSize;
 var moveDistance = 0;
 var tempContentStyle;
 var tempArrowStyle;
+var contextOpen = false;
+var $debugLog = $('.debugLog');
 
 //phonegap specific
 var beeperPG = document.getElementById('beeper').getAttribute('src');
@@ -102,6 +104,14 @@ $(document).ready(function(){
 	$powerButtonOff.hide();
 
 	//functions for description text
+	console.log(document.styleSheets[0]);
+	var sheet = (function(){
+		var style = document.createElement("style");
+		style.appendChild(document.createTextNode(""));
+		document.head.appendChild(style);
+		return style.sheet;
+	})();
+
 	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
 	if(isFullScreen){
 		$contextContent.addClass('notransition');
@@ -113,18 +123,30 @@ $(document).ready(function(){
 	}
 	else{
 		// $contextContent.css({'top':-$contextContent.outerHeight()});
-		tempContentStyle = setStyle('.contextContent{top:'+-$contextContent.outerHeight()+'px}');
+		// tempContentStyle = setStyle('.contextContent{top:'+-$contextContent.outerHeight()+'px}');
+		tempContentStyle = setStyle('.contextContent{top:0px}');
+		console.log($contextContent.outerHeight());
 	}
 
 	$contextArrow.on('tap',function(){
 		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
+		$contextContent.addClass('docked');
 		contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
-		moveDistance = (moveDistance == 0) ? contextSize : 0;
+		// $('.contextContent.slideDown').css('min-height',contextSize);
+		$debugLog.html(contextSize);
+		sheet.addRule('.contextContent.slideDown','min-height: '+(contextSize+20)+'px;',0);
+		$contextContent.removeClass('docked');
+		// moveDistance = (moveDistance == 0) ? contextSize : 0;
 		if(isFullScreen){
 			$contextContent.toggleClass('slideRight');
 			$contextArrow.toggleClass('slideRight');
+			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
 		}
 		else{
+			// tempContentStyle = setStyle('.contextContent.slideDown{min-height:'+contextSize+'px}');
+			// setStyle(tempContentStyle);
+			// if ($contextContent.css('min-height') == 0)  $slideDown.css('min-height',contextSize);
+			// else $slideDown.css('min-height','');
 			$contextContent.toggleClass('slideDown');
 			$contextArrow.toggleClass('slideDown');
 			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
@@ -218,21 +240,27 @@ $(document).ready(function(){
 })
 
 $(window).resize(function(){
-	adjustContentSpacing('section');
-	setStyle('',tempArrowStyle);
-	setStyle('',tempContentStyle);
-	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
-	contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
-	if(isFullScreen){
-		$contextContent.add($contextArrow).addClass('notransition');
-		tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
-		tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+$contextContent.outerWidth()+'px}');
-		setTimeout(function(){$contextContent.add($contextArrow).removeClass('notransition');},500);
-	}
-	else{
-		// $contextContent.css({'top':-$contextContent.outerHeight()});
-		tempContentStyle = setStyle('.contextContent{top:0px}');
-	}
+	clearTimeout(timer);
+	timer=setTimeout(function(){
+		adjustContentSpacing('section');
+		setStyle('',tempArrowStyle);
+		setStyle('',tempContentStyle);
+		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
+		contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
+		if(isFullScreen){
+			$contextContent.add($contextArrow).addClass('notransition');
+			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
+			tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
+			tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+$contextContent.outerWidth()+'px}');
+			setTimeout(function(){$contextContent.add($contextArrow).removeClass('notransition');},500);
+		}
+		else{
+			// $contextContent.css({'top':-$contextContent.outerHeight()});
+			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
+			tempContentStyle = setStyle('.contextContent{top:0px}');
+		}
+	},100)
+
 })
 
 function changeStatus(status){
