@@ -120,7 +120,7 @@ $(document).ready(function(){
 		//$contextContent.css({'left':-$contextContent.outerWidth()});
 		tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
 		tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+contentWidth+'px}');
-		setTimeout(function(){$contextContent.removeClass('notransition');},500);
+		setTimeout(function(){$contextContent.removeClass('notransition');},50);
 	}
 	else{
 		// $contextContent.css({'top':-$contextContent.outerHeight()});
@@ -133,9 +133,8 @@ $(document).ready(function(){
 		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
 		$contextContent.addClass('docked');
 		contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
-		// $('.contextContent.slideDown').css('min-height',contextSize);
 		$debugLog.html(contextSize);
-		sheet.addRule('.contextContent.slideDown','min-height: '+(contextSize+20)+'px;',0);
+		// $('.contextContent.slideDown').css('min-height',contextSize);
 		$contextContent.removeClass('docked');
 		// moveDistance = (moveDistance == 0) ? contextSize : 0;
 		if(isFullScreen){
@@ -144,6 +143,7 @@ $(document).ready(function(){
 			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
 		}
 		else{
+			sheet.addRule('.contextContent.slideDown','min-height: '+(contextSize+20)+'px;',0);
 			// tempContentStyle = setStyle('.contextContent.slideDown{min-height:'+contextSize+'px}');
 			// setStyle(tempContentStyle);
 			// if ($contextContent.css('min-height') == 0)  $slideDown.css('min-height',contextSize);
@@ -247,13 +247,13 @@ $(window).resize(function(){
 		setStyle('',tempArrowStyle);
 		setStyle('',tempContentStyle);
 		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
-		contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
+		// contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
 		if(isFullScreen){
 			$contextContent.add($contextArrow).addClass('notransition');
 			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
 			tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
 			tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+$contextContent.outerWidth()+'px}');
-			setTimeout(function(){$contextContent.add($contextArrow).removeClass('notransition');},500);
+			setTimeout(function(){$contextContent.add($contextArrow).removeClass('notransition');},50);
 		}
 		else{
 			// $contextContent.css({'top':-$contextContent.outerHeight()});
