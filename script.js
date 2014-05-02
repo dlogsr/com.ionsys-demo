@@ -97,6 +97,7 @@ function playAudio(url) {
 
 document.addEventListener("deviceready", function(){
 	usingPhonegap = true;
+	statusBar.hide();
 }, false);
 
 $(document).ready(function(){
