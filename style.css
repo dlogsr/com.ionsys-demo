@@ -435,9 +435,9 @@ img{
 	height:auto;
 }
 
-/*.contextContent.slideDown{
-	min-height:300px;
-}*/
+.contextContent.slideDown{
+	height:0px;
+}
 
 
 .contextArrowContainer{

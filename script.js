@@ -143,7 +143,11 @@ $(document).ready(function(){
 			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
 		}
 		else{
-			sheet.addRule('.contextContent.slideDown','min-height: '+(contextSize+20)+'px;',0);
+			console.log($contextContent.css('height'));
+			if($contextContent.css('height') == '0px')
+				sheet.insertRule('.contextContent.slideDown{min-height: '+(contextSize+20)+'px !important;}',0);
+			else
+				sheet.removeRule(0);
 			// tempContentStyle = setStyle('.contextContent.slideDown{min-height:'+contextSize+'px}');
 			// setStyle(tempContentStyle);
 			// if ($contextContent.css('min-height') == 0)  $slideDown.css('min-height',contextSize);
