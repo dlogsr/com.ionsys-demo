@@ -253,7 +253,7 @@ $(window).resize(function(){
 			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
 			tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
 			tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+$contextContent.outerWidth()+'px}');
-			setTimeout(function(){$contextContent.add($contextArrow).removeClass('notransition');},50);
+			setTimeout(function(){$contextContent.add($contextArrow).removeClass('notransition');},250);
 		}
 		else{
 			// $contextContent.css({'top':-$contextContent.outerHeight()});
