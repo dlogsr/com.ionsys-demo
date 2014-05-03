@@ -36,7 +36,6 @@ var $contextArrow = $('.contextArrow');
 var $contextArrowContainer = $('.contextArrowContainer');
 var $deviceContent = $('.device');
 var isFullScreen, contextSize;
-var moveDistance = 0;
 var tempContentStyle;
 var tempArrowStyle;
 var contextOpen = false;
@@ -118,23 +117,17 @@ $(document).ready(function(){
 	if(isFullScreen){
 		$contextContent.addClass('notransition');
 		var contentWidth = $contextContent.outerWidth();
-		//$contextContent.css({'left':-$contextContent.outerWidth()});
 		tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
 		tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+contentWidth+'px}');
 		setTimeout(function(){$contextContent.removeClass('notransition');},50);
 	}
 	else{
-		// $contextContent.css({'top':-$contextContent.outerHeight()});
-		// tempContentStyle = setStyle('.contextContent{top:'+-$contextContent.outerHeight()+'px}');
 		tempContentStyle = setStyle('.contextContent{top:0px}');
 		console.log($contextContent.outerHeight());
 	}
 
 	$contextArrow.on('tap',function(){
 		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
-		
-		// $('.contextContent.slideDown').css('min-height',contextSize);
-		// moveDistance = (moveDistance == 0) ? contextSize : 0;
 		if(isFullScreen){
 			$contextContent.toggleClass('slideRight');
 			$contextArrow.toggleClass('slideRight');
@@ -145,16 +138,11 @@ $(document).ready(function(){
 			contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
 			$debugLog.html(contextSize);
 			$contextContent.removeClass('docked');
-            //sheet.addRule('.contextContent.slideDown','min-height: '+(contextSize+20)+'px;',0);
             console.log($contextContent.css('height'));
             if($contextContent.css('height') == '0px')
                 sheet.insertRule('.contextContent.slideDown{min-height: '+(contextSize+20)+'px !important;}',0);
             else
                 sheet.removeRule(0);
-			// tempContentStyle = setStyle('.contextContent.slideDown{min-height:'+contextSize+'px}');
-			// setStyle(tempContentStyle);
-			// if ($contextContent.css('min-height') == 0)  $slideDown.css('min-height',contextSize);
-			// else $slideDown.css('min-height','');
 			$contextContent.toggleClass('slideDown');
 			$contextArrow.toggleClass('slideDown');
 			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
@@ -258,7 +246,6 @@ $(window).resize(function(){
 		setStyle('',tempArrowStyle);
 		setStyle('',tempContentStyle);
 		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
-		// contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
 		if(isFullScreen){
 			$contextContent.add($contextArrow).addClass('notransition');
 			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
@@ -267,7 +254,6 @@ $(window).resize(function(){
 			setTimeout(function(){$contextContent.add($contextArrow).removeClass('notransition');},50);
 		}
 		else{
-			// $contextContent.css({'top':-$contextContent.outerHeight()});
 			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
 			tempContentStyle = setStyle('.contextContent{top:0px}');
 		}
