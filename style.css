@@ -7,6 +7,7 @@ html{
 
 *{
 	margin:0;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body{
@@ -430,6 +431,11 @@ img{
 	-moz-transition: all 0.4s ease-out;
 	-o-transition: all 0.4s ease-out;
 	transition: all 0.4s ease-out;
+	-webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
 }
 
 .contextContent.docked{
@@ -458,15 +464,17 @@ img{
 }
 
 .contextArrowClosed{
-	transform:rotate(270deg);
 	-webkit-transform:rotate(270deg);
 	-moz-transform:rotate(270deg);
+	-ms-transform:rotate(270deg);
+	transform:rotate(270deg);
 }
 
-.contextArrowOpen{
-	transform:rotate(90deg);
+.contextArrowOpen{	
 	-webkit-transform:rotate(90deg);
 	-moz-transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+	transform:rotate(90deg);
 }
 
 .contextArrow:hover{
@@ -553,15 +561,17 @@ img{
 	}
 
 	.contextArrowClosed{
-		transform:rotate(180deg);
 		-webkit-transform:rotate(180deg);
 		-moz-transform:rotate(180deg);
+		-ms-transform:rotate(180deg);
+		transform:rotate(180deg);
 	}
 
 	.contextArrowOpen{
-		transform:rotate(0deg);
 		-webkit-transform:rotate(0deg);
 		-moz-transform:rotate(0deg);
+		-ms-transform:rotate(0deg);
+		transform:rotate(0deg);
 	}
 
 	.contextContent.slideRight{
@@ -583,10 +593,10 @@ img{
 		top:1em;
 		display:inline-block;
 		width:100%;
-		-webkit-transition: left 0.4s cubic-bezier(.45,.59,.96,.84);
+/*		-webkit-transition: left 0.4s cubic-bezier(.45,.59,.96,.84);
 		-moz-transition: left 0.4s ease-out;
 		-o-transition: left 0.4s ease-out;
-		transition: left 0.4s ease-out;
+		transition: left 0.4s ease-out;*/
 	}
 
 	.contextArrowContainer{
