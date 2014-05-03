@@ -572,7 +572,7 @@ img{
 	}
 
 	.contextContent.docked{
-		visibility:initial;
+		visibility:visible;
 		height:auto;
 	}
 

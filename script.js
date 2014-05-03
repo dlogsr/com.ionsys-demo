@@ -132,11 +132,8 @@ $(document).ready(function(){
 
 	$contextArrow.on('tap',function(){
 		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
-		$contextContent.addClass('docked');
-		contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
-		$debugLog.html(contextSize);
+		
 		// $('.contextContent.slideDown').css('min-height',contextSize);
-		$contextContent.removeClass('docked');
 		// moveDistance = (moveDistance == 0) ? contextSize : 0;
 		if(isFullScreen){
 			$contextContent.toggleClass('slideRight');
@@ -144,6 +141,10 @@ $(document).ready(function(){
 			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
 		}
 		else{
+			$contextContent.addClass('docked');
+			contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
+			$debugLog.html(contextSize);
+			$contextContent.removeClass('docked');
 			sheet.addRule('.contextContent.slideDown','min-height: '+(contextSize+20)+'px;',0);
 			// tempContentStyle = setStyle('.contextContent.slideDown{min-height:'+contextSize+'px}');
 			// setStyle(tempContentStyle);
