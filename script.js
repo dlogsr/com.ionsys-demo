@@ -30,7 +30,19 @@ var doseCount = 0;
 var greenLEDFlash, redLEDFlash;
 var beeperTimer, flashTimer, timer, doseRepeatTimer, walkPatternTimer
 
-//phoengap specific
+//description animations
+var $contextContent = $('.contextContent');
+var $contextArrow = $('.contextArrow');
+var $contextArrowContainer = $('.contextArrowContainer');
+var $deviceContent = $('.device');
+var isFullScreen, contextSize;
+var tempContentStyle;
+var tempArrowStyle;
+var contextOpen = false;
+var $debugLog = $('.debugLog');
+var $testSlideButton = $('#testSlide');
+
+//phonegap specific
 var beeperPG = document.getElementById('beeper').getAttribute('src');
 var beeperLongPG = document.getElementById('beeper-long').getAttribute('src');
 var buttonPressPG = document.getElementById('button-press').getAttribute('src');
@@ -65,7 +77,9 @@ function adjustContentSpacing(currSection) {
 
 function playAudio(url) {
     // Play the audio file at url
-    url = '/android_asset/www/'+url;
+    var path = window.location.pathname;
+    path = path.substr(0, path.length-10);
+    url = path+url;
     var my_media = new Media(url,
         // success callback
         function () {
@@ -83,57 +97,109 @@ function playAudio(url) {
 
 document.addEventListener("deviceready", function(){
 	usingPhonegap = true;
+	statusBar.hide();
 }, false);
 
 $(document).ready(function(){
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
+
+	//functions for description text
+	console.log(document.styleSheets[0]);
+	var sheet = (function(){
+		var style = document.createElement("style");
+		style.appendChild(document.createTextNode(""));
+		document.head.appendChild(style);
+		return style.sheet;
+	})();
+
+	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
+	if(isFullScreen){
+		$contextContent.addClass('notransition');
+		var contentWidth = $contextContent.outerWidth();
+		tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
+		tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+contentWidth+'px}');
+		setTimeout(function(){$contextContent.removeClass('notransition');},50);
+	}
+	else{
+		tempContentStyle = setStyle('.contextContent{top:0px}');
+		console.log($contextContent.outerHeight());
+	}
+
+	$contextArrow.on('tap',function(){
+		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
+		if(isFullScreen){
+			$contextContent.toggleClass('slideRight');
+			$contextArrow.toggleClass('slideRight');
+			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+		}
+		else{
+			$contextContent.addClass('docked');
+			contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
+			$debugLog.html(contextSize);
+			$contextContent.removeClass('docked');
+            console.log($contextContent.css('height'));
+            if($contextContent.css('height') == '0px')
+                sheet.insertRule('.contextContent.slideDown{min-height: '+(contextSize+20)+'px !important;}',0);
+            else
+                sheet.removeRule(0);
+			$contextContent.toggleClass('slideDown');
+			$contextArrow.toggleClass('slideDown');
+			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+		};
+		
+	})
+
+	$testSlideButton.on('tap',function(){
+		$contextContent.toggleClass('slideRight');
+	});
+
 	$display.find('*').addClass('digitOff');
 
-	$powerButton.click('submit',function(){
+	$powerButton.on('tap',function(){
 		if(!powered){
 			powerUp();
 		};
 	})
 
-	$powerButtonOff.click('submit',function(){
+	$powerButtonOff.on('tap',function(){
 		if(powered){
 			powerDown();
 		};
 	})
 
-	$testSoundPG.click('submit',function(){
+	$testSoundPG.on('tap',function(){
 		playAudio('beep.mp3');
 	})
 
-	$poorSkinButton.click('submit',function(){
+	$poorSkinButton.on('tap',function(){
 		if(powered) doseModeEnter('Poor Skin 1');
 	})
 
-	$EOUButton.click('submit',function(){
+	$EOUButton.on('tap',function(){
 		if(powered) doseModeEnter('EOU');
 	})
 
-	$EOLButton.click('submit',function(){
+	$EOLButton.on('tap',function(){
 		if(powered) doseModeEnter('EOL');
 	})
 
-	$flashButton.click('submit',function(){
+	$flashButton.on('tap',function(){
 		if(powered) flashLCD(88,9);
 	});
 
-	$walkButton.click('submit',function(){
+	$walkButton.on('tap',function(){
 		if(powered) walkLCD();
 	});
 
-	$doseUpButton.click('submit',function(){
+	$doseUpButton.on('tap',function(){
 		if(powered && !doseLockout) setDose();
 	});
 
-	$readyButton.click('submit',function(){
+	$readyButton.on('tap',function(){
 		if(powered){
 			setReadyMode();
-			changeStatus('Current mode: Ready');
+			changeStatus('Mode: Ready');
 		};
 	});
 
@@ -145,15 +211,17 @@ $(document).ready(function(){
 		};
 	});
 
-	$logoCircle.click(function(){
+	$logoCircle.on('tap',function(){
 		$extraButtons.toggleClass('hidden');
 	});
 
-	$doseButton.mousedown(function(){
+	$doseButton.on('touchstart mousedown',function(e){
+		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
 		usingPhonegap ? playAudio(buttonPressPG) : $buttonPress.play();
 	});
-	$doseButton.mouseup(function(){
+	$doseButton.on('touchend mouseup touchcancel',function(e){
+		e.preventDefault();
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
@@ -172,7 +240,25 @@ $(document).ready(function(){
 })
 
 $(window).resize(function(){
-	adjustContentSpacing('section');
+	clearTimeout(timer);
+	timer=setTimeout(function(){
+		adjustContentSpacing('section');
+		setStyle('',tempArrowStyle);
+		setStyle('',tempContentStyle);
+		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
+		if(isFullScreen){
+			$contextContent.add($contextArrow).addClass('notransition');
+			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
+			tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
+			tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+$contextContent.outerWidth()+'px}');
+			setTimeout(function(){$contextContent.add($contextArrow).removeClass('notransition');},50);
+		}
+		else{
+			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
+			tempContentStyle = setStyle('.contextContent{top:0px}');
+		}
+	},100)
+
 })
 
 function changeStatus(status){
@@ -189,14 +275,14 @@ function powerUp(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
 			$redLED.addClass('hidden');
-			changeStatus('Current mode: POST');
+			changeStatus('Mode: POST');
 			flashLCD(88,9);
 		},500);
 	},500);
 	powered = true;
 	setTimeout(function(){
 		flashGreenLED(500,3000);
-		setTimeout(function(){changeStatus('Current mode: Ready')},2000);
+		setTimeout(function(){changeStatus('Mode: Ready')},2000);
 	},4000);
 }
 
@@ -283,7 +369,6 @@ function walkLCD(){
 }
 
 function setReadyMode(){
-	//changeStatus('Current mode: Ready');
 	turnOffAllLED();
 	flashGreenLED(500,3000);
 	setLCDNum(doseCount);
@@ -360,7 +445,7 @@ function setEOL(){
 }
 
 function doseModeEnter(stage){
-	changeStatus('Current mode: '+stage);
+	changeStatus('Mode: '+stage);
 	if(stage == 'Dose 1' || stage == 'Dose 2' || stage == 'Normal Operation'){
 		setDose();
 	}
@@ -409,3 +494,16 @@ function turnOffAllLED(){
 	clearInterval(greenLEDFlash);
 	clearInterval(redLEDFlash);
 }
+
+function setStyle(cssText) {
+    var sheet = document.createElement('style');
+    sheet.type = 'text/css';
+    /* Optional */ window.customSheet = sheet;
+    (document.head || document.getElementsByTagName('head')[0]).appendChild(sheet);
+    return (setStyle = function(cssText, node) {
+        if(!node || node.parentNode !== sheet)
+            return sheet.appendChild(document.createTextNode(cssText));
+        node.nodeValue = cssText;
+        return node;
+    })(cssText);
+};
