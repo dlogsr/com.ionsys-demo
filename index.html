@@ -71,14 +71,66 @@
 			<div class="contextOverflow">
 				<div class="contextContent">
 					<header>
-						<h2 id="deviceStatus">Powered Off</h2>
+						<h2 id="deviceStatus">
+							<p class="statusDefault enable">Powered Off</p>
+							<p class="statusReady">Ready Mode</p>
+							<p class="statusDose1">Dose #1</p>
+							<p class="statusDose2">Dose #2</p>
+							<p class="statusPsc1">Poor Contact #1</p>
+							<p class="statusPsc2">Poor Contact #2</p>
+							<p class="statusEou">EOU</p>
+							<p class="statusEol">EOL</p>
+							<p class="statusPoweron">Powering On</p>
+							<p class="statusPoweroff">Powering Off</p>
+							<p class="statusPoweredoff">Powered Off</p>
+							<p class="statusCustom">custom</p>
+						</h2>
 					</header>
 					<article class="caption">
-						<h4 id="modeCaption">Caption goes here</h4>
-						<p id="modeDescription">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit amet.</p>
+						<h4 id="modeCaption" class="hidden">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady"></p>
+							<p class="statusDose1">Dose Caption</p>
+							<p class="statusDose2">Dose Caption</p>
+							<p class="statusPsc1">PSC Caption</p>
+							<p class="statusPsc2">PSC Caption</p>
+							<p class="statusEou">EOU Caption</p>
+							<p class="statusEol">EOL Caption</p>
+							<p class="statusPoweron">Powering On</p>
+							<p class="statusPoweroff">Powering Off</p>
+							<p class="statusPoweredoff">Powered Off</p>
+							<p class="statusCustom">custom</p>
+						</h4>
+						<div id="modeDescription">
+							<p class="statusDefault enable">Power on the unit by clicking the "Power On" button below.</p>
+							<p class="statusReady">The device is powered and ready to adminsiter a dose. A dose can be administered by pressing the dose button on the top of the device two times in a window of 200 ms and 3 seconds between button presses.</p>
+							<p class="statusDose1">This is an initiation of the first dose of fentanyl. The dosing period is 10 minutes long and delivers 40 mcg of medicine to the patent. During this period, the dose button is disabled ("locked out"), and the display indicates that it is in a dosing mode due to the 'walking' LCD animation alternating with the current doses administered.</p>
+							<p class="statusDose2">This is an initiation of a second dose of fentanyl. The dosing period is 10 minutes long and delivers 40 mcg of medicine to the patent. During this period, the dose button is disabled ("locked out"), and the display indicates that it is in a dosing mode due to the 'walking' LCD animation alternating with the current doses administered.</p>
+							<p class="statusPsc1">When a dose is initiated BUT the device does not detect a proper contact with the patient's skin after 4 minutes, the unit will enter standby mode. This is indicated by an audible 2-beep pattern along with a flashing red LED. The dose count will not increment, and the device can re-administer a dose after it returns to Ready mode and once skin contact is properly made.</p>
+							<p class="statusPsc2">When a dose is initiated BUT the device does not detect a proper contact with the patient's skin after 4 minutes, the unit will enter standby mode. This is indicated by an audible 2-beep pattern along with a flashing red LED. The dose count will not increment, and the device can re-administer a dose after it returns to Ready mode and once skin contact is properly made.</p>
+							<p class="statusEou">After 80 doses are administered, the device has reached EOU (end-of-use) mode. The device will no longer administer any doses, the LCD will flash "80" to indicate it has reached 80 doses, and the LED does not flash.</p>
+							<p class="statusEol">If the device reaches the end of its life cycle, it will flash the current dose amount on the LCD (17 doses in this case), the LED will contintually blink red and an audible 4-beep pattern will play. This indicates that the device has reached EOL (end-of-life).</p>
+							<p class="statusPoweron">Powering On</p>
+							<p class="statusPoweroff">Powering Off</p>
+							<p class="statusPoweredoff">Powered Off</p>
+							<p class="statusCustom">custom</p>
+						</div>
 					</article>
 					<footer>
-						<h3 id="modeFooter">Footer Text</h3>
+						<h3 id="modeFooter" class="hidden">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady">Ready Mode</p>
+							<p class="statusDose1">Dose Caption</p>
+							<p class="statusDose2">Dose Caption</p>
+							<p class="statusPsc1">PSC Caption</p>
+							<p class="statusPsc2">PSC Caption</p>
+							<p class="statusEou">EOU Caption</p>
+							<p class="statusEol">EOL Caption</p>
+							<p class="statusPoweron">Powering On</p>
+							<p class="statusPoweroff">Powering Off</p>
+							<p class="statusPoweredoff">Powered Off</p>
+							<p class="statusCustom">custom</p>
+						</h3>
 					</footer>
 				</div>
 			</div>
@@ -90,18 +142,18 @@
 			<button id="powerButton">Power On</button>
 			<button id="powerButtonOff">Power Off</button>
 			<p></p>
+			<button id="doseUpButton" class="extraButtons hidden">Dose+</button>
 			<button id="poorSkin" class="extraButtons hidden">Poor Skin Contact</button>
 			<button id="EOU" class="extraButtons hidden">EOU</button>		
 			<button id="EOL" class="extraButtons hidden">EOL</button>
 			<p></p>
 			<button id="flashButton" class="extraButtons hidden">Flash</button>
 			<button id="walkButton" class="extraButtons hidden">Walk</button>
-			<button id="doseUpButton" class="extraButtons hidden">Dose+</button>
 			<button id="readyButton" class="extraButtons hidden">Ready</button>
-			<button id="testSoundPG" class="extraButtons hidden">PG Test!</button>
+			<button id="testSoundPG" class="extraButtons hidden">PhoneGap ♫</button>
 			<p></p> 
-			<button id="testSlide" class="extraButtons hidden">Test Slide</button>
-			<p></p>
+			<button id="modeDoseButton" class="extraButtons hidden">Dose 1 Mode</button>
+			<p></p> 
 			<label for="doseNumber"  class="extraButtons hidden" >Set Dose #: </label>
 			<input type="number" name="doseNumber" id="doseNumber"  class="extraButtons hidden" min="0" max="99" value="0" ></input>
 		</div>

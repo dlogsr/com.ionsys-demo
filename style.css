@@ -465,6 +465,22 @@ img{
 	content: "\e010";
 }
 
+#deviceStatus p, #modeCaption p,  #modeDescription p, #modeFooter p{
+	display:none;
+}
+
+.contextContent .enable{
+	display:block !important;
+}
+
+.contextContent p{
+	text-align:center;
+}
+
+.contextContent #modeDescription p{
+	text-align:justify;
+}
+
 
 @media only screen and (min-width: 900px){
 	.splashLimiter{

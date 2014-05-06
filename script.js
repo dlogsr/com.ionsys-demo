@@ -41,6 +41,12 @@ var tempArrowStyle;
 var contextOpen = false;
 var $debugLog = $('.debugLog');
 var $testSlideButton = $('#testSlide');
+var sheet = (function(){
+	var style = document.createElement("style");
+	style.appendChild(document.createTextNode(""));
+	document.head.appendChild(style);
+	return style.sheet;
+})();
 
 //phonegap specific
 var beeperPG = document.getElementById('beeper').getAttribute('src');
@@ -48,6 +54,7 @@ var beeperLongPG = document.getElementById('beeper-long').getAttribute('src');
 var buttonPressPG = document.getElementById('button-press').getAttribute('src');
 var usingPhonegap = false;
 
+//arrays for the LCD display
 var digits = new Array;
 digits[0] = ['a', 'b', 'c', 'd', 'e', 'f'];
 digits[1] = ['b', 'c'];
@@ -60,9 +67,11 @@ digits[7] = ['a','b','c'];
 digits[8] = ['a','b','c','d','e','f','g'];
 digits[9] = ['a','f','g','b','c','d'];
 
+//pattern of unit/segment to "walk" the LCD display around the edges
 var walkpattern = [['ones','a'],['ones','b'],['ones','c'],['ones','d'],['tens','d'],
 	['tens','e'],['tens','f'],['tens','a']];
 
+//order of modes for demo unit (HCP functionality)
 var doseStage = ['Dose 1','Dose 2','Poor Skin 1','Poor Skin 2','EOU','EOL','Power Off'];
 var doseStageNum = 0;
 
@@ -75,6 +84,7 @@ function adjustContentSpacing(currSection) {
 	$(currSection).css({'min-height':windowHeight});
 }
 
+//audio file play function for PhoneGap only (otherwise default to jQuery play())
 function playAudio(url) {
     // Play the audio file at url
     var path = window.location.pathname;
@@ -95,24 +105,19 @@ function playAudio(url) {
     setTimeout(function(){my_media.release();},1000)
 }
 
+//run phonegap specific functions (this only fires in PhoneGap)
 document.addEventListener("deviceready", function(){
 	usingPhonegap = true;
 	statusBar.hide();
 }, false);
 
 $(document).ready(function(){
+	//set the BG image / div size to fill screen
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
+	// $deviceStatus.html('Powered Off');
 
 	//functions for description text
-	console.log(document.styleSheets[0]);
-	var sheet = (function(){
-		var style = document.createElement("style");
-		style.appendChild(document.createTextNode(""));
-		document.head.appendChild(style);
-		return style.sheet;
-	})();
-
 	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
 	if(isFullScreen){
 		$contextContent.addClass('notransition');
@@ -126,36 +131,16 @@ $(document).ready(function(){
 		console.log($contextContent.outerHeight());
 	}
 
+	//slideout of context description field
 	$contextArrow.on('tap',function(){
-		isFullScreen = window.matchMedia("(min-width: 900px)").matches;
-		if(isFullScreen){
-			$contextContent.toggleClass('slideRight');
-			$contextArrow.toggleClass('slideRight');
-			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
-		}
-		else{
-			$contextContent.addClass('docked');
-			contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
-			$debugLog.html(contextSize);
-			$contextContent.removeClass('docked');
-            console.log($contextContent.css('height'));
-            if($contextContent.css('height') == '0px')
-                sheet.insertRule('.contextContent.slideDown{min-height: '+(contextSize+20)+'px !important;}',0);
-            else
-                sheet.removeRule(0);
-			$contextContent.toggleClass('slideDown');
-			$contextArrow.toggleClass('slideDown');
-			$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
-		};
-		
+		slideContext();
 	})
 
-	$testSlideButton.on('tap',function(){
-		$contextContent.toggleClass('slideRight');
-	});
-
+	//clear out the LCD display
 	$display.find('*').addClass('digitOff');
 
+
+	//power on/off functions
 	$powerButton.on('tap',function(){
 		if(!powered){
 			powerUp();
@@ -167,6 +152,36 @@ $(document).ready(function(){
 			powerDown();
 		};
 	})
+
+	//***** DOSE BUTTON PRESS FUNCTION *****//
+	$doseButton.on('touchstart mousedown',function(e){
+		e.preventDefault();
+		$doseButton.addClass('doseButtonPressed');
+		usingPhonegap ? playAudio(buttonPressPG) : $buttonPress.play();
+	});
+	$doseButton.on('touchend mouseup touchcancel',function(e){
+		e.preventDefault();
+		setTimeout(function(){
+			$doseButton.removeClass('doseButtonPressed');
+		},25);
+		if(powered && !doseLockout){
+			if (doseButtonFirstPress){
+				doseModeEnter(doseStageTemp[doseStageNum]);
+				doseButtonFirstPress = false;
+			}
+			else{
+				setTimeout(function(){ doseButtonFirstPress = true; }, 200);
+				setTimeout(function(){ doseButtonFirstPress = false;}, 3000);
+			};
+		};
+	});
+
+	//******** TEST BUTTON FUNCTIONS IN SECRET MENU *********//
+
+	//enable secret menu
+	$logoCircle.on('tap',function(){
+		$extraButtons.toggleClass('hidden');
+	});
 
 	$testSoundPG.on('tap',function(){
 		playAudio('beep.mp3');
@@ -199,8 +214,11 @@ $(document).ready(function(){
 	$readyButton.on('tap',function(){
 		if(powered){
 			setReadyMode();
-			changeStatus('Mode: Ready');
 		};
+	});
+
+	$('#modeDoseButton').on('tap',function(){
+		changeDescription('dose1');
 	});
 
 	$doseNumber.change(function(){
@@ -208,32 +226,6 @@ $(document).ready(function(){
 		if(powered){
 			setLCDNum(number);
 			doseCount = number;
-		};
-	});
-
-	$logoCircle.on('tap',function(){
-		$extraButtons.toggleClass('hidden');
-	});
-
-	$doseButton.on('touchstart mousedown',function(e){
-		e.preventDefault();
-		$doseButton.addClass('doseButtonPressed');
-		usingPhonegap ? playAudio(buttonPressPG) : $buttonPress.play();
-	});
-	$doseButton.on('touchend mouseup touchcancel',function(e){
-		e.preventDefault();
-		setTimeout(function(){
-			$doseButton.removeClass('doseButtonPressed');
-		},25);
-		if(powered && !doseLockout){
-			if (doseButtonFirstPress){
-				doseModeEnter(doseStage[doseStageNum]);
-				doseButtonFirstPress = false;
-			}
-			else{
-				setTimeout(function(){ doseButtonFirstPress = true; }, 200);
-				setTimeout(function(){ doseButtonFirstPress = false;}, 3000);
-			};
 		};
 	});
 
@@ -261,13 +253,68 @@ $(window).resize(function(){
 
 })
 
+var doseStageTemp = ['ready', 'dose1','dose2','psc1','psc2','eou','eol','poweroff','poweredoff'];
+
+function changeDescription(description,custom){
+	console.log(description);
+	if(custom){
+		console.log("custom");
+		changeStatus(description);
+	}
+	else{
+		for (var i=0; i<doseStageTemp.length; i++){
+			console.log(i);
+			if (doseStageTemp[i] == description.toString().toLowerCase()){
+				var path = ('.status'+doseStageTemp[i][0].toUpperCase()+doseStageTemp[i].slice(1));
+				$contextContent.fadeTo('fast',0,function(){
+					$('.contextContent p').removeClass('enable');
+					$(path).addClass('enable');
+				});
+				$contextContent.fadeTo('fast',1);
+				break;
+			}
+		};
+	}
+
+}
+
 function changeStatus(status){
-	$deviceStatus.fadeOut('fast',function() {$deviceStatus.html(status);});
+	$deviceStatus.fadeOut('fast',function() {
+		$('#deviceStatus p').removeClass('enable');
+		$('#deviceStatus .statusCustom').html(status).addClass('enable');
+	});
 	$deviceStatus.fadeIn('fast');
 }
 
+function slideContext(){
+
+
+	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
+	if(isFullScreen){
+		//************* need to do a true check for case of toggled or not to get arrow orientation right
+		$contextContent.toggleClass('slideRight');
+		$contextArrow.toggleClass('slideRight');
+		$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+	}
+	else{
+		$contextContent.addClass('docked');
+		contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
+		$debugLog.html(contextSize);
+		$contextContent.removeClass('docked');
+        console.log($contextContent.css('height'));
+	    if($contextContent.css('height') == '0px')
+	        sheet.insertRule('.contextContent.slideDown{min-height: '+(contextSize+20)+'px !important;}',0);
+	    else
+	        sheet.removeRule(0);
+		$contextContent.toggleClass('slideDown');
+		$contextArrow.toggleClass('slideDown');
+		$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
+	};
+		
+}
+
 function powerUp(){
-	changeStatus('Powering On...');
+	changeDescription('Powering On...',true);
 	$powerButton.fadeOut('fast', function(){$powerButtonOff.fadeIn();});
 	flashCounter = 0;
 	usingPhonegap ? playAudio(beeperPG) : $beeper.play();
@@ -275,14 +322,14 @@ function powerUp(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
 			$redLED.addClass('hidden');
-			changeStatus('Mode: POST');
+			changeDescription('Mode: POST',true);
 			flashLCD(88,9);
 		},500);
 	},500);
 	powered = true;
 	setTimeout(function(){
 		flashGreenLED(500,3000);
-		setTimeout(function(){changeStatus('Mode: Ready')},2000);
+		setTimeout(function(){doseModeEnter('ready');},2000);
 	},4000);
 }
 
@@ -299,7 +346,8 @@ function powerDown(){
 	clearInterval(redLEDFlash);
 	clearInterval(greenLEDFlash);
 	doseStageNum = 0;
-	changeStatus('Powered Off');
+	//changeStatus('Powered Off');
+	changeDescription('poweredoff');
 }
 
 function flashLCD(number,limit){
@@ -445,26 +493,29 @@ function setEOL(){
 }
 
 function doseModeEnter(stage){
-	changeStatus('Mode: '+stage);
-	if(stage == 'Dose 1' || stage == 'Dose 2' || stage == 'Normal Operation'){
+	//changeStatus('Mode: '+stage);
+	changeDescription(stage);
+	if(stage == 'ready'){
+	}
+	else if(stage == 'dose1' || stage == 'dose2' || stage == 'normal'){
 		setDose();
 	}
-	else if(stage == 'Poor Skin 1' || stage == 'Poor Skin 2'){
+	else if(stage == 'psc1' || stage == 'psc2'){
 		setPoorskin();
 	}
-	else if(stage == 'EOU'){
+	else if(stage == 'eou'){
 		setEOU();
 	}
-	else if(stage == 'EOL'){
+	else if(stage == 'eol'){
 		clearInterval(beeperTimer);
 		clearInterval(flashTimer);
 		setReadyMode();
 		setEOL();
 	}
-	else if (stage =='Power Off'){
+	else if (stage =='poweroff'){
 		powerDown();
 	};
-	doseStageNum++;
+	if(stage != 'poweroff') doseStageNum++;
 }
 
 function flashGreenLED(ontime,offtime){
