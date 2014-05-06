@@ -208,7 +208,7 @@ $(document).ready(function(){
 	});
 
 	$doseUpButton.on('tap',function(){
-		if(powered && !doseLockout) setDose();
+		if(powered && !doseLockout) doseModeEnter('dose1');
 	});
 
 	$readyButton.on('tap',function(){
@@ -269,6 +269,10 @@ function changeDescription(description,custom){
 				$contextContent.fadeTo('fast',0,function(){
 					$('.contextContent p').removeClass('enable');
 					$(path).addClass('enable');
+					$contextContent.addClass('docked');
+					resizeContext(0);
+					resizeContext($contextContent.outerHeight());
+					$contextContent.removeClass('docked');
 				});
 				$contextContent.fadeTo('fast',1);
 				break;
@@ -301,9 +305,9 @@ function slideContext(){
 		contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
 		$debugLog.html(contextSize);
 		$contextContent.removeClass('docked');
-        console.log($contextContent.css('height'));
 	    if($contextContent.css('height') == '0px')
-	        sheet.insertRule('.contextContent.slideDown{min-height: '+(contextSize+20)+'px !important;}',0);
+	    	resizeContext(contextSize);
+	        //sheet.insertRule('.contextContent.slideDown{min-height: '+(contextSize+20)+'px !important;}',0);
 	    else
 	        sheet.removeRule(0);
 		$contextContent.toggleClass('slideDown');
@@ -311,6 +315,19 @@ function slideContext(){
 		$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
 	};
 		
+}
+
+//still have issue of div not shrinking ; grows fine
+//this resizes the context description to fit if the text inside expands past its bounds (vertical layout)
+function resizeContext(size){
+	try{
+		//sheet.removeRule(1);
+		sheet.removeRule(0);
+	}
+	catch(e){console.log(e);/*dont do anything, this is expected for initial case*/};
+	//sheet.insertRule('.contextContent{height: auto !important;}',0);
+	sheet.insertRule('.contextContent.slideDown{min-height: '+(size)+'px !important;}',0);
+	//sheet.removeRule(0);
 }
 
 function powerUp(){

@@ -385,6 +385,10 @@ img{
 	display:none !important;
 }
 
+.invisible{
+	visibility:none;
+}
+
 .notransition {
   -webkit-transition: none !important;
   -moz-transition: none !important;
@@ -398,7 +402,7 @@ img{
 
 .context{
 	position:relative;
-	padding: 1em 0 3em;
+	padding: 1em 0 1em;
 	text-align: center;
 }
 
