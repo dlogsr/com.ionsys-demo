@@ -72,7 +72,8 @@ var walkpattern = [['ones','a'],['ones','b'],['ones','c'],['ones','d'],['tens','
 	['tens','e'],['tens','f'],['tens','a']];
 
 //order of modes for demo unit (HCP functionality)
-var doseStage = ['Dose 1','Dose 2','Poor Skin 1','Poor Skin 2','EOU','EOL','Power Off'];
+//var doseStage = ['Dose 1','Dose 2','Poor Skin 1','Poor Skin 2','EOU','EOL','Power Off'];
+var doseStageTemp = ['ready', 'dose1','dose2','psc1','psc2','eou','eol','poweroff','poweredoff'];
 var doseStageNum = 0;
 
 function getWindowHeight(){
@@ -158,12 +159,21 @@ $(document).ready(function(){
 		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
 		usingPhonegap ? playAudio(buttonPressPG) : $buttonPress.play();
+		if(doseStageTemp[doseStageNum] == 'eol'){
+			poweroffTimer = setTimeout(5000,function(){
+				offTimerCounter = setInterval(1000,function(){
+					console.log('one second -> poweroff');
+				});
+				powerDown();
+			});
+		}
 	});
 	$doseButton.on('touchend mouseup touchcancel',function(e){
 		e.preventDefault();
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
+		if(doseStageTemp[doseStageNum] == 'poweroff') clearTimeout(poweroffTimer);
 		if(powered && !doseLockout){
 			if (doseButtonFirstPress){
 				doseModeEnter(doseStageTemp[doseStageNum]);
@@ -192,7 +202,10 @@ $(document).ready(function(){
 	})
 
 	$EOUButton.on('tap',function(){
-		if(powered) doseModeEnter('EOU');
+		if(powered){
+			doseStageNum = 5;
+			doseModeEnter('EOU');
+		};
 	})
 
 	$EOLButton.on('tap',function(){
@@ -252,8 +265,6 @@ $(window).resize(function(){
 	},100)
 
 })
-
-var doseStageTemp = ['ready', 'dose1','dose2','psc1','psc2','eou','eol','poweroff','poweredoff'];
 
 function changeDescription(description,custom){
 	console.log(description);
@@ -530,7 +541,7 @@ function doseModeEnter(stage){
 		setEOL();
 	}
 	else if (stage =='poweroff'){
-		powerDown();
+		//powerDown();
 	};
 	if(stage != 'poweroff') doseStageNum++;
 }
