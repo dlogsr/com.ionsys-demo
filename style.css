@@ -485,6 +485,9 @@ img{
 	text-align:justify;
 }
 
+.contextContent #modeDescription .statusDefault{
+	text-align:center;
+}
 
 @media only screen and (min-width: 900px){
 	.splashLimiter{

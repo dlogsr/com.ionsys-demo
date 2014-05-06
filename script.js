@@ -159,13 +159,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
 		usingPhonegap ? playAudio(buttonPressPG) : $buttonPress.play();
-		if(doseStageTemp[doseStageNum] == 'eol'){
-			poweroffTimer = setTimeout(5000,function(){
-				offTimerCounter = setInterval(1000,function(){
-					console.log('one second -> poweroff');
-				});
-				powerDown();
-			});
+		if(doseStageTemp[doseStageNum] == 'poweroff'){
+			poweroffTimer = setTimeout(function(){ powerDown();	},5000);
 		}
 	});
 	$doseButton.on('touchend mouseup touchcancel',function(e){
@@ -522,7 +517,10 @@ function setEOL(){
 
 function doseModeEnter(stage){
 	//changeStatus('Mode: '+stage);
-	changeDescription(stage);
+	if(stage != 'poweroff'){
+		doseStageNum++;
+		changeDescription(stage);
+	};
 	if(stage == 'ready'){
 	}
 	else if(stage == 'dose1' || stage == 'dose2' || stage == 'normal'){
@@ -543,7 +541,7 @@ function doseModeEnter(stage){
 	else if (stage =='poweroff'){
 		//powerDown();
 	};
-	if(stage != 'poweroff') doseStageNum++;
+	
 }
 
 function flashGreenLED(ontime,offtime){
