@@ -495,7 +495,7 @@ button:active{
 }
 
 .flaticon-standby:before {
-	content: "\e001 T";
+	content: "\e001";
 }
 
 #deviceStatus p, #modeCaption p,  #modeDescription p, #modeFooter p{
