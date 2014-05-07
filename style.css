@@ -352,7 +352,7 @@ img{
 
 .powerButtonContainer i, .splash i{
 	padding:0;
-	font-size:.35em !important;
+	font-size:1.5em;
 	-webkit-text-size-adjust: 100%;
 	overflow-x: visible;
 }
@@ -489,7 +489,7 @@ button:active{
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
 	font-family: Flaticon;
-    font-size: 3em;
+    /*font-size: 3em;*/
 	font-style: normal;
 	margin:0;
 	padding:0
@@ -558,7 +558,7 @@ button:active{
 	}
 
 	.powerButtonContainer i{
-		font-size:.5em !important;
+		font-size:1em !important;
 		width:3em;
 		height:3em;
 	}
