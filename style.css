@@ -338,6 +338,7 @@ img{
 	display:block;
 	width:auto;
 	text-align:right;
+	overflow-x: visible;
 }
 
 .powerButtonContainer button{
@@ -347,7 +348,6 @@ img{
 	width:2.35em;
 	height:2.35em;
 	padding:0;
-	overflow: auto;
 }
 
 .powerButtonContainer i{
@@ -497,8 +497,7 @@ button:active{
 }
 
 .flaticon-standby:before {
-	content: "\e001 ";
-	width:3em;
+	content: "\e001";
 }
 
 #deviceStatus p, #modeCaption p,  #modeDescription p, #modeFooter p{
