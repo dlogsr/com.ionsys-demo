@@ -350,7 +350,7 @@ img{
 	padding:0;
 }
 
-.powerButtonContainer i, .splash i{
+.powerButtonContainer i, .splash i, .powerButtonContainer span{
 	padding:0;
 	font-size:.35em !important;
 	-webkit-text-size-adjust: 100%;
@@ -552,7 +552,7 @@ button:active{
 		border-radius:2em;
 	}
 
-	.powerButtonContainer i{
+	.powerButtonContainer i,  .powerButtonContainer span{
 		font-size:.5em !important;
 		width:3em;
 		height:3em;
