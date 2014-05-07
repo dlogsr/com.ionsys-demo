@@ -340,7 +340,7 @@ function resizeContext(size){
 
 function powerUp(){
 	changeDescription('Powering On...',true);
-	$powerButtonOff.fadeIn('fast',function(){powerButtonPulse($powerButtonOff,2000);});
+	$powerButtonOff.fadeIn('fast'/*,function(){powerButtonPulse($powerButtonOff,2000);}*/);
 	flashCounter = 0;
 	usingPhonegap ? playAudio(beeperPG) : $beeper.play();
 	redLEDFlash = setTimeout(function(){
@@ -367,7 +367,10 @@ function powerButtonPulse(button,pulsetime){
 }
 
 function powerDown(){
-	clearInterval(pulseTimer);
+	try{
+		clearInterval(pulseTimer);
+	}
+	catch(e){};
 	$powerButtonOff.fadeOut(500);
 	powered = false;
 	turnOffLCD();

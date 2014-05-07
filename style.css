@@ -372,14 +372,11 @@ button, input{
 	border-radius:20px;
 	padding:.5em .5em;
 	margin: .2em;
-	/*background:linear-gradient(to bottom, #4096ee 0%,#376dcc 100%);*/
-	/*background-color:#4096EE;*/
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	border:1px solid white;
 	background-color:rgba(0,0,0,0);
 	font: 1.2em 'Raleway';
 	color:white;
-	/*text-shadow: 2px 1px 1px rgba(0,0,0.5);*/
 }
 
 .control input[type=number]::-webkit-inner-spin-button, 
