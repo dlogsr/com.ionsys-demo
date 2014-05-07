@@ -354,6 +354,7 @@ img{
 	padding:0;
 	font-size:.35em !important;
 	-webkit-text-size-adjust: 100%;
+	overflow-x: visible;
 }
 
 .powerButtonContainer #powerButtonOff{
