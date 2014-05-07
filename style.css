@@ -549,7 +549,9 @@ button:active{
 	.powerButtonContainer button{
 		position:absolute;
 		right:0;
-		/*border-radius:2em;*/
+		width:3em;
+		height:3em;
+		border-radius:2em;
 	}
 
 	.powerButtonContainer i,  .powerButtonContainer span{
