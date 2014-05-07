@@ -276,7 +276,9 @@ function changeDescription(description,custom){
 					$('.contextContent p').removeClass('enable');
 					$(path).addClass('enable');
 					$contextContent.addClass('docked');
+					console.log('docked context, size is '+$contextContent.outerHeight());
 					resizeContext(0);
+					console.log('RESET context, size is '+$contextContent.outerHeight());
 					resizeContext($contextContent.outerHeight());
 					$contextContent.removeClass('docked');
 				});
