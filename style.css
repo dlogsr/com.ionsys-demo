@@ -110,7 +110,6 @@ img{
 	background-image: url('dosebutton-down_s.png');
 }
 
-
 /* HEADER LOGO CSS */
 
 .pageHeader{
@@ -331,14 +330,36 @@ img{
 	border-right: 020px solid transparent;
 }
 
-/* controls for the display (temp) */
+/* controls for the unit  */
+
+.powerButtonContainer{
+	position:fixed;
+	right:0;
+	display:block;
+	width:100%;
+	text-align:right;
+}
+
+.powerButtonContainer button{
+	position:absolute;
+	right:0;
+	border-radius:2em;
+}
+
+.powerButtonContainer i{
+	font-size:.4em !important;
+}
+
+.powerButtonContainer #powerButtonOff{
+	background-color:rgba(200,200,200,0.5);
+}
 
 .control {
 	position:relative;
 	text-align: center
 }
 
-.control button, .control input{
+button, input{
 	border:none;
 	outline: 0;
 	border-radius:20px;
@@ -360,13 +381,13 @@ img{
   margin: 0; 
 }
 
-.control button:hover{
+button:hover{
 	cursor:pointer;
 	border:1px solid white;
 	background-color:rgba(256,256,256,.2);
 }
 
-.control button:active{
+button:active{
 	border:1px solid white;
 	background-color:rgba(256,256,256,.5);
 }
@@ -466,7 +487,11 @@ img{
 }
 
 .flaticon-arrow395:before {
-	content: "\e010";
+	content: "\e000";
+}
+
+.flaticon-standby:before {
+	content: "\e001";
 }
 
 #deviceStatus p, #modeCaption p,  #modeDescription p, #modeFooter p{
@@ -516,6 +541,17 @@ img{
 	#ionsysLogo h3{
 		display:block;
 	}
+
+	.powerButtonContainer button{
+		position:absolute;
+		right:0;
+		border-radius:2em;
+	}
+
+	.powerButtonContainer i{
+		font-size:.5em !important;
+	}
+
 
 	.container{
 		position:relative;

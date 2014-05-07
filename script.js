@@ -340,7 +340,7 @@ function resizeContext(size){
 
 function powerUp(){
 	changeDescription('Powering On...',true);
-	$powerButton.fadeOut('fast', function(){$powerButtonOff.fadeIn();});
+	$powerButtonOff.fadeIn('fast',function(){powerButtonPulse($powerButtonOff,2000);});
 	flashCounter = 0;
 	usingPhonegap ? playAudio(beeperPG) : $beeper.play();
 	redLEDFlash = setTimeout(function(){
@@ -358,8 +358,16 @@ function powerUp(){
 	},4000);
 }
 
+function powerButtonPulse(button,pulsetime){
+	button.fadeTo(pulsetime,1);
+	pulseTimer = setInterval(function(){
+		button.fadeTo(pulsetime,.2);
+		setTimeout(function(){button.fadeTo(pulsetime,1);},pulsetime);
+	},pulsetime*2);
+}
+
 function powerDown(){
-	$powerButtonOff.fadeOut('fast',function(){$powerButton.fadeIn();});
+	$powerButtonOff.fadeOut('fast',function(){clearInterval(pulseTimer);});
 	powered = false;
 	turnOffLCD();
 	turnOffAllLED();
