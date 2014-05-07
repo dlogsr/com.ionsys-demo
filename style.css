@@ -352,13 +352,9 @@ img{
 
 .powerButtonContainer i, .splash i{
 	padding:0;
-	font-size:1.5em;
+	font-size:.35em !important;
 	-webkit-text-size-adjust: 100%;
 	overflow-x: visible;
-}
-
-.powerButtonContiner i:before{
-	width:5em;
 }
 
 .powerButtonContainer #powerButtonOff{
@@ -489,10 +485,9 @@ button:active{
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
 	font-family: Flaticon;
-    /*font-size: 3em;*/
+    font-size: 3em;
 	font-style: normal;
-	margin:0;
-	padding:0
+	margin-left:0;
 }
 
 .flaticon-arrow395:before {
@@ -500,7 +495,7 @@ button:active{
 }
 
 .flaticon-standby:before {
-	content: "\e001";
+	content: "\e001 T";
 }
 
 #deviceStatus p, #modeCaption p,  #modeDescription p, #modeFooter p{
@@ -558,7 +553,7 @@ button:active{
 	}
 
 	.powerButtonContainer i{
-		font-size:1em !important;
+		font-size:.5em !important;
 		width:3em;
 		height:3em;
 	}
