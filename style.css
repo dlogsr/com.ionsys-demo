@@ -344,10 +344,12 @@ img{
 	position:absolute;
 	right:0;
 	border-radius:2em;
+	width:2.35em;
+	height:2.35em;
 }
 
 .powerButtonContainer i{
-	font-size:.4em !important;
+	font-size:.35em !important;
 }
 
 .powerButtonContainer #powerButtonOff{
@@ -550,6 +552,8 @@ button:active{
 
 	.powerButtonContainer i{
 		font-size:.5em !important;
+		width:3em;
+		height:3em;
 	}
 
 
