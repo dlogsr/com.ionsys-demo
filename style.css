@@ -344,7 +344,7 @@ img{
 	position:absolute;
 	right:0;
 	border-radius:2em;
-	width:3em;
+	width:2.35em;
 	height:2.35em;
 	padding:0;
 	overflow: auto;
@@ -352,6 +352,7 @@ img{
 
 .powerButtonContainer i{
 	padding:0;
+	width:.36em;
 	font-size:.35em !important;
 	-webkit-text-size-adjust: 100%;
 }
