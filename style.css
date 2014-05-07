@@ -347,11 +347,12 @@ img{
 	width:2.35em;
 	height:2.35em;
 	padding:0;
-	margin:0;
+/*	margin:0;*/
 	overflow: auto;
 }
 
 .powerButtonContainer i{
+	padding:0;
 	font-size:.35em !important;
 	-webkit-text-size-adjust: 100%;
 }

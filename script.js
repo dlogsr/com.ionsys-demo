@@ -367,7 +367,8 @@ function powerButtonPulse(button,pulsetime){
 }
 
 function powerDown(){
-	$powerButtonOff.fadeOut(1000,function(){clearInterval(pulseTimer);});
+	clearInterval(pulseTimer);
+	$powerButtonOff.fadeOut(500);
 	powered = false;
 	turnOffLCD();
 	turnOffAllLED();
