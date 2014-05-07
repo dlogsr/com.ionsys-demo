@@ -497,7 +497,7 @@ button:active{
 }
 
 .flaticon-standby:before {
-	content: "\e001";
+	content: "\e001 ";
 	width:3em;
 }
 
