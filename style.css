@@ -491,8 +491,8 @@ button:active{
 	font-family: Flaticon;
     font-size: 3em;
 	font-style: normal;
-	margin-left:0;
-	width:5em;
+	margin:0;
+	padding:0
 }
 
 .flaticon-arrow395:before {
