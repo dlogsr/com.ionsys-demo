@@ -346,12 +346,12 @@ img{
 	border-radius:2em;
 	width:2.35em;
 	height:2.35em;
+	padding:0;
+	margin:0;
 }
 
 .powerButtonContainer i{
 	font-size:.35em !important;
-	margin:0;
-	padding:0;
 }
 
 .powerButtonContainer #powerButtonOff{
