@@ -350,7 +350,7 @@ img{
 	padding:0;
 }
 
-.powerButtonContainer i{
+.powerButtonContainer i, .splash i{
 	padding:0;
 	font-size:.35em !important;
 	-webkit-text-size-adjust: 100%;
