@@ -350,6 +350,8 @@ img{
 
 .powerButtonContainer i{
 	font-size:.35em !important;
+	margin:0;
+	padding:0;
 }
 
 .powerButtonContainer #powerButtonOff{
