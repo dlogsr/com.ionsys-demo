@@ -352,7 +352,6 @@ img{
 
 .powerButtonContainer i{
 	padding:0;
-	margin-right:1em;
 	font-size:.35em !important;
 	-webkit-text-size-adjust: 100%;
 }
@@ -499,6 +498,7 @@ button:active{
 
 .flaticon-standby:before {
 	content: "\e001";
+	padding-right:.5em;
 }
 
 #deviceStatus p, #modeCaption p,  #modeDescription p, #modeFooter p{
