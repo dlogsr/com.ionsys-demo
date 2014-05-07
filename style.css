@@ -357,6 +357,10 @@ img{
 	overflow-x: visible;
 }
 
+.powerButtonContiner i:before{
+	width:5em;
+}
+
 .powerButtonContainer #powerButtonOff{
 	background-color:rgba(200,200,200,0.5);
 }
@@ -488,6 +492,7 @@ button:active{
     font-size: 3em;
 	font-style: normal;
 	margin-left:0;
+	width:5em;
 }
 
 .flaticon-arrow395:before {
