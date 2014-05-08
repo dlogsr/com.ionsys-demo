@@ -340,6 +340,7 @@ function resizeContext(size){
 
 function powerUp(){
 	changeDescription('Powering On...',true);
+	//make this pulsing conditional if the device is web... or just make it CSS animation so it doens't lag
 	$powerButtonOff.fadeIn('fast'/*,function(){powerButtonPulse($powerButtonOff,2000);}*/);
 	flashCounter = 0;
 	usingPhonegap ? playAudio(beeperPG) : $beeper.play();
