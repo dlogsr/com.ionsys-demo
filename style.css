@@ -344,17 +344,16 @@ img{
 .powerButtonContainer button{
 	position:absolute;
 	right:0;
-	border-radius:.65em; /*if this value is ~ twice or more than the font size, in iOS safari it clips*/
+	border-radius:2em; /*if this value is ~ twice or more than the font size, in iOS safari it clips*/
 	width:2.35em;
 	height:2.35em;
 	padding:0;
 }
 
-.powerButtonContainer i, .splash i, .powerButtonContainer span{
+.powerButtonContainer i, .splash i{
 	padding:0;
 	font-size:.35em !important;
-	-webkit-text-size-adjust: 100%;
-	overflow-x: visible;
+	position:relative;
 }
 
 .powerButtonContainer #powerButtonOff{
@@ -551,13 +550,14 @@ button:active{
 		right:0;
 		width:3em;
 		height:3em;
-		border-radius:.8em;
+		border-radius:2em;
 	}
 
-	.powerButtonContainer i,  .powerButtonContainer span{
+	.powerButtonContainer i{
 		font-size:.5em !important;
 		width:3em;
 		height:3em;
+		position:relative;
 	}
 
 
