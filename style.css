@@ -344,7 +344,7 @@ img{
 .powerButtonContainer button{
 	position:absolute;
 	right:0;
-	border-radius:..65em;
+	border-radius:.65em;
 	width:2.35em;
 	height:2.35em;
 	padding:0;
