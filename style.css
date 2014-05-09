@@ -330,7 +330,38 @@ img{
 	border-right: 020px solid transparent;
 }
 
-/* controls for the unit  */
+/* button controls for the unit  */
+
+@-webkit-keyframes pulse {
+	0% {
+		background-color:rgba(255,255,255,0.3);
+	}
+	40% {
+		background-color:rgba(255,255,255,0.1);
+	}
+	60% {
+		background-color:rgba(255,255,255,0.1);
+	}
+	100% {
+		background-color:rgba(255,255,255,0.3);
+	}
+}
+
+
+@keyframes pulse {
+	0% {
+		background-color:rgba(255,255,255,0.3);
+	}
+	40% {
+		background-color:rgba(255,255,255,0.1);
+	}
+	60% {
+		background-color:rgba(255,255,255,0.1);
+	}
+	100% {
+		background-color:rgba(255,255,255,0.3);
+	}
+}
 
 .powerButtonContainer{
 	position:fixed;
@@ -356,9 +387,15 @@ img{
 	position:relative;
 }
 
-.powerButtonContainer #powerButtonOff{
+/*.powerButtonContainer #powerButtonOff{
 	background-color:rgba(200,200,200,0.5);
+}*/
+
+.powerButtonPulse{
+	-webkit-animation: pulse 4s infinite ease-in;
+	animation: pulse 4s infinite ease-in;
 }
+
 
 .control {
 	position:relative;
@@ -387,12 +424,12 @@ button, input{
 button:hover{
 	cursor:pointer;
 	border:1px solid white;
-	background-color:rgba(256,256,256,.2);
+	background-color:rgba(255,255,255,.2) !important;
 }
 
 button:active{
 	border:1px solid white;
-	background-color:rgba(256,256,256,.5);
+	background-color:rgba(255,255,255,.5);
 }
 
 .digitOff, .digitOff:before, .digitOff:after {

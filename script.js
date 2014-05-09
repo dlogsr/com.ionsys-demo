@@ -272,17 +272,17 @@ function changeDescription(description,custom){
 			console.log(i);
 			if (doseStageTemp[i] == description.toString().toLowerCase()){
 				var path = ('.status'+doseStageTemp[i][0].toUpperCase()+doseStageTemp[i].slice(1));
-				$contextContent.fadeTo('fast',0,function(){
+				$contextContent.fadeTo('slow',0,function(){
 					$('.contextContent p').removeClass('enable');
 					$(path).addClass('enable');
-					$contextContent.addClass('docked');
+					$contextContent.addClass('docked'); //hide context but keep it finite so you can grab its size
 					console.log('docked context, size is '+$contextContent.outerHeight());
 					resizeContext(0);
 					console.log('RESET context, size is '+$contextContent.outerHeight());
 					resizeContext($contextContent.outerHeight());
 					$contextContent.removeClass('docked');
 				});
-				$contextContent.fadeTo('fast',1);
+				$contextContent.fadeTo('slow',1);
 				break;
 			}
 		};
@@ -341,7 +341,7 @@ function resizeContext(size){
 function powerUp(){
 	changeDescription('Powering On...',true);
 	//make this pulsing conditional if the device is web... or just make it CSS animation so it doens't lag
-	$powerButtonOff.fadeIn('fast'/*,function(){powerButtonPulse($powerButtonOff,2000);}*/);
+	$powerButtonOff.fadeIn('fast',function(){powerButtonPulse($powerButtonOff);});
 	flashCounter = 0;
 	usingPhonegap ? playAudio(beeperPG) : $beeper.play();
 	redLEDFlash = setTimeout(function(){
@@ -360,11 +360,12 @@ function powerUp(){
 }
 
 function powerButtonPulse(button,pulsetime){
-	button.fadeTo(pulsetime,1);
+	/*button.fadeTo(pulsetime,1);
 	pulseTimer = setInterval(function(){
 		button.fadeTo(pulsetime,.2);
 		setTimeout(function(){button.fadeTo(pulsetime,1);},pulsetime);
-	},pulsetime*2);
+	},pulsetime*2);*/
+	button.addClass('powerButtonPulse');
 }
 
 function powerDown(){
