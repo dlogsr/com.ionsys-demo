@@ -71,6 +71,32 @@ img{
 	height:100%;
 }
 
+/*initial assembly CSS */
+.assembly{
+	width:auto;
+}
+
+.assembly div{
+	display:inline-block;
+}
+
+.bottomAssy {
+	position:relative;
+	margin:auto;
+	width:295px;
+	height:500px;
+	background-image: url('img-ionsys-drugunit-top.png');
+}
+
+.topAssy {
+	position:relative;
+	margin:auto;
+	width:295px;
+	height:500px;
+	cursor:move;
+	background-image: url('img-ionsys-controller-top.png');
+}
+
 .device{
 	position:relative;
 	margin:auto;
@@ -689,6 +715,10 @@ button:active{
 		-moz-transition: left 0.4s ease-out;
 		-o-transition: left 0.4s ease-out;
 		transition: left 0.4s ease-out;
+	}
+
+	.assembly{
+		width:auto;
 	}
 
 }

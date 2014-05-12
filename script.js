@@ -112,6 +112,8 @@ document.addEventListener("deviceready", function(){
 	statusBar.hide();
 }, false);
 
+$('.topAssy').draggable();
+
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
 	adjustContentSpacing('section');
