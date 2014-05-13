@@ -478,7 +478,8 @@ button:active{
 }
 
 .invisible{
-	visibility:hidden;
+	position:fixed !important;
+	visibility:hidden !important;
 }
 
 .notransition {
@@ -655,10 +656,7 @@ button:active{
 		padding:0;
 		width:100%;
 	}
-/**/
-	.context.invisible{
-		/*position:fixed;*/
-	}
+
 
 	.context{
 		/*position:fixed;*/

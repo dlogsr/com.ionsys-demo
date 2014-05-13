@@ -152,8 +152,11 @@ $(document).ready(function(){
 	if(isFullScreen){
 		$contextContent.addClass('notransition');
 		var contentWidth = $contextContent.outerWidth();
-		tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
-		tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+$contextContent.outerWidth()+'px}');
+		// calculated values cause errors for arrow length, using static values instead
+		// tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
+		// tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+$contextContent.outerWidth()+'px}');
+		tempContentStyle = setStyle('.contextContent{left:-377px}');
+		tempArrowStyle = setStyle('.contextArrow.slideRight{left:377px}');
 		setTimeout(function(){$contextContent.removeClass('notransition');},50);
 		console.log('fullscreen');
 	}
