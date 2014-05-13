@@ -115,6 +115,7 @@ document.addEventListener("deviceready", function(){
 $('.topAssy').draggable({axis:"x", 
 						 snap: ".bottomAssy",
 						 snapTolerance: 30,
+						 snapMode: 'inner',
 						 containment: ".assembly",
 						 stop: function(event, ui){
 						 	var snapped = $(this).data('ui-draggable').snapElements;
