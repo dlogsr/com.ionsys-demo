@@ -76,7 +76,7 @@ img{
 	width:auto;
 }
 
-.assembly div{
+.assembly>div{
 	margin:0 41px;
 	display:inline-block;
 }
@@ -87,6 +87,10 @@ img{
 	width:295px;
 	height:500px;
 	background-image: url('img-ionsys-drugunit-top.png');
+}
+
+.bottomAssySnapPoint{
+	width:1px;
 }
 
 .topAssy {
@@ -653,7 +657,7 @@ button:active{
 	}
 /**/
 	.context.invisible{
-		position:fixed;
+		/*position:fixed;*/
 	}
 
 	.context{

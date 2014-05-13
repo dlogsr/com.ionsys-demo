@@ -113,8 +113,8 @@ document.addEventListener("deviceready", function(){
 }, false);
 
 $('.topAssy').draggable({axis:"x", 
-						 snap: ".bottomAssy",
-						 snapTolerance: 30,
+						 snap: ".bottomAssySnapPoint",
+						 snapTolerance: 20,
 						 snapMode: 'inner',
 						 containment: ".assembly",
 						 stop: function(event, ui){
@@ -126,12 +126,16 @@ $('.topAssy').draggable({axis:"x",
 					        $.each(snappedTo, function(idx, item) {
 					            result += $(item).attr('class');
 					        });
-
-					        if(result != '')
+					        console.log('snapped to: ' + result);
+					        if(result == 'bottomAssySnapPoint')
 					        {
 					        	$('.workingAssembly').removeClass('hidden');
 					        	$('.assembly').addClass('hidden');
 					        	setTimeout(function(){$('.context').removeClass('invisible');},1);
+					        	setTimeout(function(){slideContext();},200);
+					        	if(!powered){
+									powerUp();
+								};
 					        }
 						 	// $debugLog.html((result === '' ? "Nothing!" : result));
 						 }
@@ -149,10 +153,14 @@ $(document).ready(function(){
 		$contextContent.addClass('notransition');
 		var contentWidth = $contextContent.outerWidth();
 		tempContentStyle = setStyle('.contextContent{left:'+-$contextContent.outerWidth()+'px}');
-		tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+contentWidth+'px}');
+		tempArrowStyle = setStyle('.contextArrow.slideRight{left:'+$contextContent.outerWidth()+'px}');
 		setTimeout(function(){$contextContent.removeClass('notransition');},50);
+		console.log('fullscreen');
 	}
 	else{
+		$('.workingAssembly').removeClass('hidden');
+		$('.assembly').addClass('hidden');
+		setTimeout(function(){$('.context').removeClass('invisible');},1);
 		tempContentStyle = setStyle('.contextContent{top:0px}');
 		console.log($contextContent.outerHeight());
 	}
@@ -279,6 +287,9 @@ $(window).resize(function(){
 			setTimeout(function(){$contextContent.add($contextArrow).removeClass('notransition');},50);
 		}
 		else{
+			$('.workingAssembly').removeClass('hidden');
+			$('.assembly').addClass('hidden');
+			setTimeout(function(){$('.context').removeClass('invisible');},1);
 			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
 			tempContentStyle = setStyle('.contextContent{top:0px}');
 		}
