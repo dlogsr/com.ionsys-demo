@@ -77,6 +77,7 @@ img{
 }
 
 .assembly div{
+	margin:0 41px;
 	display:inline-block;
 }
 
@@ -188,7 +189,7 @@ img{
 	background-color:black;
 	z-index:10;
 	text-align:center;
-	padding-bottom:1em;
+	/*padding-bottom:1em;*/
 	margin-bottom:-70px;
 }
 
@@ -473,7 +474,7 @@ button:active{
 }
 
 .invisible{
-	visibility:none;
+	visibility:hidden;
 }
 
 .notransition {
@@ -651,9 +652,14 @@ button:active{
 		width:100%;
 	}
 /**/
+	.context.invisible{
+		position:fixed;
+	}
+
 	.context{
+		/*position:fixed;*/
 		min-height:400px;
-		padding: 1em 0 0;
+		/*padding: 1em 0 0;*/
 	}
 
 	.contextOverflow{

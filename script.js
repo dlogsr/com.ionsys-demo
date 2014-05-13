@@ -112,7 +112,29 @@ document.addEventListener("deviceready", function(){
 	statusBar.hide();
 }, false);
 
-$('.topAssy').draggable();
+$('.topAssy').draggable({axis:"x", 
+						 snap: ".bottomAssy",
+						 snapTolerance: 30,
+						 containment: ".assembly",
+						 stop: function(event, ui){
+						 	var snapped = $(this).data('ui-draggable').snapElements;
+						 	var snappedTo = $.map(snapped, function(element){
+						 		return element.snapping ? element.item : null;
+						 	});
+						 	var result= '';
+					        $.each(snappedTo, function(idx, item) {
+					            result += $(item).attr('class');
+					        });
+
+					        if(result != '')
+					        {
+					        	$('.workingAssembly').removeClass('hidden');
+					        	$('.assembly').addClass('hidden');
+					        	setTimeout(function(){$('.context').removeClass('invisible');},1);
+					        }
+						 	// $debugLog.html((result === '' ? "Nothing!" : result));
+						 }
+						});
 
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
