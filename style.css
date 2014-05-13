@@ -91,6 +91,7 @@ img{
 
 .bottomAssySnapPoint{
 	width:1px;
+	height:500px;
 }
 
 .topAssy {
@@ -109,6 +110,17 @@ img{
 	height:500px;
 	background-image: url('img-ionsys2-blank.png');
 }
+
+.backgroundAssembly{
+	position:absolute;
+	z-index:0;
+	margin:auto;
+	width:377px;
+	height:500px;
+	background-image: url('img-ionsys2-blank.png');
+	background-repeat:no-repeat;
+}
+
 
 .device .led{
 	position:absolute;

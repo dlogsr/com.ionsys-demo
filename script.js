@@ -112,11 +112,11 @@ document.addEventListener("deviceready", function(){
 	statusBar.hide();
 }, false);
 
-$('.topAssy').draggable({axis:"x", 
+$('.topAssy').draggable({/*axis:"x",*/ 
 						 snap: ".bottomAssySnapPoint",
-						 snapTolerance: 20,
+						 snapTolerance: 30,
 						 snapMode: 'inner',
-						 containment: ".assembly",
+						 containment: ".splash",
 						 stop: function(event, ui){
 						 	var snapped = $(this).data('ui-draggable').snapElements;
 						 	var snappedTo = $.map(snapped, function(element){
@@ -131,8 +131,12 @@ $('.topAssy').draggable({axis:"x",
 					        {
 					        	$('.workingAssembly').removeClass('hidden');
 					        	$('.assembly').addClass('hidden');
-					        	setTimeout(function(){$('.context').removeClass('invisible');},1);
-					        	setTimeout(function(){slideContext();},200);
+					        	setTimeout(function(){
+					        		$('.context').removeClass('invisible');
+					        	},1);
+					        	setTimeout(function(){
+					        		slideContext();
+					        	},200);
 					        	if(!powered){
 									powerUp();
 								};
