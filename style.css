@@ -99,8 +99,12 @@ img{
 	margin:auto;
 	width:295px;
 	height:500px;
-	cursor:move;
+	cursor:-webkit-grab;
 	background-image: url('img-ionsys-controller-top.png');
+}
+
+.topAssy:active{
+	cursor:-webkit-grabbing;
 }
 
 .device{
@@ -112,13 +116,7 @@ img{
 }
 
 .backgroundAssembly{
-	position:absolute;
-	z-index:0;
-	margin:auto;
-	width:377px;
-	height:500px;
-	background-image: url('img-ionsys2-blank.png');
-	background-repeat:no-repeat;
+	display:none;
 }
 
 
@@ -739,6 +737,17 @@ button:active{
 
 	.assembly{
 		width:auto;
+	}
+
+	.backgroundAssembly{
+		display:block;
+		position:absolute;
+		z-index:0;
+		margin:auto 111px;
+		width:377px;
+		height:500px;
+		background-image: url('img-ionsys2-blank.png');
+		background-repeat:no-repeat;
 	}
 
 }
