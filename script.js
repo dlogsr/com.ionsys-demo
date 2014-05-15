@@ -133,7 +133,7 @@ $('.topAssy').draggable({/*axis:"x",*/
 					        	$('.assembly').addClass('hidden');
 					        	setTimeout(function(){
 					        		$('.context').removeClass('invisible');
-					        	},1);
+					        	},10);
 					        	setTimeout(function(){
 					        		slideContext();
 					        	},200);
