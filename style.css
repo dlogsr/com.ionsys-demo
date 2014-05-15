@@ -597,16 +597,6 @@ button:active{
 }
 
 @media only screen and (min-width: 900px){
-	.backgroundAssembly{
-		background-color:red;
-		width:377px;
-		height:500px;
-		background-image: url('img-ionsys2-blank.png');
-		background-repeat:no-repeat;
-		background-position:center;
-		display:inline;
-		position:absolute;
-	}
 
 	.splashLimiter{
 		max-width:900px;
@@ -748,6 +738,21 @@ button:active{
 
 	.assembly{
 		width:auto;
+	}
+
+	.backgroundAssembly{
+		background-color:rgba(255,0,0,.5);
+		width:377px;
+		height:500px;
+		background-image: url('img-ionsys2-blank.png');
+		background-repeat:no-repeat;
+		background-position:center;
+		display:inline;
+		position:absolute;
+	}
+
+	.workingAssembly{
+		background-color:rgba(0,0,255,.5);
 	}
 
 }
