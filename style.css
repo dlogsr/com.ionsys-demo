@@ -72,11 +72,11 @@ img{
 }
 
 /*initial assembly CSS */
-.assembly{
+.packageAssembly{
 	width:auto;
 }
 
-.assembly>div{
+.packageAssembly>div{
 	margin:0 41px;
 	display:inline-block;
 }
@@ -95,8 +95,10 @@ img{
 }
 
 .topAssy {
-	position:relative;
+	position:absolute;
 	margin:auto;
+	right:0;
+	bottom:50px;
 	width:295px;
 	height:500px;
 	cursor:-webkit-grab;
@@ -116,7 +118,13 @@ img{
 }
 
 .backgroundAssembly{
-	display:none;
+	width:100%;
+	height:500px;
+	background-image: url('img-ionsys2-blank.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	display:block;
+	position:absolute;
 }
 
 
@@ -736,24 +744,29 @@ button:active{
 		transition: left 0.4s ease-out;
 	}
 
-	.assembly{
+	.packageAssembly{
 		width:auto;
 	}
 
 	.backgroundAssembly{
 		/*background-color:rgba(255,0,0,.5);*/
 		width:377px;
-		height:500px;
-		background-image: url('img-ionsys2-blank.png');
-		background-repeat:no-repeat;
-		background-position:center;
-		display:block;
-		position:absolute;
 		margin-left:71px;
 	}
-
+	
 	.workingAssembly{
 		/*background-color:rgba(0,0,255,.5);*/
+	}
+
+	.topAssy {
+		position:relative;
+		margin:auto;
+		right:auto;
+		bottom:auto;
+		width:295px;
+		height:500px;
+		cursor:-webkit-grab;
+		background-image: url('img-ionsys-controller-top.png');
 	}
 
 }

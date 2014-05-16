@@ -12,6 +12,9 @@ var $readyButton = $('#readyButton');
 var $deviceStatus = $('#deviceStatus');
 var $testSoundPG = $('#testSoundPG');
 
+var $workingAssembly = $('.workingAssembly');
+var $packageAssembly = $('.packageAssembly');
+
 var $doseNumber = $('#doseNumber');
 var $display = $('.seven-segment');
 var $greenLED = $('.ledGreen');
@@ -129,9 +132,9 @@ $('.topAssy').draggable({/*axis:"x",*/
 					        console.log('snapped to: ' + result);
 					        if(result == 'bottomAssySnapPoint')
 					        {
-					        	$('.assembly').addClass('hidden');
+					        	$packageAssembly.addClass('hidden');
 					        	setTimeout(function(){
-					        		$('.workingAssembly').removeClass('hidden');
+					        		$workingAssembly.removeClass('hidden');
 					        		$('.context').removeClass('invisible');
 					        	},25);
 					        	setTimeout(function(){
@@ -165,9 +168,9 @@ $(document).ready(function(){
 		console.log('fullscreen');
 	}
 	else{
-		$('.workingAssembly').removeClass('hidden');
-		$('.assembly').addClass('hidden');
-		setTimeout(function(){$('.context').removeClass('invisible');},1);
+		// $workingAssembly.removeClass('hidden');
+		// $packageAssembly.addClass('hidden');
+		// setTimeout(function(){$('.context').removeClass('invisible');},1);
 		tempContentStyle = setStyle('.contextContent{top:0px}');
 		console.log($contextContent.outerHeight());
 	}
@@ -294,8 +297,8 @@ $(window).resize(function(){
 			setTimeout(function(){$contextContent.add($contextArrow).removeClass('notransition');},50);
 		}
 		else{
-			$('.workingAssembly').removeClass('hidden');
-			$('.assembly').addClass('hidden');
+			$workingAssembly.removeClass('hidden');
+			$packageAssembly.addClass('hidden');
 			setTimeout(function(){$('.context').removeClass('invisible');},1);
 			$contextArrow.addClass('contextArrowClosed').removeClass('contextArrowOpen');
 			tempContentStyle = setStyle('.contextContent{top:0px}');
