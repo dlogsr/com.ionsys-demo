@@ -129,11 +129,11 @@ $('.topAssy').draggable({/*axis:"x",*/
 					        console.log('snapped to: ' + result);
 					        if(result == 'bottomAssySnapPoint')
 					        {
-					        	$('.workingAssembly').removeClass('hidden');
 					        	$('.assembly').addClass('hidden');
 					        	setTimeout(function(){
+					        		$('.workingAssembly').removeClass('hidden');
 					        		$('.context').removeClass('invisible');
-					        	},10);
+					        	},25);
 					        	setTimeout(function(){
 					        		slideContext();
 					        	},200);
