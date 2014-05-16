@@ -97,8 +97,8 @@ img{
 .topAssy {
 	position:absolute;
 	margin:auto;
-	right:0;
-	bottom:50px;
+	right:-5em;
+	bottom:0;
 	width:295px;
 	height:500px;
 	cursor:-webkit-grab;
@@ -753,7 +753,7 @@ button:active{
 		width:377px;
 		margin-left:71px;
 	}
-	
+
 	.workingAssembly{
 		/*background-color:rgba(0,0,255,.5);*/
 	}
