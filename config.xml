@@ -34,4 +34,5 @@
                 <string>UIInterfaceOrientationLandscapeRight</string>
             </array>
         </gap:config-file>
+        <gap: splash src="splash.png" />
 </widget>
