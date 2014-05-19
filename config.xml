@@ -35,10 +35,5 @@
             </array>
         </gap:config-file>
         <gap:splash src="splash.png" />
-        <gap:splash src="splash.png" gap:platform="ios" />
-
-
-        <feature name="StatusBar">
-            <param name="ios-package" onload="false" value="CDVStatusBar" />
-        </feature>
+        <!-- <gap:splash src="splash.png" gap:platform="ios" /> -->
 </widget>

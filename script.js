@@ -112,7 +112,7 @@ function playAudio(url) {
 //run phonegap specific functions (this only fires in PhoneGap)
 document.addEventListener("deviceready", function(){
 	usingPhonegap = true;
-	// statusBar.hide();
+	statusBar.hide();
 }, false);
 
 $('.topAssy').draggable({/*axis:"x",*/ 
