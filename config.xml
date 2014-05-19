@@ -35,6 +35,5 @@
             </array>
         </gap:config-file>
         <gap:splash src="splash.png" />
-        <gap:splash src="splash.png" gap:platform="ios" width="1536" height="2048" />
-        <gap:splash src="splash.png" gap:platform="ios" width="2048" height="1536" />
+        <gap:splash src="splash.png" gap:platform="ios" />
 </widget>
