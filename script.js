@@ -38,6 +38,7 @@ var $contextContent = $('.contextContent');
 var $contextArrow = $('.contextArrow');
 var $contextArrowContainer = $('.contextArrowContainer');
 var $deviceContent = $('.device');
+var $modeCaption = $('#modeCaption');
 var isFullScreen, contextSize;
 var tempContentStyle;
 var tempArrowStyle;
@@ -111,12 +112,11 @@ function playAudio(url) {
 
 //run phonegap specific functions (this only fires in PhoneGap)
 document.addEventListener("deviceready", function(){
-	console.log('hiding splashscreen...');
-	navigator.splashscreen.hide()
-	console.log('splashscreen hidden.');
-	usingPhonegap = true;
-	statusBar.hide();
-	console.log('statusbar hidden.');
+	setTimeout(function(){
+		navigator.splashscreen.hide()
+		usingPhonegap = true;
+		statusBar.hide();
+	},500);
 }, false);
 
 $('.topAssy').draggable({/*axis:"x",*/ 
@@ -156,7 +156,8 @@ $(document).ready(function(){
 	//set the BG image / div size to fill screen
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
-	// $deviceStatus.html('Powered Off');
+	//phonegap splashscreen hide;
+	// navigator.splashscreen.hide()
 
 	//functions for description text
 	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
@@ -405,7 +406,10 @@ function powerUp(){
 	powered = true;
 	setTimeout(function(){
 		flashGreenLED(500,3000);
-		setTimeout(function(){doseModeEnter('ready');},2000);
+		setTimeout(function(){
+			doseModeEnter('ready');
+			setTimeout(function(){$modeCaption.removeClass('hidden')},600);
+		},2000);
 	},4000);
 }
 
@@ -510,6 +514,8 @@ function setReadyMode(){
 	flashGreenLED(500,3000);
 	setLCDNum(doseCount);
 	doseLockout = false;
+	$('.contextContent #modeCaption p').removeClass('enable');
+	$('.contextContent #modeCaption .statusReady').addClass('enable');
 	clearInterval(flashTimer);
 	clearInterval(walkPatternTimer);
 	clearInterval(doseRepeatTimer);
