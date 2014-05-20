@@ -113,6 +113,7 @@ function playAudio(url) {
 document.addEventListener("deviceready", function(){
 	usingPhonegap = true;
 	statusBar.hide();
+	navigator.splashscreen.hide()
 }, false);
 
 $('.topAssy').draggable({/*axis:"x",*/ 
