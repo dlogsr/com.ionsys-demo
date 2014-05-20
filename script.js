@@ -57,6 +57,7 @@ var beeperPG = document.getElementById('beeper').getAttribute('src');
 var beeperLongPG = document.getElementById('beeper-long').getAttribute('src');
 var buttonPressPG = document.getElementById('button-press').getAttribute('src');
 var usingPhonegap = false;
+var $phonegapBlack = $('.phonegapBlack');
 
 //arrays for the LCD display
 var digits = new Array;
@@ -117,6 +118,7 @@ document.addEventListener("deviceready", function(){
 		usingPhonegap = true;
 		statusBar.hide();
 	},500);
+	$phonegapBlack.addClass('phonegapBlackFadeOut');
 }, false);
 
 $('.topAssy').draggable({/*axis:"x",*/ 
@@ -154,6 +156,7 @@ $('.topAssy').draggable({/*axis:"x",*/
 
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
+	if(!usingPhonegap) $phonegapBlack.addClass('hidden'); // normal
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
 	//phonegap splashscreen hide;

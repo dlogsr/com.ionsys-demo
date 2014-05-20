@@ -17,11 +17,7 @@
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="DisallowOverscroll" value="true" />
         <preference name="exit-on-suspend" value="true" />
-        <!-- Do not auto hide splash on iOS -->
-        <preference name="AutoHideSplashScreen" value="false" />
-        <!-- Do not auto hide splash on Android -->
-        <preference name="SplashScreenDelay" value="10000"/>
-        <gap:plugin name="org.apache.cordova.splashscreen" />
+
         <feature name="http://api.phonegap.com/1.0/media"/> 
         <gap:plugin name="org.apache.cordova.media" />
         <gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
@@ -39,6 +35,18 @@
                 <string>UIInterfaceOrientationLandscapeRight</string>
             </array>
         </gap:config-file>
+
+        <!-- splash screen code -->
+        <!-- Do not auto hide splash on iOS -->
+        <preference name="AutoHideSplashScreen" value="false" />
+        <!-- Do not auto hide splash on Android -->
+        <preference name="SplashScreenDelay" value="10000"/>
+        <gap:plugin name="org.apache.cordova.splashscreen" />
+
+        <preference name="FadeSplashScreen" value="true" />
+        <preference name="FadeSplashScreenDuration" value="1" />
+        <preference name="FadeSplashScreenDuration" value="false" />
+
         <gap:splash src="splash.png"/>
         <gap:splash src="splash.png" gap:platform="android"/>
         <!-- iPhone and iPod touch -->
