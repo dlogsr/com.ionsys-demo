@@ -156,8 +156,9 @@ $('.topAssy').draggable({/*axis:"x",*/
 
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
-	if(!usingPhonegap) $phonegapBlack.addClass('hidden'); // normal
-	
+	// if(!usingPhonegap) $phonegapBlack.addClass('hidden'); // normal
+	$phonegapBlack.addClass('phonegapBlackFadeOut'); // normal
+
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
 	//phonegap splashscreen hide;
