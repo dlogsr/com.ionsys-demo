@@ -113,9 +113,9 @@ function playAudio(url) {
 
 //run phonegap specific functions (this only fires in PhoneGap)
 document.addEventListener("deviceready", function(){
+	usingPhonegap = true;
 	setTimeout(function(){
 		navigator.splashscreen.hide()
-		usingPhonegap = true;
 		statusBar.hide();
 	},500);
 	$phonegapBlack.addClass('phonegapBlackFadeOut');
@@ -157,6 +157,7 @@ $('.topAssy').draggable({/*axis:"x",*/
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
 	if(!usingPhonegap) $phonegapBlack.addClass('hidden'); // normal
+	
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
 	//phonegap splashscreen hide;
