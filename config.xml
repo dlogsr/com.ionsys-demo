@@ -34,8 +34,22 @@
                 <string>UIInterfaceOrientationLandscapeRight</string>
             </array>
         </gap:config-file>
+        <gap:splash src="splash.png"/>
         <gap:splash src="splash.png" gap:platform="android"/>
-        <gap:splash src="splash.png" gap:platform="ios"/>
+        <!-- iPhone and iPod touch -->
+        <gap:splash src="Default.png" gap:platform="ios" width="320" height="480" />
+        <gap:splash src="Default@2x.png" gap:platform="ios" width="640" height="960" />
+
+        <!-- iPhone 5 / iPod Touch (5th Generation) -->
+        <gap:splash src="Default-568h@2x.png" gap:platform="ios" width="640" height="1136" />
+
+        <!-- iPad -->
+        <gap:splash src="Default-Portrait.png" gap:platform="ios" width="768" height="1024" />
+        <gap:splash src="Default-Landscape.png" gap:platform="ios" width="1024" height="768" />
+
+        <!-- Retina iPad -->
+        <gap:splash src="Default-Portrait@2x.png" gap:platform="ios" width="1536" height="2048" />
+        <gap:splash src="Default-Landscape@2x.png" gap:platform="ios" width="2048" height="1536" />
 
 
 
