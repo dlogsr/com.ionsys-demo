@@ -157,7 +157,12 @@ $('.topAssy').draggable({/*axis:"x",*/
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
 	// if(!usingPhonegap) $phonegapBlack.addClass('hidden'); // normal
-	$phonegapBlack.addClass('phonegapBlackFadeOut'); // normal
+	setTimeout(function(){
+		$phonegapBlack.addClass('phonegapBlackFadeOut');
+		setTimeout(function(){
+			$phonegapBlack.addClass('hidden');
+		},2000);
+	},500); // normal
 
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
