@@ -52,11 +52,11 @@
 
         <!-- android -->
         <gap:splash src="splash/android/splash.png" gap:platform="android"/>
-        <gap:splash src="splash/android/drawable-ldpi/ldpi.png" gap:platform="android" gap:qualifier="ldpi" />
-        <gap:splash src="splash/android/drawable-mdpi/mdpi.png" gap:platform="android" gap:qualifier="mdpi" />
-        <gap:splash src="splash/android/drawable-hdpi/hdpi.png" gap:platform="android" gap:qualifier="hdpi" />
-        <gap:splash src="splash/android/drawable-xhdpi/xhdpi.png" gap:platform="android" gap:qualifier="xhdpi" />
-        <gap:splash src="splash/android/drawable-landscape-xxhdpi/landscape-xxhdpi.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
+        <gap:splash src="splash/android/drawable-ldpi/splash.png" gap:platform="android" gap:qualifier="ldpi" />
+        <gap:splash src="splash/android/drawable-mdpi/splash.png" gap:platform="android" gap:qualifier="mdpi" />
+        <gap:splash src="splash/android/drawable-hdpi/splash.png" gap:platform="android" gap:qualifier="hdpi" />
+        <gap:splash src="splash/android/drawable-xhdpi/splash.png" gap:platform="android" gap:qualifier="xhdpi" />
+        <gap:splash src="splash/android/drawable-landscape-xxhdpi/splash.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
 
         <!-- iPhone and iPod touch -->
         <gap:splash src="splash/ios/Default.png" gap:platform="ios" width="320" height="480" />
