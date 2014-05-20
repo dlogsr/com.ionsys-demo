@@ -111,9 +111,12 @@ function playAudio(url) {
 
 //run phonegap specific functions (this only fires in PhoneGap)
 document.addEventListener("deviceready", function(){
+	console.log('hiding splashscreen...');
+	navigator.splashscreen.hide()
+	console.log('splashscreen hidden.');
 	usingPhonegap = true;
 	statusBar.hide();
-	navigator.splashscreen.hide()
+	console.log('statusbar hidden.');
 }, false);
 
 $('.topAssy').draggable({/*axis:"x",*/ 
