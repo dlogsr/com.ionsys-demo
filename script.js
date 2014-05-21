@@ -117,8 +117,8 @@ document.addEventListener("deviceready", function(){
 	setTimeout(function(){
 		navigator.splashscreen.hide()
 		statusBar.hide();
+		$phonegapBlack.addClass('phonegapBlackFadeOut');
 	},500);
-	$phonegapBlack.addClass('phonegapBlackFadeOut');
 }, false);
 
 $('.topAssy').draggable({/*axis:"x",*/ 
