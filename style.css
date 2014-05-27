@@ -118,7 +118,8 @@ img{
 }
 
 .backgroundAssembly{
-	width:100%;
+	width:100%; /*this will give a slight positioning issue if 
+				window width < 295px, but should not happen on min 320x screen */
 	height:500px;
 	background-image: url('img-ionsys2-blank.png');
 	background-repeat:no-repeat;
@@ -213,6 +214,7 @@ img{
 	text-align:center;
 	/*padding-bottom:1em;*/
 	margin-bottom:-70px;
+	overflow:hidden;
 }
 
 .splash .container{

@@ -118,7 +118,10 @@ document.addEventListener("deviceready", function(){
 		navigator.splashscreen.hide()
 		statusBar.hide();
 		$phonegapBlack.addClass('phonegapBlackFadeOut');
-	},500);
+		setTimeout(function(){
+			$phonegapBlack.addClass('hidden');
+		},1500);
+	},1000);
 }, false);
 
 $('.topAssy').draggable({/*axis:"x",*/ 
@@ -157,12 +160,14 @@ $('.topAssy').draggable({/*axis:"x",*/
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
 	// if(!usingPhonegap) $phonegapBlack.addClass('hidden'); // normal
-	setTimeout(function(){
-		$phonegapBlack.addClass('phonegapBlackFadeOut');
-		setTimeout(function(){
-			$phonegapBlack.addClass('hidden');
-		},2000);
-	},500); // normal
+	if(!usingPhonegap){
+			setTimeout(function(){
+			$phonegapBlack.addClass('phonegapBlackFadeOut');
+			setTimeout(function(){
+				$phonegapBlack.addClass('hidden');
+			},1500);
+		},500); // normal
+	};
 
 	adjustContentSpacing('section');
 	$powerButtonOff.hide();
