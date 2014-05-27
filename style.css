@@ -77,7 +77,7 @@ img{
 }
 
 .packageAssembly>div{
-	margin:0 41px;
+	margin:0;
 	display:inline-block;
 }
 
@@ -767,6 +767,10 @@ button:active{
 		height:500px;
 		cursor:-webkit-grab;
 		background-image: url('img-ionsys-controller-top.png');
+	}
+
+	.packageAssembly>div{
+		margin:0 41px;
 	}
 
 }
