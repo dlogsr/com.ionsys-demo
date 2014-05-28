@@ -28,7 +28,7 @@ var powered = false;
 var on = 'on';
 var off = 'off';
 var doseButtonFirstPress = false;
-var doseLockout = false;
+var doseLockout = true;
 var doseCount = 0;
 var greenLEDFlash, redLEDFlash;
 var beeperTimer, flashTimer, timer, doseRepeatTimer, walkPatternTimer
@@ -423,6 +423,7 @@ function powerUp(){
 		flashGreenLED(500,3000);
 		setTimeout(function(){
 			doseModeEnter('ready');
+			doseLockout = false;
 			setTimeout(function(){$modeCaption.removeClass('hidden')},600);
 		},2000);
 	},4000);
