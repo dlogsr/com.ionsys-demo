@@ -31,7 +31,7 @@ var doseButtonFirstPress = false;
 var doseLockout = true;
 var doseCount = 0;
 var greenLEDFlash, redLEDFlash;
-var beeperTimer, flashTimer, timer, doseRepeatTimer, walkPatternTimer
+var beeperTimer, flashTimer, timer, doseRepeatTimer, walkTimer, walkPatternTimer, doseTimer, doseRepeatTimer;
 
 //description animations
 var $contextContent = $('.contextContent');
@@ -125,41 +125,40 @@ document.addEventListener("deviceready", function(){
 }, false);
 
 $('.topAssy').draggable({/*axis:"x",*/ 
-						 snap: ".bottomAssySnapPoint",
-						 snapTolerance: 30,
-						 snapMode: 'inner',
-						 containment: ".splash",
-						 stop: function(event, ui){
-						 	var snapped = $(this).data('ui-draggable').snapElements;
-						 	var snappedTo = $.map(snapped, function(element){
-						 		return element.snapping ? element.item : null;
-						 	});
-						 	var result= '';
-					        $.each(snappedTo, function(idx, item) {
-					            result += $(item).attr('class');
-					        });
-					        console.log('snapped to: ' + result);
-					        if(result == 'bottomAssySnapPoint')
-					        {
-					        	$packageAssembly.addClass('hidden');
-					        	setTimeout(function(){
-					        		$workingAssembly.removeClass('hidden');
-					        		$('.context').removeClass('invisible');
-					        	},25);
-					        	setTimeout(function(){
-					        		slideContext();
-					        	},200);
-					        	if(!powered){
-									powerUp();
-								};
-					        }
-						 	// $debugLog.html((result === '' ? "Nothing!" : result));
-						 }
-						});
+	 snap: ".bottomAssySnapPoint",
+	 snapTolerance: 30,
+	 snapMode: 'inner',
+	 containment: ".splash",
+	 stop: function(event, ui){
+	 	var snapped = $(this).data('ui-draggable').snapElements;
+	 	var snappedTo = $.map(snapped, function(element){
+	 		return element.snapping ? element.item : null;
+	 	});
+	 	var result= '';
+        $.each(snappedTo, function(idx, item) {
+            result += $(item).attr('class');
+        });
+        console.log('snapped to: ' + result);
+        if(result == 'bottomAssySnapPoint')
+        {
+        	$packageAssembly.addClass('hidden');
+        	setTimeout(function(){
+        		$workingAssembly.removeClass('hidden');
+        		$('.context').removeClass('invisible');
+        	},25);
+        	setTimeout(function(){
+        		slideContext();
+        	},200);
+        	if(!powered){
+				powerUp();
+			};
+        }
+		// $debugLog.html((result === '' ? "Nothing!" : result));
+	}
+});
 
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
-	// if(!usingPhonegap) $phonegapBlack.addClass('hidden'); // normal
 	if(!usingPhonegap){
 			setTimeout(function(){
 			$phonegapBlack.addClass('phonegapBlackFadeOut');
@@ -198,7 +197,7 @@ $(document).ready(function(){
 	//slideout of context description field
 	$contextArrow.on('tap',function(){
 		slideContext();
-	})
+	});
 
 	//clear out the LCD display
 	$display.find('*').addClass('digitOff');
@@ -209,13 +208,13 @@ $(document).ready(function(){
 		if(!powered){
 			powerUp();
 		};
-	})
+	});
 
 	$powerButtonOff.on('tap',function(){
 		if(powered){
 			powerDown();
 		};
-	})
+	});
 
 	//***** DOSE BUTTON PRESS FUNCTION *****//
 	$doseButton.on('touchstart mousedown',function(e){
@@ -223,7 +222,7 @@ $(document).ready(function(){
 		$doseButton.addClass('doseButtonPressed');
 		usingPhonegap ? playAudio(buttonPressPG) : $buttonPress.play();
 		if(doseStageTemp[doseStageNum] == 'poweroff'){
-			poweroffTimer = setTimeout(function(){ powerDown();	},5000);
+			poweroffTimer = setTimeout(function(){ powerDown();	},6000);
 		}
 	});
 	$doseButton.on('touchend mouseup touchcancel',function(e){
@@ -280,7 +279,8 @@ $(document).ready(function(){
 
 	$doseUpButton.on('tap',function(){
 		if(powered && !doseLockout) doseModeEnter('dose1');
-	});
+	
+		});
 
 	$readyButton.on('tap',function(){
 		if(powered){
@@ -365,8 +365,6 @@ function changeStatus(status){
 }
 
 function slideContext(){
-
-
 	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
 	if(isFullScreen){
 		//************* need to do a true check for case of toggled or not to get arrow orientation right
@@ -406,7 +404,7 @@ function resizeContext(size){
 
 function powerUp(){
 	changeDescription('Powering On...',true);
-	//make this pulsing conditional if the device is web... or just make it CSS animation so it doens't lag
+	//make this pulsing conditional if the device is web?
 	$powerButtonOff.fadeIn('fast',function(){powerButtonPulse($powerButtonOff);});
 	flashCounter = 0;
 	usingPhonegap ? playAudio(beeperPG) : $beeper.play();
@@ -430,11 +428,7 @@ function powerUp(){
 }
 
 function powerButtonPulse(button,pulsetime){
-	/*button.fadeTo(pulsetime,1);
-	pulseTimer = setInterval(function(){
-		button.fadeTo(pulsetime,.2);
-		setTimeout(function(){button.fadeTo(pulsetime,1);},pulsetime);
-	},pulsetime*2);*/
+	//done through CSS animation
 	button.addClass('powerButtonPulse');
 }
 
@@ -445,15 +439,19 @@ function powerDown(){
 	catch(e){};
 	$powerButtonOff.fadeOut(500);
 	powered = false;
-	turnOffLCD();
-	turnOffAllLED();
 	doseCount = 0;
 	clearInterval(flashTimer);
+	clearInterval(walkTimer);
 	clearInterval(walkPatternTimer);
+	try{
+		clearTimeout(doseTimer);
+	} catch(e){};
 	clearInterval(doseRepeatTimer);
 	clearInterval(beeperTimer);
 	clearInterval(redLEDFlash);
 	clearInterval(greenLEDFlash);
+	turnOffLCD();
+	turnOffAllLED();
 	doseStageNum = 0;
 	//changeStatus('Powered Off');
 	changeDescription('poweredoff');
@@ -519,7 +517,7 @@ function walkLCD(){
 		else
 			walkCounter = 0;
 	},200);
-	var walkTimer = setTimeout(function(){
+	walkTimer = setTimeout(function(){
 		clearInterval(walkPatternTimer);
 		setLCDNum(doseCount);
 	},3400);
@@ -545,10 +543,10 @@ function setDose(){
 	usingPhonegap ? playAudio(beeperLongPG) : $beeperLong.play();
 	flashGreenLED(400,800);
 	walkLCD();
-	var doseRepeatTimer = setInterval(function(){
+	doseRepeatTimer = setInterval(function(){
 		walkLCD();
 	},5600);
-	var doseTimer = setTimeout(function(){
+	doseTimer = setTimeout(function(){
 		clearInterval(doseRepeatTimer);
 		doseCount++;
 		setReadyMode();
