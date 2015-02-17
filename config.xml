@@ -36,9 +36,6 @@
             </array>
         </gap:config-file>
 
-        <!-- wkWebView for iOS8 -->
-        <gap:plugin name="com.telerik.plugins.wkwebview" version="0.1.2" />
-
         <!-- splash screen code -->
         <!-- Do not auto hide splash on iOS -->
         <preference name="AutoHideSplashScreen" value="false" />
