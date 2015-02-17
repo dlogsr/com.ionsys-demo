@@ -2,7 +2,7 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id="com.example.hello" 
-        version="1.0.0">
+        version="1.1.0">
         <name>IONSYS Demo Unit</name>
         <description>
             An application containing the web demo of IT101
@@ -35,6 +35,9 @@
                 <string>UIInterfaceOrientationLandscapeRight</string>
             </array>
         </gap:config-file>
+
+        <!-- wkWebView for iOS8 -->
+        <gap:plugin name="com.telerik.plugins.wkwebview" version="0.1.2" />
 
         <!-- splash screen code -->
         <!-- Do not auto hide splash on iOS -->
