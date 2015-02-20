@@ -37,11 +37,12 @@
         </gap:config-file>
 
         <!-- wkWebView for iOS8 -->
-        <gap:plugin name="com.telerik.plugins.wkwebview" version="0.2.5" />
+        <gap:plugin name="com.telerik.plugins.wkwebview" source="plugins.cordova.io" />
 
         <!-- splash screen code -->
         <!-- Do not auto hide splash on iOS -->
         <preference name="AutoHideSplashScreen" value="false" />
+        <preference name="ShowSplashScreenSpinner" value="false" />
         <!-- Do not auto hide splash on Android -->
         <preference name="SplashScreenDelay" value="10000"/>
         <gap:plugin name="org.apache.cordova.splashscreen" />
