@@ -19,7 +19,7 @@
         <preference name="exit-on-suspend" value="true" />
 
         <feature name="http://api.phonegap.com/1.0/media"/> 
-        <gap:plugin name="org.apache.cordova.media" />
+        <gap:plugin name="org.apache.cordova.media" source="plugins.cordova.io"/>
         <gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
         <gap:config-file platform="ios" parent="UIStatusBarHidden">
             <true/>
@@ -37,7 +37,7 @@
         </gap:config-file>
 
         <!-- wkWebView for iOS8 -->
-        <gap:plugin name="com.telerik.plugins.wkwebview" source="plugins.cordova.io" />
+        <gap:plugin name="com.telerik.plugins.wkwebview" source="plugins.cordova.io" version="0.3.5" />
 
         <!-- splash screen code -->
         <!-- Do not auto hide splash on iOS -->
