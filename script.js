@@ -11,6 +11,7 @@ var $EOUButton = $('#EOU');
 var $readyButton = $('#readyButton');
 var $deviceStatus = $('#deviceStatus');
 var $testSoundPG = $('#testSoundPG');
+var $testSound = $('#testSound');
 
 var $workingAssembly = $('.workingAssembly');
 var $packageAssembly = $('.packageAssembly');
@@ -254,19 +255,23 @@ $(document).ready(function(){
 		playAudio('beep.mp3');
 	})
 
+	$testSound.on('tap',function(){
+		$beeper.play();
+	})
+
 	$poorSkinButton.on('tap',function(){
-		if(powered) doseModeEnter('Poor Skin 1');
+		if(powered) doseModeEnter('psc1');
 	})
 
 	$EOUButton.on('tap',function(){
 		if(powered){
 			doseStageNum = 5;
-			doseModeEnter('EOU');
+			doseModeEnter('eou');
 		};
 	})
 
 	$EOLButton.on('tap',function(){
-		if(powered) doseModeEnter('EOL');
+		if(powered) doseModeEnter('eol');
 	})
 
 	$flashButton.on('tap',function(){
@@ -614,6 +619,7 @@ function doseModeEnter(stage){
 	}
 	else if(stage == 'psc1' || stage == 'psc2'){
 		setPoorskin();
+		console.log('entering poor skin');
 	}
 	else if(stage == 'eou'){
 		setEOU();
