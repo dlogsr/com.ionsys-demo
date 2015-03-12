@@ -116,9 +116,9 @@ function playAudio(url) {
 //run phonegap specific functions (this only fires in PhoneGap)
 document.addEventListener("deviceready", function(){
 	usingPhonegap = true;
-	if(parseInt(device.version) <= 8 ){
-		usingPhonegapAudio = true;
-	};
+	// if(parseInt(device.version) <= 8 ){
+	// 	usingPhonegapAudio = true;
+	// };
 	setTimeout(function(){
 		navigator.splashscreen.hide()
 		statusBar.hide();
