@@ -58,6 +58,7 @@ var beeperPG = document.getElementById('beeper').getAttribute('src');
 var beeperLongPG = document.getElementById('beeper-long').getAttribute('src');
 var buttonPressPG = document.getElementById('button-press').getAttribute('src');
 var usingPhonegap = false;
+var usingPhonegapAudio = false;
 var $phonegapBlack = $('.phonegapBlack');
 
 //arrays for the LCD display
