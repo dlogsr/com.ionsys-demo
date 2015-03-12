@@ -115,6 +115,9 @@ function playAudio(url) {
 //run phonegap specific functions (this only fires in PhoneGap)
 document.addEventListener("deviceready", function(){
 	usingPhonegap = true;
+	if(parseInt(device.version) <= 8 ){
+		usingPhonegapAudio = true;
+	};
 	setTimeout(function(){
 		navigator.splashscreen.hide()
 		statusBar.hide();
@@ -221,7 +224,7 @@ $(document).ready(function(){
 	$doseButton.on('touchstart mousedown',function(e){
 		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
-		usingPhonegap ? playAudio(buttonPressPG) : $buttonPress.play();
+		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
 		if(doseStageTemp[doseStageNum] == 'poweroff'){
 			poweroffTimer = setTimeout(function(){ powerDown();	},6000);
 		}
@@ -412,7 +415,7 @@ function powerUp(){
 	//make this pulsing conditional if the device is web?
 	$powerButtonOff.fadeIn('fast',function(){powerButtonPulse($powerButtonOff);});
 	flashCounter = 0;
-	usingPhonegap ? playAudio(beeperPG) : $beeper.play();
+	usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
@@ -545,7 +548,7 @@ function setDose(){
 	doseLockout = true;
 	turnOffLCD();
 	turnOffAllLED();
-	usingPhonegap ? playAudio(beeperLongPG) : $beeperLong.play();
+	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
 	flashGreenLED(400,800);
 	walkLCD();
 	doseRepeatTimer = setInterval(function(){
@@ -564,14 +567,14 @@ function setPoorskin(){
 	turnOffAllLED();
 	flashRedLED(400,800);
 	var beeperCounter = 0;
-	usingPhonegap ? playAudio(beeperLongPG) : $beeperLong.play();
+	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
 	setTimeout(function(){
-		usingPhonegap ? playAudio(beeperPG) : $beeper.play();
+		usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
 	},900);
 	beeperTimer = setInterval(function(){
-		usingPhonegap ? playAudio(beeperLongPG) : $beeperLong.play();
+		usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
 		setTimeout(function(){
-			usingPhonegap ? playAudio(beeperPG) : $beeper.play();
+			usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
 		},900);
 		if(beeperCounter >= 6){
 			clearInterval(beeperTimer);
@@ -598,7 +601,7 @@ function setEOL(){
 	beeperTimer = setInterval(function(){
 		setTimeout(function(){
 			if(beepCounter<=4){
-				usingPhonegap ? playAudio(beeperPG) : $beeper.play();
+				usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
 			}
 			else beepCounter = 0;
 		},150);
