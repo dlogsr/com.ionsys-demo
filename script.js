@@ -550,7 +550,7 @@ function setDose(){
 	turnOffLCD();
 	turnOffAllLED();
 	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
-	flashGreenLED(400,800);
+	flashGreenLED(250,500);
 	walkLCD();
 	doseRepeatTimer = setInterval(function(){
 		walkLCD();
@@ -566,7 +566,7 @@ function setDose(){
 function setPoorskin(){
 	doseLockout = true;
 	turnOffAllLED();
-	flashRedLED(400,800);
+	flashRedLED(250,500);
 	var beeperCounter = 0;
 	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
 	setTimeout(function(){
@@ -596,8 +596,8 @@ function setEOL(){
 	turnOffAllLED();
 	turnOffLCD();
 	setLCDNum(17);
-	flashLCD(17,100000);
-	flashRedLED(500,1000);
+	// flashLCD(17,100000);
+	flashRedLED(375,750);
 	var beepCounter = 0;
 	beeperTimer = setInterval(function(){
 		setTimeout(function(){
