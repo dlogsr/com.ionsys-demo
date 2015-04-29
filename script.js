@@ -9,6 +9,7 @@ var $poorSkinButton = $('#poorSkin');
 var $EOLButton = $('#EOL');
 var $EOUButton = $('#EOU');
 var $readyButton = $('#readyButton');
+var $infoButton = $('#infoToggle');
 var $deviceStatus = $('#deviceStatus');
 var $testSoundPG = $('#testSoundPG');
 var $testSound = $('#testSound');
@@ -276,6 +277,10 @@ $(document).ready(function(){
 
 	$EOLButton.on('tap',function(){
 		if(powered) doseModeEnter('eol');
+	})
+
+	$infoButton.on('tap',function(){
+		$('.infoPage').toggleClass('slideUp');
 	})
 
 	$flashButton.on('tap',function(){

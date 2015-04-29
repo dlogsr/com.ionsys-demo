@@ -17,6 +17,8 @@ body{
 	-moz-font-smoothing: subpixel-antialiased;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 	margin: 0;
+	color:white;
+
 }
 
 span {
@@ -206,7 +208,6 @@ img{
 
 .splash{
 	position:relative;
-	color:white;
 	background: url(bg-hospitalroom2.jpg);
 	background-size: auto 100%;
 	background-color:black;
@@ -606,12 +607,42 @@ button:active{
 	text-align:center;
 }
 
+
+section.infoPage{
+	-webkit-transition: all 0.4s ease-in;
+	position:fixed;
+	top:700px;
+	z-index:990;
+	width:100%;
+	background: rgba(0,0,0,.9);
+}
+
+section.infoPage.slideUp{
+	top:0;
+	bottom: auto;
+}
+
+.infoPage .infoPageContent{
+	max-width:640px;
+	font-size:1.2em;
+	font-weight:bolder;
+	text-shadow: 1px 1px 1px black;
+	margin:1em auto;
+}
+
+.infoPageContent header{
+	width:100%;
+	margin:auto;
+	text-align:center;
+}
+
 .controlBar{
 	position:fixed;
 	z-index:999;
 	bottom:0;
-	height: 70px;
+	height:50px;
 	width:100%;
+	text-align:center;
 	background: rgba(0,0,0,.85);
 }
 
@@ -632,15 +663,15 @@ button:active{
 		height:75px;
 	}
 
-	#ionsysLogo{
+	.ionsysLogo{
 		padding-bottom:1em;
 	}
 
-	#ionsysLogo img{
+	.ionsysLogo img{
 		width:auto;
 	}
 
-	#ionsysLogo h3{
+	.ionsysLogo h3{
 		display:block;
 	}
 

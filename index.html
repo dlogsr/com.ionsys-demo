@@ -19,7 +19,7 @@
 <div class="debugLog hidden">debug</div>
 
 <header class="pageHeader frontHeader">
-	<div id="headerLogoCircle">
+	<div id="headerLogoCircle hidden">
 	</div>
 </header>
 
@@ -32,13 +32,13 @@
 	</button>
 </header>
 
-<header class="pageHeader backHeader">
+<!-- <header class="pageHeader backHeader">
 	<div id="headerLogo">
 	</div>
-</header>
+</header> -->
 <section class="splash">
 	<div class="splashLimiter">
-		<header id="ionsysLogo">
+		<header class="ionsysLogo">
 			<img src="logo-ionsys-text.png">
 			<h3>demonstration app</h3>
 		</header>
@@ -162,9 +162,8 @@
 			<!-- <button id="powerButtonOff">Power Off</button> -->
 			<p></p>
 			<button id="doseUpButton" class="extraButtons hidden">Dose+</button>
-			<button id="poorSkin" class="extraButtons hidden">Poor Skin Contact</button>
-			<button id="EOU" class="extraButtons hidden">EOU</button>		
-			<button id="EOL" class="extraButtons hidden">EOL</button>
+			
+
 			<p></p>
 			<button id="flashButton" class="extraButtons hidden">Flash</button>
 			<button id="walkButton" class="extraButtons hidden">Walk</button>
@@ -177,12 +176,25 @@
 			<label for="doseNumber"  class="extraButtons hidden" >Set Dose #: </label>
 			<input type="number" name="doseNumber" id="doseNumber"  class="extraButtons hidden" min="0" max="99" value="0" ></input>
 		</div>
-		<div class="controlBar">
-			
-		</div>
 	</div>
 </section>
+<section class="infoPage">
+	<div class="infoPageContent">
+		<header class="ionsysLogo">
+			<img src="logo-ionsys-text.png">
+			<h3>information</h3>
+		</header>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis tincidunt turpis, at commodo nisi commodo id. In hac habitasse platea dictumst. Sed consequat lectus sed pulvinar ornare. Nam rhoncus magna non nisi posuere, non mollis tellus ornare. Aliquam venenatis ante et diam vestibulum rhoncus. Cras lectus risus, viverra ut varius cursus, vestibulum a leo. Proin et est sit amet ligula vehicula posuere ac id risus. Phasellus iaculis lacinia sollicitudin. Proin finibus lorem eget gravida ornare. Nulla quis sodales nulla, vel lobortis neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer ultrices at turpis vitae luctus. Sed semper quam vitae enim interdum, a ultrices ligula congue. Donec at condimentum dui. Sed sit amet diam fermentum, feugiat lectus quis, tincidunt augue. Nulla vel elit mauris.
 
+		Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus efficitur mi a dignissim blandit. Maecenas dictum arcu ac purus porttitor lobortis. Proin mollis est a arcu tempor lobortis at sed erat. Curabitur mauris ex, interdum et efficitur eget, tincidunt vitae justo. Suspendisse mollis mi id nisi iaculis, eget tempus ex maximus. Fusce massa purus, suscipit non ipsum eu, rhoncus scelerisque elit. Fusce quis molestie enim. Morbi nulla eros, vulputate non pharetra aliquam, fringilla at ante.
+	</div>
+</section>
+<div class="controlBar">
+	<button id="poorSkin" class="extraButtons">PSC</button>
+	<button id="EOU" class="extraButtons">80/24</button>		
+	<button id="EOL" class="extraButtons">ALERT</button>
+	<button id="infoToggle" class="extraButtons">( i )</button>	
+</div>
 <audio id="beeper" preload="auto" src="beep.mp3"></audio>
 <audio id="beeper-long" preload="auto" src="beep_long.mp3">	</audio>
 <audio id="button-press" preload="auto" src="buttonpress.mp3"></audio>
