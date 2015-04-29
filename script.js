@@ -525,11 +525,11 @@ function walkLCD(){
 			walkCounter++;
 		else
 			walkCounter = 0;
-	},200);
+	},240);
 	walkTimer = setTimeout(function(){
 		clearInterval(walkPatternTimer);
 		setLCDNum(doseCount);
-	},3400);
+	},4000);
 }
 
 function setReadyMode(){
@@ -554,13 +554,13 @@ function setDose(){
 	walkLCD();
 	doseRepeatTimer = setInterval(function(){
 		walkLCD();
-	},5600);
+	},6000);
 	doseTimer = setTimeout(function(){
 		clearInterval(doseRepeatTimer);
 		doseCount++;
 		setReadyMode();
 		$doseNumber.val(doseCount);
-	},20000)
+	},18000)
 }
 
 function setPoorskin(){

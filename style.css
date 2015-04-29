@@ -606,6 +606,15 @@ button:active{
 	text-align:center;
 }
 
+.controlBar{
+	position:fixed;
+	z-index:999;
+	bottom:0;
+	height: 70px;
+	width:100%;
+	background: rgba(0,0,0,.85);
+}
+
 @media only screen and (min-width: 900px){
 
 	.splashLimiter{
