@@ -17,6 +17,7 @@ body{
 	-moz-font-smoothing: subpixel-antialiased;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 	margin: 0;
+	background-color: black;
 	color:white;
 
 }
@@ -180,11 +181,11 @@ img{
 	background-color:rgba(0,0,0,.5);
 }
 
-#ionsysLogo img{
+.ionsysLogo img{
 	width:200px;
 }
 
-#ionsysLogo h3{
+.ionsysLogo h3{
 	display:none;
 }
 
@@ -618,6 +619,7 @@ section.infoPage{
 }
 
 section.infoPage.slideUp{
+	position:absolute;
 	top:0;
 	bottom: auto;
 }
@@ -628,22 +630,45 @@ section.infoPage.slideUp{
 	font-weight:bolder;
 	text-shadow: 1px 1px 1px black;
 	margin:1em auto;
+	padding: 0 1em;
 }
 
 .infoPageContent header{
 	width:100%;
-	margin:auto;
+	margin:0 auto 1em;
 	text-align:center;
+}
+
+.infoPageContent .infoPageTable{
+	padding:.5em;
+	width:100%;
+}
+
+.infoPageContent .infoPageTable th{
+	text-align:left;
+	font-size:1.1em;
+	text-shadow: 0px 1px 1px white;
+}
+
+.infoPageContent .infoPageTable td{
+	width: 50%;
 }
 
 .controlBar{
 	position:fixed;
 	z-index:999;
 	bottom:0;
-	height:50px;
+	height:4em;
 	width:100%;
 	text-align:center;
 	background: rgba(0,0,0,.85);
+}
+
+.controlBar button{
+	margin: .5em 1em;
+	width:2.5em;
+	height:2.5em;
+	border-radius:3em;
 }
 
 @media only screen and (min-width: 900px){
@@ -814,6 +839,27 @@ section.infoPage.slideUp{
 	.packageAssembly>div{
 		margin:0 41px;
 	}
+
+	.controlBar{
+		height:70px;
+		background: none;
+	}
+
+	.controlBar .controlButtonsContainer{
+		background-color: rgba(0,0,0,.5);
+		max-width: 350px;
+		margin: auto;
+		padding:.5em;
+		border-top-left-radius: 15px;
+	}
+
+	.controlBar button{
+		margin: 0 .8em;
+		width:2.5em;
+		height:2.5em;
+		border-radius:3em;
+	}
+
 
 }
 

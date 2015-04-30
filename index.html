@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <!-- add a local reference to this font for phonegap purposes: -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+<!-- <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'> -->
 <!-- <link rel="stylesheet" type="text/css" href="icons/flaticon.css">  -->
 <link href="css-reset.css" rel="stylesheet" type="text/css">
 <link href="style.css" rel="stylesheet" type="text/css">
@@ -184,16 +184,28 @@
 			<img src="logo-ionsys-text.png">
 			<h3>information</h3>
 		</header>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis tincidunt turpis, at commodo nisi commodo id. In hac habitasse platea dictumst. Sed consequat lectus sed pulvinar ornare. Nam rhoncus magna non nisi posuere, non mollis tellus ornare. Aliquam venenatis ante et diam vestibulum rhoncus. Cras lectus risus, viverra ut varius cursus, vestibulum a leo. Proin et est sit amet ligula vehicula posuere ac id risus. Phasellus iaculis lacinia sollicitudin. Proin finibus lorem eget gravida ornare. Nulla quis sodales nulla, vel lobortis neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer ultrices at turpis vitae luctus. Sed semper quam vitae enim interdum, a ultrices ligula congue. Donec at condimentum dui. Sed sit amet diam fermentum, feugiat lectus quis, tincidunt augue. Nulla vel elit mauris.
-
-		Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus efficitur mi a dignissim blandit. Maecenas dictum arcu ac purus porttitor lobortis. Proin mollis est a arcu tempor lobortis at sed erat. Curabitur mauris ex, interdum et efficitur eget, tincidunt vitae justo. Suspendisse mollis mi id nisi iaculis, eget tempus ex maximus. Fusce massa purus, suscipit non ipsum eu, rhoncus scelerisque elit. Fusce quis molestie enim. Morbi nulla eros, vulputate non pharetra aliquam, fringilla at ante.
+		<table class="infoPageTable">
+				<th colspan="2">
+					<h3>System Specifications</h3>
+				</th>
+			<tr>
+				<td>
+					Active Ingredient
+				</td>
+				<td>
+					Fentanyl HCl
+				</td>
+			</tr>
+		</table>
 	</div>
 </section>
 <div class="controlBar">
-	<button id="poorSkin" class="extraButtons">PSC</button>
-	<button id="EOU" class="extraButtons">80/24</button>		
-	<button id="EOL" class="extraButtons">ALERT</button>
-	<button id="infoToggle" class="extraButtons">( i )</button>	
+	<div class="controlButtonsContainer">
+		<button id="poorSkin" class="extraButtons">P</button>
+		<button id="EOU" class="extraButtons">80</button>		
+		<button id="EOL" class="extraButtons">A</button>
+		<button id="infoToggle" class="extraButtons">( i )</button>	
+	</div>
 </div>
 <audio id="beeper" preload="auto" src="beep.mp3"></audio>
 <audio id="beeper-long" preload="auto" src="beep_long.mp3">	</audio>

@@ -16,6 +16,7 @@ var $testSound = $('#testSound');
 
 var $workingAssembly = $('.workingAssembly');
 var $packageAssembly = $('.packageAssembly');
+var $infoPage = $('.infoPage');
 
 var $doseNumber = $('#doseNumber');
 var $display = $('.seven-segment');
