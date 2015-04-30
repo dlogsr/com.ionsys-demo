@@ -95,6 +95,11 @@ function adjustContentSpacing(currSection) {
 	$(currSection).css({'min-height':windowHeight});
 }
 
+function adjustContentOffset(currSection) {
+	var windowHeight = getWindowHeight();
+	currSection.css({'top':windowHeight});
+}
+
 //audio file play function for PhoneGap only (otherwise default to jQuery play())
 function playAudio(url) {
     // Play the audio file at url
@@ -177,6 +182,7 @@ $(document).ready(function(){
 	};
 
 	adjustContentSpacing('section');
+	adjustContentOffset($infoPage);
 	$powerButtonOff.hide();
 	//phonegap splashscreen hide;
 	// navigator.splashscreen.hide()

@@ -16,7 +16,7 @@ body{
 	-webkit-font-smoothing: subpixel-antialiased;
 	-moz-font-smoothing: subpixel-antialiased;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-	margin: 0;
+	margin: 0 0 2.5em 0;
 	background-color: black;
 	color:white;
 
@@ -28,12 +28,8 @@ span {
 
 @font-face {
     font-family: 'Raleway';
-    src: url('raleway-webfont.eot');
-    src: url('raleway-webfont.eot?#iefix') format('embedded-opentype'),
-         url('raleway-webfont.woff') format('woff'),
-         url('raleway-webfont.ttf') format('truetype'),
-         url('raleway-webfont.svg#ralewaythin') format('svg');
-    font-weight: bold;
+    src: url('Raleway-Light.ttf') format('truetype');
+    font-weight: normal;
     font-style: normal;
 
 }
@@ -615,17 +611,17 @@ section.infoPage{
 	top:700px;
 	z-index:990;
 	width:100%;
+	padding-bottom:4em;
 	background: rgba(0,0,0,.9);
 }
 
 section.infoPage.slideUp{
 	position:absolute;
-	top:0;
+	top:0 !important;
 	bottom: auto;
 }
 
 .infoPage .infoPageContent{
-	max-width:640px;
 	font-size:1.2em;
 	font-weight:bolder;
 	text-shadow: 1px 1px 1px black;
@@ -642,6 +638,7 @@ section.infoPage.slideUp{
 .infoPageContent .infoPageTable{
 	padding:.5em;
 	width:100%;
+	margin-bottom:1em;
 }
 
 .infoPageContent .infoPageTable th{
@@ -652,6 +649,17 @@ section.infoPage.slideUp{
 
 .infoPageContent .infoPageTable td{
 	width: 50%;
+	padding:.25em .5em;
+}
+
+.infoPageContent .infoPageTable td li, .infoPageContent .infoPageTable td li li{
+	margin-left:1em;
+	padding-top:.2em;
+}
+
+.infoPageTable.infoColumn{
+	margin-bottom:0;
+	min-width:240px;
 }
 
 .controlBar{
@@ -686,6 +694,10 @@ section.infoPage.slideUp{
 }
 
 @media only screen and (min-width: 900px){
+
+	body{
+		margin:0;
+	}
 
 	.splashLimiter{
 		max-width:900px;
@@ -881,6 +893,23 @@ section.infoPage.slideUp{
 		height:2.5em;
 		border-radius:3em;
 	}
+
+	section.infoPage{
+		padding-bottom: 4.5em;
+	}
+
+	.infoPage .infoPageContent{
+		max-width:720px;
+	}
+
+	.infoPageContent .infoPageTable td{
+		padding:.1em .5em;
+	}	
+
+	.infoColumn{
+		max-width:360px;
+	}
+
 
 
 }
