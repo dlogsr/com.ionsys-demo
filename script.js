@@ -287,7 +287,8 @@ $(document).ready(function(){
 		if(powered) doseModeEnter('eol');
 	})
 
-	$infoButton.on('touchend mouseup',function(){
+	$infoButton.on('tap',function(e){
+		e.preventDefault();
 		$infoPage.toggleClass('slideUp').add($controlBlocker.toggleClass('blockOn'));
 	})
 
