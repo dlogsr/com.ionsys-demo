@@ -121,6 +121,12 @@ function playAudio(url) {
     setTimeout(function(){my_media.release();},1000)
 }
 
+function scrollAndStop(marker,offset){
+	var scrollOffset;
+	scrollOffset = $(marker).offset().top - offset;
+	$('html,body').stop().animate({scrollTop : scrollOffset},400);
+}
+
 //run phonegap specific functions (this only fires in PhoneGap)
 document.addEventListener("deviceready", function(){
 	usingPhonegap = true;
@@ -272,24 +278,28 @@ $(document).ready(function(){
 		$beeper.play();
 	})
 
-	$poorSkinButton.on('tap',function(){
+	$poorSkinButton.on('tap',function(e){
+		e.preventDefault();
 		if(powered) doseModeEnter('psc1');
 	})
 
-	$EOUButton.on('tap',function(){
+	$EOUButton.on('tap',function(e){
+		e.preventDefault();
 		if(powered){
 			doseStageNum = 5;
 			doseModeEnter('eou');
 		};
 	})
 
-	$EOLButton.on('tap',function(){
+	$EOLButton.on('tap',function(e){
+		e.preventDefault();
 		if(powered) doseModeEnter('eol');
 	})
 
 	$infoButton.on('tap',function(e){
 		e.preventDefault();
 		$infoPage.toggleClass('slideUp').add($controlBlocker.toggleClass('blockOn'));
+		scrollAndStop('body',0);
 	})
 
 	$flashButton.on('tap',function(){

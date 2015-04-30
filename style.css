@@ -17,6 +17,7 @@ body{
 	-moz-font-smoothing: subpixel-antialiased;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 	margin: 0 0 2.5em 0;
+	padding-bottom: 4em;
 	background-color: black;
 	color:white;
 
@@ -697,6 +698,7 @@ section.infoPage.slideUp{
 
 	body{
 		margin:0;
+		padding-bottom:0;
 	}
 
 	.splashLimiter{
@@ -867,12 +869,11 @@ section.infoPage.slideUp{
 	}
 
 	.controlBar{
-		height:70px;
 		background: none;;
 	}
 
 	.controlBar .controlButtonsContainer{
-		background-color: rgba(0,0,0,.5);
+		background-color: rgba(0,0,0,.8);
 		max-width: 350px;
 		margin: auto;
 		padding:.5em;
