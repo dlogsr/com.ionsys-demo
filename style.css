@@ -664,6 +664,20 @@ section.infoPage.slideUp{
 	background: rgba(0,0,0,.85);
 }
 
+.controlBar .controlButtonsBlocker{
+	-webkit-transition: bottom 0.4s ease-in;
+	position:fixed;
+	width:70%;
+	height:4em;
+	bottom:-4em;
+	z-index:999;
+	background-color: rgba(0,0,0,.7);
+}
+
+.controlBar .controlButtonsBlocker.blockOn{
+	bottom:0;
+}
+
 .controlBar button{
 	margin: .5em 1em;
 	width:2.5em;
@@ -842,7 +856,7 @@ section.infoPage.slideUp{
 
 	.controlBar{
 		height:70px;
-		background: none;
+		background: none;;
 	}
 
 	.controlBar .controlButtonsContainer{
@@ -851,6 +865,14 @@ section.infoPage.slideUp{
 		margin: auto;
 		padding:.5em;
 		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+	}
+
+	.controlBar .controlButtonsBlocker{
+		background-color: rgba(0,0,0,.7);
+		max-width: 265px;
+		margin: auto;
+		padding:.5em;	
 	}
 
 	.controlBar button{

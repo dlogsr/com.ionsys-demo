@@ -17,6 +17,7 @@ var $testSound = $('#testSound');
 var $workingAssembly = $('.workingAssembly');
 var $packageAssembly = $('.packageAssembly');
 var $infoPage = $('.infoPage');
+var $controlBlocker = $('.controlButtonsBlocker')
 
 var $doseNumber = $('#doseNumber');
 var $display = $('.seven-segment');
@@ -281,7 +282,7 @@ $(document).ready(function(){
 	})
 
 	$infoButton.on('tap',function(){
-		$('.infoPage').toggleClass('slideUp');
+		$infoPage.toggleClass('slideUp').add($controlBlocker.toggleClass('blockOn'));
 	})
 
 	$flashButton.on('tap',function(){
