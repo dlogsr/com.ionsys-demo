@@ -17,7 +17,8 @@ var $testSound = $('#testSound');
 var $workingAssembly = $('.workingAssembly');
 var $packageAssembly = $('.packageAssembly');
 var $infoPage = $('.infoPage');
-var $controlBlocker = $('.controlButtonsBlocker')
+var $controlBlocker = $('.controlButtonsBlocker');
+var $controlButtonBlocker = $('.controlButtonBlocker');
 
 var $doseNumber = $('#doseNumber');
 var $display = $('.seven-segment');
@@ -252,8 +253,9 @@ $(document).ready(function(){
 		},25);
 		if(doseStageTemp[doseStageNum] == 'poweroff') clearTimeout(poweroffTimer);
 		if(powered && !doseLockout){
-			if (doseButtonFirstPress){
-				doseModeEnter(doseStageTemp[doseStageNum]);
+			if (doseButtonFirstPress && (doseStageTemp[doseStageNum] == 'dose1' || doseStageTemp[doseStageNum] == 'ready')){
+				// doseModeEnter(doseStageTemp[doseStageNum]);
+				doseModeEnter('dose1');
 				doseButtonFirstPress = false;
 			}
 			else{
@@ -298,7 +300,10 @@ $(document).ready(function(){
 
 	$infoButton.on('tap',function(e){
 		e.preventDefault();
-		$infoPage.toggleClass('slideUp').add($controlBlocker.toggleClass('blockOn'));
+		$infoPage.toggleClass('slideUp');//.add($controlBlocker.toggleClass('blockOn'));
+		toggleButton('poorSkin');
+		toggleButton('EOU');
+		toggleButton('EOL');
 		scrollAndStop('body',0);
 	})
 
@@ -493,6 +498,7 @@ function powerDown(){
 function flashLCD(number,limit){
 	flashCounter = 0;
 	turnOffLCD();
+	clearInterval(flashTimer);
 	flashTimer = setInterval(function(){
 		if(flashCounter < limit){
 			segmentToggle(digits[Math.floor(number/10)],'tens');
@@ -590,6 +596,10 @@ function setDose(){
 function setPoorskin(){
 	doseLockout = true;
 	turnOffAllLED();
+	turnOffLCD();
+	setLCDNum(doseCount);
+	clearInterval(doseTimer);
+	clearWalkTimer();
 	flashRedLED(250,500);
 	var beeperCounter = 0;
 	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
@@ -611,6 +621,7 @@ function setPoorskin(){
 
 function setEOU(){
 	turnOffAllLED();
+	clearWalkTimer();
 	turnOffLCD();
 	setLCDNum(80);
 	flashLCD(80,100000);
@@ -618,6 +629,7 @@ function setEOU(){
 
 function setEOL(){
 	turnOffAllLED();
+	clearWalkTimer();
 	turnOffLCD();
 	setLCDNum(17);
 	// flashLCD(17,100000);
@@ -637,7 +649,7 @@ function setEOL(){
 function doseModeEnter(stage){
 	//changeStatus('Mode: '+stage);
 	if(stage != 'poweroff'){
-		doseStageNum++;
+		// doseStageNum++;
 		changeDescription(stage);
 	};
 	if(stage == 'ready'){
@@ -684,6 +696,30 @@ function flashRedLED(ontime,offtime){
 			},ontime);
 		},offtime);
 	}
+}
+
+function disableButton(buttonID){
+	console.log('disabling ' + buttonID);
+	if(!$('#'+buttonID)[0].disabled){ $('#'+buttonID)[0].disabled = true};
+}
+
+function enableButton(buttonID){
+	if($('#'+buttonID)[0].disabled) $('#'+buttonID)[0].disabled = false;
+}
+
+function toggleButton(buttonID){
+	if($('#'+buttonID)[0].disabled) enableButton(buttonID);
+	else disableButton(buttonID);
+}
+
+function enableAllButtons(){
+	$('button')[0].disabled = false;
+}
+
+function clearWalkTimer(){
+	clearInterval(doseRepeatTimer);
+	clearInterval(walkTimer);
+	clearInterval(walkPatternTimer);
 }
 
 
