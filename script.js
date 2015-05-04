@@ -309,11 +309,11 @@ $(document).ready(function(){
 	$infoButton.on('tap',function(e){
 		e.preventDefault();
 		$infoPage.toggleClass('slideUp');
-		buttonFadeTimeout = setTimeout(function(){
-			toggleButton('poorSkin');
-			toggleButton('EOU');
-			toggleButton('EOL');
-		},400)
+		// buttonFadeTimeout = setTimeout(function(){
+		// 	toggleButton('poorSkin');
+		// 	toggleButton('EOU');
+		// 	toggleButton('EOL');
+		// },400)
 		scrollAndStop('body',0);
 	})
 
@@ -480,11 +480,11 @@ function buttonPulse(button){
 	button.addClass('buttonPulse');
 }
 
+function removePulse(button){
+	button.removeClass('buttonPulse');
+}
+
 function powerDown(){
-	try{
-		clearInterval(pulseTimer);
-	}
-	catch(e){};
 	$powerButtonOff.fadeOut(500);
 	powered = false;
 	doseCount = 0;
@@ -498,6 +498,12 @@ function powerDown(){
 	turnOffAllLED();
 	setButtons(false,false,false)
 	doseStageNum = 0;
+	eolLockout = false;
+	eouLockout = false;
+	pscLockout = false;
+	removePulse($poorSkinButton);
+	removePulse($EOUButton);
+	removePulse($EOLButton);
 	//changeStatus('Powered Off');
 	changeDescription('poweredoff');
 }
@@ -578,6 +584,7 @@ function setReadyMode(){
 	console.log('entering ready mode');
 	doseStageNum = 0;
 	setButtons(false,true,true);
+	removePulse($poorSkinButton);
 	// $('.contextContent p').removeClass('enable');
 	// $('.contextContent .statusReady').addClass('enable');
 	changeDescription('ready');
