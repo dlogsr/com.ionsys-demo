@@ -237,7 +237,7 @@ img{
 }
 
 .container h4{
-	padding:1em;
+	padding:1em .5em;
 }
 .container p{
 	text-align:justify;
@@ -447,7 +447,7 @@ img{
 	background-color:rgba(200,200,200,0.5);
 }*/
 
-.powerButtonPulse{
+.buttonPulse{
 	-webkit-animation: pulse 4s infinite ease-in;
 	animation: pulse 4s infinite ease-in;
 }
@@ -615,7 +615,7 @@ button:active{
 section.infoPage{
 	-webkit-transition: all 0.4s ease-in;
 	position:fixed;
-	top:700px;
+	/*top:700px;*/
 	z-index:990;
 	width:100%;
 	padding-bottom:4em;
@@ -677,20 +677,6 @@ section.infoPage.slideUp{
 	width:100%;
 	text-align:center;
 	background: rgba(0,0,0,.85);
-}
-
-.controlBar .controlButtonsBlocker{
-	-webkit-transition: bottom 0.4s ease-in;
-	position:fixed;
-	width:70%;
-	height:4em;
-	bottom:-4em;
-	z-index:999;
-	background-color: rgba(0,0,0,.7);
-}
-
-.controlBar .controlButtonsBlocker.blockOn{
-	bottom:0;
 }
 
 .controlBar button{
@@ -773,7 +759,6 @@ section.infoPage.slideUp{
 
 	.container h4{
 		font-size:1.5em;
-		padding: 1em;
 	}
 
 	.container header{

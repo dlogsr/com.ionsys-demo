@@ -34,6 +34,9 @@ var on = 'on';
 var off = 'off';
 var doseButtonFirstPress = false;
 var doseLockout = true;
+var pscLockout = false;
+var eolLockout = false;
+var eouLockout = false;
 var doseCount = 0;
 var greenLEDFlash, redLEDFlash;
 var beeperTimer, flashTimer, timer, doseRepeatTimer, walkTimer, walkPatternTimer, doseTimer, doseRepeatTimer;
@@ -98,7 +101,7 @@ function adjustContentSpacing(currSection) {
 
 function adjustContentOffset(currSection) {
 	var windowHeight = getWindowHeight();
-	currSection.css({'top':windowHeight});
+	currSection.css({'top':windowHeight+100});
 }
 
 //audio file play function for PhoneGap only (otherwise default to jQuery play())
@@ -242,8 +245,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
 		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
-		if(doseStageTemp[doseStageNum] == 'poweroff'){
-			poweroffTimer = setTimeout(function(){ powerDown();	},6000);
+		if(doseStageTemp[doseStageNum] == 'eol'){
+			poweroffTimer = setTimeout(function(){ powerDown();	},3000);
 		}
 	});
 	$doseButton.on('touchend mouseup touchcancel',function(e){
@@ -251,10 +254,11 @@ $(document).ready(function(){
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
-		if(doseStageTemp[doseStageNum] == 'poweroff') clearTimeout(poweroffTimer);
+		if(doseStageTemp[doseStageNum] == 'eol') clearTimeout(poweroffTimer);
 		if(powered && !doseLockout){
 			if (doseButtonFirstPress && (doseStageTemp[doseStageNum] == 'dose1' || doseStageTemp[doseStageNum] == 'ready')){
 				// doseModeEnter(doseStageTemp[doseStageNum]);
+				doseStageNum = 1;
 				doseModeEnter('dose1');
 				doseButtonFirstPress = false;
 			}
@@ -268,21 +272,24 @@ $(document).ready(function(){
 	//******** TEST BUTTON FUNCTIONS IN SECRET MENU *********//
 
 	//enable secret menu
-	$logoCircle.on('tap',function(){
-		$extraButtons.toggleClass('hidden');
-	});
+	// $logoCircle.on('tap',function(){
+	// 	$extraButtons.toggleClass('hidden');
+	// });
 
-	$testSoundPG.on('tap',function(){
-		playAudio('beep.mp3');
-	})
+	// $testSoundPG.on('tap',function(){
+	// 	playAudio('beep.mp3');
+	// })
 
-	$testSound.on('tap',function(){
-		$beeper.play();
-	})
+	// $testSound.on('tap',function(){
+	// 	$beeper.play();
+	// })
 
 	$poorSkinButton.on('tap',function(e){
 		e.preventDefault();
-		if(powered) doseModeEnter('psc1');
+		if(powered){
+			doseStageNum = 3;
+			doseModeEnter('psc1');
+		}
 	})
 
 	$EOUButton.on('tap',function(e){
@@ -295,40 +302,43 @@ $(document).ready(function(){
 
 	$EOLButton.on('tap',function(e){
 		e.preventDefault();
+		doseStageNum = 6;
 		if(powered) doseModeEnter('eol');
 	})
 
 	$infoButton.on('tap',function(e){
 		e.preventDefault();
-		$infoPage.toggleClass('slideUp');//.add($controlBlocker.toggleClass('blockOn'));
-		toggleButton('poorSkin');
-		toggleButton('EOU');
-		toggleButton('EOL');
+		$infoPage.toggleClass('slideUp');
+		buttonFadeTimeout = setTimeout(function(){
+			toggleButton('poorSkin');
+			toggleButton('EOU');
+			toggleButton('EOL');
+		},400)
 		scrollAndStop('body',0);
 	})
 
-	$flashButton.on('tap',function(){
-		if(powered) flashLCD(88,9);
-	});
+	// $flashButton.on('tap',function(){
+	// 	if(powered) flashLCD(88,9);
+	// });
 
-	$walkButton.on('tap',function(){
-		if(powered) walkLCD();
-	});
+	// $walkButton.on('tap',function(){
+	// 	if(powered) walkLCD();
+	// });
 
-	$doseUpButton.on('tap',function(){
-		if(powered && !doseLockout) doseModeEnter('dose1');
+	// $doseUpButton.on('tap',function(){
+	// 	if(powered && !doseLockout) doseModeEnter('dose1');
 	
-		});
+	// 	});
 
-	$readyButton.on('tap',function(){
-		if(powered){
-			setReadyMode();
-		};
-	});
+	// $readyButton.on('tap',function(){
+	// 	if(powered){
+	// 		setReadyMode();
+	// 	};
+	// });
 
-	$('#modeDoseButton').on('tap',function(){
-		changeDescription('dose1');
-	});
+	// $('#modeDoseButton').on('tap',function(){
+	// 	changeDescription('dose1');
+	// });
 
 	$doseNumber.change(function(){
 		var number = parseInt($doseNumber.val(),10);
@@ -443,7 +453,7 @@ function resizeContext(size){
 function powerUp(){
 	changeDescription('Powering On...',true);
 	//make this pulsing conditional if the device is web?
-	$powerButtonOff.fadeIn('fast',function(){powerButtonPulse($powerButtonOff);});
+	$powerButtonOff.fadeIn('fast',function(){buttonPulse($powerButtonOff);});
 	flashCounter = 0;
 	usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
 	redLEDFlash = setTimeout(function(){
@@ -465,9 +475,9 @@ function powerUp(){
 	},4000);
 }
 
-function powerButtonPulse(button,pulsetime){
+function buttonPulse(button){
 	//done through CSS animation
-	button.addClass('powerButtonPulse');
+	button.addClass('buttonPulse');
 }
 
 function powerDown(){
@@ -479,17 +489,14 @@ function powerDown(){
 	powered = false;
 	doseCount = 0;
 	clearInterval(flashTimer);
-	clearInterval(walkTimer);
-	clearInterval(walkPatternTimer);
 	try{
 		clearTimeout(doseTimer);
 	} catch(e){};
-	clearInterval(doseRepeatTimer);
 	clearInterval(beeperTimer);
-	clearInterval(redLEDFlash);
-	clearInterval(greenLEDFlash);
+	clearWalkTimer();
 	turnOffLCD();
 	turnOffAllLED();
+	setButtons(false,false,false)
 	doseStageNum = 0;
 	//changeStatus('Powered Off');
 	changeDescription('poweredoff');
@@ -567,8 +574,13 @@ function setReadyMode(){
 	flashGreenLED(500,3000);
 	setLCDNum(doseCount);
 	doseLockout = false;
-	$('.contextContent #modeCaption p').removeClass('enable');
-	$('.contextContent #modeCaption .statusReady').addClass('enable');
+	pscLockout = false;
+	console.log('entering ready mode');
+	doseStageNum = 0;
+	setButtons(false,true,true);
+	// $('.contextContent p').removeClass('enable');
+	// $('.contextContent .statusReady').addClass('enable');
+	changeDescription('ready');
 	clearInterval(flashTimer);
 	clearInterval(walkPatternTimer);
 	clearInterval(doseRepeatTimer);
@@ -577,8 +589,10 @@ function setReadyMode(){
 
 function setDose(){
 	doseLockout = true;
+	changeDescription('dose1');
 	turnOffLCD();
 	turnOffAllLED();
+	setButtons(true,false,true);
 	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
 	flashGreenLED(250,500);
 	walkLCD();
@@ -588,49 +602,67 @@ function setDose(){
 	doseTimer = setTimeout(function(){
 		clearInterval(doseRepeatTimer);
 		doseCount++;
-		setReadyMode();
 		$doseNumber.val(doseCount);
+		if(doseCount == 80){
+			setReadyMode();
+			setTimeout(doseModeEnter('eou'),10);
+		}
+		else setReadyMode();
 	},18000)
 }
 
 function setPoorskin(){
-	doseLockout = true;
-	turnOffAllLED();
-	turnOffLCD();
-	setLCDNum(doseCount);
-	clearInterval(doseTimer);
-	clearWalkTimer();
-	flashRedLED(250,500);
-	var beeperCounter = 0;
-	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
-	setTimeout(function(){
-		usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
-	},900);
-	beeperTimer = setInterval(function(){
+	if(doseLockout){
+		pscLockout = true;
+		changeDescription('psc1');
+		turnOffAllLED();
+		turnOffLCD();
+		setButtons(true,false,false);
+		buttonPulse($poorSkinButton);
+		setLCDNum(doseCount);
+		clearInterval(doseTimer);
+		clearWalkTimer();
+		flashRedLED(250,500);
+		var beeperCounter = 0;
 		usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
 		setTimeout(function(){
 			usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
 		},900);
-		if(beeperCounter >= 6){
-			clearInterval(beeperTimer);
-			setTimeout(function(){ setReadyMode() }, 1000);
-		}
-		else beeperCounter++;
-	},2400);
+		beeperTimer = setInterval(function(){
+			usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
+			setTimeout(function(){
+				usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
+			},900);
+			if(beeperCounter >= 6){
+				clearInterval(beeperTimer);
+				setTimeout(function(){ setReadyMode() }, 1000);
+			}
+			else beeperCounter++;
+		},2400);
+	}
 }
 
 function setEOU(){
+	eouLockout = true;
+	changeDescription('eou');
 	turnOffAllLED();
 	clearWalkTimer();
 	turnOffLCD();
+	setButtons(false, true, true);
+	buttonPulse($EOUButton);
 	setLCDNum(80);
 	flashLCD(80,100000);
 }
 
 function setEOL(){
+	eolLockout = true;
+	changeDescription('eol');
 	turnOffAllLED();
 	clearWalkTimer();
+	endDoseEarly();
 	turnOffLCD();
+	setButtons(false,false,true);
+	buttonPulse($EOLButton);
 	setLCDNum(17);
 	// flashLCD(17,100000);
 	flashRedLED(375,750);
@@ -650,24 +682,29 @@ function doseModeEnter(stage){
 	//changeStatus('Mode: '+stage);
 	if(stage != 'poweroff'){
 		// doseStageNum++;
-		changeDescription(stage);
+		// changeDescription(stage);
 	};
 	if(stage == 'ready'){
+		setReadyMode();
+		// changeDescription(stage);
 	}
-	else if(stage == 'dose1' || stage == 'dose2' || stage == 'normal'){
+	else if((stage == 'dose1' || stage == 'dose2') && !eolLockout){
 		setDose();
+		// changeDescription(stage);
 	}
-	else if(stage == 'psc1' || stage == 'psc2'){
+	else if((stage == 'psc1' || stage == 'psc2') && !eolLockout && !pscLockout){
 		setPoorskin();
-		console.log('entering poor skin');
+		// changeDescription(stage);
 	}
-	else if(stage == 'eou'){
+	else if(stage == 'eou' && !doseLockout && !eouLockout){
 		setEOU();
+		// changeDescription(stage);
 	}
-	else if(stage == 'eol'){
+	else if(stage == 'eol' && !eolLockout){
 		clearInterval(beeperTimer);
 		clearInterval(flashTimer);
-		setReadyMode();
+		// setReadyMode();
+		// changeDescription(stage);
 		setEOL();
 	}
 	else if (stage =='poweroff'){
@@ -707,9 +744,20 @@ function enableButton(buttonID){
 	if($('#'+buttonID)[0].disabled) $('#'+buttonID)[0].disabled = false;
 }
 
-function toggleButton(buttonID){
-	if($('#'+buttonID)[0].disabled) enableButton(buttonID);
-	else disableButton(buttonID);
+function toggleButton(buttonID,explicit){
+	if(typeof explicit !== 'undefined') {
+		explicit ? enableButton(buttonID) : disableButton(buttonID);
+	}
+	else{
+		if($('#'+buttonID)[0].disabled) enableButton(buttonID);
+		else disableButton(buttonID);
+	}
+}
+
+function setButtons(psc,eou,eol){
+	toggleButton('poorSkin',psc);
+	toggleButton('EOU',eou);
+	toggleButton('EOL',eol);
 }
 
 function enableAllButtons(){
@@ -722,6 +770,10 @@ function clearWalkTimer(){
 	clearInterval(walkPatternTimer);
 }
 
+function endDoseEarly(){
+	clearTimeout(doseTimer);
+	clearInterval(doseRepeatTimer);
+}
 
 function turnOffAllLED(){
 	clearInterval(greenLEDFlash);

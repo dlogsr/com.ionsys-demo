@@ -93,10 +93,10 @@
 						<h2 id="deviceStatus">
 							<p class="statusDefault enable">Powered Off</p>
 							<p class="statusReady">Ready Mode</p>
-							<p class="statusDose1">Dose #1</p>
-							<p class="statusDose2">Dose #2</p>
-							<p class="statusPsc1">Poor Contact #1</p>
-							<p class="statusPsc2">Poor Contact #2</p>
+							<p class="statusDose1">Dose</p>
+							<p class="statusDose2">Dose</p>
+							<p class="statusPsc1">Poor Skin Contact</p>
+							<p class="statusPsc2">Poor Skin CContact</p>
 							<p class="statusEou">EOU</p>
 							<p class="statusEol">EOL</p>
 							<p class="statusPoweron">Powering On</p>
@@ -111,8 +111,8 @@
 							<p class="statusReady">Standby, Ready.</p>
 							<p class="statusDose1">Administering Dose...</p>
 							<p class="statusDose2">Administering Dose...</p>
-							<p class="statusPsc1">Poor Skin Contact, no dose being delivered...</p>
-							<p class="statusPsc2">Poor Skin Contact, no dose being delivered...</p>
+							<p class="statusPsc1">NO dose being delivered</p>
+							<p class="statusPsc2">NO dose being delivered</p>
 							<p class="statusEou">Currently in End of Use mode...</p>
 							<p class="statusEol">Currently in End of Life mode...</p>
 							<p class="statusPoweron">Powering On</p>
@@ -173,8 +173,8 @@
 			<p></p> 
 			<button id="modeDoseButton" class="extraButtons hidden">Dose 1 Mode</button>
 			<p></p> 
-			<label for="doseNumber"  class="extraButtons hidden" >Set Dose #: </label>
-			<input type="number" name="doseNumber" id="doseNumber"  class="extraButtons hidden" min="0" max="99" value="0" ></input>
+			<label for="doseNumber"  class="extraButtons" >Set Dose #: </label>
+			<input type="number" name="doseNumber" id="doseNumber"  class="extraButtons" min="0" max="99" value="0" ></input>
 		</div>
 	</div>
 </section>
@@ -315,9 +315,9 @@
 </section>
 <div class="controlBar">
 	<div class="controlButtonsContainer">
-		<button id="poorSkin" class="extraButtons">P</button>
-		<button id="EOU" class="extraButtons">80</button>		
-		<button id="EOL" class="extraButtons">A</button>
+		<button id="poorSkin" class="extraButtons" disabled>P</button>
+		<button id="EOU" class="extraButtons" disabled>80</button>		
+		<button id="EOL" class="extraButtons" disabled>A</button>
 		<button id="infoToggle" class="extraButtons">( i )</button>	
 	</div>
 <!-- 	<div class="controlButtonsBlocker">
