@@ -16,6 +16,9 @@ var $testSound = $('#testSound');
 
 var $workingAssembly = $('.workingAssembly');
 var $packageAssembly = $('.packageAssembly');
+var $topAssy = $('.topAssy');
+var snappedIn = false;
+
 var $infoPage = $('.infoPage');
 var $controlBlocker = $('.controlButtonsBlocker');
 var $controlButtonBlocker = $('.controlButtonBlocker');
@@ -147,7 +150,7 @@ document.addEventListener("deviceready", function(){
 	},1000);
 }, false);
 
-$('.topAssy').draggable({/*axis:"x",*/ 
+$topAssy.draggable({/*axis:"x",*/ 
 	 snap: ".bottomAssySnapPoint",
 	 snapTolerance: 30,
 	 snapMode: 'inner',
@@ -165,6 +168,9 @@ $('.topAssy').draggable({/*axis:"x",*/
         if(result == 'bottomAssySnapPoint')
         {
         	$packageAssembly.addClass('hidden');
+        	var leftOffset = $topAssy.css('left');
+        	$topAssy.removeAttr('style');
+        	$topAssy.css({'left':leftOffset});
         	setTimeout(function(){
         		$workingAssembly.removeClass('hidden');
         		$('.context').removeClass('invisible');
@@ -172,6 +178,7 @@ $('.topAssy').draggable({/*axis:"x",*/
         	setTimeout(function(){
         		slideContext();
         	},200);
+        	snappedIn = true;
         	if(!powered){
 				powerUp();
 			};
@@ -229,7 +236,7 @@ $(document).ready(function(){
 
 	//power on/off functions
 	$powerButton.on('tap',function(){
-		if(!powered){
+		if(!powered && snappedIn){
 			powerUp();
 		};
 	});
@@ -507,6 +514,20 @@ function powerDown(){
 	removePulse($EOLButton);
 	//changeStatus('Powered Off');
 	changeDescription('poweredoff');
+	slideContext();
+	setTimeout(function(){
+		$workingAssembly.addClass('hidden');
+		$('.context').addClass('invisible');	
+	},450);
+	setTimeout(function(){	
+		$packageAssembly.removeClass('hidden');
+	},1000);
+	setTimeout(function(){
+		$topAssy.addClass('reset');
+		setTimeout(function(){$topAssy.removeClass('reset');},450);
+		$topAssy.removeAttr('style');
+		snappedIn = false;
+	},1200);
 }
 
 function flashLCD(number,limit){
