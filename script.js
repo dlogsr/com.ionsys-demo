@@ -87,7 +87,7 @@ var walkpattern = [['ones','a'],['ones','b'],['ones','c'],['ones','d'],['tens','
 
 //order of modes for demo unit (HCP functionality)
 //var doseStage = ['Dose 1','Dose 2','Poor Skin 1','Poor Skin 2','EOU','EOL','Power Off'];
-var doseStageTemp = ['ready', 'dose1','dose2','psc1','psc2','eou','eol','poweroff','poweredoff'];
+var doseStageTemp = ['ready', 'dose1','dose2','psc1','psc2','eou','eol','poweroff','poweredoff','poweron'];
 var doseStageNum = 0;
 
 function getWindowHeight(){
@@ -451,7 +451,8 @@ function resizeContext(size){
 }
 
 function powerUp(){
-	changeDescription('Powering On...',true);
+	// changeDescription('Powering On...',true);
+	changeDescription('poweron');
 	//make this pulsing conditional if the device is web?
 	$powerButtonOff.fadeIn('fast',function(){buttonPulse($powerButtonOff);});
 	flashCounter = 0;
@@ -460,7 +461,7 @@ function powerUp(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
 			$redLED.addClass('hidden');
-			changeDescription('Mode: POST',true);
+			// changeDescription('Mode: POST',true);
 			flashLCD(88,9);
 		},500);
 	},500);

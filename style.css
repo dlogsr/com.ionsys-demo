@@ -607,9 +607,15 @@ button:active{
 	text-align:justify;
 }
 
-.contextContent #modeDescription .statusDefault{
-	text-align:center;
+.contextContent #modeDescription p span{
+	display:block;
+	font-weight:bold;
+	padding-top: .5em;
 }
+
+/*.contextContent #modeDescription .statusDefault{
+	text-align:center;
+}*/
 
 
 section.infoPage{
