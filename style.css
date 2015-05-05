@@ -693,10 +693,32 @@ section.infoPage.slideUp{
 
 .controlBar button{
 	-webkit-transition: opacity 0.4s ease-in;
+	padding:0;
 	margin: .5em 1em;
 	width:2.5em;
 	height:2.5em;
 	border-radius:3em;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.controlBar #EOL{
+	background-image:url('icons/warning.png');
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+	background-position:center 5px;
+}
+
+.controlBar #EOU span{
+	margin:auto;
+	vertical-align: top;
+	font-size:.9rem;
+}
+
+.controlBar #infoToggle span{
+	border: 1px solid white;
+	padding: 0 .5em;
+	border-radius:5em;
 }
 
 .controlBar button:disabled{
@@ -900,9 +922,11 @@ section.infoPage.slideUp{
 
 	.controlBar button{
 		margin: 0 .8em;
-		width:2.5em;
-		height:2.5em;
-		border-radius:3em;
+		width:48px;
+		height:48px;
+		border-radius:24px;
+		text-align:center;
+		vertical-align: top;
 	}
 
 	section.infoPage{
