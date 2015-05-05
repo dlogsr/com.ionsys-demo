@@ -688,7 +688,7 @@ section.infoPage.slideUp{
 }
 
 .controlBar button:disabled{
-	opacity: .1;
+	opacity: .2;
 }
 
 @media only screen and (min-width: 900px){
