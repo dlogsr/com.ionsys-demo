@@ -59,6 +59,7 @@ span {
 img{
 	-webkit-transition: -webkit-transform 0.3s ease-in;
 	-moz-transition: -moz-transform 0.3s ease-in;
+	-o-transition: -moz-transform 0.3s ease-in;
 	transition: transform 0.3s ease-in;
 
 }
@@ -115,6 +116,9 @@ img{
 
 .topAssy.reset{
 	-webkit-transition: all ease-out 0.5s;
+	-moz-transition: all ease-out 0.5s;
+	-o-transition: all ease-out 0.5s;
+	transition: all ease-out 0.5s;
 }
 
 .topAssy:active{
@@ -626,6 +630,9 @@ button:active{
 
 section.infoPage{
 	-webkit-transition: all 0.4s ease-in;
+	-moz-transition: all 0.4s ease-in;
+	-o-transition: all 0.4s ease-in;
+	transition: all 0.4s ease-in;
 	position:fixed;
 	/*top:700px;*/
 	z-index:990;
@@ -693,6 +700,8 @@ section.infoPage.slideUp{
 
 .controlBar button{
 	-webkit-transition: opacity 0.4s ease-in;
+	-moz-transition: opacity 0.4s ease-in;
+	transition: opacity 0.4s ease-in;
 	padding:0;
 	margin: .5em 1em;
 	width:2.5em;
@@ -716,7 +725,7 @@ section.infoPage.slideUp{
 }
 
 .controlBar #infoToggle span{
-	border: 1px solid white;
+	border: 2px solid white;
 	padding: 0 .5em;
 	border-radius:5em;
 }
