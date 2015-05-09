@@ -130,7 +130,7 @@
 							<p class="statusDose1">
 								This is an initiation of a dose of fentanyl. The dosing period is 10 minutes long and delivers 40 mcg of medicine to the patient. During this period, the dose button is disabled ("locked out"), the LED flashes green, and the display indicates that it is in a dosing mode due to the 'walking' LCD animation alternating with the current doses administered.
 								<span>(P) If the unit senses poor skin contact, it will stop dosing, enter an error mode and return to standby.</span>
-								<span>(A) If the unit senses an ALERT mode (compromised skin), it will stop dosing, enter into EOU and no longer be usable.</span>
+								<span class="mockButton" id="mbEOL">After 12 hours in EOU, the device will enter EOL mode automatically.</span>
 							</p>
 							<!-- <p class="statusDose2">This is an initiation of a second dose of fentanyl. The dosing period is 10 minutes long and delivers 40 mcg of medicine to the patient. During this period, the dose button is disabled ("locked out"), the LED flashes green, and the display indicates that it is in a dosing mode due to the 'walking' LCD animation alternating with the current doses administered.</p> -->
 							<p class="statusPsc1">
@@ -140,7 +140,7 @@
 							<!-- <p class="statusPsc2">When a dose is initiated BUT the device does not detect a proper contact with the patient's skin after 4 minutes, the unit will enter standby mode. This is indicated by an audible 2-beep pattern along with a flashing red LED. The dose count will not increment, and the device can re-administer a dose after it returns to Ready mode and once skin contact is properly made.</p> -->
 							<p class="statusEou">
 								After 80 doses are administered, or 24 hours pass since activation, the device will enter EOU (End of Use) mode. The device will no longer administer any doses, the LCD will flash the total number of doses administered, and the LED does not flash.
-								<span>(A) After 12 hours in EOU, the device will enter EOL mode automatically.</span>
+								<span class="mockButton mbEOL">After 12 hours in EOU, the device will enter EOL mode automatically.</span>
 							</p>
 							<p class="statusEol">
 								If the device reaches the end of its life cycle, or an ALERT condition is reached (compromised skin), it will flash the current dose amount on the LCD (17 doses in this case), the LED will contintually blink red and an audible 4-beep pattern will play. This indicates that the device has reached EOL (end-of-life).
@@ -338,7 +338,6 @@
 		</button>		
 		<button id="EOL" class="extraButtons" disabled></button>
 		<button id="infoToggle" class="extraButtons">
-			<span>i</span>
 		</button>	
 	</div>
 </div>

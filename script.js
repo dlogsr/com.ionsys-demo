@@ -22,6 +22,7 @@ var snappedIn = false;
 var $infoPage = $('.infoPage');
 var $controlBlocker = $('.controlButtonsBlocker');
 var $controlButtonBlocker = $('.controlButtonBlocker');
+var buttonStatus = [false, false, false, true]
 
 var $doseNumber = $('#doseNumber');
 var $display = $('.seven-segment');
@@ -309,13 +310,7 @@ $(document).ready(function(){
 
 	$infoButton.on('tap',function(e){
 		e.preventDefault();
-		$infoPage.toggleClass('slideUp');
-		// buttonFadeTimeout = setTimeout(function(){
-		// 	toggleButton('poorSkin');
-		// 	toggleButton('EOU');
-		// 	toggleButton('EOL');
-		// },400)
-		scrollAndStop('body',0);
+		infoPageSlide();
 	})
 
 	// $flashButton.on('tap',function(){
@@ -759,7 +754,6 @@ function flashRedLED(ontime,offtime){
 }
 
 function disableButton(buttonID){
-	console.log('disabling ' + buttonID);
 	if(!$('#'+buttonID)[0].disabled){ $('#'+buttonID)[0].disabled = true};
 }
 
@@ -777,10 +771,23 @@ function toggleButton(buttonID,explicit){
 	}
 }
 
-function setButtons(psc,eou,eol){
+function setButtons(psc,eou,eol,temp){
+	if(temp == 'undefined' || !temp) buttonStatus = [psc, eou, eol, true];
 	toggleButton('poorSkin',psc);
 	toggleButton('EOU',eou);
 	toggleButton('EOL',eol);
+}
+
+function infoPageSlide(){
+	if($infoPage.hasClass('slideUp')){
+		console.log('restoring buttons');
+		setButtons(buttonStatus[0],buttonStatus[1],buttonStatus[2],true);
+	}
+	else{
+		setButtons(false,false,false,true);
+	}
+	$infoPage.toggleClass('slideUp');
+	scrollAndStop('body',0);
 }
 
 function enableAllButtons(){

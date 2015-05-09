@@ -724,15 +724,26 @@ section.infoPage.slideUp{
 	font-size:.9rem;
 }
 
-.controlBar #infoToggle span{
-	border: 2px solid white;
-	padding: 0 .5em;
-	border-radius:5em;
+.controlBar #infoToggle{
+	background-image:url('icons/whiteinfo.png');
+	background-size: 48px 48px;
+	background-repeat: no-repeat;
+	background-position:center;
 }
 
 .controlBar button:disabled{
 	opacity: .2;
 }
+
+.mockButton{
+	padding-left: 2em;
+}
+
+.mockButton#mbEOL{
+	background: url('icons/warning.png') no-repeat left center;
+	background-size: 1.5em 1.5em;
+}
+
 
 @media only screen and (min-width: 900px){
 
