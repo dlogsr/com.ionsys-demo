@@ -299,6 +299,8 @@ img{
 
 .digit div{
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+	-webkit-backface-visibility: hidden;
+	outline: 1px solid transparent;
 }
 
 .digit .a {
@@ -737,6 +739,7 @@ section.infoPage.slideUp{
 
 .mockButton{
 	padding-left: 2em;
+	text-align:left;
 }
 
 .mockButton.mbPSC{
