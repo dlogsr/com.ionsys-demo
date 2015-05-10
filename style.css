@@ -739,9 +739,9 @@ section.infoPage.slideUp{
 	padding-left: 2em;
 }
 
-.mockButton#mbEOL{
+.mockButton.mbEOL{
 	background: url('icons/warning.png') no-repeat left center;
-	background-size: 1.5em 1.5em;
+	background-size: 24px 24px;
 }
 
 
