@@ -297,8 +297,8 @@ img{
 	margin: 1.5em;
 }
 
-.digit ones{
-
+.digit div{
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .digit .a {
@@ -739,9 +739,19 @@ section.infoPage.slideUp{
 	padding-left: 2em;
 }
 
+.mockButton.mbPSC{
+	background: url('icons/psc.png') no-repeat left center;
+	background-size: 24px 24px;
+}
+
 .mockButton.mbEOL{
 	background: url('icons/warning.png') no-repeat left center;
 	background-size: 24px 24px;
+}
+
+.mockButton.mbEOU{
+	background: url('icons/80-24.png') no-repeat left center;
+	background-size: 24px 24px;	
 }
 
 
