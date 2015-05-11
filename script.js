@@ -118,11 +118,9 @@ function playAudio(url) {
     var my_media = new Media(url,
         // success callback
         function () {
-            console.log("playAudio():Audio Success");
         },
         // error callback
         function (err) {
-            console.log("playAudio():Audio Error: " + err);
         }
     );
     // Play audio
@@ -166,7 +164,6 @@ $topAssy.draggable({/*axis:"x",*/
         $.each(snappedTo, function(idx, item) {
             result += $(item).attr('class');
         });
-        console.log('snapped to: ' + result);
         if(result == 'bottomAssySnapPoint')
         {
         	$packageAssembly.addClass('hidden');
@@ -185,7 +182,6 @@ $topAssy.draggable({/*axis:"x",*/
 				powerUp();
 			};
         }
-		// $debugLog.html((result === '' ? "Nothing!" : result));
 	}
 });
 
@@ -214,11 +210,9 @@ $(document).ready(function(){
 		tempContentStyle = setStyle('.contextContent{left:-377px}');
 		tempArrowStyle = setStyle('.contextArrow.slideRight{left:377px}');
 		setTimeout(function(){$contextContent.removeClass('notransition');},50);
-		console.log('fullscreen');
 	}
 	else{
 		tempContentStyle = setStyle('.contextContent{top:0px}');
-		console.log($contextContent.outerHeight());
 	}
 
 	//slideout of context description field
@@ -341,23 +335,18 @@ $(window).resize(function(){
 })
 
 function changeDescription(description,custom){
-	console.log(description);
 	if(custom){
-		console.log("custom");
 		changeStatus(description);
 	}
 	else{
 		for (var i=0; i<doseStageTemp.length; i++){
-			console.log(i);
 			if (doseStageTemp[i] == description.toString().toLowerCase()){
 				var path = ('.status'+doseStageTemp[i][0].toUpperCase()+doseStageTemp[i].slice(1));
 				$contextContent.fadeTo('slow',0,function(){
 					$('.contextContent p').removeClass('enable');
 					$(path).addClass('enable');
 					$contextContent.addClass('docked'); //hide context but keep it finite so you can grab its size
-					console.log('docked context, size is '+$contextContent.outerHeight());
 					resizeContext(0);
-					console.log('RESET context, size is '+$contextContent.outerHeight());
 					resizeContext($contextContent.outerHeight());
 					$contextContent.removeClass('docked');
 				});
@@ -406,13 +395,10 @@ function slideContext(){
 //this resizes the context description to fit if the text inside expands past its bounds (vertical layout)
 function resizeContext(size){
 	try{
-		//sheet.removeRule(1);
 		sheet.removeRule(0);
 	}
 	catch(e){console.log(e);/*dont do anything, this is expected for initial case*/};
-	//sheet.insertRule('.contextContent{height: auto !important;}',0);
 	sheet.insertRule('.contextContent.slideDown{min-height: '+(size)+'px !important;}',0);
-	//sheet.removeRule(0);
 }
 
 function powerUp(){
@@ -561,12 +547,9 @@ function setReadyMode(){
 	setLCDNum(doseCount);
 	doseLockout = false;
 	pscLockout = false;
-	console.log('entering ready mode');
 	doseStageNum = 0;
 	setButtons(false,true,true);
 	removePulse($poorSkinButton);
-	// $('.contextContent p').removeClass('enable');
-	// $('.contextContent .statusReady').addClass('enable');
 	changeDescription('ready');
 	clearInterval(flashTimer);
 	clearInterval(walkPatternTimer);
@@ -666,26 +649,19 @@ function setEOL(){
 }
 
 function doseModeEnter(stage){
-	//changeStatus('Mode: '+stage);
 	if(stage != 'poweroff'){
-		// doseStageNum++;
-		// changeDescription(stage);
 	};
 	if(stage == 'ready'){
 		setReadyMode();
-		// changeDescription(stage);
 	}
 	else if((stage == 'dose1') && !eolLockout){
 		setDose();
-		// changeDescription(stage);
 	}
 	else if((stage == 'psc1') && !eolLockout && !pscLockout){
 		setPoorskin();
-		// changeDescription(stage);
 	}
 	else if(stage == 'eou' && !eouLockout){
 		setEOU();
-		// changeDescription(stage);
 	}
 	else if(stage == 'eol' && !eolLockout){
 		clearInterval(beeperTimer);
@@ -747,7 +723,6 @@ function setButtons(psc,eou,eol,temp){
 
 function infoPageSlide(){
 	if($infoPage.hasClass('slideUp')){
-		console.log('restoring buttons');
 		setButtons(buttonStatus[0],buttonStatus[1],buttonStatus[2],true);
 	}
 	else{

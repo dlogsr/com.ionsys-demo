@@ -3,9 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<!-- add a local reference to this font for phonegap purposes: -->
-<!-- <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'> -->
-<!-- <link rel="stylesheet" type="text/css" href="icons/flaticon.css">  -->
 <link href="css-reset.css" rel="stylesheet" type="text/css">
 <link href="style.css" rel="stylesheet" type="text/css">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -31,11 +28,6 @@
 		<i class="flaticon-standby"></i>
 	</button>
 </header>
-
-<!-- <header class="pageHeader backHeader">
-	<div id="headerLogo">
-	</div>
-</header> -->
 <section class="splash">
 	<div class="splashLimiter">
 		<header class="ionsysLogo">
@@ -79,9 +71,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- <div id="deviceStatus">
-				Powered Off
-			</div> -->
 			<div id="medcoLogo" class="hidden">
 				<img src="img-medcologo-long-black-clr.png">
 			</div>
@@ -138,12 +127,12 @@
 								<span>The dose count will not increment, and the device can re-administer a dose after it returns to Ready mode after 1 minute.</span>
 							</p>
 							<p class="statusEou">
-								After 80 doses are administered or 24 hours pass since activation, the device will enter End-of-Use mode. The device will no longer administer any doses, the LCD will flash the total number of doses administered, and the LED does not flash.
+								After 80 doses are administered or 24 hours pass since activation, the device will enter End-of-Use mode. The device will no longer administer any doses, the LCD will flash the total number of doses administered, and the LED does not flash.  No doses may be administered.
 								<span class="mockButton mbEOL">After 12 hours in End-of-Use, the device will enter End-of-Life mode automatically.</span>
 								<span>Holding down the dose button for 6 seconds will turn off the unit.</span>
 							</p>
 							<p class="statusEol">
-								An ALERT condition will be reached by sensing compromised skin mid-dose, from a low battery, or after 12 hours from End-of-Life. It will flash the current dose amount on the LCD (17 doses in this case), the LED will contintually blink red and an audible 4-beep pattern will play. This indicates that the device has reached EOL (end-of-life).
+								An ALERT condition will be reached by sensing compromised skin mid-dose, from a low battery, or after 12 hours from End-of-Life. It will flash the current dose amount on the LCD, the LED will contintually blink red and an audible 4-beep pattern will play. This indicates that the device has reached EOL (end-of-life). No doses may be administered.
 								<span>Holding down the dose button for 6 seconds will turn off the unit.</span>
 							</p>
 							<p class="statusPoweron"></p>
@@ -175,27 +164,11 @@
 			</div>
 		</div>
 		<div class="control">
-			<!-- <button id="powerButton">Power On</button> -->
-			<!-- <button id="powerButtonOff">Power Off</button> -->
-<!-- 			<p></p>
-			<button id="doseUpButton" class="extraButtons hidden">Dose+</button>
-			
-
-			<p></p>
-			<button id="flashButton" class="extraButtons hidden">Flash</button>
-			<button id="walkButton" class="extraButtons hidden">Walk</button>
-			<button id="readyButton" class="extraButtons hidden">Ready</button>
-			<button id="testSoundPG" class="extraButtons hidden">PG ♫</button>
-			<button id="testSound" class="extraButtons hidden">H5 ♫</button>
-			<p></p> 
-			<button id="modeDoseButton" class="extraButtons hidden">Dose 1 Mode</button>
-			<p></p>  -->
 			<label for="doseNumber"  class="extraButtons hidden" >Set Dose #: </label>
 			<input type="number" name="doseNumber" id="doseNumber"  class="extraButtons hidden" min="0" max="99" value="0" ></input>
 		</div>
 	</div>
 </section>
-<!-- <section class="infoPage slideUp"> -->
 <section class="infoPage">
 	<div class="infoPageContent">
 		<header class="ionsysLogo">
@@ -219,7 +192,7 @@
 					Absorption route:
 				</td>
 				<td>
-					Transdermal (iontophoresis*)
+					Transdermal (iontophoresis)
 				</td>
 			</tr>
 			<tr>
@@ -280,7 +253,7 @@
 					Patients with allergies to:
 					<ul>
 						<li>Fentanyl</li>
-						<li>Cetylpyridinium chloride (an anticeptic in Cepacol mouthwash)**</li>
+						<li>Cetylpyridinium chloride (an anticeptic in Cepacol mouthwash)</li>
 						<li>Any component of the IONSYS system</li>
 					</ul>
 				</td>
