@@ -716,6 +716,13 @@ section.infoPage.slideUp{
 	vertical-align:middle;
 }
 
+
+@media only screen and (max-width: 360px){
+	.controlBar button{
+		margin: .5em .75em;
+	}
+}
+
 .controlBar #EOL{
 	background-image:url('icons/warning.png');
 	background-size: 30px 30px;
