@@ -626,9 +626,7 @@ button:active{
 	margin:1em -.75em;
 }
 
-.contextContent #modeDescription p.statusDose1 span{
-	margin: 0 -.75em;
-}
+
 
 /*.contextContent #modeDescription .statusDefault{
 	text-align:center;
@@ -886,6 +884,10 @@ section.infoPage.slideUp{
 		-moz-transition: left 0.4s ease-out;
 		-o-transition: left 0.4s ease-out;
 		transition: left 0.4s ease-out;
+	}
+
+	.contextContent #modeDescription p.statusDose1 span{
+		margin: 0 -.75em;
 	}
 
 	.contextArrowContainer{
