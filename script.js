@@ -42,6 +42,7 @@ var pscLockout = false;
 var eolLockout = false;
 var eouLockout = false;
 var doseCount = 0;
+var prevDose = 0;
 var greenLEDFlash, redLEDFlash;
 var beeperTimer, flashTimer, timer, doseRepeatTimer, walkTimer, walkPatternTimer, doseTimer, doseRepeatTimer;
 
@@ -247,8 +248,13 @@ $(document).ready(function(){
 		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
 		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
-		if(doseStageTemp[doseStageNum] == 'eol'){
-			poweroffTimer = setTimeout(function(){ powerDown();	},3000);
+		if(doseStageTemp[doseStageNum] == 'eol' || doseStageTemp[doseStageNum] == 'eou'){
+			poweroffTimer = setTimeout(function(){
+				setTimeout(function(){
+					$doseButton.removeClass('doseButtonPressed');
+				},25);
+				powerDown();	
+			},3000);
 		}
 	});
 	$doseButton.on('touchend mouseup touchcancel',function(e){
@@ -256,10 +262,9 @@ $(document).ready(function(){
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
-		if(doseStageTemp[doseStageNum] == 'eol') clearTimeout(poweroffTimer);
+		if(doseStageTemp[doseStageNum] == 'eol' || doseStageTemp[doseStageNum] == 'eou') clearTimeout(poweroffTimer);
 		if(powered && !doseLockout){
 			if (doseButtonFirstPress && (doseStageTemp[doseStageNum] == 'dose1' || doseStageTemp[doseStageNum] == 'ready')){
-				// doseModeEnter(doseStageTemp[doseStageNum]);
 				doseStageNum = 1;
 				doseModeEnter('dose1');
 				doseButtonFirstPress = false;
@@ -271,20 +276,6 @@ $(document).ready(function(){
 		};
 	});
 
-	//******** TEST BUTTON FUNCTIONS IN SECRET MENU *********//
-
-	//enable secret menu
-	// $logoCircle.on('tap',function(){
-	// 	$extraButtons.toggleClass('hidden');
-	// });
-
-	// $testSoundPG.on('tap',function(){
-	// 	playAudio('beep.mp3');
-	// })
-
-	// $testSound.on('tap',function(){
-	// 	$beeper.play();
-	// })
 
 	$poorSkinButton.on('tap',function(e){
 		e.preventDefault();
@@ -304,6 +295,7 @@ $(document).ready(function(){
 
 	$EOLButton.on('tap',function(e){
 		e.preventDefault();
+		prevDose = doseStageNum;
 		doseStageNum = 6;
 		if(powered) doseModeEnter('eol');
 	})
@@ -312,29 +304,6 @@ $(document).ready(function(){
 		e.preventDefault();
 		infoPageSlide();
 	})
-
-	// $flashButton.on('tap',function(){
-	// 	if(powered) flashLCD(88,9);
-	// });
-
-	// $walkButton.on('tap',function(){
-	// 	if(powered) walkLCD();
-	// });
-
-	// $doseUpButton.on('tap',function(){
-	// 	if(powered && !doseLockout) doseModeEnter('dose1');
-	
-	// 	});
-
-	// $readyButton.on('tap',function(){
-	// 	if(powered){
-	// 		setReadyMode();
-	// 	};
-	// });
-
-	// $('#modeDoseButton').on('tap',function(){
-	// 	changeDescription('dose1');
-	// });
 
 	$doseNumber.change(function(){
 		var number = parseInt($doseNumber.val(),10);
@@ -610,7 +579,7 @@ function setDose(){
 	changeDescription('dose1');
 	turnOffLCD();
 	turnOffAllLED();
-	setButtons(true,false,true);
+	setButtons(true,true,true);
 	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
 	flashGreenLED(250,500);
 	walkLCD();
@@ -681,8 +650,8 @@ function setEOL(){
 	turnOffLCD();
 	setButtons(false,false,true);
 	buttonPulse($EOLButton);
-	setLCDNum(17);
-	// flashLCD(17,100000);
+	if(prevDose == 5) setLCDNum(80);
+	else setLCDNum(23);
 	flashRedLED(375,750);
 	var beepCounter = 0;
 	beeperTimer = setInterval(function(){
@@ -706,23 +675,21 @@ function doseModeEnter(stage){
 		setReadyMode();
 		// changeDescription(stage);
 	}
-	else if((stage == 'dose1' || stage == 'dose2') && !eolLockout){
+	else if((stage == 'dose1') && !eolLockout){
 		setDose();
 		// changeDescription(stage);
 	}
-	else if((stage == 'psc1' || stage == 'psc2') && !eolLockout && !pscLockout){
+	else if((stage == 'psc1') && !eolLockout && !pscLockout){
 		setPoorskin();
 		// changeDescription(stage);
 	}
-	else if(stage == 'eou' && !doseLockout && !eouLockout){
+	else if(stage == 'eou' && !eouLockout){
 		setEOU();
 		// changeDescription(stage);
 	}
 	else if(stage == 'eol' && !eolLockout){
 		clearInterval(beeperTimer);
 		clearInterval(flashTimer);
-		// setReadyMode();
-		// changeDescription(stage);
 		setEOL();
 	}
 	else if (stage =='poweroff'){

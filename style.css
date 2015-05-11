@@ -227,7 +227,6 @@ img{
 	background-color:black;
 	z-index:10;
 	text-align:center;
-	/*padding-bottom:1em;*/
 	margin-bottom:-70px;
 	overflow:hidden;
 }
@@ -247,7 +246,7 @@ img{
 }
 
 .container h4{
-	padding:1em .5em;
+	padding:.5em .5em;
 }
 .container p{
 	text-align:justify;
@@ -617,12 +616,14 @@ button:active{
 
 .contextContent #modeDescription p{
 	text-align:justify;
+	overflow:visible;
 }
 
 .contextContent #modeDescription p span{
 	display:block;
 	font-weight:bold;
 	padding-top: .5em;
+	margin:auto -.75em;
 }
 
 /*.contextContent #modeDescription .statusDefault{
