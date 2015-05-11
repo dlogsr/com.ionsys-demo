@@ -623,7 +623,11 @@ button:active{
 	display:block;
 	font-weight:bold;
 	padding-top: .5em;
-	margin:auto -.75em;
+	margin:1em -.75em;
+}
+
+.contextContent #modeDescription p.statusDose1 span{
+	margin: 0 -.75em;
 }
 
 /*.contextContent #modeDescription .statusDefault{

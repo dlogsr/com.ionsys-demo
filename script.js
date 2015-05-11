@@ -22,7 +22,8 @@ var snappedIn = false;
 var $infoPage = $('.infoPage');
 var $controlBlocker = $('.controlButtonsBlocker');
 var $controlButtonBlocker = $('.controlButtonBlocker');
-var buttonStatus = [false, false, false, true]
+var buttonStatus = [false, false, false, true];
+var noButtonFunction = true;
 
 var $doseNumber = $('#doseNumber');
 var $display = $('.seven-segment');
@@ -224,12 +225,12 @@ $(document).ready(function(){
 	$display.find('*').addClass('digitOff');
 
 
-	//power on/off functions
-	$powerButton.on('tap',function(){
-		if(!powered && snappedIn){
-			powerUp();
-		};
-	});
+	//power on/off functions 
+	// $powerButton.on('tap',function(){
+	// 	if(!powered && snappedIn){
+	// 		powerUp();
+	// 	};
+	// });
 
 	$powerButtonOff.on('tap',function(){
 		if(powered){
@@ -273,7 +274,7 @@ $(document).ready(function(){
 
 	$poorSkinButton.on('tap',function(e){
 		e.preventDefault();
-		if(powered){
+		if(powered && !noButtonFunction){
 			doseStageNum = 3;
 			doseModeEnter('psc1');
 		}
@@ -281,7 +282,7 @@ $(document).ready(function(){
 
 	$EOUButton.on('tap',function(e){
 		e.preventDefault();
-		if(powered){
+		if(powered && !noButtonFunction){
 			doseStageNum = 5;
 			doseModeEnter('eou');
 		};
@@ -289,9 +290,11 @@ $(document).ready(function(){
 
 	$EOLButton.on('tap',function(e){
 		e.preventDefault();
-		prevDose = doseStageNum;
-		doseStageNum = 6;
-		if(powered) doseModeEnter('eol');
+		if(powered && !noButtonFunction){
+			prevDose = doseStageNum;
+			doseStageNum = 6;
+			doseModeEnter('eol');	
+		} 
 	})
 
 	$infoButton.on('tap',function(e){
@@ -549,6 +552,11 @@ function setReadyMode(){
 	pscLockout = false;
 	doseStageNum = 0;
 	setButtons(false,true,true);
+	noButtonFunction = false;
+	if($infoPage.hasClass('slideUp')){
+		setButtons(false,false,false,true);
+		noButtonFunction = true;
+	}
 	removePulse($poorSkinButton);
 	changeDescription('ready');
 	clearInterval(flashTimer);
@@ -616,6 +624,7 @@ function setEOU(){
 	eouLockout = true;
 	changeDescription('eou');
 	turnOffAllLED();
+	endDoseEarly();
 	clearWalkTimer();
 	turnOffLCD();
 	setButtons(false, true, true);
@@ -724,8 +733,10 @@ function setButtons(psc,eou,eol,temp){
 function infoPageSlide(){
 	if($infoPage.hasClass('slideUp')){
 		setButtons(buttonStatus[0],buttonStatus[1],buttonStatus[2],true);
+		noButtonFunction = false;
 	}
 	else{
+		noButtonFunction = true;
 		setButtons(false,false,false,true);
 	}
 	$infoPage.toggleClass('slideUp');
