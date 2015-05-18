@@ -947,17 +947,24 @@ section.infoPage.slideUp{
 		margin:0 41px;
 	}
 
+
 	.controlBar{
-		background: none;;
+		top: 10%;
+		left:0;
+		height:300px;
+		width:4em;
+		text-align:center;
+		background: none;
 	}
 
 	.controlBar .controlButtonsContainer{
 		background-color: rgba(0,0,0,.8);
-		max-width: 350px;
+		max-width: 4em;
 		margin: auto;
 		padding:.5em;
-		border-top-left-radius: 15px;
+		border-top-left-radius: 0;
 		border-top-right-radius: 15px;
+		border-bottom-right-radius: 15px;
 	}
 
 	.controlBar .controlButtonsBlocker{
@@ -968,7 +975,7 @@ section.infoPage.slideUp{
 	}
 
 	.controlBar button{
-		margin: 0 .8em;
+		margin: .8em 0;
 		width:48px;
 		height:48px;
 		border-radius:24px;
