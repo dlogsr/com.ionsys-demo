@@ -738,18 +738,18 @@ section.safetyInfoPage{
 	transition: all 0.4s ease-in;
 	/*font-family:'NHG-reg';*/
 	/*border-top: 1px solid #444;*/
-	box-shadow: -2px -2px 3px 3px black;
+	box-shadow: -1px -1px 1px 1px black;
 	position:fixed;
 	z-index:998;
 	width:100%;
 	top:auto;
 	cursor:pointer;
 	padding-bottom:4em;
-	background: rgba(0,0,0,.95);
+	background-color: #111;
 }
 
 section.safetyInfoPage .safetyInfoTitle .plusMinusIcon, section.safetyInfoPage .safetyInfoTitle h1{
-	display:inline-block;
+	display:block;
 	position:relative;
 	/*float:left;*/
 }
@@ -757,9 +757,10 @@ section.safetyInfoPage .safetyInfoTitle .plusMinusIcon, section.safetyInfoPage .
 section.safetyInfoPage .safetyInfoTitle .plusMinusIcon{
 	height:1em;
 	width:1em;
+	float:left;
 	background-color:#333;	
 	padding:.25em;
-	margin-top:.25em;
+	margin-right:.5em;
 }
 
 section.safetyInfoPage .safetyInfoTitle .plusMinusIcon div{
@@ -767,10 +768,10 @@ section.safetyInfoPage .safetyInfoTitle .plusMinusIcon div{
 	-moz-transition: all 0.4s ease-in;
 	-o-transition: all 0.4s ease-in;
 	transition: all 0.4s ease-in;
-	-webkit-transition-delay: 0.4s;
-	-moz-transition-delay: 0.4s;
-	-o-transition-delay: 0.4s;
-	transition-delay: 0.4s;
+	-webkit-transition-delay: 0.5s;
+	-moz-transition-delay: 0.5s;
+	-o-transition-delay: 0.5s;
+	transition-delay: 0.5s;
 	position: relative;
 	width:100%;
 	height: 4px;
@@ -799,9 +800,10 @@ section.safetyInfoPage .safetyInfoTitle .plusMinusIcon .minus{
 }
 
 section.safetyInfoPage .safetyInfoTitle h1{
-	font-size:1em;
+	font-size:.9em;
 	font-weight: bolder;
 	margin:.5em 1em;
+	min-height:1.2em;
 	text-transform: uppercase;
 }
 
@@ -921,7 +923,7 @@ section.safetyInfoPage .isiContent.padded{
 
 	.splashLimiter{
 		max-width:900px;
-		margin:auto;
+		margin:2em auto;
 	}
 
 	#headerLogo{
@@ -1143,7 +1145,7 @@ section.safetyInfoPage .isiContent.padded{
 		max-width:360px;
 	}
 
-	section.safetyInfoPage h1{
+	section.safetyInfoPage .safetyInfoTitle h1{
 		font-size:1.5em;
 	}
 

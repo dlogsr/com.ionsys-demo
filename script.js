@@ -319,10 +319,8 @@ $(document).ready(function(){
 			$safetyInfoPage.removeClass('slideUp');
 			if(!$infoPage.hasClass('slideUp')) $ionsysLogoBanner.addClass('hiddenLogo');
 		}
-
-		// $safetyInfoPage.toggleClass('slideUp');
-		// if($ionsysLogoBanner.hasClass('hiddenLogo'))
 		isFullScreen ? adjustContentOffset($safetyInfoPage,-100) : adjustContentOffset($safetyInfoPage,-70);
+		scrollAndStop('body',0);
 	});
 
 	$doseNumber.change(function(){
