@@ -20,6 +20,7 @@ var $topAssy = $('.topAssy');
 var snappedIn = false;
 
 var $infoPage = $('.infoPage');
+var $safetyInfoPage = $('.safetyInfoPage');
 var $controlBlocker = $('.controlButtonsBlocker');
 var $controlButtonBlocker = $('.controlButtonBlocker');
 var buttonStatus = [false, false, false, true];
@@ -105,9 +106,9 @@ function adjustContentSpacing(currSection) {
 	$(currSection).css({'min-height':windowHeight});
 }
 
-function adjustContentOffset(currSection) {
+function adjustContentOffset(currSection,num) {
 	var windowHeight = getWindowHeight();
-	currSection.css({'top':windowHeight+100});
+	currSection.css({'top':windowHeight+num});
 }
 
 //audio file play function for PhoneGap only (otherwise default to jQuery play())
@@ -196,16 +197,18 @@ $(document).ready(function(){
 			},1500);
 		},500); // normal
 	};
-
-	adjustContentSpacing('section');
-	adjustContentOffset($infoPage);
 	$powerButtonOff.hide();
 	//phonegap splashscreen hide;
 	// navigator.splashscreen.hide()
 
 	//functions for description text
+	adjustContentSpacing('section');
+	adjustContentOffset($infoPage,100);
+	
+
 	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
 	if(isFullScreen){
+		adjustContentOffset($safetyInfoPage,-100);
 		$contextContent.addClass('notransition');
 		var contentWidth = $contextContent.outerWidth();
 		tempContentStyle = setStyle('.contextContent{left:-377px}');
@@ -213,6 +216,7 @@ $(document).ready(function(){
 		setTimeout(function(){$contextContent.removeClass('notransition');},50);
 	}
 	else{
+		adjustContentOffset($safetyInfoPage,-50);
 		tempContentStyle = setStyle('.contextContent{top:0px}');
 	}
 
@@ -278,7 +282,7 @@ $(document).ready(function(){
 			doseStageNum = 3;
 			doseModeEnter('psc1');
 		}
-	})
+	});
 
 	$EOUButton.on('tap',function(e){
 		e.preventDefault();
@@ -286,7 +290,7 @@ $(document).ready(function(){
 			doseStageNum = 5;
 			doseModeEnter('eou');
 		};
-	})
+	});
 
 	$EOLButton.on('tap',function(e){
 		e.preventDefault();
@@ -295,12 +299,18 @@ $(document).ready(function(){
 			doseStageNum = 6;
 			doseModeEnter('eol');	
 		} 
-	})
+	});
 
 	$infoButton.on('tap',function(e){
 		e.preventDefault();
 		infoPageSlide();
-	})
+	});
+
+	$safetyInfoPage.on('tap',function(e){
+		e.preventDefault();
+		$safetyInfoPage.toggleClass('slideUp');
+		isFullScreen ? adjustContentOffset($safetyInfoPage,-100) : adjustContentOffset($safetyInfoPage,-50);
+	});
 
 	$doseNumber.change(function(){
 		var number = parseInt($doseNumber.val(),10);
