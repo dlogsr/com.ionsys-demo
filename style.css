@@ -778,14 +778,23 @@ section.safetyInfoPage .safetyInfoTitle .plusMinusIcon div{
 }
 
 section.safetyInfoPage .safetyInfoTitle .plusMinusIcon .plus{
+	-webkit-transform:rotate(90deg) translateX(2px);
+	-moz-transform:rotate(90deg) translateX(2px);
+	-o-transform:rotate(90deg) translateX(2px);
 	transform:rotate(90deg) translateX(2px);
 }
 
 section.slideUp .safetyInfoTitle .plusMinusIcon .plus{
+	-webkit-transform:rotate(0deg) translateX(0px) translateY(1px);
+	-moz-transform:rotate(0deg) translateX(0px) translateY(1px);
+	-o-transform:rotate(0deg) translateX(0px) translateY(1px);
 	transform:rotate(0deg) translateX(0px) translateY(1px);
 }
 
 section.safetyInfoPage .safetyInfoTitle .plusMinusIcon .minus{
+	-webkit-transform:translateY(calc( .5em - 2px ));
+	-moz-transform:translateY(calc( .5em - 2px ));
+	-o-transform:translateY(calc( .5em - 2px ));
 	transform:translateY(calc( .5em - 2px ));
 }
 
