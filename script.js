@@ -456,6 +456,7 @@ function powerDown(){
 	eolLockout = false;
 	eouLockout = false;
 	pscLockout = false;
+	noButtonFunction = true;
 	removePulse($poorSkinButton);
 	removePulse($EOUButton);
 	removePulse($EOLButton);
@@ -643,7 +644,7 @@ function setEOL(){
 	setButtons(false,false,true);
 	buttonPulse($EOLButton);
 	if(prevDose == 5) setLCDNum(80);
-	else setLCDNum(23);
+	else setLCDNum(doseCount);
 	flashRedLED(375,750);
 	var beepCounter = 0;
 	beeperTimer = setInterval(function(){
