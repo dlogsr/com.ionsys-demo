@@ -19,10 +19,12 @@ var $packageAssembly = $('.packageAssembly');
 var $topAssy = $('.topAssy');
 var snappedIn = false;
 
+var infoPageShowing = false;
 var $infoPage = $('.infoPage');
 var $safetyInfoPage = $('.safetyInfoPage');
 var $controlBlocker = $('.controlButtonsBlocker');
 var $controlButtonBlocker = $('.controlButtonBlocker');
+var $ionsysLogoBanner = $('.ionsysLogoBanner');
 var buttonStatus = [false, false, false, true];
 var noButtonFunction = true;
 
@@ -103,7 +105,7 @@ function getWindowHeight(){
 
 function adjustContentSpacing(currSection) {
 	var windowHeight = getWindowHeight();
-	$(currSection).css({'min-height':windowHeight});
+	$(currSection).css({'min-height':windowHeight-70});
 }
 
 function adjustContentOffset(currSection,num) {
@@ -173,6 +175,7 @@ $topAssy.draggable({/*axis:"x",*/
         	$topAssy.removeAttr('style');
         	$topAssy.css({'left':leftOffset});
         	setTimeout(function(){
+        		if(!isFullScreen) $('body').css({'padding-bottom':'8em'});
         		$workingAssembly.removeClass('hidden');
         		$('.context').removeClass('invisible');
         	},25);
@@ -216,7 +219,7 @@ $(document).ready(function(){
 		setTimeout(function(){$contextContent.removeClass('notransition');},50);
 	}
 	else{
-		adjustContentOffset($safetyInfoPage,-50);
+		adjustContentOffset($safetyInfoPage,-70);
 		tempContentStyle = setStyle('.contextContent{top:0px}');
 	}
 
@@ -308,8 +311,18 @@ $(document).ready(function(){
 
 	$safetyInfoPage.on('tap',function(e){
 		e.preventDefault();
-		$safetyInfoPage.toggleClass('slideUp');
-		isFullScreen ? adjustContentOffset($safetyInfoPage,-100) : adjustContentOffset($safetyInfoPage,-50);
+		if(!$safetyInfoPage.hasClass('slideUp')){
+			$safetyInfoPage.addClass('slideUp');
+			$ionsysLogoBanner.removeClass('hiddenLogo');
+		}
+		else{
+			$safetyInfoPage.removeClass('slideUp');
+			if(!$infoPage.hasClass('slideUp')) $ionsysLogoBanner.addClass('hiddenLogo');
+		}
+
+		// $safetyInfoPage.toggleClass('slideUp');
+		// if($ionsysLogoBanner.hasClass('hiddenLogo'))
+		isFullScreen ? adjustContentOffset($safetyInfoPage,-100) : adjustContentOffset($safetyInfoPage,-70);
 	});
 
 	$doseNumber.change(function(){
@@ -471,6 +484,7 @@ function powerDown(){
 	removePulse($EOUButton);
 	removePulse($EOLButton);
 	//changeStatus('Powered Off');
+	if(!isFullScreen) $('body').css({'padding-bottom':0});
 	changeDescription('poweredoff');
 	slideContext();
 	setTimeout(function(){
@@ -743,10 +757,12 @@ function setButtons(psc,eou,eol,temp){
 
 function infoPageSlide(){
 	if($infoPage.hasClass('slideUp')){
+		if(!$safetyInfoPage.hasClass('slideUp')) $ionsysLogoBanner.addClass('hiddenLogo');
 		setButtons(buttonStatus[0],buttonStatus[1],buttonStatus[2],true);
 		noButtonFunction = false;
 	}
 	else{
+		$ionsysLogoBanner.removeClass('hiddenLogo');
 		noButtonFunction = true;
 		setButtons(false,false,false,true);
 	}

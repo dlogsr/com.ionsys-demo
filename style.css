@@ -23,10 +23,13 @@ body{
 	-moz-font-smoothing: subpixel-antialiased;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 	margin: 0 0 2.5em 0;
-	padding-bottom: 4em;
 	background-color: black;
 	color:white;
 
+}
+
+body.padding{
+	padding-bottom:7em;
 }
 
 span {
@@ -39,6 +42,13 @@ span {
     font-weight: normal;
     font-style: normal;
 
+}
+
+@font-face {
+    font-family: 'NHG-reg';
+    src: url('NHG-reg.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 
@@ -632,6 +642,33 @@ button:active{
 	text-align:center;
 }*/
 
+header.ionsysLogoBanner{
+	-webkit-transition: all 0.4s ease-in;
+	-moz-transition: all 0.4s ease-in;
+	-o-transition: all 0.4s ease-in;
+	transition: all 0.4s ease-in;
+	position:fixed;
+	top:0;
+	z-index:999;
+	height:15%;
+	background-color: #00a0df;
+	width:100%;
+	/*padding:1em;*/
+}
+
+header.ionsysLogoBanner.hiddenLogo{
+	top:-15%;
+}
+
+header.ionsysLogoBanner .ionsysLogo{
+	margin: .75em;
+	height:4em;
+	background-image: url('white-ionsys-logo.png');
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size:contain;
+}
+
 
 section.infoPage{
 	-webkit-transition: all 0.4s ease-in;
@@ -643,13 +680,13 @@ section.infoPage{
 	/*top:700px;*/
 	z-index:990;
 	width:100%;
-	padding-bottom:4em;
+	padding-bottom:8em;
 	background: rgba(0,0,0,.9);
 }
 
 section.infoPage.slideUp, section.safetyInfoPage.slideUp{
 	position:absolute;
-	top:10% !important;
+	top:15% !important;
 	bottom: auto;
 }
 
@@ -694,61 +731,111 @@ section.infoPage.slideUp, section.safetyInfoPage.slideUp{
 	min-width:240px;
 }
 
-.safetyInfoPage{
+section.safetyInfoPage{
 	-webkit-transition: all 0.4s ease-in;
 	-moz-transition: all 0.4s ease-in;
 	-o-transition: all 0.4s ease-in;
 	transition: all 0.4s ease-in;
+	/*font-family:'NHG-reg';*/
+	/*border-top: 1px solid #444;*/
 	box-shadow: -2px -2px 3px 3px black;
 	position:fixed;
-	z-index:999;
+	z-index:998;
 	width:100%;
 	top:auto;
+	cursor:pointer;
 	padding-bottom:4em;
-	background: rgba(0,0,0,.9);
+	background: rgba(0,0,0,.95);
 }
 
-.safetyInfoPage h1{
-	font-size:1.5em;
+section.safetyInfoPage .safetyInfoTitle .plusMinusIcon, section.safetyInfoPage .safetyInfoTitle h1{
+	display:inline-block;
+	position:relative;
+	/*float:left;*/
+}
+
+section.safetyInfoPage .safetyInfoTitle .plusMinusIcon{
+	height:1em;
+	width:1em;
+	background-color:#333;	
+	padding:.25em;
+	margin-top:.25em;
+}
+
+section.safetyInfoPage .safetyInfoTitle .plusMinusIcon div{
+	-webkit-transition: all 0.4s ease-in;
+	-moz-transition: all 0.4s ease-in;
+	-o-transition: all 0.4s ease-in;
+	transition: all 0.4s ease-in;
+	-webkit-transition-delay: 0.4s;
+	-moz-transition-delay: 0.4s;
+	-o-transition-delay: 0.4s;
+	transition-delay: 0.4s;
+	position: relative;
+	width:100%;
+	height: 4px;
+	background-color:white;
+}
+
+section.safetyInfoPage .safetyInfoTitle .plusMinusIcon .plus{
+	transform:rotate(90deg) translateX(2px);
+}
+
+section.slideUp .safetyInfoTitle .plusMinusIcon .plus{
+	transform:rotate(0deg) translateX(0px) translateY(1px);
+}
+
+section.safetyInfoPage .safetyInfoTitle .plusMinusIcon .minus{
+	transform:translateY(calc( .5em - 2px ));
+}
+
+section.safetyInfoPage .safetyInfoTitle h1{
+	font-size:1em;
 	font-weight: bolder;
 	margin:.5em 1em;
 	text-transform: uppercase;
 }
 
-.safetyInfoPage h2{
-	text-decoration:underline;
+
+section.safetyInfoPage h2{
+	font-size: 1.1em;
 	font-weight:bold;
 	margin: .5em 0;
 }
 
-.safetyInfoPage .isiCallOut{
+section.safetyInfoPage .isiCallout h2{
+	text-decoration:underline;
+}
+
+section.safetyInfoPage .isiCallOut{
 	padding:1em;
 	/*margin:1.5em;*/
 	border: 2px solid white;
 }
 
- .safetyInfoPage .isiCallOut .warning{
+ section.safetyInfoPage .isiCallOut .isiWarning{
+ 	font-size:1.1em;
  	font-weight:bolder;
 	padding-bottom: 1em;
 }
 
-.safetyInfoPage .isiList.extraSpace li{
+section.safetyInfoPage .isiList.extraSpace li{
 	margin-top: .5em;
 	margin-bottom: .5em;
 }
 
-.safetyInfoPage .isiContent.padded{
+section.safetyInfoPage .isiContent.padded{
 	padding: 0 2em;
 }
 
 .controlBar{
 	position:fixed;
-	z-index:998;
-	bottom:50px;
+	z-index:997;
+	bottom:70px;
 	height:4em;
 	width:100%;
 	text-align:center;
-	background: rgba(0,0,0,.85);
+	background: rgba(0,0,0,.9);
 }
 
 .controlBar button{
@@ -1032,7 +1119,7 @@ section.infoPage.slideUp, section.safetyInfoPage.slideUp{
 	}
 
 	section.infoPage{
-		padding-bottom: 4.5em;
+		padding-bottom: 7em;
 	}
 
 	.infoPage .infoPageContent{
@@ -1045,6 +1132,10 @@ section.infoPage.slideUp, section.safetyInfoPage.slideUp{
 
 	.infoColumn{
 		max-width:360px;
+	}
+
+	section.safetyInfoPage h1{
+		font-size:1.5em;
 	}
 
 
