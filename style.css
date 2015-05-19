@@ -248,7 +248,7 @@ img{
 
 
 .container h2{
-	font-size:3em;
+	font-size:2.5em;
 }
 
 .container h3{
@@ -758,9 +758,11 @@ section.safetyInfoPage .safetyInfoTitle .plusMinusIcon{
 	height:1em;
 	width:1em;
 	float:left;
-	background-color:#333;	
+	background-color:#000;
+	border: 2px solid white;	
 	padding:.25em;
 	margin-right:.5em;
+	top:-2px;
 }
 
 section.safetyInfoPage .safetyInfoTitle .plusMinusIcon div{
@@ -775,7 +777,7 @@ section.safetyInfoPage .safetyInfoTitle .plusMinusIcon div{
 	position: relative;
 	width:100%;
 	height: 4px;
-	background-color:white;
+	background-color:#fff;
 }
 
 section.safetyInfoPage .safetyInfoTitle .plusMinusIcon .plus{
@@ -819,7 +821,7 @@ section.safetyInfoPage .isiCallout h2{
 }
 
 section.safetyInfoPage .isiCallOut{
-	padding:1em;
+	padding:.3em .5em;
 	/*margin:1.5em;*/
 	border: 2px solid white;
 }
@@ -836,13 +838,13 @@ section.safetyInfoPage .isiList.extraSpace li{
 }
 
 section.safetyInfoPage .isiContent.padded{
-	padding: 0 2em;
+	padding: 0 1em;
 }
 
 .controlBar{
 	position:fixed;
 	z-index:997;
-	bottom:70px;
+	bottom:50px;
 	height:4em;
 	width:100%;
 	text-align:center;
@@ -972,9 +974,9 @@ section.safetyInfoPage .isiContent.padded{
 		vertical-align:middle !important;
 	}
 
-	.container h2{
+	/*.container h2{
 		font-size:2.5em;
-	}
+	}*/
 
 	.container h3, .splash h3{
 		font-size:1.5em;
@@ -1149,6 +1151,13 @@ section.safetyInfoPage .isiContent.padded{
 		font-size:1.5em;
 	}
 
+	section.safetyInfoPage .isiContent.padded{
+		padding: 0 2em;
+	}
+
+	section.safetyInfoPage .isiCallOut{
+		padding: 1em;
+	}
 
 
 }

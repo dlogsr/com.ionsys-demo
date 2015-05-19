@@ -219,7 +219,7 @@ $(document).ready(function(){
 		setTimeout(function(){$contextContent.removeClass('notransition');},50);
 	}
 	else{
-		adjustContentOffset($safetyInfoPage,-70);
+		adjustContentOffset($safetyInfoPage,-50);
 		tempContentStyle = setStyle('.contextContent{top:0px}');
 	}
 
@@ -319,7 +319,7 @@ $(document).ready(function(){
 			$safetyInfoPage.removeClass('slideUp');
 			if(!$infoPage.hasClass('slideUp')) $ionsysLogoBanner.addClass('hiddenLogo');
 		}
-		isFullScreen ? adjustContentOffset($safetyInfoPage,-100) : adjustContentOffset($safetyInfoPage,-70);
+		isFullScreen ? adjustContentOffset($safetyInfoPage,-100) : adjustContentOffset($safetyInfoPage,-50);
 		scrollAndStop('body',0);
 	});
 
