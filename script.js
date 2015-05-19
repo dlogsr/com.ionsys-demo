@@ -757,7 +757,7 @@ function infoPageSlide(){
 	if($infoPage.hasClass('slideUp')){
 		if(!$safetyInfoPage.hasClass('slideUp')) $ionsysLogoBanner.addClass('hiddenLogo');
 		setButtons(buttonStatus[0],buttonStatus[1],buttonStatus[2],true);
-		noButtonFunction = false;
+		if(powered) noButtonFunction = false;
 	}
 	else{
 		$ionsysLogoBanner.removeClass('hiddenLogo');
