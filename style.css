@@ -121,7 +121,7 @@ img{
 	width:295px;
 	height:500px;
 	cursor:-webkit-grab;
-	background-image: url('img-ionsys-controller-top.png');
+	background-image: url('img-ionsys-controller-top-2.png');
 }
 
 .topAssy.reset{
@@ -140,14 +140,14 @@ img{
 	margin:auto;
 	width:295px;
 	height:500px;
-	background-image: url('img-ionsys2-blank.png');
+	background-image: url('img-ionsys3-blank.png');
 }
 
 .backgroundAssembly{
 	width:100%; /*this will give a slight positioning issue if 
 				window width < 295px, but should not happen on min 320x screen */
 	height:500px;
-	background-image: url('img-ionsys2-blank.png');
+	background-image: url('img-ionsys3-blank.png');
 	background-repeat:no-repeat;
 	background-position:center;
 	display:block;
@@ -1088,7 +1088,7 @@ section.safetyInfoPage .isiContent.padded{
 		width:295px;
 		height:500px;
 		cursor:-webkit-grab;
-		background-image: url('img-ionsys-controller-top.png');
+		background-image: url('img-ionsys-controller-top-2.png');
 	}
 
 	.packageAssembly>div{
