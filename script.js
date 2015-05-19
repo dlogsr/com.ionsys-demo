@@ -440,10 +440,11 @@ function powerUp(){
 			flashLCD(88,9);
 		},500);
 	},500);
-	powered = true;
+	
 	setTimeout(function(){
 		flashGreenLED(500,3000);
 		setTimeout(function(){
+			powered = true;
 			doseModeEnter('ready');
 			doseLockout = false;
 			setTimeout(function(){$modeCaption.removeClass('hidden')},600);
