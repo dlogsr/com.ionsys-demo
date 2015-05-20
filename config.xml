@@ -85,6 +85,7 @@
 
         <!-- icon declarations -->
         <icon src="icon.png" />
+        <icon src="icon.png" gap:platform="android" />
         
         <!-- iPhone 6 / 6+ -->
         <icon src="icon-60@3x.png" gap:platform="ios" width="180" height="180" />
