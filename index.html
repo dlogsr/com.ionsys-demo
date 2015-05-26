@@ -11,7 +11,15 @@
 </head>
 
 <body>
-<div class="phonegapBlack"></div>
+<div class="phonegapBlack">
+	<div>
+		<div class="introLogo">
+		</div>
+		<p>
+			IONSYS contains fentanyl, an opioid agonist. IONSYS is indicated for the short-term management of acute postoperative pain in adult patients requiring opioid analgesia in the hospital.
+		</p>
+	</div>
+</div>
 
 <div class="debugLog hidden">debug</div>
 
@@ -27,7 +35,7 @@
 	<button id="powerButtonOff">
 		<i class="flaticon-standby"></i>
 	</button>
-</header>
+</header>	
 <section class="splash">
 	<div class="splashLimiter">
 		<header class="ionsysLogo">
@@ -97,13 +105,13 @@
 					<article class="caption">
 						<h4 id="modeCaption" class="hidden">
 							<p class="statusDefault enable"></p>
-							<p class="statusReady">Standby, Ready.</p>
+							<p class="statusReady">Ready for Dose Initiation</p>
 							<p class="statusDose1">Administering Dose...</p>
 							<p class="statusDose2">Administering Dose...</p>
 							<p class="statusPsc1">NO dose being delivered</p>
 							<p class="statusPsc2">NO dose being delivered</p>
-							<p class="statusEou">Currently in 80/24 mode...</p>
-							<p class="statusEol">Currently in ALERT mode...</p>
+							<p class="statusEou">80 doses or 24 hours</p>
+							<p class="statusEol">ALERT mode</p>
 							<p class="statusPoweron"><!-- Powering On --></p>
 							<p class="statusPoweroff"><!-- Powering Off --></p>
 							<p class="statusPoweredoff"><!-- Powered Off --></p>
@@ -118,13 +126,13 @@
 							</p>
 							<p class="statusDose1">
 								Delivery of a dose of fentanyl. The dosing period is 10 minutes long and delivers 40 mcg of medicine to the patient. During this period, the dose button is disabled, the LED flashes green, and the display indicates that it is in a dosing mode due to the 'walking' LCD animation alternating with the current doses administered.
-								<span class="mockButton mbPSC">If the unit senses poor skin contact, it will stop dosing, enter an error mode and return to standby.</span>
+								<span class="mockButton mbPSC">If the unit senses poor skin contact, it will stop dosing, enter Standby mode for 15 seconds, and return to Ready mode.</span>
 								<span class="mockButton mbEOU">If the unit reaches the 24-hour limit or 80 doses, it will enter End-of-Use.</span>
-								<span class="mockButton mbEOL">If the unit senses compromised skin (i.e. an open wound), it will ALERT and enter End-of-Life.<span>
+								<span class="mockButton mbEOL">If the unit senses compromised skin (i.e. an open wound), it will sound an ALERT and enter End-of-Life.<span>
 							</p>
 							<p class="statusPsc1">
-								When a dose is initiated BUT the device does not detect a proper contact with the patient's skin after 4 minutes, the unit will stop dosing and inform the patient of this error. This is indicated by audible beeping along with a flashing red LED. 
-								<span>The dose count will not increment, and the device can re-administer a dose after it returns to Ready mode after 15 seconds.</span>
+								When a dose is initiated BUT the device does not detect proper contact with the patient's skin after 4 minutes, the unit will stop dosing, enter Standby mode and inform the patient. This is indicated by audible beeping along with a flashing red LED. 
+								<span>The device will enter Standby mode for 15 seconds, the dose count will not increment, and the device can re-administer a dose after it returns to Ready mode after 15 seconds.</span>
 							</p>
 							<p class="statusEou">
 								After 80 doses are administered or 24 hours pass since activation, the device will enter End-of-Use mode. The device will no longer administer any doses, the LCD will flash the total number of doses administered, and the LED does not flash.
@@ -167,11 +175,11 @@
 		</div>
 	</div>
 </section>
-<header class="ionsysLogoBanner hiddenLogo">
+<header class="ionsysLogoBanner">
 	<div class="ionsysLogo">
 	</div>
 </header>
-<section class="safetyInfoPage">
+<section class="safetyInfoPage slideUp">
 	<div class="isiContent padded">
 		<div class="safetyInfoTitle">
 			<div class="plusMinusIcon">
@@ -274,7 +282,7 @@
 					Dosing:
 				</td>
 				<td>
-					Pre-programmed 40 micrograms delivered over 10-minute dosing period
+					Pre-programmed 40 micrograms delivered over 10-minute dosing period*
 				</td>
 			</tr>
 			<tr>
@@ -287,10 +295,10 @@
 			</tr>
 			<tr>
 				<td>
-					Lockout period:
+					Lockout period*:
 				</td>
 				<td>
-					10 minutes (coincides with dosing period)
+					<p>10 minutes (coincides with dosing period)</p>
 				</td>
 			</tr>
 			<tr>
@@ -307,6 +315,13 @@
 				</td>
 				<td>
 					24 hours or 80 doses, whichever comes first
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<p class="infoSidenote">
+						*(10 minute period is shortened to 18 seconds in this app for demonstration purposes)
+					</p>
 				</td>
 			</tr>
 		</table>
@@ -358,11 +373,11 @@
 						<tr>
 							<td>
 								<ul>
-									<li>Built-in safety features:
+									<li>Designed system safety features:
 										<ul>
 											<li>IONSYS is pre-programmed to give a precise dose of pain medication</li>
 											<li>IONSYS is pre-programmed to prevent the patient from getting more than one dose at a time. The patient is limited to a maximum of 6 doses per hour</li>
-											<li>The recessed on-demand dosing button and the "double-click" needed to start a dose protext against accidentally starting a dose</li>
+											<li>The recessed on-demand dosing button and the "double-click" needed to start a dose protect against accidentally starting a dose</li>
 										</ul>
 									</li>
 									<li>IONSYS contains no latex</li>

@@ -198,7 +198,7 @@ $(document).ready(function(){
 			setTimeout(function(){
 				$phonegapBlack.addClass('hidden');
 			},1500);
-		},500); // normal
+		},5000); // normal
 	};
 	$powerButtonOff.hide();
 	//phonegap splashscreen hide;
@@ -211,7 +211,7 @@ $(document).ready(function(){
 
 	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
 	if(isFullScreen){
-		adjustContentOffset($safetyInfoPage,-100);
+		adjustContentOffset($safetyInfoPage,-200);
 		$contextContent.addClass('notransition');
 		var contentWidth = $contextContent.outerWidth();
 		tempContentStyle = setStyle('.contextContent{left:-377px}');
@@ -319,7 +319,7 @@ $(document).ready(function(){
 			$safetyInfoPage.removeClass('slideUp');
 			if(!$infoPage.hasClass('slideUp')) $ionsysLogoBanner.addClass('hiddenLogo');
 		}
-		isFullScreen ? adjustContentOffset($safetyInfoPage,-100) : adjustContentOffset($safetyInfoPage,-50);
+		isFullScreen ? adjustContentOffset($safetyInfoPage,-200) : adjustContentOffset($safetyInfoPage,-50);
 		scrollAndStop('body',0);
 	});
 

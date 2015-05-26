@@ -25,6 +25,12 @@ body{
 	margin: 0 0 2.5em 0;
 	background-color: black;
 	color:white;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
 }
 
@@ -649,7 +655,7 @@ header.ionsysLogoBanner{
 	transition: all 0.4s ease-in;
 	position:fixed;
 	top:0;
-	z-index:999;
+	z-index:998;
 	height:15%;
 	background-color: #00a0df;
 	width:100%;
@@ -731,6 +737,11 @@ section.infoPage.slideUp, section.safetyInfoPage.slideUp{
 	min-width:240px;
 }
 
+.infoSidenote{
+	font-size:.9em;
+	color:#CCC;
+}
+
 section.safetyInfoPage{
 	-webkit-transition: all 0.4s ease-in;
 	-moz-transition: all 0.4s ease-in;
@@ -740,7 +751,7 @@ section.safetyInfoPage{
 	/*border-top: 1px solid #444;*/
 	box-shadow: -1px -1px 1px 1px black;
 	position:fixed;
-	z-index:998;
+	z-index:997;
 	width:100%;
 	top:auto;
 	cursor:pointer;
@@ -843,7 +854,7 @@ section.safetyInfoPage .isiContent.padded{
 
 .controlBar{
 	position:fixed;
-	z-index:997;
+	z-index:996;
 	bottom:50px;
 	height:4em;
 	width:100%;
@@ -915,6 +926,54 @@ section.safetyInfoPage .isiContent.padded{
 	background-size: 24px 24px;	
 }
 
+/* PHONEGAP CSS */
+
+.phonegapBlack{
+	background-color:#000;
+	z-index:999;
+	width:100%;
+	height:100%;
+	position:fixed;
+	display:flex;
+	flex-wrap:nowrap;
+	align-items:center;
+	justify-content:center;
+}
+
+.phonegapBlack div{
+	width:75%;
+}
+
+.phonegapBlack p{
+	order:2;
+	font-size:1.25em;
+	display:block;
+	border: 2px solid white;
+	padding:1em;
+}
+
+.phonegapBlack .introLogo{
+	order:1;
+	width:100%;
+	height:75px;
+	padding-bottom:1em;
+	background-image: url('white-ionsys-logo.png');
+	background-color: #00a0df;
+	background-repeat:no-repeat;
+	background-size: auto 75px;
+	background-position: .5em .5em;
+}
+
+.phonegapBlackFadeOut, .phonegapBlackFadeOut p, .phonegapBlackFadeOut .introLogo{
+	/*background-color:rgba(0,0,0,0);*/
+	opacity:0;
+	/*color: rgba(0,0,0,0);*/
+	/*border-color: rgba(0,0,0,0);*/
+	-webkit-transition: all 1.5s cubic-bezier(.45,.59,.96,.84);
+	-moz-transition: all 1.5s ease-out;
+	-o-transition: all 1.5s ease-out;
+	transition: all 1.5s ease-out;
+}
 
 @media only screen and (min-width: 900px){
 
@@ -1097,7 +1156,7 @@ section.safetyInfoPage .isiContent.padded{
 
 
 	.controlBar{
-		top: 10%;
+		top: 20%;
 		left:0;
 		height:300px;
 		width:4em;
@@ -1159,23 +1218,9 @@ section.safetyInfoPage .isiContent.padded{
 		padding: 1em;
 	}
 
+	.phonegapBlack p{
+		font-size:2em;
+	}
 
-}
 
-/* PHONEGAP CSS */
-
-.phonegapBlack{
-	background-color:#000;
-	z-index:999;
-	width:100%;
-	height:100%;
-	position:fixed;
-}
-
-.phonegapBlackFadeOut{
-	background-color:rgba(0,0,0,0);
-	-webkit-transition: all 1.5s cubic-bezier(.45,.59,.96,.84);
-	-moz-transition: all 1.5s ease-out;
-	-o-transition: all 1.5s ease-out;
-	transition: all 1.5s ease-out;
 }
