@@ -309,6 +309,11 @@ $(document).ready(function(){
 		infoPageSlide();
 	});
 
+	$infoPage.on('tap',function(e){
+		e.preventDefault();
+		infoPageSlide();
+	});
+
 	$safetyInfoPage.on('tap',function(e){
 		e.preventDefault();
 		if(!$safetyInfoPage.hasClass('slideUp')){
