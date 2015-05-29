@@ -34,6 +34,10 @@ body{
 
 }
 
+a, a:visited, a:active{
+	color:white;
+}
+
 body.padding{
 	padding-bottom:7em;
 }
@@ -683,11 +687,11 @@ section.infoPage{
 	transition: all 0.4s ease-in;
 	position:fixed;
 	box-shadow: -2px -2px 5px 4px black;
-	/*top:700px;*/
+	cursor:pointer;
 	z-index:990;
 	width:100%;
 	padding-bottom:8em;
-	background: rgba(0,0,0,.9);
+	background: rgba(0,0,0,.9);d
 }
 
 section.infoPage.slideUp, section.safetyInfoPage.slideUp{
@@ -850,6 +854,11 @@ section.safetyInfoPage .isiList.extraSpace li{
 
 section.safetyInfoPage .isiContent.padded{
 	padding: 0 1em;
+}
+
+section.safetyInfoPage .isiFooter{
+	margin-top:1em;
+	text-align:center;
 }
 
 .controlBar{

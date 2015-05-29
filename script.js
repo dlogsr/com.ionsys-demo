@@ -208,8 +208,10 @@ $(document).ready(function(){
 	adjustContentSpacing('section');
 	adjustContentOffset($infoPage,100);
 	
-
+	//check if we are on full-screen (non-mobile)
 	isFullScreen = window.matchMedia("(min-width: 900px)").matches;
+	
+	//if non-mobile, then set the arrow and content properties to slide left
 	if(isFullScreen){
 		adjustContentOffset($safetyInfoPage,-200);
 		$contextContent.addClass('notransition');
@@ -230,14 +232,6 @@ $(document).ready(function(){
 
 	//clear out the LCD display
 	$display.find('*').addClass('digitOff');
-
-
-	//power on/off functions 
-	// $powerButton.on('tap',function(){
-	// 	if(!powered && snappedIn){
-	// 		powerUp();
-	// 	};
-	// });
 
 	$powerButtonOff.on('tap',function(){
 		if(powered){
@@ -310,7 +304,7 @@ $(document).ready(function(){
 	});
 
 	$infoPage.on('tap',function(e){
-		e.preventDefault();
+		// e.preventDefault();
 		infoPageSlide();
 	});
 
