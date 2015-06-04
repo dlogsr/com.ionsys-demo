@@ -717,7 +717,7 @@ section.infoPage.slideUp, section.safetyInfoPage.slideUp{
 .infoPageContent .infoPageTable{
 	padding:.5em;
 	width:100%;
-	margin-bottom:1em;
+	margin-bottom:1em;	
 }
 
 .infoPageContent .infoPageTable th{
@@ -1204,7 +1204,7 @@ section.safetyInfoPage .isiFooter{
 	}
 
 	section.infoPage{
-		padding-bottom: 7em;
+		padding-bottom: 13em;
 	}
 
 	.infoPage .infoPageContent{
