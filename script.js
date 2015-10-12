@@ -105,7 +105,7 @@ function getWindowHeight(){
 
 function adjustContentSpacing(currSection) {
 	var windowHeight = getWindowHeight();
-	$(currSection).css({'min-height':windowHeight-70});
+	$(currSection).css({'min-height':windowHeight});
 }
 
 function adjustContentOffset(currSection,num) {
@@ -115,21 +115,21 @@ function adjustContentOffset(currSection,num) {
 
 //audio file play function for PhoneGap only (otherwise default to jQuery play())
 function playAudio(url) {
-    // Play the audio file at url
-    var path = window.location.pathname;
-    path = path.substr(0, path.length-10);
-    url = path+url;
-    var my_media = new Media(url,
-        // success callback
-        function () {
-        },
-        // error callback
-        function (err) {
-        }
-    );
-    // Play audio
-    my_media.play();
-    setTimeout(function(){my_media.release();},1000)
+	// Play the audio file at url
+	var path = window.location.pathname;
+	path = path.substr(0, path.length-10);
+	url = path+url;
+	var my_media = new Media(url,
+		// success callback
+		function () {
+		},
+		// error callback
+		function (err) {
+		}
+	);
+	// Play audio
+	my_media.play();
+	setTimeout(function(){my_media.release();},1000)
 }
 
 function scrollAndStop(marker,offset){
@@ -155,45 +155,45 @@ document.addEventListener("deviceready", function(){
 }, false);
 
 $topAssy.draggable({/*axis:"x",*/ 
-	 snap: ".bottomAssySnapPoint",
-	 snapTolerance: 30,
-	 snapMode: 'inner',
-	 containment: ".splash",
-	 stop: function(event, ui){
-	 	var snapped = $(this).data('ui-draggable').snapElements;
-	 	var snappedTo = $.map(snapped, function(element){
-	 		return element.snapping ? element.item : null;
-	 	});
-	 	var result= '';
-        $.each(snappedTo, function(idx, item) {
-            result += $(item).attr('class');
-        });
-        if(result == 'bottomAssySnapPoint')
-        {
-        	$packageAssembly.addClass('hidden');
-        	var leftOffset = $topAssy.css('left');
-        	$topAssy.removeAttr('style');
-        	$topAssy.css({'left':leftOffset});
-        	setTimeout(function(){
-        		if(!isFullScreen) $('body').css({'padding-bottom':'8em'});
-        		$workingAssembly.removeClass('hidden');
-        		$('.context').removeClass('invisible');
-        	},25);
-        	setTimeout(function(){
-        		slideContext();
-        	},200);
-        	snappedIn = true;
-        	if(!powered){
-				powerUp();
-			};
-        }
+	snap: ".bottomAssySnapPoint",
+	snapTolerance: 30,
+	snapMode: 'inner',
+	containment: ".splash",
+	stop: function(event, ui){
+		var snapped = $(this).data('ui-draggable').snapElements;
+		var snappedTo = $.map(snapped, function(element){
+			return element.snapping ? element.item : null;
+		});
+		var result= '';
+	$.each(snappedTo, function(idx, item) {
+		result += $(item).attr('class');
+	});
+	if(result == 'bottomAssySnapPoint')
+	{
+		$packageAssembly.addClass('hidden');
+		var leftOffset = $topAssy.css('left');
+		$topAssy.removeAttr('style');
+		$topAssy.css({'left':leftOffset});
+		setTimeout(function(){
+			if(!isFullScreen) $('body').css({'padding-bottom':'8em'});
+			$workingAssembly.removeClass('hidden');
+			$('.context').removeClass('invisible');
+		},25);
+		setTimeout(function(){
+			slideContext();
+		},200);
+		snappedIn = true;
+		if(!powered){
+			powerUp();
+		};
+	}
 	}
 });
 
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
 	if(!usingPhonegap){
-			setTimeout(function(){
+		setTimeout(function(){
 			$phonegapBlack.addClass('phonegapBlackFadeOut');
 			setTimeout(function(){
 				$phonegapBlack.addClass('hidden');
@@ -213,7 +213,7 @@ $(document).ready(function(){
 	
 	//if non-mobile, then set the arrow and content properties to slide left
 	if(isFullScreen){
-		adjustContentOffset($safetyInfoPage,-200);
+		// adjustContentOffset($safetyInfoPage,-200);
 		$contextContent.addClass('notransition');
 		var contentWidth = $contextContent.outerWidth();
 		tempContentStyle = setStyle('.contextContent{left:-377px}');
@@ -221,7 +221,7 @@ $(document).ready(function(){
 		setTimeout(function(){$contextContent.removeClass('notransition');},50);
 	}
 	else{
-		adjustContentOffset($safetyInfoPage,-50);
+		// adjustContentOffset($safetyInfoPage,-50);
 		tempContentStyle = setStyle('.contextContent{top:0px}');
 	}
 
@@ -402,11 +402,11 @@ function slideContext(){
 		contextSize = (isFullScreen) ? $contextContent.outerWidth() : $contextContent.outerHeight();
 		$debugLog.html(contextSize);
 		$contextContent.removeClass('docked');
-	    if($contextContent.css('height') == '0px')
-	    	resizeContext(contextSize);
-	        //sheet.insertRule('.contextContent.slideDown{min-height: '+(contextSize+20)+'px !important;}',0);
-	    else
-	        sheet.removeRule(0);
+		if($contextContent.css('height') == '0px')
+			resizeContext(contextSize);
+			//sheet.insertRule('.contextContent.slideDown{min-height: '+(contextSize+20)+'px !important;}',0);
+		else
+			sheet.removeRule(0);
 		$contextContent.toggleClass('slideDown');
 		$contextArrow.toggleClass('slideDown');
 		$contextArrow.toggleClass('contextArrowClosed').toggleClass('contextArrowOpen');
@@ -789,14 +789,14 @@ function turnOffAllLED(){
 }
 
 function setStyle(cssText) {
-    var sheet = document.createElement('style');
-    sheet.type = 'text/css';
-    /* Optional */ window.customSheet = sheet;
-    (document.head || document.getElementsByTagName('head')[0]).appendChild(sheet);
-    return (setStyle = function(cssText, node) {
-        if(!node || node.parentNode !== sheet)
-            return sheet.appendChild(document.createTextNode(cssText));
-        node.nodeValue = cssText;
-        return node;
-    })(cssText);
+	var sheet = document.createElement('style');
+	sheet.type = 'text/css';
+	/* Optional */ window.customSheet = sheet;
+	(document.head || document.getElementsByTagName('head')[0]).appendChild(sheet);
+	return (setStyle = function(cssText, node) {
+		if(!node || node.parentNode !== sheet)
+			return sheet.appendChild(document.createTextNode(cssText));
+		node.nodeValue = cssText;
+		return node;
+	})(cssText);
 };
