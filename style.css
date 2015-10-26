@@ -113,7 +113,7 @@ img{
 	margin:auto;
 	width:295px;
 	height:500px;
-	background-image: url('img-ionsys-drugunit-top.png');
+	background-image: url('img-ionsys-drugunit-top-eu.png');
 }
 
 .bottomAssySnapPoint{
@@ -131,7 +131,7 @@ img{
 	width:295px;
 	height:500px;
 	cursor:-webkit-grab;
-	background-image: url('img-ionsys-controller-top-2.png');
+	background-image: url('img-ionsys-controller-top-eu.png');
 }
 
 .topAssy.reset{
@@ -150,14 +150,14 @@ img{
 	margin:auto;
 	width:295px;
 	height:500px;
-	background-image: url('img-ionsys3-blank.png');
+	background-image: url('img-ionsys2-eu.png');
 }
 
 .backgroundAssembly{
 	width:100%; /*this will give a slight positioning issue if 
 				window width < 295px, but should not happen on min 320x screen */
 	height:500px;
-	background-image: url('img-ionsys3-blank.png');
+	background-image: url('img-ionsys2-eu.png');
 	background-repeat:no-repeat;
 	background-position:center;
 	display:block;
@@ -652,7 +652,7 @@ button:active{
 	text-align:center;
 }*/
 
-header.ionsysLogoBanner{
+header.ionsysLogoBanner, footer.ionsysLogoBanner{
 	-webkit-transition: all 0.4s ease-in;
 	-moz-transition: all 0.4s ease-in;
 	-o-transition: all 0.4s ease-in;
@@ -666,18 +666,34 @@ header.ionsysLogoBanner{
 	/*padding:1em;*/
 }
 
-header.ionsysLogoBanner.hiddenLogo{
+footer.ionsysLogoBanner.logoBannerBottom{
+	top:auto;
+	bottom:0;
+	z-index:900;
+}
+
+.ionsysLogoBanner.hiddenLogo{
 	top:-15%;
 }
 
-header.ionsysLogoBanner .ionsysLogo{
+.ionsysLogoBanner .ionsysLogo{
 	margin: .75em;
 	height:4em;
-	background-image: url('white-ionsys-logo.png');
+	background-image: url('white-ionsys-logo-eu.png');
 	background-repeat: no-repeat;
 	background-position: left;
 	background-size:contain;
 }
+
+.ionsysLogoBanner .mdcoLogo{
+	margin: .75em;
+	height:70%;
+	background-image: url('mdco-side-logo.png');
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size:contain;
+}
+
 
 
 section.infoPage{
@@ -970,7 +986,7 @@ section.safetyInfoPage .isiFooter{
 	width:100%;
 	height:75px;
 	padding-bottom:1em;
-	background-image: url('white-ionsys-logo.png');
+	background-image: url('white-ionsys-logo-eu.png');
 	background-color: #00a0df;
 	background-repeat:no-repeat;
 	background-size: auto 75px;
@@ -1160,7 +1176,7 @@ section.safetyInfoPage .isiFooter{
 		width:295px;
 		height:500px;
 		cursor:-webkit-grab;
-		background-image: url('img-ionsys-controller-top-2.png');
+		background-image: url('img-ionsys-controller-top-eu.png');
 	}
 
 	.packageAssembly>div{
