@@ -99,6 +99,21 @@ var walkpattern = [['ones','a'],['ones','b'],['ones','c'],['ones','d'],['tens','
 var doseStageTemp = ['ready', 'dose1','dose2','psc1','psc2','eou','eol','poweroff','poweredoff','poweron'];
 var doseStageNum = 0;
 
+//attempt to fix sound issues on iOS9
+document.addEventListener("touchstart", function ()
+{
+	if (had_touch)
+		return;
+	
+	// play empty buffer to unmute audio
+	var buffer = context.createBuffer(1, 1, 22050);
+	var source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
+	had_touch = true;
+});
+
 function getWindowHeight(){
 	return $(window).height();
 }
