@@ -181,7 +181,7 @@ document.addEventListener("touchend", function ()
 	had_touch = true;
 });
 
-document.addEventListener("touchcancel", function ()
+document.addEventListener("touchmove", function ()
 {
 	if (had_touch)
 		return;
