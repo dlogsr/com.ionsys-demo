@@ -262,6 +262,8 @@ $(document).ready(function(){
 
 	//play sounds
 	$beeper.play();
+	$beeper.pause();
+	$buttonPress.play();
 
 	//functions for description text
 	adjustContentSpacing('section');
