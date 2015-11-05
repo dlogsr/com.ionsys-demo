@@ -450,8 +450,7 @@ function powerUp(){
 	//make this pulsing conditional if the device is web?
 	$powerButtonOff.fadeIn('fast',function(){buttonPulse($powerButtonOff);});
 	flashCounter = 0;
-	$beeper.play();
-	//usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
+	usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
 		setTimeout(function(){
