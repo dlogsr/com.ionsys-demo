@@ -208,7 +208,8 @@ $topAssy.draggable({/*axis:"x",*/
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
 	$('body').on('touchend',function(){
-		// $beeper.play();
+		$beeper.play();
+		$beeper.pause();
 	});
 	if(!usingPhonegap){
 		setTimeout(function(){
