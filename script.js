@@ -260,13 +260,18 @@ $(document).ready(function(){
 	};
 	$powerButtonOff.hide();
 
-	//initialize audio files
-	$beeper.play();
-	// $beeper.pause();
-	// $beeper.currentTime = 0;
-	$buttonPress.play();
-	// $buttonPress.pause();
-	// $buttonPress.currentTime = 0;
+	//ios9 audio fix
+	var buffer = this.context.createBuffer(1, 1, 22050);
+	var source = this.context.createBufferSource();
+	source.buffer = buffer;
+	// connect to output (your speakers)
+	source.connect(this.context.destination);
+	// play the sound
+	if(source.play){
+	    source.play(0);
+	} else if(source.noteOn){
+	    source.noteOn(0);
+	}
 
 	//functions for description text
 	adjustContentSpacing('section');
