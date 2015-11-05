@@ -129,7 +129,7 @@ document.addEventListener("touchend", function ()
 	had_touch = true;
 });
 
-document.addEventListener("tap", function ()
+document.addEventListener("load", function ()
 {
 	if (had_touch)
 		return;
@@ -259,19 +259,6 @@ $(document).ready(function(){
 		},5000); // normal
 	};
 	$powerButtonOff.hide();
-
-	//ios9 audio fix
-	var buffer = this.context.createBuffer(1, 1, 22050);
-	var source = this.context.createBufferSource();
-	source.buffer = buffer;
-	// connect to output (your speakers)
-	source.connect(this.context.destination);
-	// play the sound
-	if(source.play){
-	    source.play(0);
-	} else if(source.noteOn){
-	    source.noteOn(0);
-	}
 
 	//functions for description text
 	adjustContentSpacing('section');
