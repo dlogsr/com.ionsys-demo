@@ -438,6 +438,9 @@ function resizeContext(size){
 
 function powerUp(){
 	$beeper.play();
+	$beeper.play();
+	$beeper.play();
+	$beeper.play();
 	// changeDescription('Powering On...',true);
 	changeDescription('poweron');
 	//make this pulsing conditional if the device is web?
