@@ -210,6 +210,7 @@ $(document).ready(function(){
 	$('body').on('touchend',function(){
 		$beeper.play();
 		$beeper.pause();
+		$beeper.currentTime = 0;
 	});
 	if(!usingPhonegap){
 		setTimeout(function(){
@@ -441,16 +442,12 @@ function resizeContext(size){
 }
 
 function powerUp(){
-	$beeper.play();
-	$beeper.play();
-	$beeper.play();
-	$beeper.play();
 	// changeDescription('Powering On...',true);
 	changeDescription('poweron');
 	//make this pulsing conditional if the device is web?
 	$powerButtonOff.fadeIn('fast',function(){buttonPulse($powerButtonOff);});
 	flashCounter = 0;
-	
+	$beeper.play();
 	//usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
