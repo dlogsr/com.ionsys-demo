@@ -245,6 +245,12 @@ $(document).ready(function(){
 	};
 	$powerButtonOff.hide();
 
+	var buffer = context.createBuffer(1, 1, 22050);
+	var source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
+
 	//initialize audio files
 	$beeper.play();
 	// $beeper.pause();
