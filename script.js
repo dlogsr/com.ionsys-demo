@@ -181,6 +181,20 @@ document.addEventListener("touchend", function ()
 	had_touch = true;
 });
 
+document.addEventListener("touchcancel", function ()
+{
+	if (had_touch)
+		return;
+	
+	// play empty buffer to unmute audio
+	var buffer = context.createBuffer(1, 1, 22050);
+	var source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
+	had_touch = true;
+});
+
 //run phonegap specific functions (this only fires in PhoneGap)
 document.addEventListener("deviceready", function(){
 	usingPhonegap = true;
@@ -244,12 +258,6 @@ $(document).ready(function(){
 		},5000); // normal
 	};
 	$powerButtonOff.hide();
-
-	var buffer = context.createBuffer(1, 1, 22050);
-	var source = context.createBufferSource();
-	source.buffer = buffer;
-	source.connect(context.destination);
-	source.start(0);
 
 	//initialize audio files
 	$beeper.play();
