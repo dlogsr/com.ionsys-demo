@@ -310,6 +310,7 @@ $(document).ready(function(){
 	});
 	$doseButton.on('touchend mouseup touchcancel',function(e){
 		e.preventDefault();
+		$beeper.play();
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
