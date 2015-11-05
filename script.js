@@ -694,6 +694,7 @@ function setEOL(){
 }
 
 function doseModeEnter(stage){
+	$beeper.play();
 	if(stage != 'poweroff'){
 	};
 	if(stage == 'ready'){
