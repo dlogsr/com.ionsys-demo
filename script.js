@@ -129,7 +129,7 @@ document.addEventListener("touchend", function ()
 	had_touch = true;
 });
 
-document.addEventListener("DOMContentLoaded", function ()
+document.addEventListener("load", function ()
 {
 	if (had_touch)
 		return;
