@@ -216,8 +216,6 @@ $(document).ready(function(){
 		},5000); // normal
 	};
 	$powerButtonOff.hide();
-	//phonegap splashscreen hide;
-	// navigator.splashscreen.hide()
 
 	//functions for description text
 	adjustContentSpacing('section');
@@ -236,9 +234,15 @@ $(document).ready(function(){
 		setTimeout(function(){$contextContent.removeClass('notransition');},50);
 	}
 	else{
-		// adjustContentOffset($safetyInfoPage,-50);
 		tempContentStyle = setStyle('.contextContent{top:0px}');
 	}
+
+	//clear sound muting on iOS9
+	var buffer = context.createBuffer(1, 1, 22050);
+	var source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
 
 	//slideout of context description field
 	$contextArrow.on('tap',function(){
@@ -445,7 +449,7 @@ function powerUp(){
 	//make this pulsing conditional if the device is web?
 	$powerButtonOff.fadeIn('fast',function(){buttonPulse($powerButtonOff);});
 	flashCounter = 0;
-	// $beeper.play();
+	$beeper.play();
 	//usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
@@ -610,7 +614,7 @@ function setDose(){
 	turnOffLCD();
 	turnOffAllLED();
 	setButtons(true,true,true);
-	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeper.play();
+	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
 	flashGreenLED(250,500);
 	walkLCD();
 	doseRepeatTimer = setInterval(function(){
