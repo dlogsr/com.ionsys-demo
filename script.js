@@ -610,7 +610,7 @@ function setDose(){
 	turnOffLCD();
 	turnOffAllLED();
 	setButtons(true,true,true);
-	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeperLong.play();
+	usingPhonegapAudio ? playAudio(beeperLongPG) : $beeper.play();
 	flashGreenLED(250,500);
 	walkLCD();
 	doseRepeatTimer = setInterval(function(){
