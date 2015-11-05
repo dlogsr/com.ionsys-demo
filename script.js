@@ -437,12 +437,13 @@ function resizeContext(size){
 }
 
 function powerUp(){
+	$beeper.play();
 	// changeDescription('Powering On...',true);
 	changeDescription('poweron');
 	//make this pulsing conditional if the device is web?
 	$powerButtonOff.fadeIn('fast',function(){buttonPulse($powerButtonOff);});
 	flashCounter = 0;
-	$beeper.play();
+	
 	//usingPhonegapAudio ? playAudio(beeperPG) : $beeper.play();
 	redLEDFlash = setTimeout(function(){
 		$redLED.removeClass('hidden');
@@ -694,7 +695,6 @@ function setEOL(){
 }
 
 function doseModeEnter(stage){
-	$beeper.play();
 	if(stage != 'poweroff'){
 	};
 	if(stage == 'ready'){
