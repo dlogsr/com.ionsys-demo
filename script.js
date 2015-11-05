@@ -237,13 +237,6 @@ $(document).ready(function(){
 		tempContentStyle = setStyle('.contextContent{top:0px}');
 	}
 
-	//clear sound muting on iOS9
-	var buffer = context.createBuffer(1, 1, 22050);
-	var source = context.createBufferSource();
-	source.buffer = buffer;
-	source.connect(context.destination);
-	source.start(0);
-
 	//slideout of context description field
 	$contextArrow.on('tap',function(){
 		slideContext();
