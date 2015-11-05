@@ -153,6 +153,34 @@ function scrollAndStop(marker,offset){
 	$('html,body').stop().animate({scrollTop : scrollOffset},400);
 }
 
+document.addEventListener("touchstart", function ()
+{
+	if (had_touch)
+		return;
+	
+	// play empty buffer to unmute audio
+	var buffer = context.createBuffer(1, 1, 22050);
+	var source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
+	had_touch = true;
+});
+
+document.addEventListener("touchend", function ()
+{
+	if (had_touch)
+		return;
+	
+	// play empty buffer to unmute audio
+	var buffer = context.createBuffer(1, 1, 22050);
+	var source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
+	had_touch = true;
+});
+
 //run phonegap specific functions (this only fires in PhoneGap)
 document.addEventListener("deviceready", function(){
 	usingPhonegap = true;
