@@ -207,11 +207,6 @@ $topAssy.draggable({/*axis:"x",*/
 
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
-	$('body').on('touchend',function(){
-		$beeper.play();
-		$beeper.pause();
-		$beeper.currentTime = 0;
-	});
 	if(!usingPhonegap){
 		setTimeout(function(){
 			$phonegapBlack.addClass('phonegapBlackFadeOut');
@@ -221,6 +216,14 @@ $(document).ready(function(){
 		},5000); // normal
 	};
 	$powerButtonOff.hide();
+
+	//initialize audio files
+	$beeper.play();
+	$beeper.pause();
+	$beeper.currentTime = 0;
+	$buttonPress.play();
+	$buttonPress.pause();
+	$buttonPress.currentTime = 0;
 
 	//functions for description text
 	adjustContentSpacing('section');
