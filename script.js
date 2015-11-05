@@ -219,11 +219,11 @@ $(document).ready(function(){
 
 	//initialize audio files
 	$beeper.play();
-	$beeper.pause();
-	$beeper.currentTime = 0;
+	// $beeper.pause();
+	// $beeper.currentTime = 0;
 	$buttonPress.play();
-	$buttonPress.pause();
-	$buttonPress.currentTime = 0;
+	// $buttonPress.pause();
+	// $buttonPress.currentTime = 0;
 
 	//functions for description text
 	adjustContentSpacing('section');
