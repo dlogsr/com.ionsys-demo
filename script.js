@@ -260,6 +260,8 @@ $(document).ready(function(){
 	};
 	$powerButtonOff.hide();
 
+	$('#beeper')[0].play();
+
 	//functions for description text
 	adjustContentSpacing('section');
 	adjustContentOffset($infoPage,100);
