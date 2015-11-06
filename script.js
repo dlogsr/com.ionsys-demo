@@ -252,12 +252,21 @@ $topAssy.draggable({/*axis:"x",*/
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
 	if(!usingPhonegap){
-		setTimeout(function(){
+		// setTimeout(function(){
+		// 	$phonegapBlack.addClass('phonegapBlackFadeOut');
+		// 	setTimeout(function(){
+		// 		$phonegapBlack.addClass('hidden');
+		// 	},1500);
+		// },5000); // normal
+		$phonegapBlack.on('touchend mouseup',function(){
 			$phonegapBlack.addClass('phonegapBlackFadeOut');
+			$beeper.play();
+			$beeper.pause();
+			$beeper.currentTime = 0;
 			setTimeout(function(){
 				$phonegapBlack.addClass('hidden');
 			},1500);
-		},5000); // normal
+		});
 	};
 	$powerButtonOff.hide();
 
@@ -298,10 +307,10 @@ $(document).ready(function(){
 	});
 
 	//***** DOSE BUTTON PRESS FUNCTION *****//
-	$doseButton.on('mousedown',function(e){
+	$doseButton.on('touchstart mousedown',function(e){
 		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
-		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
+		// usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
 		if(doseStageTemp[doseStageNum] == 'eol' || doseStageTemp[doseStageNum] == 'eou'){
 			poweroffTimer = setTimeout(function(){
 				setTimeout(function(){
@@ -313,7 +322,7 @@ $(document).ready(function(){
 	});
 	$doseButton.on('touchend mouseup touchcancel',function(e){
 		e.preventDefault();
-		// usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
+		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
