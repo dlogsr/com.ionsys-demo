@@ -263,6 +263,9 @@ $(document).ready(function(){
 			$beeper.play();
 			$beeper.pause();
 			$beeper.currentTime = 0;
+			$buttonPress.play();
+			$buttonPress.pause();
+			$buttonPress.currentTime = 0;
 			setTimeout(function(){
 				$phonegapBlack.addClass('hidden');
 			},1500);
@@ -310,7 +313,7 @@ $(document).ready(function(){
 	$doseButton.on('touchstart mousedown',function(e){
 		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
-		// usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
+		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
 		if(doseStageTemp[doseStageNum] == 'eol' || doseStageTemp[doseStageNum] == 'eou'){
 			poweroffTimer = setTimeout(function(){
 				setTimeout(function(){
@@ -322,7 +325,7 @@ $(document).ready(function(){
 	});
 	$doseButton.on('touchend mouseup touchcancel',function(e){
 		e.preventDefault();
-		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
+		// usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
