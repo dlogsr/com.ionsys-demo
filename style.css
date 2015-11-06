@@ -894,7 +894,7 @@ section.safetyInfoPage .isiFooter{
 .controlBar{
 	position:fixed;
 	z-index:996;
-	/*bottom:50px;*/
+	bottom:0px;
 	height:4em;
 	width:100%;
 	text-align:center;
