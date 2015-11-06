@@ -202,7 +202,6 @@ document.addEventListener("deviceready", function(){
 	// if(parseInt(device.version) <= 8 ){
 	// 	usingPhonegapAudio = true;
 	// };
-	$beeper.play();
 	setTimeout(function(){
 		navigator.splashscreen.hide()
 		statusBar.hide();
@@ -273,7 +272,6 @@ $(document).ready(function(){
 	};
 	$powerButtonOff.hide();
 
-	$('#beeper')[0].play();
 
 	//functions for description text
 	adjustContentSpacing('section');

@@ -667,6 +667,7 @@ header.ionsysLogoBanner, footer.ionsysLogoBanner{
 }
 
 footer.ionsysLogoBanner.logoBannerBottom{
+	display:none;
 	top:auto;
 	bottom:0;
 	z-index:900;
@@ -1263,6 +1264,10 @@ section.safetyInfoPage .isiFooter{
 
 	.phonegapBlack p{
 		font-size:2em;
+	}
+
+	footer.ionsysLogoBanner.logoBannerBottom{
+		display:auto;
 	}
 
 
