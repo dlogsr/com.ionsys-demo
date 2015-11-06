@@ -298,10 +298,10 @@ $(document).ready(function(){
 	});
 
 	//***** DOSE BUTTON PRESS FUNCTION *****//
-	$doseButton.on('touchstart mousedown',function(e){
+	$doseButton.on('mousedown',function(e){
 		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
-		// usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
+		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
 		if(doseStageTemp[doseStageNum] == 'eol' || doseStageTemp[doseStageNum] == 'eou'){
 			poweroffTimer = setTimeout(function(){
 				setTimeout(function(){
@@ -313,7 +313,7 @@ $(document).ready(function(){
 	});
 	$doseButton.on('touchend mouseup touchcancel',function(e){
 		e.preventDefault();
-		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
+		// usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
