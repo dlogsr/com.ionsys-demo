@@ -232,6 +232,7 @@ $topAssy.draggable({/*axis:"x",*/
 		var leftOffset = $topAssy.css('left');
 		$topAssy.removeAttr('style');
 		$topAssy.css({'left':leftOffset});
+		$beeper.play();
 		setTimeout(function(){
 			if(!isFullScreen) $('body').css({'padding-bottom':'8em'});
 			$workingAssembly.removeClass('hidden');
@@ -300,7 +301,7 @@ $(document).ready(function(){
 	$doseButton.on('touchstart mousedown',function(e){
 		e.preventDefault();
 		$doseButton.addClass('doseButtonPressed');
-		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
+		// usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
 		if(doseStageTemp[doseStageNum] == 'eol' || doseStageTemp[doseStageNum] == 'eou'){
 			poweroffTimer = setTimeout(function(){
 				setTimeout(function(){
@@ -312,7 +313,7 @@ $(document).ready(function(){
 	});
 	$doseButton.on('touchend mouseup touchcancel',function(e){
 		e.preventDefault();
-		$beeper.play();
+		usingPhonegapAudio ? playAudio(buttonPressPG) : $buttonPress.play();
 		setTimeout(function(){
 			$doseButton.removeClass('doseButtonPressed');
 		},25);
