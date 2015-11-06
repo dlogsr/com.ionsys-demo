@@ -202,6 +202,7 @@ document.addEventListener("deviceready", function(){
 	// if(parseInt(device.version) <= 8 ){
 	// 	usingPhonegapAudio = true;
 	// };
+	$beeper.play();
 	setTimeout(function(){
 		navigator.splashscreen.hide()
 		statusBar.hide();
@@ -232,7 +233,6 @@ $topAssy.draggable({/*axis:"x",*/
 		var leftOffset = $topAssy.css('left');
 		$topAssy.removeAttr('style');
 		$topAssy.css({'left':leftOffset});
-		$beeper.play();
 		setTimeout(function(){
 			if(!isFullScreen) $('body').css({'padding-bottom':'8em'});
 			$workingAssembly.removeClass('hidden');
