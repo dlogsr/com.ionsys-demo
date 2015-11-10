@@ -132,6 +132,64 @@ function playAudio(url) {
     setTimeout(function(){my_media.release();},1000)
 }
 
+//attempt to fix sound issues on iOS9
+document.addEventListener("touchstart", function ()
+{
+	if (had_touch)
+		return;
+	
+	// play empty buffer to unmute audio
+	var buffer = context.createBuffer(1, 1, 22050);
+	var source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
+	had_touch = true;
+});
+
+
+document.addEventListener("touchend", function ()
+{
+	if (had_touch)
+		return;
+	
+	// play empty buffer to unmute audio
+	var buffer = context.createBuffer(1, 1, 22050);
+	var source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
+	had_touch = true;
+});
+
+document.addEventListener("tap", function ()
+{
+	if (had_touch)
+		return;
+	
+	// play empty buffer to unmute audio
+	var buffer = context.createBuffer(1, 1, 22050);
+	var source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
+	had_touch = true;
+});
+
+document.addEventListener("touchcancel", function ()
+{
+	if (had_touch)
+		return;
+	
+	// play empty buffer to unmute audio
+	var buffer = context.createBuffer(1, 1, 22050);
+	var source = context.createBufferSource();
+	source.buffer = buffer;
+	source.connect(context.destination);
+	source.start(0);
+	had_touch = true;
+});
+
 function scrollAndStop(marker,offset){
 	var scrollOffset;
 	scrollOffset = $(marker).offset().top - offset;
@@ -192,13 +250,26 @@ $topAssy.draggable({/*axis:"x",*/
 
 $(document).ready(function(){
 	//set the BG image / div size to fill screen
+	//modified to remove timeout, add tap-to-continue for iOS9 purposes
 	if(!usingPhonegap){
-			setTimeout(function(){
+		// setTimeout(function(){
+		// 	$phonegapBlack.addClass('phonegapBlackFadeOut');
+		// 	setTimeout(function(){
+		// 		$phonegapBlack.addClass('hidden');
+		// 	},1500);
+		// },5000); // normal
+		$phonegapBlack.on('touchend mouseup',function(){
 			$phonegapBlack.addClass('phonegapBlackFadeOut');
+			$beeper.play();
+			$beeper.pause();
+			$beeper.currentTime = 0;
+			$buttonPress.play();
+			$buttonPress.pause();
+			$buttonPress.currentTime = 0;
 			setTimeout(function(){
 				$phonegapBlack.addClass('hidden');
 			},1500);
-		},5000); // normal
+		});
 	};
 	$powerButtonOff.hide();
 	//phonegap splashscreen hide;
