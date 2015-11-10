@@ -1267,7 +1267,7 @@ section.safetyInfoPage .isiFooter{
 	}
 
 	footer.ionsysLogoBanner.logoBannerBottom{
-		display:auto;
+		display:block;
 	}
 
 
