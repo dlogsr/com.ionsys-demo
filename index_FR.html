@@ -17,9 +17,9 @@
 		<div class="introLogo">
 		</div>
 		<p>
-			IONSYS is indicated for the management of acute moderate to severe post-operative pain in adult patients.
+			IONSYS est indiqué dans le traitement des douleurs postopératoires aiguës modérées à sévères chez l’adulte.
 			<br><br>
-			IONSYS is restricted to hospital use only. Treatment should be initiated by and remain under the guidance of a physician experienced in the management of opioid therapy.
+			IONSYS est réservé uniquement à l’usage hospitalier. Le traitement doit être instauré par et demeurer sous la surveillance d’un médecin expérimenté dans la prise en charge des traitements aux opiacés.
 			<br><br>
 			Tap to continue.
 		</p>
@@ -30,8 +30,8 @@
 		<ul>
 			<a href="index_DA.html"><li class="language "><span>DA</span></li></a>
 			<a href="index_DE.html"><li class="language "><span>DE</span></li></a>
+			<a href="index.html"><li class="language "><span>EN</span></li></a>
 			<a href="index_FI.html"><li class="language "><span>FI</span></li></a>
-			<a href="index_FR.html"><li class="language "><span>FR</span></li></a>
 			<a href="index_NL.html"><li class="language "><span>NL</span></li></a>
 			<a href="index_NO.html"><li class="language "><span>NO</span></li></a>
 			<a href="index_SV.html"><li class="language "><span>SV</span></li></a>
@@ -39,8 +39,6 @@
 	</div>	
 	<div class="languageSelector"></div>
 </div>
-
-<div class="debugLog hidden">debug</div>
 
 <header class="pageHeader frontHeader">
 	<div id="headerLogoCircle hidden">
@@ -106,14 +104,14 @@
 					<header>
 						<h2 id="deviceStatus">
 							<p class="statusDefault enable"></p>
-							<p class="statusReady">Ready Mode</p>
-							<p class="statusDose1">Dosing</p>
-							<p class="statusDose2">Dosing</p>
-							<p class="statusPsc1">Poor Skin Contact</p>
-							<p class="statusPsc2">Poor Skin Contact</p>
-							<p class="statusEou">End of Use</p>
-							<p class="statusEol">End of Life</p>
-							<p class="statusPoweron">Powering On</p>
+							<p class="statusReady">Mode Prêt</p>
+							<p class="statusDose1">Dosage</p>
+							<p class="statusDose2">Dosage</p>
+							<p class="statusPsc1">Mauvais contact avec la peau</p>
+							<p class="statusPsc2">Mauvais contact avec la peau</p>
+							<p class="statusEou">Fin d’utilisation</p>
+							<p class="statusEol">Fin de vie</p>
+							<p class="statusPoweron">Mise en marche</p>
 							<p class="statusPoweroff"><!-- Powering Off --></p>
 							<p class="statusPoweredoff"><!-- Powered Off --></p>
 							<p class="statusCustom">custom</p>
@@ -122,13 +120,13 @@
 					<article class="caption">
 						<h4 id="modeCaption" class="hidden">
 							<p class="statusDefault enable"></p>
-							<p class="statusReady">Ready for Dose Initiation</p>
-							<p class="statusDose1">Administering Dose...</p>
-							<p class="statusDose2">Administering Dose...</p>
-							<p class="statusPsc1">NO dose being delivered</p>
-							<p class="statusPsc2">NO dose being delivered</p>
-							<p class="statusEou">80 doses or 24 hours</p>
-							<p class="statusEol">ALERT mode</p>
+							<p class="statusReady">Prêt à initier l’administration de la dose</p>
+							<p class="statusDose1">Dose en cours d’administration...</p>
+							<p class="statusDose2">Dose en cours d’administration...</p>
+							<p class="statusPsc1">AUCUNE dose n’est administrée</p>
+							<p class="statusPsc2">AUCUNE dose n’est administrée</p>
+							<p class="statusEou">80 doses ou 24 heures</p>
+							<p class="statusEol">Mode ALERTE</p>
 							<p class="statusPoweron"><!-- Powering On --></p>
 							<p class="statusPoweroff"><!-- Powering Off --></p>
 							<p class="statusPoweredoff"><!-- Powered Off --></p>
@@ -137,28 +135,28 @@
 						<div id="modeDescription">
 							<p class="statusDefault enable"></p>
 							<p class="statusReady">
-								The device is powered and ready to administer a dose. A dose can be administered by pressing the dose button on the top of the device two times in a window of 3 seconds between button presses. No fentanyl is delivered in this mode until a dose is initiated.
-								<span class="mockButton mbEOU">If the unit reaches the 24-hour limit or 80 doses, it will enter End-of-Use.</span>
-								<span class="mockButton mbEOL">If the unit fails self-test or has low battery, it will sound an ALERT and enter End-of-Life.</span>
+								Le système est allumé et prêt à administrer une dose. Une dose peut être administrée en appuyant deux fois sur le bouton « dose » au-dessus du système à 3 secondes d’intervalle. Du fentanyl ne sera pas administré dans ce mode tant que l’administration d’une dose ne sera pas initiée. 
+								<span class="mockButton mbEOU">Si le système atteint la limite de 24 heures ou de 80 doses, il passera en mode Fin d’utilisation. </span>
+								<span class="mockButton mbEOL">Si l’autotest n’est pas effectué avec succès ou si la batterie est faible, le système émettra une ALERTE et passera en mode Fin de vie. </span>
 							</p>
 							<p class="statusDose1">
-								Delivery of a dose of fentanyl. The dosing period is 10 minutes long and delivers 40 mcg of medicine to the patient. During this period, the dose button is disabled, the LED flashes green, and the display indicates that it is in a dosing mode due to the 'walking' LCD animation alternating with the current doses administered.
-								<span class="mockButton mbPSC">If the unit senses poor skin contact, it will stop dosing, enter Standby mode, then return to Ready mode.</span>
-								<span class="mockButton mbEOU">If the unit reaches the 24-hour limit or 80 doses, it will enter End-of-Use.</span>
-								<span class="mockButton mbEOL">If the unit senses compromised skin (i.e. an open wound), it will sound an ALERT and enter End-of-Life.<span>
+								Administration d’une dose de fentanyl. La période de dosage dure 10 minutes et une dose de 40 microgrammes du médicament est administrée au patient. Au cours de cette période, le bouton dose est désactivé, le voyant LED vert clignote, et l’écran LCD indique que le système est en mode d’administration par une animation de « marche » alternant avec l’affichage des doses en cours d’administration. 
+								<span class="mockButton mbPSC">Si le système détecte un mauvais contact avec la peau, il arrêtera l’administration, passera en mode Veille, puis retournera en mode Prêt.</span>
+								<span class="mockButton mbEOU">Si le système atteint la limite de 24 heures ou de 80 doses, il passera en mode Fin d’utilisation.</span>
+								<span class="mockButton mbEOL">Si le système détecte une peau lésée (par ex. une plaie ouverte), il émettra une ALERTE et passera en mode Fin de vie. <span>
 							</p>
 							<p class="statusPsc1">
-								When a dose is initiated BUT the device does not detect proper contact with the patient's skin after 4 minutes, the unit will stop dosing, enter Standby mode and inform the patient. This is indicated by audible beeping along with a flashing red LED. 
-								<span>The device will enter Standby mode for 15 seconds, the dose count will not increment, and the device can re-administer a dose after it returns to Ready mode after 15 seconds.</span>
+								Lorsque l’administration d’une dose est initiée MAIS que le système ne détecte pas un bon contact avec la peau du patient dans les 4 minutes, l’administration s’arrêtera, le système passera en mode Veille et le patient sera averti. Cela est indiqué par un bip sonore accompagné d’un voyant LED rouge clignotant.  
+								<span>Le système passera en mode Veille pendant 15 secondes, l’indicateur de dose n’augmentera pas et le système pourra administrer à nouveau la dose une fois revenu en mode Prêt 15 secondes plus tard. </span>
 							</p>
 							<p class="statusEou">
-								After 80 doses are administered or 24 hours pass since activation, the device will enter End-of-Use mode. The device will no longer administer any doses, the LCD will flash the total number of doses administered, and the LED does not flash.
-								<span class="mockButton mbEOL">After 12 hours in End-of-Use, the device will enter End-of-Life mode automatically.</span>
-								<span>Holding down the dose button for 6 seconds will turn off the unit.</span>
+								AfUne fois que 80 doses auront été administrées ou que 24 heures se seront écoulées depuis l’activation du système, celui-ci passera en mode Fin d’utilisation. Le système n’administrera aucune dose supplémentaire, l’écran LCD affichera le nombre total de doses administrées en clignotant, et le voyant LED ne clignotera pas. 
+								<span class="mockButton mbEOL">Après 12 heures en mode Fin d’utilisation, le système passera automatiquement en mode Fin de vie. </span>
+								<span>Maintenir le bouton dose appuyé pendant 6 secondes éteindra le système. </span>
 							</p>
 							<p class="statusEol">
-								An ALERT condition can occur by sensing compromised skin mid-dose, from a low battery, or after 12 hours from End-of-Use. It will flash the current dose amount on the LCD, the LED will contintually blink red and an audible continuous beep will play. This indicates that the device has reached EOL (end-of-life). No doses may be administered.
-								<span>Holding down the dose button for 6 seconds will turn off the unit.</span>
+								Une situation d’ALERTE peut survenir suite à la détection d’une peau lésée en cours d’administration de la dose, en raison d’une batterie faible ou après 12 heures en mode Fin d’utilisation. La dose actuelle administrée s’affichera en clignotant sur l’écran LCD, le voyant LED rouge clignotera continuellement et le système émettra un bip sonore continu. Cela indique que le système a atteint la fin de son cycle de vie. Aucune dose ne peut être administrée. 
+								<span>Maintenir le bouton dose appuyé pendant 6 secondes éteindra le système.</span>
 							</p>
 							<p class="statusPoweron"></p>
 							<p class="statusPoweroff"></p>
@@ -257,34 +255,34 @@
 		</header> -->
 		<table class="infoPageTable">
 			<td colspan="2">
-				IONSYS is indicated for the management of acute moderate to severe post-operative pain in adult patients.
+				IONSYS est indiqué dans le traitement des douleurs postopératoires aiguës modérées à sévères chez l’adulte.
 			</td>
 		</table>
 		<table class="infoPageTable">
 			<td colspan="2">
-			IONSYS is restricted to hospital use only. Treatment should be initiated by and remain under the guidance of a physician experienced in the management of opioid therapy.
+			IONSYS est réservé uniquement à l’usage hospitalier. Le traitement doit être instauré par et demeurer sous la surveillance d’un médecin expérimenté dans la prise en charge des traitements aux opiacés.
 			</td>
 		</table>
 		<table class="infoPageTable">
 			<tr>
 				<th colspan="2">
-					<h3>SYSTEM SPECIFICATIONS</h3>
+					<h3>SPÉCIFICATIONS DU SYSTÈME</h3>
 				</th>
 			</tr>
 			<tr>
 				<td>
-					Active Ingredient
+					Principe actif
 				</td>
 				<td>
-					Fentanyl HCl
+					Fentanyl HCl
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Absorption route:
+					Voie d’absorption:
 				</td>
 				<td>
-					Transdermal (iontophoresis)
+					Transdermique (iontophorèse)
 				</td>
 			</tr>
 			<tr>
@@ -292,36 +290,36 @@
 					Activation:
 				</td>
 				<td>
-					Patient double-clicks on-demand dosing button (twice within 3 seconds)
+					Le patient appuie, selon ses besoins, deux fois sur le bouton de dosage (deux fois dans un délai de 3 secondes)
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Dosing:
+					Dosage:
 				</td>
 				<td>
-					Pre-programmed 40 micrograms delivered over 10-minute dosing period*
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Maximum dose rate:
-				</td>
-				<td>
-					6 doses per hour
+					Une dose pré-programmée de 40 microgrammes administrée sur une période de 10 minutes*
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Lockout period*:
+					Débit de dose maximum:
 				</td>
 				<td>
-					<p>10 minutes (coincides with dosing period)</p>
+					6 doses par heure
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Doses available per unit:
+					Période de verrouillage*:
+				</td>
+				<td>
+					<p>10 minutes (coïncide avec la période d’administration)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Doses disponibles par système:
 				</td>
 				<td>
 					80
@@ -329,16 +327,16 @@
 			</tr>
 			<tr>
 				<td>
-					Dispensing life:
+					Durée de vie d’administration:
 				</td>
 				<td>
-					24 hours or 80 doses, whichever comes first
+					24 heures ou 80 doses, selon la première éventualité
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<p class="infoSidenote">
-						*(10 minute period is shortened to 18 seconds in this app for demonstration purposes)
+						*(la période de 10 minutes est réduite à 18 secondes dans cette application à des fins de démonstration)
 					</p>
 				</td>
 			</tr>
@@ -346,16 +344,16 @@
 				<table class="infoPageTable infoColumn" align="left">
 					<tbody>
 						<th>
-							<h3>FEATURES</h3>
+							<h3>CARACTÉRISTIQUES</h3>
 						</th>
 						<tr>
 							<td>
 								<ul>
-									<li>On-demand dosing button</li>
-									<li>Light-emitting diode (LED) that indicates:
+									<li>Bouton de dosage selon les besoins</li>
+									<li>Diode électroluminescente (LED) indiquant: 
 										<ul>
-											<li>When a dose is being delivered (Green)</li>
-											<li>When there is an error (Red)</li>
+											<li>Lorsqu’une dose est en cours d’administration (vert)</li>
+											<li>Lorsqu’une erreur se produit (rouge)</li>
 										</ul>
 									</li>
 								</ul>
@@ -368,14 +366,14 @@
 						<tr>
 							<td>
 								<ul>
-									<li>Liquid-crystal display (LCD) that indicates:
+									<li>Écran à cristaux liquides (LCD) indiquant: </li>
 										<ul>
-											<li>The number of doses delivered</li>
-											<li>When a dose is being administered</li>
-											<li>When there is an error</li>
+											<li>Le nombre de doses administrées</li>
+											<li>Lorsqu’une dose est en cours d’administration</li>
+											<li>Lorsqu’une erreur se produit</li>
 										</ul>
-									<li>Audio tones that signal dose activation and various system alerts</li>
-									<li>Pressure-sensitive adhesive that holds IONSYS securely to patient's skin</li>
+									<li>Signal audio indiquant l’activation d’une dose ainsi que les alertes variées du système</li>
+									<li>Adhésif sensible à la pression maintenant fermement IONSYS sur la peau du patient</li>
 
 	<!-- 								<li>Designed system features:
 										<ul>

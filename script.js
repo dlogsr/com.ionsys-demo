@@ -76,6 +76,9 @@ var buttonPressPG = document.getElementById('button-press').getAttribute('src');
 var usingPhonegap = false;
 var usingPhonegapAudio = false;
 var $phonegapBlack = $('.phonegapBlack');
+var $languageBar = $('.languageBar');
+var $languageSelector = $('.languageSelector');
+var $languageList = $('.languageList');
 
 //arrays for the LCD display
 var digits = new Array;
@@ -265,12 +268,18 @@ $(document).ready(function(){
 			$buttonPress.play();
 			$buttonPress.pause();
 			$buttonPress.currentTime = 0;
+			$languageBar.addClass("hidden");
 			setTimeout(function(){
 				$phonegapBlack.addClass('hidden');
 			},1500);
 		});
 	};
 	$powerButtonOff.hide();
+
+	//***LANGUAGE SELECTION ***//
+	$languageSelector.on('tap',function(){
+		$languageList.toggleClass("hiddenList");
+	});
 
 
 	//functions for description text

@@ -1019,6 +1019,64 @@ section.safetyInfoPage .isiFooter{
 	transition: all 1.5s ease-out;
 }
 
+.languageBar{
+	position:fixed;
+	bottom:1em;
+	right:1em;
+	text-align:right;
+	z-index:999;
+	width:100%;
+	height:2.5em;
+}
+
+.languageBar .languageList li{
+	border-radius:15em;
+	border: 1px solid white;
+	text-align:center;
+	margin:0;
+	margin-right:.2em;
+}
+
+.languageBar .languageList li, .languageBar div{
+	position:relative;
+	display:block;
+	height:2em;
+}
+
+.languageBar .languageList li, .languageBar .languageSelector{
+	display:inline-block;
+	width:2em;
+	vertical-align: middle;
+	cursor:pointer;
+}
+
+.languageBar .languageList{
+	padding-right:2.5em;
+	bottom:0;
+	background-color:rgba(0,0,0,.75);
+	border-top-left-radius: 1em;
+	border-top-right-radius:1em;
+	-webkit-transition: all .25s cubic-bezier(.45,.59,.96,.84);
+	-moz-transition: all .25s cubic-bezier(.45,.59,.96,.84);
+	-o-transition: all .25s cubic-bezier(.45,.59,.96,.84);
+	transition: all .25s cubic-bezier(.45,.59,.96,.84);
+}
+
+.languageBar .languageList.hiddenList{
+	bottom:-5em;
+}
+
+.languageBar .languageList ul li span{
+	position:relative;
+	top:.4em;
+}
+
+.languageBar .languageSelector{
+	background-image:url('icons/globe35.png');
+	background-size:cover;
+	bottom:2em;
+}
+
 @media only screen and (min-width: 900px){
 
 	body{
@@ -1074,7 +1132,7 @@ section.safetyInfoPage .isiFooter{
 		display:inline-block;
 		margin:auto;
 		width:calc(49% - 4em);
-		vertical-align:middle !important;
+		vertical-align:top !important;
 	}
 
 	/*.container h2{
@@ -1270,5 +1328,19 @@ section.safetyInfoPage .isiFooter{
 		display:block;
 	}
 
+	.languageBar .languageList li, .languageBar div{
+		display:inline-block;
+	}
+
+	.languageBar .languageList li, .languageBar .languageSelector{
+		width:48px;
+		height:48px;
+		margin-right:1em;	
+		bottom:1em;
+	}
+
+	.languageBar .languageList ul li span{
+		top:12px;
+	}
 
 }
