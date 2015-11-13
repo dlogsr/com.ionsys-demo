@@ -1035,6 +1035,7 @@ section.safetyInfoPage .isiFooter{
 	text-align:center;
 	margin:0;
 	margin-right:.2em;
+	background-color:rgba(0,0,0,.75);
 }
 
 .languageBar .languageList li, .languageBar div{
@@ -1048,6 +1049,10 @@ section.safetyInfoPage .isiFooter{
 	width:2em;
 	vertical-align: middle;
 	cursor:pointer;
+}
+
+.languageBar .languageList li:hover{
+	background-color:rgba(255,255,255,.35);
 }
 
 .languageBar .languageList{

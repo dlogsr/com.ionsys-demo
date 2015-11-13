@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="css-reset.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>IONSYS™ (fentanyl iontophoretic transdermal system)</title> 
+</head>
+
+<body>
+<div class="phonegapBlack">
+	<div>
+		<div class="introLogo">
+		</div>
+		<p>
+			IONSYS is geïndiceerd voor het onder controle houden van acute matige tot ernstige postoperatieve pijn bij volwassen patiënten.
+			<br><br>
+			IONSYS is uitsluitend beperkt tot ziekenhuisgebruik. Behandeling moet worden gestart door en onder toezicht blijvend van een arts met ervaring in het beheer van behandelingen met opioïden.
+			<br><br>
+			Tap to continue.
+		</p>
+	</div>
+</div>
+<div class="languageBar">
+	<div class="languageList hiddenList">
+		<ul>
+			<a href="index_AT.html"><li class="language "><span>AT</span></li></a>
+			<a href="index_DA.html"><li class="language "><span>DA</span></li></a>
+			<a href="index_DE.html"><li class="language "><span>DE</span></li></a>
+			<a href="index.html"><li class="language "><span>GB</span></li></a>
+			<a href="index_FI.html"><li class="language "><span>FI</span></li></a>
+			<a href="index_NL.html"><li class="language "><span>NL</span></li></a>
+			<a href="index_NO.html"><li class="language "><span>NO</span></li></a>
+			<a href="index_SE.html"><li class="language "><span>SE</span></li></a>
+		</ul>
+	</div>	
+	<div class="languageSelector"></div>
+</div>
+
+<header class="pageHeader frontHeader">
+	<div id="headerLogoCircle hidden">
+	</div>
+</header>
+
+<header class="pageHeader frontHeader powerButtonContainer">
+	<button id="powerButton">
+		<i class="flaticon-standby"></i>
+	</button>
+	<button id="powerButtonOff">
+		<i class="flaticon-standby"></i>
+	</button>
+</header>	
+<section class="splash">
+	<div class="splashLimiter">
+		<header class="ionsysLogo">
+		</header>
+		<div class="backgroundAssembly"></div>
+		<div class="container packageAssembly">
+			<div class="bottomAssy">
+				<div class="bottomAssySnapPoint"></div>
+			</div>
+			<div class="topAssy" draggable="true">
+			</div>
+		</div>
+		<div class="container workingAssembly hidden">
+			<div class="device" id="ionsysSplash">
+				<div class="led ledGreen hidden">
+				</div>
+				<div class="led ledRed hidden">
+				</div>
+				<div class="doseButton">
+				</div>
+				<div class="seven-segment">
+					<div class="digit tens">
+						  <div class="a"></div>
+						  <div class="b"></div>
+						  <div class="c"></div>
+						  <div class="d"></div>
+						  <div class="e"></div>
+						  <div class="f"></div>
+						  <div class="g"></div>
+					</div>
+					<div class="digit ones">
+						  <div class="a"></div>
+						  <div class="b"></div>
+						  <div class="c"></div>
+						  <div class="d"></div>
+						  <div class="e"></div>
+						  <div class="f"></div>
+						  <div class="g"></div>
+					</div>
+				</div>
+			</div>
+			<div id="medcoLogo" class="hidden">
+				<img src="img-medcologo-long-black-clr.png">
+			</div>
+		</div>
+		<div class="container context invisible">
+			<div class="contextOverflow">
+				<div class="contextContent">
+					<header>
+						<h2 id="deviceStatus">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady">Gereed-modus</p>
+							<p class="statusDose1">Dosering</p>
+							<p class="statusDose2">Dosering</p>
+							<p class="statusPsc1">Slecht huidcontact</p>
+							<p class="statusPsc2">Slecht huidcontact</p>
+							<p class="statusEou">Einde van het gebruik</p>
+							<p class="statusEol">Systeemfout</p>
+							<p class="statusPoweron">Inschakelen</p>
+							<p class="statusPoweroff"><!-- Powering Off --></p>
+							<p class="statusPoweredoff"><!-- Powered Off --></p>
+							<p class="statusCustom">custom</p>
+						</h2>
+					</header>
+					<article class="caption">
+						<h4 id="modeCaption" class="hidden">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady">Prêt à initier l’administration de la dose</p>
+							<p class="statusDose1">Toediening van de dosis...</p>
+							<p class="statusDose2">Toediening van de dosis...</p>
+							<p class="statusPsc1">GEEN dosis toegediend</p>
+							<p class="statusPsc2">GEEN dosis toegediend</p>
+							<p class="statusEou">80 doses of 24 uur</p>
+							<p class="statusEol">WAARSCHUWING-modus</p>
+							<p class="statusPoweron"><!-- Powering On --></p>
+							<p class="statusPoweroff"><!-- Powering Off --></p>
+							<p class="statusPoweredoff"><!-- Powered Off --></p>
+							<p class="statusCustom">custom</p>
+						</h4>
+						<div id="modeDescription">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady">
+								Het systeem wordt ingeschakeld en is gereed voor de toediening van een dosis. Een dosis kan worden toegediend door binnen een tijdvenster van 3 seconden tussen het drukken op de knop door de dosisknop bovenop het systeem tweemaal in te drukken. Er wordt in deze modus geen fentanyl toegediend tot een dosis is gestart.  
+								<span class="mockButton mbEOU">
+									Als het apparaat de grens bereikt van 24 uur of 80 doses, is het einde van het gebruik bereikt. 
+								</span>
+								<span class="mockButton mbEOL">
+									Als het apparaat de zelftest niet met succes doorloopt of de accu bijna leeg is, klinkt een WAARSCHUWING en is het einde van de levensduur bereikt.
+								</span>
+							</p>
+							<p class="statusDose1">
+								Toediening van een dosis fentanyl. De doseringsperiode is 10 minuten en daarin wordt 40 mcg geneesmiddel aan de patiënt toegediend. Tijdens deze periode wordt de dosisknop uitgeschakeld, knippert de LED groen en geeft het scherm aan dat het apparaat in de doseringsmodus staat aan de hand van de 'lopende' LCD-animatie die wordt afgewisseld met de huidige toegediende doses.  
+								<span class="mockButton mbPSC">
+									Als het apparaat waarneemt dat het huidcontact slecht is, stopt het apparaat met doseren, gaat naar de Standby-modus en keert vervolgens terug naar de Gereed-modus. 
+								</span>
+								<span class="mockButton mbEOU">
+									Als het apparaat de grens bereikt van 24 uur of 80 doses, is het einde van het gebruik bereikt.
+								</span>
+								<span class="mockButton mbEOL">
+									Als het apparaat waarneemt dat de huid is beschadigd (d.w.z. een open wond), geeft het apparaat een WAARSCHUWING en is  het einde van de levensduur bereikt. 
+								<span>
+							</p>
+							<p class="statusPsc1">
+								Wanneer een dosis wordt gestart MAAR het systeem na 4 minuten geen goed contact met de huid van de patiënt detecteert, stopt het apparaat met de dosering, gaat naar de Standby-modus en informeert de patiënt. Dit wordt aangegeven door een pieptoon naast een knipperende rode LED. 
+								<span>
+									Het systeem gaat naar de Standby-modus gedurende 15 seconden, de dosistelling gaat niet stapsgewijs omhoog en het systeem kan een dosis opnieuw toedienen nadat het na 15 seconden terugkeert naar de Gereed-modus.  
+								</span>
+							</p>
+							<p class="statusEou">
+								Nadat 80 doses zijn toegediend of 24 uur na de activering gaat het systeem naar de Einde-Gebruik-modus. Het systeem dient geen doses meer toe, de LCD knippert in overeenkomst met het totale aantal toegediende doses en de LED knippert niet. 
+								<span class="mockButton mbEOL">
+									Na 12 uur in de Einde-Gebruik-modus gaat het systeem automatisch naar de Einde-Levensduur-modus. 
+								</span>
+								<span>
+									Door de dosisknop 6 seconden ingedrukt te houden, wordt het apparaat uitgeschakeld.
+								</span>
+							</p>
+							<p class="statusEol">
+								Er kan een WAARSCHUWING toestand optreden door het waarnemen van beschadigde huid halverwege de dosis, door een lege accu of na 12 uur vanaf het einde van het gebruik. De huidige dosishoeveelheid wordt met knipperen weergegeven op de LCD, de LED knippert voortdurend rood en er klinkt een voortdurende pieptoon. Dit geeft aan dat het systeem het einde van de levensduur (end-of-life, EOL) heeft bereikt. Er kunnen geen doses worden toegediend. 
+								<span>
+									Door de dosisknop 6 seconden ingedrukt te houden, wordt  het apparaat uitgeschakeld. 
+								</span>
+							</p>
+							<p class="statusPoweron"></p>
+							<p class="statusPoweroff"></p>
+							<p class="statusPoweredoff"></p>
+							<p class="statusCustom">custom</p>
+						</div>
+					</article>
+				</div>
+			</div>
+			<div class="contextArrowContainer">
+				<div class="flaticon-arrow395 contextArrow contextArrowClosed"></div>
+			</div>
+		</div>
+		<div class="control">
+			<label for="doseNumber"  class="extraButtons hidden" >Set Dose #: </label>
+			<input type="number" name="doseNumber" id="doseNumber"  class="extraButtons hidden" min="0" max="99" value="0" ></input>
+		</div>
+	</div>
+</section>
+<header class="ionsysLogoBanner hiddenLogo">
+	<div class="mdcoLogo">
+	</div>
+</header>
+<section class="infoPage">
+	<div class="infoPageContent">
+		<table class="infoPageTable">
+			<td colspan="2">
+				IONSYS is geïndiceerd voor het onder controle houden van acute matige tot ernstige postoperatieve pijn bij volwassen patiënten.
+			</td>
+		</table>
+		<table class="infoPageTable">
+			<td colspan="2">
+			IONSYS is uitsluitend beperkt tot ziekenhuisgebruik. Behandeling moet worden gestart door en onder toezicht blijvend van een arts met ervaring in het beheer van behandelingen met opioïden.
+			</td>
+		</table>
+		<table class="infoPageTable">
+			<tr>
+				<th colspan="2">
+					<h3>SYSTEEMSPECIFICATIES</h3>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					Actieve bestanddeel
+				</td>
+				<td>
+					Fentanyl HCl
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Absorptieweg:
+				</td>
+				<td>
+					Transdermaal (iontoforese) 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Activering:
+				</td>
+				<td>
+					De patiënt dubbelklikt op de on-demand doseringsknop (tweemaal binnen 3 seconden) 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Dosering:
+				</td>
+				<td>
+					Voorgeprogrammeerd 40 microgram toegediend gedurende een doseringsperiode van 10 minuten* 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Maximum doseringssnelheid:
+				</td>
+				<td>
+					6 doses per uur 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Lockout-periode*:
+				</td>
+				<td>
+					<p>10 minuten (valt samen met de doseringsperiode)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Per apparaat beschikbare doses:
+				</td>
+				<td>
+					80
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Gebruiksduur: 
+				</td>
+				<td>
+					24 uur of 80 doses, welk van beide zich het eerst voordoet 
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<p class="infoSidenote">
+						*(voor demonstratiedoeleinden wordt in deze app de periode van 10 minuten ingekort tot 18 seconden)
+					</p>
+				</td>
+			</tr>
+		</table>
+				<table class="infoPageTable infoColumn" align="left">
+					<tbody>
+						<th>
+							<h3>EIGENSCHAPPEN</h3>
+						</th>
+						<tr>
+							<td>
+								<ul>
+									<li>On-demand doseringsknop</li>
+									<li>Lichtuitstralende diode (light-emitting diode, LED) die aangeeft: 
+										<ul>
+											<li>Wanneer een dosis wordt toegediend (Groen)</li>
+											<li>Wanneer er een fout optreedt (Rood)</li>
+										</ul>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="infoPageTable infoColumn" align="left">
+					<tbody>
+						<tr>
+							<td>
+								<ul>
+									<li>Vloeibaar kristalscherm (Liquid-crystal display, LCD) dat aangeeft: </li>
+										<ul>
+											<li>Het aantal toegediende doses</li>
+											<li>Wanneer een dosis wordt toegediend</li>
+											<li>Wanneer er een fout optreedt</li>
+										</ul>
+									<li>Geluidstonen die dosisactivering en verschillende systeemwaarschuwingen signaleren</li>
+									<li>Drukgevoelig kleefmateriaal dat de IONSYS goed vastkleeft aan de huid van de patiënt</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="infoPageTable smpc">
+					<tr>
+						<td>
+							<h3>
+								IONSYS 40 microgram per dosis, systeem voor transdermaal gebruik
+							</h3>
+						</td>
+					</tr>
+<!-- 					<tr>
+						<td>
+							<h3>
+								ABBREVIATED PRESCRIBING INFORMATION 
+							</h3>
+							<h4>
+								(refer to full Summary of Product Characteristics [SmPC] before prescribing).
+							</h4>
+						</td>
+					</tr> -->
+					<tr>
+						<td>
+							<h3>
+								Kwalitatieve en kwantitatieve samenstelling
+							</h3>
+							<h4>
+								Elk IONSYS-systeem bevat fentanylhydrochloride overeenkomend met 9,7 mg fentanyl en levert 40 microgram fentanyl af per dosis, tot een maximum van 80 doses (3,2 mg/24 uur).
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Therapeutische indicaties
+							</h3>
+							<h4>
+								IONSYS is geïndiceerd voor de behandeling van matige tot ernstige acute postoperatieve pijn bij volwassen patiënten.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Farmacotherapeutische categorie
+							</h3>
+							<h4>
+								Analgetica, fenylpiperidinederivaten; ATC-code: N02AB03.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Contra‑indicaties
+							</h3>
+							<h4>
+								Overgevoeligheid voor de werkzame stof of voor een van de in de SmPC rubriek 6.1 vermelde hulpstoffen.
+							</h4>
+							<h4>
+								Ernstige ademhalingsdepressie of cystische fibrose.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Waarschuwingen
+							</h3>
+							<h4>
+								Vóór de operatie moet de beroepsbeoefenaar in de gezondheidszorg ervoor zorgen dat de patiënt goed is ingelicht over hoe IONSYS na de operatie moet worden gebruikt.
+							</h4>
+							<h4>
+								Na gebruik blijft er een mogelijk gevaarlijke hoeveelheid fentanyl achter in het IONSYS-systeem. Voor instructies voor verwijdering, zie SmPC rubriek 6.6.
+							</h4>
+							<h4>
+								IONSYS moet verwijderd worden voordat een onderzoek met beeldvorming met magnetische resonantie (MRI), cardioversie, defibrillatie, röntgenonderzoek, CT-scan of diathermie wordt uitgevoerd.
+							</h4>
+							<h4>
+								Overmatig zweten kan ertoe leiden dat minder fentanyl wordt afgeleverd.
+							</h4>
+							<h4>
+								Ademhalingsdepressie: Bij gebruik kan ernstige ademhalingsdepressie optreden en patiënten moeten geobserveerd worden op deze effecten. Gelijktijdig gebruik van geneesmiddelen die op het centraal zenuwstelsel werken, kan het risico op ademhalingsdepressie verhogen.
+							</h4>
+								Chronische longziekte: Bij patiënten met een chronisch aspecifieke respiratoire aandoening (COPD) of patiënten met aandoeningen die hen gevoelig maken voor hypoventilatie kunnen ernstigere bijwerkingen optreden. Bij deze patiënten kunnen opioïden de ademhalingsprikkel verminderen en de weerstand in de luchtwegen verhogen.
+							</h4>
+							<h4>
+								Hoofdletsels en verhoogde intracraniële druk: Fentanyl mag niet gebruikt worden bij patiënten die bijzonder gevoelig kunnen zijn voor de intracraniële effecten van CO2-retentie. Fentanyl moet met voorzichtigheid worden gebruikt bij patiënten met een hersentumor of andere significante ruimte-innemende letsels in de hersenen.
+							</h4>
+							<h4>
+								Hartaandoeningen: Fentanyl kan bradycardie of hypotensie veroorzaken en moet daarom met voorzichtigheid worden gebruikt bij patiënten met bradyaritmie of een andere significante cardiovasculaire aandoening.
+							</h4>
+							<h4>
+								Paralytische ileus: IONSYS moet met voorzichtigheid worden gebruikt bij patiënten met paralytische ileus.
+							</h4>
+							<h4>
+								Mogelijkheid van misbruik en afhankelijkheid: Het is bekend dat fentanyl een mogelijkheid van misbruik inhoudt. Artsen moeten nagaan of patiënten een voorgeschiedenis van geneesmiddelenmisbruik/drugsgebruik hebben en moeten dergelijke patiënten zorgvuldig opvolgen.  Misbruik of opzettelijk foutief gebruik van IONSYS kan tot overdosering en/of de dood leiden.
+							</h4>
+							<h4>
+								Lever- of nieraandoeningen: Patiënten met een verminderde lever- of nierfunctie moeten zorgvuldig worden geobserveerd op tekenen van fentanyltoxiciteit.
+							</h4>
+							<h4>
+								Oudere patiënten: Tijdens de toediening van IONSYS moeten oudere patiënten zorgvuldig worden gecontroleerd op bijwerkingen van fentanyl.
+							</h4>
+							<h4>
+								Obese patiënten: Het algemene bijwerkingenprofiel voor patiënten met morbide obesitas (BMI > 40) duidt niet op een betekenisvol verschil in veiligheid vergeleken met patiënten met een BMI ≤ 40. Voorzichtigheid is echter geboden wanneer IONSYS wordt voorgeschreven aan patiënten met morbide obesitas, aangezien zij een verhoogd risico kunnen lopen op andere comorbide ademhalingsstoornissen (bijv. slaapapneu) waardoor zij gevoeliger kunnen zijn voor hypoventilatie of ernstigere bijwerkingen.
+							</h4>
+							<h4>
+								Gehoorverlies: IONSYS moet met voorzichtigheid worden gebruikt bij patiënten met gehoorverlies, aangezien de kans bestaat dat zij de hoorbare signalen van het systeem niet kunnen horen.
+							</h4>
+							<h4>
+								Operaties aan de thorax/borstkas en bovenbuik: IONSYS moet daarom met voorzichtigheid worden gebruikt bij deze patiënten.
+							</h4>
+							<h4>
+								Fysieke toestand: De veiligheid van IONSYS is niet vastgesteld bij patiënten met een fysieke conditie van klasse IV volgens de classificatie van de 'American Society of Anesthesiologists' (ASA) (d.w.z. patiënten met een ernstige systemische aandoening die voortdurend levensbedreigend is).
+							</h4>
+							<h4>
+								Patiënten met genetische polymorfismen die CYP3A4 en CYP3A5 aantasten: Gepubliceerde literatuur toont aan dat er een kans bestaat op een verhoogde blootstelling aan fentanyl bij patiënten met genetische polymorfismen die CYP3A4 en CYP3A5 aantasten. Daarom moet IONSYS bij deze patiënten met voorzichtigheid worden gebruikt.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Interacties
+							</h3>
+							<h4>
+								Andere geneesmiddelen die het centraal zenuwstelsel onderdrukken: gelijktijdig gebruik kan bijkomende onderdrukkende effecten veroorzaken. Hypoventilatie, hypotensie en diepe sedatie of coma kunnen optreden. Bij gelijktijdig gebruik van elk van deze geneesmiddelen met IONSYS is daarom bijzondere patiëntenzorg en -observatie vereist.
+							</h4>
+							<h4>
+								CYP3A4-remmers: gelijktijdig gebruik van krachtige of matige CYP3A4-remmers  kan tot een verhoging van de plasmaspiegel van fentanyl leiden, wat zowel het therapeutisch effect als bijwerkingen kan doen toenemen of verlengen en waardoor ernstige ademhalingsdepressie kan ontstaan. Gelijktijdig gebruik van krachtige of matige CYP3A4-remmers met IONSYS wordt niet aanbevolen tenzij de patiënt zorgvuldig wordt gecontroleerd.
+							</h4>
+							<h4>
+								Opioïde agonisten/antagonisten: Gelijktijdig gebruik van partiële opioïde agonisten/antagonisten wordt niet aanbevolen aangezien deze onthoudingsverschijnselen kunnen opwekken bij patiënten die afhankelijk zijn van opioïden.
+							</h4>
+							<h4>
+								Serotonerge geneesmiddelen: Gelijktijdige toediening van fentanyl met een serotonerg middel kan het risico op serotoninesyndroom verhogen. IONSYS wordt niet aanbevolen voor gebruik bij patiënten die in de voorgaande 14 dagen een monoamineoxidaseremmer (MAO-remmer) hebben toegediend gekregen, aangezien met opioïde analgetica een ernstige en onvoorspelbare potentiëring is gemeld, veroorzaakt door MAO-remmers.
+							</h4>
+							<h4>
+								Geneesmiddelen voor lokaal gebruik: Er moet worden vermeden dat het IONSYS-systeem wordt aangebracht op een huidoppervlak waarop een geneesmiddel voor lokaal gebruik is aangebracht. In dat geval moet er een andere toepassingsplaats worden gekozen.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Afleverstatus
+							</h3>
+							<h4>
+								U.R.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Houder van de vergunning voor het in handel brengen
+							</h3>
+							<h4>
+								Incline Therapeutics Europe Ltd, 21 St. Thomas Street, Bristol BS1 6JS, Verenigd Koninkrijk
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Datum van herziening van de tekst
+							</h3>
+							<h4>
+								November 2015
+							</h4>
+							<h4>
+								Gedetailleerde informatie over dit geneesmiddel is beschikbaar op de website van het Europees Geneesmiddelenbureau http://www.ema.europa.eu.
+							</h4>
+							<h4>
+								Alle vermoedelijke bijwerkingen dienen gemeld te worden via Nederlands Bijwerkingen Centrum Lareb Website: www.lareb.nl.
+							</h4>
+							<h4>
+								Bijwerkingen dienen ook gemeld te worden aan The Medicines Company: Tel: +31 (0) 8003712001 of +31 (0) 707709201, Email: medical.information@themedco.com
+							</h4>
+						</td>
+					</tr>
+				</table>
+			</tr>
+			</tbody>
+	</div>
+</section>
+<footer class="ionsysLogoBanner logoBannerBottom">
+	<div class="ionsysLogo">
+	</div>
+</footer>
+<div class="controlBar">
+	<div class="controlButtonsContainer">
+		<button id="poorSkin" class="extraButtons" disabled>PSC</button>
+		<button id="EOU" class="extraButtons" disabled>
+			<span>80/24</span>
+		</button>		
+		<button id="EOL" class="extraButtons" disabled></button>
+		<button id="infoToggle" class="extraButtons">
+		</button>	
+	</div>
+</div>
+<audio id="beeper" preload="auto" src="beep.mp3"></audio>
+<audio id="beeper-long" preload="auto" src="beep_long.mp3">	</audio>
+<audio id="button-press" preload="auto" src="buttonpress.mp3"></audio>
+
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- make this a conditional if they are using phonegap and the online / cached copy is not available: -->
+<script>window.jQuery || document.write('<script src="jquery-1.10.2.min.js">\x3C/script>')</script>
+<script src="jquery-1.11.4-ui.min.js" type="text/javascript"></script>
+<script src="jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+<script src="jquery.tap.js" type="text/javascript"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</html>

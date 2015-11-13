@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="css-reset.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>IONSYS™ (fentanyl iontophoretic transdermal system)</title> 
+</head>
+
+<body>
+<div class="phonegapBlack">
+	<div>
+		<div class="introLogo">
+		</div>
+		<p>
+			IONSYS er indisert for behandling av akutt moderat til alvorlig postoperative smerter hos voksne pasienter.
+			<br><br>
+			IONSYS er begrenset til sykehusbruk.  Behandlingen bør igangsettes og gjennomføres under veiledning av en lege med erfaring i opioidbehandling.
+			<br><br>
+			Tap to continue.
+		</p>
+	</div>
+</div>
+<div class="languageBar">
+	<div class="languageList hiddenList">
+		<ul>
+			<a href="index_AT.html"><li class="language "><span>AT</span></li></a>
+			<a href="index_DA.html"><li class="language "><span>DA</span></li></a>
+			<a href="index_DE.html"><li class="language "><span>DE</span></li></a>
+			<a href="index.html"><li class="language "><span>GB</span></li></a>
+			<a href="index_FI.html"><li class="language "><span>FI</span></li></a>
+			<a href="index_FR.html"><li class="language "><span>FR</span></li></a>
+			<a href="index_NL.html"><li class="language "><span>NL</span></li></a>
+			<a href="index_SE.html"><li class="language "><span>SE</span></li></a>
+		</ul>
+	</div>	
+	<div class="languageSelector"></div>
+</div>
+
+<header class="pageHeader frontHeader">
+	<div id="headerLogoCircle hidden">
+	</div>
+</header>
+
+<header class="pageHeader frontHeader powerButtonContainer">
+	<button id="powerButton">
+		<i class="flaticon-standby"></i>
+	</button>
+	<button id="powerButtonOff">
+		<i class="flaticon-standby"></i>
+	</button>
+</header>	
+<section class="splash">
+	<div class="splashLimiter">
+		<header class="ionsysLogo">
+		</header>
+		<div class="backgroundAssembly"></div>
+		<div class="container packageAssembly">
+			<div class="bottomAssy">
+				<div class="bottomAssySnapPoint"></div>
+			</div>
+			<div class="topAssy" draggable="true">
+			</div>
+		</div>
+		<div class="container workingAssembly hidden">
+			<div class="device" id="ionsysSplash">
+				<div class="led ledGreen hidden">
+				</div>
+				<div class="led ledRed hidden">
+				</div>
+				<div class="doseButton">
+				</div>
+				<div class="seven-segment">
+					<div class="digit tens">
+						  <div class="a"></div>
+						  <div class="b"></div>
+						  <div class="c"></div>
+						  <div class="d"></div>
+						  <div class="e"></div>
+						  <div class="f"></div>
+						  <div class="g"></div>
+					</div>
+					<div class="digit ones">
+						  <div class="a"></div>
+						  <div class="b"></div>
+						  <div class="c"></div>
+						  <div class="d"></div>
+						  <div class="e"></div>
+						  <div class="f"></div>
+						  <div class="g"></div>
+					</div>
+				</div>
+			</div>
+			<div id="medcoLogo" class="hidden">
+				<img src="img-medcologo-long-black-clr.png">
+			</div>
+		</div>
+		<div class="container context invisible">
+			<div class="contextOverflow">
+				<div class="contextContent">
+					<header>
+						<h2 id="deviceStatus">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady">Klar-modus</p>
+							<p class="statusDose1">Dosering</p>
+							<p class="statusDose2">Dosering</p>
+							<p class="statusPsc1">Dårlig hudkontak</p>
+							<p class="statusPsc2">Dårlig hudkontak</p>
+							<p class="statusEou">Slutt-på-bruk</p>
+							<p class="statusEol">Slutt-på-levetid</p>
+							<p class="statusPoweron">Slå på enheten</p>
+							<p class="statusPoweroff"><!-- Powering Off --></p>
+							<p class="statusPoweredoff"><!-- Powered Off --></p>
+							<p class="statusCustom">custom</p>
+						</h2>
+					</header>
+					<article class="caption">
+						<h4 id="modeCaption" class="hidden">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady">Klar for igangsetting av dosen</p>
+							<p class="statusDose1">Administrering av dosen ...</p>
+							<p class="statusDose2">Administrering av dosen ...</p>
+							<p class="statusPsc1">INGEN dose leveres</p>
+							<p class="statusPsc2">INGEN dose leveres</p>
+							<p class="statusEou">80 doser eller 24 timer</p>
+							<p class="statusEol">ALARM-modus</p>
+							<p class="statusPoweron"><!-- Powering On --></p>
+							<p class="statusPoweroff"><!-- Powering Off --></p>
+							<p class="statusPoweredoff"><!-- Powered Off --></p>
+							<p class="statusCustom">custom</p>
+						</h4>
+						<div id="modeDescription">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady">
+								Systemet er slått på og klar til å administrere en dose. En dose kan administreres ved å dobbelttrykke på doseknappen på toppen av systemet innen 3 sekunder mellom at knappen trykkes. Ingen fentanyl blir gitt i denne modusen inntil igangsetting av dosen.  
+								<span class="mockButton mbEOU">Slutt-på-bruk vil vises dersom enheten når grensen på 24 timer eller 80 doser.</span>
+								<span class="mockButton mbEOL">Hvis enheten ikke klarer selvtesten eller har nesten tomt batteri, vil en ALARM høres og Slutt-på-levetid vises. </span>
+							</p>
+							<p class="statusDose1">
+								Levering av en fentanyl-dose. Doseringsperioden er 10 minutter lang og leverer 40 mikrogram med legemiddel til pasienten. Doseknappen er deaktivert i løpet av denne perioden, lysdioden blinker grønt, og displayet viser at det er i en doseringsmodus på grunn av den "vandrende"-LCD animasjonen som veksler med de nåværende administrerte dosene. 
+								<span class="mockButton mbPSC">Hvis enheten merker dårlig hudkontakt vil den stoppe med doseringen, gå inn i Standby-modus og så returnere til Klar-modus. </span>
+								<span class="mockButton mbEOU">Slutt-på-bruk vil vises dersom enheten når grensen på 24 timer eller 80 doser.</span>
+								<span class="mockButton mbEOL">Hvis enheten merker kompromittert hud (dvs. et åpent sår), vil en ALARM høres og vise Slutt-på-levetid.<span>
+							</p>
+							<p class="statusPsc1">
+								Når en dose igangsettes, MEN hvis systemet ikke oppdager god kontakt med pasientens hud etter 4 minutter, vil enheten stoppe med doseringen, gå til Standby-modus og informer pasienten.  Dette anvises ved hjelp av en hørbar pipelyd sammen med en blinkende rød lysdiode.  
+								<span>
+									Systemet vil gå inn Standby-modus i 15 sekunder, dosetallet vil ikke øke, og systemet kan administrere en dose igjen etter at den går tilbake til Klar-modus etter 15 sekunder. 
+								</span>
+							</p>
+							<p class="statusEou">
+								Etter at 80 doser er administrert eller 24 timer har gått siden aktivering, vil systemet gå inn Slutt-på-bruk-modus. Systemet vil ikke lenger administrere noen doser, LCD vil blinke det totale antallet administrerte doser, og lysdioden blinker ikke.  
+								<span class="mockButton mbEOL">Etter 12 timer i Slutt-på-bruk, vil systemet automatisk gå inn Slutt-på-levetid-modus. </span>
+								<span>Enheten slås av ved å holde doseringsknappen nede i 6 sekunder. </span>
+							</p>
+							<p class="statusEol">
+								En ALARM-tilstand kan oppstå ved at kompromittert hud merkes i midten av doseringen, enten grunnet lavt batteri, eller etter 12 timer fra Slutt-på-bruk. Den gjeldende dosemengden vil blinke på LCD-skjermen, og lysdioden blinker kontinuerlig rødt et uavbrutt signal kan høres. Dette betyr at systemet har nådd EOL (end-of-life [slutt på levetid]). Ingen doser kan da administreres.  
+								<span>
+									Enheten slås av ved å holde doseringsknappen nede i 6 sekunder. 
+								</span>
+							</p>
+							<p class="statusPoweron"></p>
+							<p class="statusPoweroff"></p>
+							<p class="statusPoweredoff"></p>
+							<p class="statusCustom">custom</p>
+						</div>
+					</article>
+				</div>
+			</div>
+			<div class="contextArrowContainer">
+				<div class="flaticon-arrow395 contextArrow contextArrowClosed"></div>
+			</div>
+		</div>
+		<div class="control">
+			<label for="doseNumber"  class="extraButtons hidden" >Set Dose #: </label>
+			<input type="number" name="doseNumber" id="doseNumber"  class="extraButtons hidden" min="0" max="99" value="0" ></input>
+		</div>
+	</div>
+</section>
+<header class="ionsysLogoBanner hiddenLogo">
+	<div class="mdcoLogo">
+	</div>
+</header>
+<section class="infoPage">
+	<div class="infoPageContent">
+		<table class="infoPageTable">
+			<td colspan="2">
+				IONSYS er indisert for behandling av akutt moderat til alvorlig postoperative smerter hos voksne pasienter
+			</td>
+		</table>
+		<table class="infoPageTable">
+			<td colspan="2">
+				IONSYS er begrenset til sykehusbruk.  Behandlingen bør igangsettes og gjennomføres under veiledning av en lege med erfaring i opioidbehandling.
+			</td>
+		</table>
+		<table class="infoPageTable">
+			<tr>
+				<th colspan="2">
+					<h3>SYSTEMSPESIFIKASJONER</h3>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					Virkestoff:
+				</td>
+				<td>
+					Fentanyl HCl
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Absorpsjonsrute: 
+				</td>
+				<td>
+					Transdermalt (iontoforese)
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Aktivering: 
+				</td>
+				<td>
+					Pasienten dobbeltklikker på selvdoseringsknappen (dobbeltklikk innen 3 sekunder) 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Dosering:
+				</td>
+				<td>
+					Førprogrammerte 40 mikrogram levert over en 10 minutters doseringsperiode* 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Maksimal doseringssats:
+				</td>
+				<td>
+					6 doser per time 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Lockout-periode*: 
+				</td>
+				<td>
+					<p>10 minutter (sammenfaller med doseringsperioden)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Antall doser tilgjengelig per enhet: 
+				</td>
+				<td>
+					80
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Dispenseringsliv: 
+				</td>
+				<td>
+					24 timer eller 80 doser, avhengig av hva som kommer først
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<p class="infoSidenote">
+						*(for demonstrasjonsformål er en periode på 10 minutter forkortet til 18 sekunder på denne appen)
+					</p>
+				</td>
+			</tr>
+		</table>
+				<table class="infoPageTable infoColumn" align="left">
+					<tbody>
+						<th>
+							<h3>EGENSKAPER</h3>
+						</th>
+						<tr>
+							<td>
+								<ul>
+									<li>Selvdoseringsknapp</li>
+									<li>Lysdiode som viser: 
+										<ul>
+											<li>Når en dose leveres (grønt)</li>
+											<li>Når det oppstår en feil (rødt)</li>
+										</ul>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="infoPageTable infoColumn" align="left">
+					<tbody>
+						<tr>
+							<td>
+								<ul>
+									<li>Flytende krystallskjerm (LCD) som viser: </li>
+										<ul>
+											<li>Antall leverte doser</li>
+											<li>Når en dose administreres</li>
+											<li>Når det oppstår en feil</li>
+										</ul>
+									<li>Lydsignaler som signaliserer doseaktivisering og ulike systemvarsler</li>
+									<li>Trykkfølsomt lim som gjør at IONSYS blir trygt festet til pasientens hud</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="infoPageTable smpc">
+					<tr>
+						<td>
+							<h3>
+								IONSYS 40 MIKROGRAM PER DOSE TRANSDERMALT SYSTEM (FENTANYL)
+							</h3>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								FORKORTET FORSKRIVNINGSINFORMASJON 
+							</h3>
+							<h4>
+								(se fullstendig preparatomtale før forskrivning).
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Legemiddelform
+							</h3>
+							<h4>
+								IONSYS er et transdermalt system. Hvert IONSYS-system inneholder fentanylhydroklorid svarende til 9,7 mg fentanyl og tilfører 40 mikrogram fentanyl per dose, opptil maksimalt 80 doser (3,2 mg/24 timer).
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Indikasjon
+							</h3>
+							<h4>
+								IONSYS er indisert til behandling av akutte moderate til alvorlige postoperative smerter hos voksne pasienter.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Dosering og administrasjonsmåte
+							</h3>
+							<h4>
+								Se fullstendig PO for komplett informasjon om dosering og administrasjon. IONSYS er et pasientkontrollert system som kun skal brukes på sykehus. Behandlingen skal igangsettes og overvåkes av lege med erfaring fra bruk av opioidterapi. På grunn av det velkjente misbrukspotensialet til fentanyl bør legene evaluere pasientene for tidligere stoffmisbruk.
+							</h4>
+							<h4>
+								Anbefalt dosering: Hver dose tilfører 40 mikrogram fentanyl over en periode på 10 minutter. Hvert system er aktivt i 24 timer eller til 80 doser er tilført, det som nås først, og blir deretter deaktivert. Maksimal behandlingsvarighet er 72 timer.
+							</h4>
+								Eldre (≥65 år): Ingen spesifikk dosejustering er nødvendig. Eldre pasienter skal observeres nøye for bivirkninger av fentanyl.
+							</h4>
+							<h4>
+								Nedsatt lever- eller nyrefunksjon: Administreres med forsiktighet til pasienter med moderat eller alvorlig nedsatt lever- eller nyrefunksjon.
+							</h4>
+							<h4>
+								Pediatrisk populasjon: Ikke anbefalt.
+							</h4>
+							<h4>
+								Administrasjonsmåte: Kun til transdermal bruk. Se fullstendig PO for komplett informasjon om administrasjonsmåte og instruksjoner vedrørende bruk og destruksjon av IONSYS.  
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Kontraindikasjoner
+
+							</h3>
+							<h4>
+								Overfølsomhet overfor virkestoffet eller noen av hjelpestoffene.
+							</h4>
+							<h4>
+								Alvorlig respirasjonsdepresjon eller cystisk fibrose.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Advarsler og forsiktighetsregler
+							</h3>
+							<h4>
+								IONSYS bør fjernes før MR-undersøkelse, elektrokonvertering, defibrillering, røntgen, CT-skanning eller diatermi.
+							</h4>
+							<h4>
+								Kraftig svetting kan redusere tilførselen av fentanyl. 
+							</h4>
+							<h4>
+								Respirasjonsdepresjon: Signifikant respirasjonsdepresjon kan oppstå, og pasientene må observeres for slike bivirkninger. Samtidig bruk av CNS-aktive legemidler kan øke risikoen for respirasjonsdepresjon.
+							</h4>
+							<h4>
+								Kronisk lungesykdom: Pasienter med kronisk obstruktiv lungesykdom eller pasienter med lidelser som gjør dem disponert for hypoventilering, kan får mer alvorlige bivirkninger. Hos disse pasientene kan opioider redusere respirasjonsdrivet og øke luftveismotstanden.
+							</h4>
+							<h4>
+								Hodeskader og økt intrakranialt trykk: Fentanyl bør ikke gis til pasienter som kan være spesielt mottakelige for de intrakraniale effektene av CO2-retensjon. Fentanyl bør brukes med forsiktighet til pasienter med hjernetumorer eller andre signifikante plasskrevende lesjoner i hjernen. 
+							</h4>
+							<h4>
+								Hjertesykdom: Fentanyl kan indusere bradykardi eller hypotensjon og bør derfor administreres med forsiktighet til pasienter med bradyarytmi eller signifikant kardiovaskulær sykdom.
+							</h4>
+							<h4>
+								Paralytisk ileus: Skal brukes med forsiktighet til pasienter med paralytisk ileus.
+							</h4>
+							<h4>
+								Misbrukspotensial og avhengighet: Fentanyl har et velkjent misbrukspotensial. Legen bør vurdere pasientene for tidligere stoffmisbruk og følge slike pasienter tett. 
+							</h4>
+							<h4>
+								Lever- eller nyresykdom: Pasienter med nedsatt lever- eller nyrefunksjon bør observeres nøye for tegn på fentanyltoksisitet.
+							</h4>
+							<h4>
+								Eldre pasienter: Eldre pasienter skal observeres nøye for bivirkninger av fentanyl under administrering av IONSYS.
+							</h4>
+							<h4>
+								Overvektige pasienter: Den generelle bivirkningsprofilen for sykelig overvektige pasienter (BMI > 40) antyder ingen meningsfull forskjell i sikkerheten sammenlignet med pasienter med BMI ≤ 40. Det anbefales å utvise forsiktighet ved forskriving av IONSYS til slike pasienter, da det kan være økt risiko for andre respirasjonslidelser (dvs. søvnapné) som kan disponere dem for hypoventilering eller mer alvorlige bivirkninger.
+							</h4>
+							<h4>
+								Nedsatt hørsel: IONSYS bør brukes med forsiktighet til pasienter med nedsatt hørsel som kanskje ikke hører lydsignalene fra systemet. 
+							</h4>
+							<h4>
+								Operasjoner i thorax/bryst og øvre del av magen: IONSYS bør brukes med forsiktighet til disse pasientene. 
+							</h4>
+							<h4>
+								Fysisk status: Sikkerheten til IONSYS er ikke påvist hos pasienter klassifisert til fysisk status IV i henhold til American Society of Anesthesiologists (ASA) (dvs. pasienter med alvorlig systemisk sykdom som er konstant livstruende).
+							</h4>
+							<h4>
+								Pasienter med genetiske polymorfismer som påvirker CYP3A4 og CYP3A5: IONSYS skal brukes med forsiktighet hos disse pasientene. Utgitt litteratur tyder på mulighet for økt fentanyleksponering hos pasienter med genetiske polymorfismer som påvirker CYP3A4 og CYP3A5. 
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Interaksjon med andre legemidler og andre former for interaksjon
+							</h3>
+							<h4>
+								Andre CNS-dempende legemidler: Samtidig bruk av andre CNS-dempende legemidler kan føre til additiv sedativ effekt. Hypoventilering, hypotensjon og sterk sedasjon eller koma kan oppstå. Samtidig bruk andre CNS-dempende legemidler og IONSYS krever spesiell pasientoppfølging og observasjon.
+							</h4>
+							<h4>
+								CYP3A4-hemmere: Samtidig bruk av potente eller moderate CYP3A4-hemmere og IONSYS kan føre til økt fentanylkonsentrasjon i plasma, som kan øke eller forlenge både terapeutisk effekt og bivirkningene, og som kan forårsake alvorlig respirasjonsdepresjon. Samtidig bruk av potente eller moderate CYP3A4-hemmere og IONSYS anbefales ikke med mindre pasienten overvåkes nøye.
+							</h4>
+							<h4>
+								Opioidagonister/antagonister: Samtidig bruk av partielle opioidagonister/-antagonister anbefales ikke da de kan indusere abstinenssymptomer hos opioidavhengige pasienter.
+							</h4>
+							<h4>
+								Serotonerge legemidler: Samtidig administrasjon av fentanyl og et serotonergt legemiddel kan øke risikoen for serotoninsyndrom. IONSYS anbefales ikke til pasienter som har fått MAO-hemmere i løpet av de siste 14 dagene, fordi det er rapportert om kraftig og uforutsigbar potensering av MAO-hemmere.
+							</h4>
+							<h4>
+								Topiske legemidler: Påsetting av IONSYS-systemet på hud som er påført topiske legemidler bør unngås.  
+							</h4>
+							<h4>
+								Se fullstendig PO for ytterligere informasjon om interaksjoner.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Fertilitet, graviditet og amming
+							</h3>
+							<h4>
+								Graviditet: Det foreligger ikke tilstrekkelige data på bruk av fentanyl hos gravide kvinner. IONSYS skal ikke brukes under graviditet, hvis ikke strengt nødvendig. Hvis IONSYS administreres til moren i løpet av denne tiden, bør et antidot være lett tilgjengelig for barnet. Etter langvarig behandling kan fentanyl forårsake abstinens hos det nyfødte barnet.
+							</h4>
+							<h4>
+								Amming: Amming anbefales ikke i 24 timer etter fjerning av IONSYS. 
+							</h4>
+							<h4>
+								Fertilitet: Det finnes ikke tilgjengelige kliniske data om effekten av fentanyl på fertilitet. 
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Påvirkning av evnen til å kjøre bil og bruke maskiner
+							</h3>
+							<h4>
+								Pasientene bør informeres om at de ikke må kjøre eller betjene maskiner hvis de opplever søvnighet, svimmelhet eller synsforstyrrelser.
+
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Bivirkninger
+							</h3>
+							<h4>
+								De hyppigst rapporterte bivirkningene var kvalme, oppkast og reaksjoner på påføringsstedet. De alvorligste bivirkningene som ble rapportert, var hypotensjon og apné, og alle pasienter bør overvåkes nøye for dette. Svært vanlige (≥1/10): Gastrointestinale: Kvalme, oppkast. Øvrige: Erytem på påføringsstedet. Vanlige (≥1/100 til < 1/10): Gastrointestinale: Forstoppelse, magesmerter. Hjerte/kar: Hypotensjon. Hud: Pruritus. Luftveier: Hypoksi. Nevrologiske: Svimmelhet, hodepine. Nyre/urinveier: Urinretensjon. Psykiske: Søvnløshet. Øvrige: Pyreksi, på påføringsstedet: ødem, pruritus, reaksjoner, vesikler. Mindre vanlige (≥ 1/1000 til < 1/100): Blod/lymfe: Anemi. Gastrointestinale: Tørr munn, dyspepsi, flatulens, ileus. Hjerte/kar: Takykardi, hypertensjon, ortostatisk hypotensjon, vasodilatasjon. Hud: Utslett, hyperhidrose. Luftveier: Apné, hoste, dyspné, hikke, hypoventilasjon. Muskel-skjelettsystemet: Ryggsmerter, smerter i ekstremitetene. Nevrologiske: Migrene, parestesi, søvnighet, synkope. Nyre/urinveier: Oliguri. Psykiske: Unormale drømmer, opphisselse, angst, forvirring, hallusinasjoner, nervøsitet. Stoffskifte/ernæring: Redusert appetitt. Øye: Uklart syn. Øvrige: Asteni, frysninger, smerter, behandling av gastrointestinale lidelser, på påføringsstedet: smerte, tørrhet, papler, reaksjoner. Sjeldne (≥ 1/10 000 til < 1/1000): Gastrointestinale: Oppblåst mage, diaré, eruktasjon. Infeksiøse: Rhinitt. Hjerte/kar: Bradykardi. Luftveier: Lungelidelser. Muskel-skjelettsystemet: Hypertoni, myalgi. Nevrologiske: Dysgeusi, hypestesi. Nyre/urinveier: Dysuri. Psykiske: Depresjon, unormale tanker. Stoffskifte/ernæring: Hypokalsemi, hypoglykemi, hypokalemi. Øre: Vertigo. Øvrige: Brystsmerter, uvelhet, ødem, sårkomplikasjoner, på påføringsstedet: parestesi, på injeksjonsstedet: ødem, smerte.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Overdosering
+							</h3>
+							<h4>
+								Manifestasjonene av fentanyloverdose er en utvidelse av dets farmakologiske virkninger. Den alvorligste bivirkningen er respirasjonsdepresjon. Umiddelbare tiltak for å håndtere respirasjonsdepresjon består i å fjerne IONSYS-systemet og fysisk eller verbalt stimulere pasienten. Disse tiltakene kan følges ved å administrere en spesifikk opioidantagonist, som nalokson. Respirasjonsdepresjon etter en overdose kan vare lenger enn virkningen av opioidantagonisten, og derfor kan gjentatt administrasjon eller infusjon av antagonisten være nødvendig. Reversering av den narkotiske effekten kan også føre til akutt igangsetting av smerte og frigjøring av katekolaminer. Hvis den kliniske situasjonen tilsier det, skal åpne luftveier sikres og opprettholdes, muligens ved hjelp av orofaryngeal luftvei eller endotrakealtube. Det bør administreres oksygen, og respirasjonen bør hjelpes eller kontrolleres. Hvis det oppstår alvorlig eller vedvarende hypotensjon, skal hypovolemi vurderes, og tilstanden skal om nødvendig håndteres med egnet parenteral væsketerapi eller andre intervensjoner. 
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Reseptgruppe
+							</h3>
+							<h4>
+								Reseptpliktig
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Pakningsstørrelse og priser 
+							</h3>
+							<h4>
+								6540NOK (6 transdermal systems)
+
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Innehaver av markedsføringstillatelsen
+							</h3>
+							<h4>
+								Incline Therapeutics Europe Ltd, 21 St. Thomas Street, Bristol BS1 6JS, Storbritannia.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Markedsføringstillatelsesnummer
+
+							</h3>
+							<h4>
+								EU/1/15/1050/001
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Dato for siste oppdatering av API-tekst
+							</h3>
+							<h4>
+								November 2015
+							</h4>
+							<h4>
+								Enhver mistenkt bivirkning skal meldes til lokale myndigheter. Dette gjøres via Statens legemiddelverk, nettside: www.legemiddelverket.no/meldeskjema.   
+							</h4>
+							<h4>
+								Bivirkninger skal også rapporteres til The Medicine Company: Tlf.: +47 80056935 
+							</h4>
+							<h4>
+								eller +47 22310956, E-post: medical.information@themedco.com
+							</h4>
+						</td>
+					</tr>
+				</table>
+			</tr>
+			</tbody>
+	</div>
+</section>
+<footer class="ionsysLogoBanner logoBannerBottom">
+	<div class="ionsysLogo">
+	</div>
+</footer>
+<div class="controlBar">
+	<div class="controlButtonsContainer">
+		<button id="poorSkin" class="extraButtons" disabled>PSC</button>
+		<button id="EOU" class="extraButtons" disabled>
+			<span>80/24</span>
+		</button>		
+		<button id="EOL" class="extraButtons" disabled></button>
+		<button id="infoToggle" class="extraButtons">
+		</button>	
+	</div>
+</div>
+<audio id="beeper" preload="auto" src="beep.mp3"></audio>
+<audio id="beeper-long" preload="auto" src="beep_long.mp3">	</audio>
+<audio id="button-press" preload="auto" src="buttonpress.mp3"></audio>
+
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- make this a conditional if they are using phonegap and the online / cached copy is not available: -->
+<script>window.jQuery || document.write('<script src="jquery-1.10.2.min.js">\x3C/script>')</script>
+<script src="jquery-1.11.4-ui.min.js" type="text/javascript"></script>
+<script src="jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+<script src="jquery.tap.js" type="text/javascript"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</html>

@@ -17,9 +17,9 @@
 		<div class="introLogo">
 		</div>
 		<p>
-			IONSYS est indiqué dans le traitement des douleurs postopératoires aiguës modérées à sévères chez l’adulte.
+			IONSYS er indiceret til behandling af akutte moderate til svære postoperative smerter hos voksne patienter.
 			<br><br>
-			IONSYS est réservé uniquement à l’usage hospitalier. Le traitement doit être instauré par et demeurer sous la surveillance d’un médecin expérimenté dans la prise en charge des traitements aux opiacés.
+			IIONSYS er begrænset udelukkende til hospitalsbrug. Behandling skal indledes og forblive under opsyn af en læge med erfaring i opioidbehandling.
 			<br><br>
 			Tap to continue.
 		</p>
@@ -29,10 +29,10 @@
 	<div class="languageList hiddenList">
 		<ul>
 			<a href="index_AT.html"><li class="language "><span>AT</span></li></a>
-			<a href="index_DA.html"><li class="language "><span>DA</span></li></a>
 			<a href="index_DE.html"><li class="language "><span>DE</span></li></a>
-			<a href="index.html"><li class="language "><span>GB</span></li></a>
 			<a href="index_FI.html"><li class="language "><span>FI</span></li></a>
+			<a href="index_FR.html"><li class="language "><span>FR</span></li></a>
+			<a href="index.html"><li class="language "><span>GB</span></li></a>
 			<a href="index_NL.html"><li class="language "><span>NL</span></li></a>
 			<a href="index_NO.html"><li class="language "><span>NO</span></li></a>
 			<a href="index_SE.html"><li class="language "><span>SE</span></li></a>
@@ -105,14 +105,14 @@
 					<header>
 						<h2 id="deviceStatus">
 							<p class="statusDefault enable"></p>
-							<p class="statusReady">Mode Prêt</p>
-							<p class="statusDose1">Dosage</p>
-							<p class="statusDose2">Dosage</p>
-							<p class="statusPsc1">Mauvais contact avec la peau</p>
-							<p class="statusPsc2">Mauvais contact avec la peau</p>
-							<p class="statusEou">Fin d’utilisation</p>
-							<p class="statusEol">Erreur système</p>
-							<p class="statusPoweron">Mise en marche</p>
+							<p class="statusReady">Klar-modus</p>
+							<p class="statusDose1">Dosering</p>
+							<p class="statusDose2">Dosering</p>
+							<p class="statusPsc1">Dårlig hudkontakt</p>
+							<p class="statusPsc2">Dårlig hudkontakt</p>
+							<p class="statusEou">Slutningen af brugsliv</p>
+							<p class="statusEol">Systemfejl</p>
+							<p class="statusPoweron">Starter op</p>
 							<p class="statusPoweroff"><!-- Powering Off --></p>
 							<p class="statusPoweredoff"><!-- Powered Off --></p>
 							<p class="statusCustom">custom</p>
@@ -121,13 +121,13 @@
 					<article class="caption">
 						<h4 id="modeCaption" class="hidden">
 							<p class="statusDefault enable"></p>
-							<p class="statusReady">Prêt à initier l’administration de la dose</p>
-							<p class="statusDose1">Dose en cours d’administration...</p>
-							<p class="statusDose2">Dose en cours d’administration...</p>
-							<p class="statusPsc1">AUCUNE dose n’est administrée</p>
-							<p class="statusPsc2">AUCUNE dose n’est administrée</p>
-							<p class="statusEou">80 doses ou 24 heures</p>
-							<p class="statusEol">Mode ALERTE</p>
+							<p class="statusReady">Klar til dosering</p>
+							<p class="statusDose1">Indgiver dosis...</p>
+							<p class="statusDose2">Indgiver dosis...</p>
+							<p class="statusPsc1">INGEN dosis leveres</p>
+							<p class="statusPsc2">INGEN dosis leveres</p>
+							<p class="statusEou">80 doser eller 24 timer</p>
+							<p class="statusEol">ALARM-modus</p>
 							<p class="statusPoweron"><!-- Powering On --></p>
 							<p class="statusPoweroff"><!-- Powering Off --></p>
 							<p class="statusPoweredoff"><!-- Powered Off --></p>
@@ -136,28 +136,46 @@
 						<div id="modeDescription">
 							<p class="statusDefault enable"></p>
 							<p class="statusReady">
-								Le système est allumé et prêt à administrer une dose. Une dose peut être administrée en appuyant deux fois sur le bouton « dose » au-dessus du système à 3 secondes d’intervalle. Du fentanyl ne sera pas administré dans ce mode tant que l’administration d’une dose ne sera pas initiée. 
-								<span class="mockButton mbEOU">Si le système atteint la limite de 24 heures ou de 80 doses, il passera en mode Fin d’utilisation. </span>
-								<span class="mockButton mbEOL">Si l’autotest n’est pas effectué avec succès ou si la batterie est faible, le système émettra une ALERTE et passera en mode Fin de vie. </span>
+								Systemet er tændt og klar til at indgive en dosis. En dosis kan indgives ved at trykke på dosis-knappen oven på systemet to gange med højst 3 sekunders mellemrum. Der leveres ikke fentanyl i dette modus, før start af en dosis. 
+								<span class="mockButton mbEOU">
+									Hvis systemet når grænsen på 24 timer eller 80 doser, starter det slutningen af dets brugsliv. 
+								</span>
+								<span class="mockButton mbEOL">
+									Hvis systemet fejler en selvtest eller har lavt batteri, vil der lyde en ALARM, og slutningen af systemet brugsliv starter.  
+								</span>
 							</p>
 							<p class="statusDose1">
-								Administration d’une dose de fentanyl. La période de dosage dure 10 minutes et une dose de 40 microgrammes du médicament est administrée au patient. Au cours de cette période, le bouton dose est désactivé, le voyant LED vert clignote, et l’écran LCD indique que le système est en mode d’administration par une animation de « marche » alternant avec l’affichage des doses en cours d’administration. 
-								<span class="mockButton mbPSC">Si le système détecte un mauvais contact avec la peau, il arrêtera l’administration, passera en mode Veille, puis retournera en mode Prêt.</span>
-								<span class="mockButton mbEOU">Si le système atteint la limite de 24 heures ou de 80 doses, il passera en mode Fin d’utilisation.</span>
-								<span class="mockButton mbEOL">Si le système détecte une peau lésée (par ex. une plaie ouverte), il émettra une ALERTE et passera en mode Fin de vie. <span>
+								Levering af en fentanyl-dosis. Doseringsperiodens varighed er 10 minutter, hvorunder der forsynes 40 mikrogram lægemiddel til patienten. I denne periode er dosis-knappen deaktiveret, LED'en blinker grønt, og displayet angiver, at systemet er i doseringsmodus ved at skifte mellem den "gående" LCD-animering og de aktuelle doser, som indgives. 
+								<span class="mockButton mbPSC">
+									Hvis systemet fornemmer dårlig hudkontakt, standser det doseringen, går i Standby-modus, og vender derefter tilbage til Klar-modus. 
+								</span>
+								<span class="mockButton mbEOU">
+									Hvis systemet når grænsen på 24 timer eller 80 doser, starter det slutningen af dets brugsliv.
+								</span>
+								<span class="mockButton mbEOL">
+									Hvis systemet fornemmer kompromitteret hud (dvs. et åbent sår), lyder der en ALARM, og det starter slutningen af dets brugsliv. 
+								<span>
 							</p>
 							<p class="statusPsc1">
-								Lorsque l’administration d’une dose est initiée MAIS que le système ne détecte pas un bon contact avec la peau du patient dans les 4 minutes, l’administration s’arrêtera, le système passera en mode Veille et le patient sera averti. Cela est indiqué par un bip sonore accompagné d’un voyant LED rouge clignotant.  
-								<span>Le système passera en mode Veille pendant 15 secondes, l’indicateur de dose n’augmentera pas et le système pourra administrer à nouveau la dose une fois revenu en mode Prêt 15 secondes plus tard. </span>
+								Når en dosis startes, MEN systemet ikke kan bekræfte passende kontakt med patientens hud efter 4 minutter, vil det stoppe dosering, gå i Standby-modus og informere patienten. Dette angives ved et hørbart bip og en LED, som blinker rødt.
+								<span>
+									 Systemet går i Standby-modus i 15 sekunder og dosistælleren øges ikke. Systemet kan derefter indgive dosen igen, når det returnerer til Klar-modus efter 15 sekunder. 
+								</span>
 							</p>
 							<p class="statusEou">
-								AfUne fois que 80 doses auront été administrées ou que 24 heures se seront écoulées depuis l’activation du système, celui-ci passera en mode Fin d’utilisation. Le système n’administrera aucune dose supplémentaire, l’écran LCD affichera le nombre total de doses administrées en clignotant, et le voyant LED ne clignotera pas. 
-								<span class="mockButton mbEOL">Après 12 heures en mode Fin d’utilisation, le système passera automatiquement en mode Fin de vie. </span>
-								<span>Maintenir le bouton dose appuyé pendant 6 secondes éteindra le système. </span>
+								Efter indgivelse af 80 doser, eller der er gået 24 timer siden aktivering, går systemet i EOL-modus (End-of-Use, slutningen af brugsliv). Systemet indgiver ikke længere doser, LCD'en blinker det samlede antal doser indgivet, og LED'en blinker ikke.
+								<span class="mockButton mbEOL">
+									Efter 12 timer i slutningen af sit brugsliv, vil systemet automatisk gå i EOL-modus.
+								</span>
+								<span>
+									Systemet slukkes ved at holde dosis-knappen nede i 6 sekunder. 
+								</span>
 							</p>
 							<p class="statusEol">
-								Une situation d’ALERTE peut survenir suite à la détection d’une peau lésée en cours d’administration de la dose, en raison d’une batterie faible ou après 12 heures en mode Fin d’utilisation. La dose actuelle administrée s’affichera en clignotant sur l’écran LCD, le voyant LED rouge clignotera continuellement et le système émettra un bip sonore continu. Cela indique que le système a atteint la fin de son cycle de vie. Aucune dose ne peut être administrée. 
-								<span>Maintenir le bouton dose appuyé pendant 6 secondes éteindra le système.</span>
+								En ALARM-tilstand kan forekomme, hvis der fornemmes kompromitteret hud under dosering, et lavt batteri eller efter 12 timer fra EOL. Den aktuelle dosis blinker på systemets LCD og LED'en vedbliver med at blinke rødt, og der lyder et vedvarende bip. Dette angiver, at systemet har nået slutningen af sit brugsliv, EOL (end-of-life). Ingen doser kan indgives. 
+								<span>
+									Systemet slukkes ved at holde dosis-knappen nede i 6 sekunder.
+								</span>
 							</p>
 							<p class="statusPoweron"></p>
 							<p class="statusPoweroff"></p>
@@ -185,23 +203,23 @@
 	<div class="infoPageContent">
 		<table class="infoPageTable">
 			<td colspan="2">
-				IONSYS est indiqué dans le traitement des douleurs postopératoires aiguës modérées à sévères chez l’adulte.
+				IONSYS er indiceret til behandling af akutte moderate til svære postoperative smerter hos voksne patienter.
 			</td>
 		</table>
 		<table class="infoPageTable">
 			<td colspan="2">
-			IONSYS est réservé uniquement à l’usage hospitalier. Le traitement doit être instauré par et demeurer sous la surveillance d’un médecin expérimenté dans la prise en charge des traitements aux opiacés.
+			IONSYS er begrænset udelukkende til hospitalsbrug. Behandling skal indledes og forblive under opsyn af en læge med erfaring i opioidbehandling.
 			</td>
 		</table>
 		<table class="infoPageTable">
 			<tr>
 				<th colspan="2">
-					<h3>SPÉCIFICATIONS DU SYSTÈME</h3>
+					<h3>SYSTEMSPECIFIKATIONER</h3>
 				</th>
 			</tr>
 			<tr>
 				<td>
-					Principe actif
+					Aktivt indholdsstof 
 				</td>
 				<td>
 					Fentanyl HCl
@@ -209,47 +227,47 @@
 			</tr>
 			<tr>
 				<td>
-					Voie d’absorption:
+					Absorptionsvej:
 				</td>
 				<td>
-					Transdermique (iontophorèse)
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Activation:
-				</td>
-				<td>
-					Le patient appuie, selon ses besoins, deux fois sur le bouton de dosage (deux fois dans un délai de 3 secondes)
+					Transdermal (iontoforese) 
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Dosage:
+					Aktivering:
 				</td>
 				<td>
-					Une dose pré-programmée de 40 microgrammes administrée sur une période de 10 minutes*
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Débit de dose maximum:
-				</td>
-				<td>
-					6 doses par heure
+					Patient dobbeltklikker på knappen til dosering efter behov (to gange inden for 3 sekunder) 
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Période de verrouillage*:
+					Dosering: 
 				</td>
 				<td>
-					<p>10 minutes (coïncide avec la période d’administration)</p>
+					Forprogrammeret til levering af 40 mikrogram i løbet af en doseringsperiode på 10 minutter* 
 				</td>
 			</tr>
 			<tr>
 				<td>
-					Doses disponibles par système:
+					Maksimal doseringshastighed:
+				</td>
+				<td>
+					6 doser per time 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Blokeret periode*:
+				</td>
+				<td>
+					<p>10 minutter (falder sammen med doseringsperioden)</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Tilgængelige doser per enhed:
 				</td>
 				<td>
 					80
@@ -257,16 +275,16 @@
 			</tr>
 			<tr>
 				<td>
-					Durée de vie d’administration:
+					Brugsliv:
 				</td>
 				<td>
-					24 heures ou 80 doses, selon la première éventualité
+					24 timer eller 80 doser, afhængig af hvad der kommer først
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<p class="infoSidenote">
-						*(la période de 10 minutes est réduite à 18 secondes dans cette application à des fins de démonstration)
+						*(Perioden på 10 minutter er afkortet til 18 sekunder i app'en med henblik på at demonstrere brug)
 					</p>
 				</td>
 			</tr>
@@ -274,16 +292,16 @@
 				<table class="infoPageTable infoColumn" align="left">
 					<tbody>
 						<th>
-							<h3>CARACTÉRISTIQUES</h3>
+							<h3>FUNKTIONER</h3>
 						</th>
 						<tr>
 							<td>
 								<ul>
-									<li>Bouton de dosage selon les besoins</li>
-									<li>Diode électroluminescente (LED) indiquant: 
+									<li>Knap til dosering efter behov</li>
+									<li>Lysemitterende diode (LED), som angiver: 
 										<ul>
-											<li>Lorsqu’une dose est en cours d’administration (vert)</li>
-											<li>Lorsqu’une erreur se produit (rouge)</li>
+											<li>Når en dosis leveres (Grøn)</li>
+											<li>Når der sker en fejl (Rød)</li>
 										</ul>
 									</li>
 								</ul>
@@ -296,14 +314,14 @@
 						<tr>
 							<td>
 								<ul>
-									<li>Écran à cristaux liquides (LCD) indiquant: </li>
+									<li>Flydende krystal-skærm (Liquid-crystal display, LCD), som angiver:</li>
 										<ul>
-											<li>Le nombre de doses administrées</li>
-											<li>Lorsqu’une dose est en cours d’administration</li>
-											<li>Lorsqu’une erreur se produit</li>
+											<li>Antallet af leverede doser</li>
+											<li>Når en dosis indgives</li>
+											<li>Når der sker en fejl </li>
 										</ul>
-									<li>Signal audio indiquant l’activation d’une dose ainsi que les alertes variées du système</li>
-									<li>Adhésif sensible à la pression maintenant fermement IONSYS sur la peau du patient</li>
+									<li>Lydtoner, der angiver dosisaktivering og forskellige systemadvarsler</li>
+									<li>Trykfølsomt klæbestof, der klæber IONSYS sikkert fast på patientens hud</li>
 								</ul>
 							</td>
 						</tr>

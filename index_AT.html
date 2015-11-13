@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link href="css-reset.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>IONSYS™ (fentanyl iontophoretic transdermal system)</title> 
+</head>
+
+<body>
+<div class="phonegapBlack">
+	<div>
+		<div class="introLogo">
+		</div>
+		<p>
+			IONSYS wird zur Behandlung akuter mäßiger bis starker Schmerzen nach Operationen bei erwachsenen Patienten eingesetzt.
+			<br><br>
+			IONSYS darf nur in einem Krankenhaus angewendet werden. Die Behandlung sollte nur durch einen Arzt eingeleitet werden, der Erfahrung in der Durchführung einer Opioid-Therapie hat, und unter dessen Aufsicht erfolgen. 
+			<br><br>
+			Tap to continue.
+		</p>
+	</div>
+</div>
+<div class="languageBar">
+	<div class="languageList hiddenList">
+		<ul>
+			<a href="index_DA.html"><li class="language "><span>DA</span></li></a>
+			<a href="index.html"><li class="language "><span>GB</span></li></a>
+			<a href="index_FR.html"><li class="language "><span>FR</span></li></a>
+			<a href="index_FI.html"><li class="language "><span>FI</span></li></a>
+			<a href="index_NL.html"><li class="language "><span>NL</span></li></a>
+			<a href="index_NO.html"><li class="language "><span>NO</span></li></a>
+			<a href="index_SE.html"><li class="language "><span>SE</span></li></a>
+		</ul>
+	</div>	
+	<div class="languageSelector"></div>
+</div>
+
+<header class="pageHeader frontHeader">
+	<div id="headerLogoCircle hidden">
+	</div>
+</header>
+
+<header class="pageHeader frontHeader powerButtonContainer">
+	<button id="powerButton">
+		<i class="flaticon-standby"></i>
+	</button>
+	<button id="powerButtonOff">
+		<i class="flaticon-standby"></i>
+	</button>
+</header>	
+<section class="splash">
+	<div class="splashLimiter">
+		<header class="ionsysLogo">
+		</header>
+		<div class="backgroundAssembly"></div>
+		<div class="container packageAssembly">
+			<div class="bottomAssy">
+				<div class="bottomAssySnapPoint"></div>
+			</div>
+			<div class="topAssy" draggable="true">
+			</div>
+		</div>
+		<div class="container workingAssembly hidden">
+			<div class="device" id="ionsysSplash">
+				<div class="led ledGreen hidden">
+				</div>
+				<div class="led ledRed hidden">
+				</div>
+				<div class="doseButton">
+				</div>
+				<div class="seven-segment">
+					<div class="digit tens">
+						  <div class="a"></div>
+						  <div class="b"></div>
+						  <div class="c"></div>
+						  <div class="d"></div>
+						  <div class="e"></div>
+						  <div class="f"></div>
+						  <div class="g"></div>
+					</div>
+					<div class="digit ones">
+						  <div class="a"></div>
+						  <div class="b"></div>
+						  <div class="c"></div>
+						  <div class="d"></div>
+						  <div class="e"></div>
+						  <div class="f"></div>
+						  <div class="g"></div>
+					</div>
+				</div>
+			</div>
+			<div id="medcoLogo" class="hidden">
+				<img src="img-medcologo-long-black-clr.png">
+			</div>
+		</div>
+		<div class="container context invisible">
+			<div class="contextOverflow">
+				<div class="contextContent">
+					<header>
+						<h2 id="deviceStatus">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady">„Bereit“-Modus</p>
+							<p class="statusDose1">Dosierung</p>
+							<p class="statusDose2">Dosierung</p>
+							<p class="statusPsc1">Schlechter Hautkontakt</p>
+							<p class="statusPsc2">Schlechter Hautkontakt</p>
+							<p class="statusEou">Ende der Anwendung</p>
+							<p class="statusEol">Systemfehler</p>
+							<p class="statusPoweron">Eingeschaltet</p>
+							<p class="statusPoweroff"><!-- Powering Off --></p>
+							<p class="statusPoweredoff"><!-- Powered Off --></p>
+							<p class="statusCustom">custom</p>
+						</h2>
+					</header>
+					<article class="caption">
+						<h4 id="modeCaption" class="hidden">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady">Bereit zum Auslösen einer Dosis</p>
+							<p class="statusDose1">Verabreichung einer Dosis</p>
+							<p class="statusDose2">Verabreichung einer Dosis</p>
+							<p class="statusPsc1">Es wird KEINE Dosis freigesetzt</p>
+							<p class="statusPsc2">Es wird KEINE Dosis freigesetzt</p>
+							<p class="statusEou">Nach 80 Dosen oder 24 Stunden</p>
+							<p class="statusEol">ALARM-Modus</p>
+							<p class="statusPoweron"><!-- Powering On --></p>
+							<p class="statusPoweroff"><!-- Powering Off --></p>
+							<p class="statusPoweredoff"><!-- Powered Off --></p>
+							<p class="statusCustom">custom</p>
+						</h4>
+						<div id="modeDescription">
+							<p class="statusDefault enable"></p>
+							<p class="statusReady">
+								Das System ist eingeschaltet und bereit zur Verabreichung einer Dosis. Durch zweimaliges Drücken der Dosiertaste oben auf dem System innerhalb von 3 Sekunden kann eine Dosis verabreicht werden. In diesem Modus wird erst dann Fentanyl freigesetzt, wenn eine Dosis ausgelöst wird. 
+								<span class="mockButton mbEOU">
+									Nach 24 Stunden oder 80 Dosisgaben schaltet sich das System ab. 
+								</span>
+								<span class="mockButton mbEOL">
+									Wenn der Selbsttest des Systems fehlschlägt oder die Batterie schwach ist, ertönt ein SIGNAL und das System schaltet sich ab. 
+								</span>
+							</p>
+							<p class="statusDose1">
+								Freisetzung einer Dosis Fentanyl. Über einen Zeitraum von 10 Minuten werden 40 Mikrogramm des Medikaments an den Patienten verabreicht. Während dieser Zeit kann keine weitere Dosis ausgelöst werden. Die Leuchtanzeige blinkt grün und im Display wird angezeigt, dass gerade eine Dosis verabreicht wird. Im Display erscheinen abwechselnd eine rotierende LCD-Animation und die Anzahl der bereits verabreichten Dosen.  
+								<span class="mockButton mbPSC">
+									Sollte das System einen schlechten Hautkontakt feststellen, beendet es die Verabreichung, wechselt in den Standby-Modus und kehrt dann in den „Bereit“-Modus zurück.
+								</span>
+								<span class="mockButton mbEOU">
+									Nach 24 Stunden oder 80 Dosisgaben wechselt das System in den „Ende der Anwendung“-Modus. 
+								</span>
+								<span class="mockButton mbEOL">
+									Wenn das System eine Hautschädigung feststellt (z. B. eine offene Wunde), ertönt ein SIGNAL und es wechselt in den „Ende der Lebensdauer“-Modus. 
+								<span>
+							</p>
+							<p class="statusPsc1">
+								Wenn eine Dosis ausgelöst wird, das System ABER nach 4 Minuten KEINEN angemessenen Hautkontakt beim Patienten feststellen kann, wird die Dosisfreisetzung beendet. Das System wechselt in den „Standby“-Modus und der Patient wird informiert. Dies wird angezeigt durch einen Piepton, während die Leuchtanzeige gleichzeitig rot blinkt.  
+								<span>
+									Das System wechselt für 15 Sekunden in den „Standby“-Modus. Die Anzahl der verabreichten Dosen erhöht sich nicht und das System kann erneut eine Dosis freisetzen, nachdem es nach 15 Sekunden wieder in den „Bereit“-Modus gewechselt ist.
+								</span>
+							</p>
+							<p class="statusEou">
+								Nachdem 80 Dosen verabreicht wurden oder 24 Stunden seit der Aktivierung vergangen sind, wechselt das System in den „Ende der Anwendung“-Modus. Das System setzt keine weiteren Dosen mehr frei, im LCD-Display blinkt die Gesamtzahl der verabreichten Dosen und die Leuchtanzeige blinkt nicht.
+								<span class="mockButton mbEOL">
+									Nach 12 Stunden im „Ende der Anwendung“-Modus wechselt das System automatisch in den „Ende der Lebensdauer“-Modus. 
+								</span>
+								<span>
+									Durch Drücken der Dosiertaste über einen Zeitraum von 6 Sekunden wird das System ausgeschaltet. 
+								</span>
+							</p>
+							<p class="statusEol">
+								Ein ALARM-Zustand kann ausgelöst werden, wenn während der Verabreichung einer Dosis eine Hautschädigung festgestellt wird, die Batterie schwach ist oder wenn seit dem Erreichen des „Ende-der-Anwendung“-Modus 12 Stunden vergangen sind. Im LCD-Display blinkt die Anzahl der verabreichten Dosen, die Leuchtanzeige blinkt dauerhaft rot und es ertönt ein Dauerpiepton. Dies zeigt an, dass das System das Ende der Lebensdauer erreicht hat. Es kann keine Dosis mehr verabreicht werden. 
+								<span>
+									Durch Drücken der Dosiertaste über einen Zeitraum von 6 Sekunden wird das System ausgeschaltet.
+								</span>
+							</p>
+							<p class="statusPoweron"></p>
+							<p class="statusPoweroff"></p>
+							<p class="statusPoweredoff"></p>
+							<p class="statusCustom">custom</p>
+						</div>
+					</article>
+				</div>
+			</div>
+			<div class="contextArrowContainer">
+				<div class="flaticon-arrow395 contextArrow contextArrowClosed"></div>
+			</div>
+		</div>
+		<div class="control">
+			<label for="doseNumber"  class="extraButtons hidden" >Set Dose #: </label>
+			<input type="number" name="doseNumber" id="doseNumber"  class="extraButtons hidden" min="0" max="99" value="0" ></input>
+		</div>
+	</div>
+</section>
+<header class="ionsysLogoBanner hiddenLogo">
+	<div class="mdcoLogo">
+	</div>
+</header>
+<section class="infoPage">
+	<div class="infoPageContent">
+		<table class="infoPageTable">
+			<td colspan="2">
+				IONSYS wird zur Behandlung akuter mäßiger bis starker Schmerzen nach Operationen bei erwachsenen Patienten eingesetzt.
+			</td>
+		</table>
+		<table class="infoPageTable">
+			<td colspan="2">
+				IONSYS darf nur in einem Krankenhaus angewendet werden. Die Behandlung sollte nur durch einen Arzt eingeleitet werden, der Erfahrung in der Durchführung einer Opioid-Therapie hat, und unter dessen Aufsicht erfolgen. 
+			</td>
+		</table>
+		<table class="infoPageTable">
+			<tr>
+				<th colspan="2">
+					<h3>SYSTEMSPEZIFIKATIONEN</h3>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					Wirkstoff 
+				</td>
+				<td>
+					Fentanylhydrochlorid 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Absorptionsweg:
+				</td>
+				<td>
+					Über die Haut (transdermal, Iontophorese) 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Aktivierung: 
+				</td>
+				<td>
+					Der Patient drückt (innerhalb von 3 Sekunden) zweimal auf die Taste zur Bedarfsdosierung 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Dosierung: 
+				</td>
+				<td>
+					Über einen vorprogrammierten Zeitraum von 10 Minuten werden 40 Mikrogramm des Wirkstoffs freigesetzt* 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Maximale Dosisrate: 
+				</td>
+				<td>
+					6 Dosen pro Stunde 
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Sperrzeit*: 
+				</td>
+				<td>
+					<p>
+						10 Minuten (deckt sich mit dem Dosierungszeitraum)
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Verfügbare Dosen pro System:
+				</td>
+				<td>
+					80
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Anwendungsdauer: 
+				</td>
+				<td>
+					24 Stunden oder 80 Dosen, je nachdem was zuerst erreicht ist 
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<p class="infoSidenote">
+						* (in dieser App wurde der 10-minütige Zeitraum zu Demonstrationszwecken auf 18 Sekunden gekürzt)
+					</p>
+				</td>
+			</tr>
+		</table>
+				<table class="infoPageTable infoColumn" align="left">
+					<tbody>
+						<th>
+							<h3>FUNKTIONEN</h3>
+						</th>
+						<tr>
+							<td>
+								<ul>
+									<li>
+										Taste zur Bedarfsdosierung
+									</li>
+									<li>
+										Leuchtdiode (LED) zeigt Folgendes an: 
+										<ul>
+											<li>
+												Wenn eine Dosis freigesetzt wird (grün)
+											</li>
+											<li>
+												Wenn ein Fehler aufgetreten ist (rot)
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="infoPageTable infoColumn" align="left">
+					<tbody>
+						<tr>
+							<td>
+								<ul>
+									<li>
+										LCD-Display zeigt Folgendes an: 
+									</li>
+										<ul>
+											<li>
+												Anzahl der verabreichten Dosen
+											</li>
+											<li>
+												Wenn eine Dosis freigesetzt wird
+											</li>
+											<li>
+												Wenn ein Fehler aufgetreten ist
+											</li>
+										</ul>
+									<li>
+										Akustische Signale ertönen bei Dosisaktivierung und bei verschiedenen Systemwarnungen
+									</li>
+									<li>
+										Druckempfindliche Klebefläche, die IONSYS sicher auf der Haut des Patienten fixiert.
+									</li>
+								</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="infoPageTable smpc">
+					<tr>
+						<td>
+							<h3>
+								IONSYS 40 Mikrogramm pro Dosis transdermales System
+							</h3>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Zusammensetzung: 
+							</h3>
+							<h4>
+								Jedes IONSYS-System enthält Fentanylhydrochlorid entsprechend 9,7 mg Fentanyl und gibt pro Dosis 40 Mikrogramm Fentanyl ab, bis zu einem Maximum von 80 Dosen (3,2 mg/24 Stunden)
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Sonstige Bestandteile: 
+							</h3>
+							<h4>
+								Poly{[cyclohexan-1,4-diylbis(methylen)]terephthalat-co-ethylenterephthalat}, gereinigtes Wasser, Natriumhydroxid, Polacrilin, Poly(vinylalkohol), Natriumcitrat, Citronensäure, Cetylpyridiniumchlorid, Natriumchlorid, Silberfolie, elektrisch leitendes Klebeband (ECAT), Polyisobutylen/Silberchlorid/ Kohlenschwarz, Polybuten, Polyisobutylen, Harzester, silikonisierten Polyester.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Anwendungsgebiete:
+							</h3>
+							<h4>
+								IONSYS ist zur Behandlung akuter, mäßiger bis starker postoperativer Schmerzen bei erwachsenen Patienten indiziert. 
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Dosierung:
+							</h3>
+							<h4>
+								Bitte konsultieren Sie die Fachinformation für weitere Dosierungs- und Handhabungsinformationen. IONSYS ist ein vom Patienten kontroliertes System, welches ausschließlich für den Einsatz im Krankenhaus vorgesehen ist. IONSYS ist nur zur transdermalen Anwendung bestimmt. Die Einleitung und weitere Beaufsichtigung der Behandlung muss durch einen Arzt erfolgen, der über Erfahrung im Management einer Opioidtherapie verfügt. Aufgrund des bekannten Missbrauchspotentials von Fentanyl müssen die Patienten hinsichtlich eines Drogenmissbrauchs in der Vorgeschichte ärztlich beurteilt werden.  
+							</h4>
+							<h4>
+								<i>Empfohlene Dos.:</i> Jede Dosis gibt 40 Mikrogramm Fentanyl über einen Zeitraum von 10 Minuten ab, bis zu maximal 240 Mikrogramm pro Stunde oder 80 Dosisabgaben aufrecht erhalten, je nachdem, was zuerst eintritt. Danach wird das System inaktiviert. Die maximale Behandlungsdauer beträgt 72 Stunden.
+
+							</h4>
+							<h4>
+								<i>Ältere Patienten:</i> Eine spezifische Dosisanpassung ist bei älteren Patienten nicht erforderlich. Jedoch sollten ältere Patienten engmaschig auf unerwünschte Wirkungen von Fentanyl überwacht werden. 
+							</h4>
+							<h4>
+								<i>Eingeschränkte Leber- oder Nierenfunktion:</i> Bei Patienten mit mäßiger oder schwerer Leber- oder Nierenfunktionsstörung darf IONSYS nur mit Vorsicht angewendet werden. 
+							</h4>
+							<h4>
+								<i>Kinder und Jugendliche:</i> nicht empfohlen. 
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Gegenanzeigen: 
+							</h3>
+							<h4>
+								 Überempfindlichkeit gegen den Wirkstoff oder einen der sonstigen Bestandteile. Schwere Atemdepression oder zystische Fibrose.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Bes. Warnhinw. u. Vorsichtsmaß. f. d. Anwend.:
+							</h3>
+							<h4>
+								Vor einer Magnetresonanztomografie- (MRT) Untersuchung, einer Kardioversion, Defibrillation, Röntgenuntersuchung, einem CT-Scan oder einer Diathermie-Behandlung muss IONSYS entfernt werden. 
+							</h4>
+							<h4>
+								Übermäßiges Schwitzen kann die Abgabe von Fentanyl verringern. 
+							</h4>
+							<h4>
+								Atemdepression: Eine erhebliche Atemdepression kann auftreten, daher sind die Patienten auf derartige Wirkungen zu überwachen. Die gleichzeitige Anwendung ZNS-aktiver Arzneimittel kann das Risiko einer Atemdepression erhöhen.
+							</h4>
+							<h4>
+								Chronische Lungenerkrankung: Bei Patienten mit chronisch obstruktiver Lungenerkrankung oder bei Patienten mit Erkrankungen, die zu Hypoventilation prädisponieren, können schwerere Nebenwirkungen auftreten. Bei diesen Patienten können Opioide den Atemantrieb verringern und den Atemwegswiderstand erhöhen.
+							</h4>
+							<h4>
+								Kopfverletzungen und erhöhter intrakranieller Druck: Fentanyl darf nicht bei Patienten angewendet werden, die besonders anfällig für die intrakraniellen Wirkungen einer CO2-Retention sind. Bei Patienten mit Hirntumoren oder anderen signifikanten raumfordernden Läsionen muss Fentanyl mit Vorsicht angewendet werden.
+							</h4>
+							<h4>
+								Herzerkrankung: Fentanyl kann zu Bradykardie oder Hypotonie führen und sollte daher bei Patienten mit Bradyarrhythmien oder erheblichen kardiovaskulären Erkrankungen mit Vorsicht angewendet werden.
+							</h4>
+							<h4>
+								Paralytischer Ileus: Bei Patienten mit paralytischem Ileus muss IONSYS mit Vorsicht angewendet werden.
+							</h4>
+							<h4>
+								Missbrauchspotenzial und Abhängigkeit: Fentanyl hat ein bekanntes Missbrauchspotenzial. Die Patienten sollten hinsichtlich eines Drogenmissbrauchs in der Vorgeschichte ärztlich beurteilt und gegebenenfalls engmaschig überwacht werden. 
+							</h4>
+							<h4>
+								Leber- und Nierenerkrankung: Patienten mit Leber- oder Nierenfunktionsstörungen sollten sorgfältig auf Anzeichen einer Fentanyl-Toxizität überwacht werden.
+							</h4>
+							<h4>
+								Ältere Patienten: Während der Anwendung von IONSYS sollten ältere Patienten sorgfältig auf unerwünschte Wirkungen von Fentanyl überwacht werden.
+							</h4>
+							<h4>
+								Adipöse Patienten: Insgesamt deutet das Nebenwirkungsprofil von morbid adipösen Patienten (BMI > 40) im Vergleich zu Patienten mit einem BMI ≤ 40 nicht auf bedeutsame Unterschiede bei der Sicherheit hin. Bei der Verordnung von IONSYS an morbid adipöse Patienten ist jedoch Vorsicht geboten, da bei diesen ein erhöhtes Risiko für andere komorbide Atemwegserkrankungen (d. h. Schlafapnoe) bestehen kann, was die Patienten für Hypoventilation oder schwerere Nebenwirkungen prädisponiert.
+							</h4>
+							<h4>
+								Eingeschränktes Hörvermögen: IONSYS darf bei Patienten mit eingeschränktem Hörvermögen nur mit Vorsicht angewendet werden, da sie möglicherweise nicht in der Lage sind, die akustischen Signale des Systems zu hören. 
+							</h4>
+							<h4>
+								Chirurgische Eingriffe an Thorax/Brust und Oberbauch: IONSYS sollte bei diesen Patienten nur mit Vorsicht angewendet werden. 
+							</h4>
+							<h4>
+								Körperlicher Zustand: Bei Patienten mit einem körperlichen Allgemeinzustand der Klasse IV (d. h. Patienten mit einer schweren, dauerhaft lebensbedrohlichen systemischen Erkrankung) nach der Klassifikation der American Society of Anesthesiologists (ASA) ist die Sicherheit von IONSYS nicht erwiesen.
+							</h4>
+							<h4>
+								Patienten mit genetischen Polymorphismen in Bezug auf CYP3A4 und CYP3A5: IONSYS sollte bei solchen Patienten mit Vorsicht angewendet werden. In der veröffentlichten Literatur wird darauf hingewiesen, dass Patienten mit genetischen Polymorphismen der Enzyme CYP3A4 und CYP3A5 eine potenziell erhöhte Fentanylexposition aufweisen. 
+							</h4>
+							<h4>
+								Andere ZNS-aktiver Arzneimittel: Gleichzeitige Anwendung anderer Substanzen, die das Zentralnervensystem dämpfen kann zu additiven dämpfenden Wirkungen führen. Hypoventilation, Hypotonie und tiefe Sedierung oder Koma können eintreten. Deshalb erfordert die gleichzeitige Anwendung jedes dieser Arzneimittel zusammen mit IONSYS eine besondere Betreuung und Beobachtung der Patienten.
+							</h4>
+							<h4>
+								CYP3A4-Inhibitor: Gleichzeitige Anwendung potenter CYP3A4-Inhibitoren oder mäßiger CYP3A4-Inhibitoren zusammen mit IONSYS kann zu einem Anstieg der Fentanyl-Plasmakonzentrationen führen, der sowohl die therapeutischen Wirkungen als auch die Nebenwirkungen verstärken oder verlängern sowie eine schwerwiegende Atemdepression verursachen könnte. Die gleichzeitige Anwendung von potenten oder mäßigen CYP3A4-Inhibitoren zusammen mit IONSYS wird nicht empfohlen, es sei denn, der Patient wird engmaschig überwacht.
+							</h4>
+							<h4>
+								Opioidagonisten/-Antagonisten: Gleichzeitige Anwendung von partiellen Opioidagonisten/-Antagonisten wird nicht empfohlen, da diese bei opioidabhängigen Patienten Entzugssymptome hervorrufen können.
+							</h4>
+							<h4>
+								Serotonerge Arzneimittel: Die Anwendung von Fentanyl zusammen mit serotonergen Substanzen kann das Risiko für ein Serotoninsyndrom erhöhen. Bei Patienten, die in den 14 Tagen vor der Anwendung Monoaminoxidase- (MAO) Hemmer erhalten haben, wird IONSYS nicht empfohlen, da eine starke und unvorhersehbare Wirkpotenzierung der Opioidanalgetika durch die MAO-Hemmer berichtet worden ist.
+							</h4>
+							<h4>
+								Topisch angewendete Arzneimittel: Das IONSYS-System sollte nicht auf Hautstellen appliziert werden, an denen zuvor andere topische Arzneimittel angewendet wurden. 
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Bitte konsultieren Sie d. vollständige Fachinformation.
+							</h3>
+							<h3>
+								Schwang./Stillz.: 
+							</h3>
+							<h4>
+								Schwang.: Es liegen keine hinreichenden Daten für die Anwendung von Fentanyl bei Schwangeren vor. IONSYS sollte während der Schwangerschaft nicht angewendet werden, es sei denn, dies ist eindeutig erforderlich. Wenn IONSYS während der Geburt bei der Mutter angewendet wird, sollte für das Kind ein Antidot jederzeit verfügbar sein. Nach einer Langzeitbehandlung kann Fentanyl beim Neugeborenen zu Entzugssymptomen führen.
+							</h4>
+							<h4>
+								Stillz.:Es wird empfohlen, nach dem Entfernen des IONSYS-Systems 24 Stunden lang nicht zu stillen.
+							</h4>
+							<h4>
+								Fert.:Es liegen keine klinischen Daten zu den Wirkungen von Fentanyl auf die Fertilität vor. 
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Verkehrstüchtigkeit und die Fähigkeit zum Bedienen von Maschinen:
+							</h3>
+							<h4>
+								Die Patienten sollten angewiesen werden, kein Fahrzeug zu führen und keine Maschinen zu bedienen, wenn sie Somnolenz, Schwindel oder Sehstörungen bei sich feststellen.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Nebenw.: Sehr häufig
+							</h3>
+							<h4>
+								Übelkeit, Erbrechen, Erythem an der Applikationsstelle
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								häufig
+							</h3>
+							<h4>
+								Schlaflosigkeit, Schwindelgefühl, Kopfschmerzen, Hypotonie, Hypoxie, Obstipation, Abdominalschmerz, Pruritus, Harnretention, Ödem an der Applikationsstelle, Pruritus an der Applikationsstelle, Reaktion an der Applikationsstelle, Bläschen an der Applikationsstelle, Fieber
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								gelegentlich
+							</h3>
+							<h4>
+								Anämie, verminderter Appetit, abnorme Träume, Agitiertheit, Angst, Verwirrtheitszustand, Halluzination, Nervosität, Migräne, Parästhesie Somnolenz, Synkope, Sehen verschwommen, Tachykardie, Hypertonie, Orthostasesyndrom, Vasodilatation, Apnoe, Husten, Dyspnoe, Schluckauf, Hypoventilation, Mundtrockenheit, Dyspepsie, Flatulenz, Ileus, Ausschlag, Hyperhidrosis, Rückenschmerzen, Schmerz in einer Extremität, Oligurie, Schmerzen an der Applikationsstelle, Trockenheit an der Applikationsstelle, Papeln an der Applikationsstelle, Asthenie, Schüttelfrost, Reaktion an der Applikationsstelle, Schmerz, Therapie bei gastrointestinaler Erkrankung; selten: Rhinitis, Hypokalziämie, Hypoglykämie, Hypokaliämie, Depression, anomales Denken, Geschmacksstörung, Hypoästhesie, Vertigo, Bradykardie, Lungenerkrankung, aufgetriebener Bauch, Diarrhö, Ruktation, erhöhter Muskeltonus, Myalgie, Dysurie, Brustschmerzen, Unwohlsein, Parästhesie an der Applikationsstelle, Ödem an der Injektionsstelle, Schmerzen an der Injektionsstelle, Ödem, Wundkomplikation.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Überdos.
+							</h3>
+							<h4>
+								Eine Überdosierung von Fentanyl manifestiert sich durch eine Erweiterung seiner pharmakologischen Wirkungen, wobei die schwerwiegendste Wirkung eine Atemdepression ist. Sofortige Gegenmaßnahmen zur Behandlung einer Atemdepression sind das Entfernen des IONSYS-Systems und eine physische oder verbale Stimulation des Patienten. Je nach klinischer Beurteilung durch das behandelnde medizinische Fachpersonal kann diesen Maßnahmen die Verabreichung eines spezifischen Opioidantagonisten wie Naloxon folgen. Eine Atemdepression infolge einer Überdosierung kann die Wirkungsdauer des Opioidantagonisten überdauern, daher ist möglicherweise eine wiederholte Gabe oder Infusion erforderlich. Durch die Aufhebung der narkotischen Wirkung kann es zu einem akuten Auftreten von Schmerzen und zur Freisetzung von Katecholaminen kommen. Wenn die klinische Situation es verlangt, sollten die Atemwege freigemacht und freigehalten werden, gegebenenfalls mit Hilfe eines Oropharyngeal- oder Endotrachealtubus. Es sollte Sauerstoff verabreicht werden und bei Bedarf eine assistierte bzw. kontrollierte Beatmung erfolgen. Wenn eine schwere oder anhaltende Hypotonie auftritt, sollte eine Hypovolämie in Betracht gezogen und der Zustand mit einer angemessenen parenteralen Flüssigkeitstherapie oder mithilfe anderer Interventionen behandelt werden.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Pharmakotherapeutische Gruppe
+							</h3>
+							<h4>
+								Analgetika; Phenylpiperidin-Derivate; ATC-Code: N02AB03.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Rezept- und apothekenpflichtig. Z.Nr.:
+							</h3>
+							<h4>
+								EU/1/15/1050/001. IONSYS ist ausschließlich für den Einsatz im Krankenhaus vorgesehen.
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Inhaber der Zulassung
+							</h3>
+							<h4>
+								Incline Therapeutics Europe Ltd, 21 St. Thomas Street, Bristol, BS1 6JS, Vereinigtes Königreich
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Vertrieb
+							</h3>
+							<h4>
+								Weitere Angaben zu Dosierung, Fertilität, Schwangerschaft und Stillzeit, Nebenwirkungen, Wechselwirkungen und zu besonderen Warnhinweisen und Vorsichtsmaßnahmen für die Anwendung sind der „Austria-Codex-Fachinformation“ zu entnehmen: Handle, Harald Harald.Handle@themedco.eu 
+							</h4>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h3>
+								Stand d. Information
+							</h3>
+							<h4>
+								November 2015.
+							</h4>
+							<h4>
+								Weitere Informationen zu IONSYS 40 Mikrogramm pro Dosis transdermales System erhalten Sie bei Incline Therapeutics Europe Ltd, 21 St. Thomas Street, Bristol, BS1 6JS, Vereinigtes Königreich.
+							</h4>
+						</td>
+					</tr>
+				</table>
+			</tr>
+			</tbody>
+	</div>
+</section>
+<footer class="ionsysLogoBanner logoBannerBottom">
+	<div class="ionsysLogo">
+	</div>
+</footer>
+<div class="controlBar">
+	<div class="controlButtonsContainer">
+		<button id="poorSkin" class="extraButtons" disabled>PSC</button>
+		<button id="EOU" class="extraButtons" disabled>
+			<span>80/24</span>
+		</button>		
+		<button id="EOL" class="extraButtons" disabled></button>
+		<button id="infoToggle" class="extraButtons">
+		</button>	
+	</div>
+</div>
+<audio id="beeper" preload="auto" src="beep.mp3"></audio>
+<audio id="beeper-long" preload="auto" src="beep_long.mp3">	</audio>
+<audio id="button-press" preload="auto" src="buttonpress.mp3"></audio>
+
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- make this a conditional if they are using phonegap and the online / cached copy is not available: -->
+<script>window.jQuery || document.write('<script src="jquery-1.10.2.min.js">\x3C/script>')</script>
+<script src="jquery-1.11.4-ui.min.js" type="text/javascript"></script>
+<script src="jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+<script src="jquery.tap.js" type="text/javascript"></script>
+<script src="phonegap.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</html>
