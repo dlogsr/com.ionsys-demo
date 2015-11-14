@@ -708,7 +708,8 @@ section.infoPage{
 	z-index:990;
 	width:100%;
 	padding-bottom:8em;
-	background: rgba(0,0,0,.9);d
+	background: rgba(0,0,0,.9);
+	font-size:.8em;
 }
 
 section.infoPage.slideUp, section.safetyInfoPage.slideUp{
@@ -1298,6 +1299,7 @@ section.safetyInfoPage .isiFooter{
 	}
 
 	section.infoPage{
+		font-size:1em;
 		padding-bottom: 13em;
 	}
 
