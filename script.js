@@ -316,6 +316,10 @@ $(document).ready(function(){
 		};
 	});
 
+	$('#langAT').on('tap',function(){
+		window.location.href = 'index_AT.html';
+	});
+
 	//***** DOSE BUTTON PRESS FUNCTION *****//
 	$doseButton.on('touchstart mousedown',function(e){
 		e.preventDefault();

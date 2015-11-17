@@ -31,6 +31,7 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-text-size-adjust: 100%;
 
 }
 
@@ -991,7 +992,7 @@ section.safetyInfoPage .isiFooter{
 
 .phonegapBlack p{
 	order:2;
-	font-size:1.25em;
+	font-size:14pt;
 	display:block;
 	border: 2px solid #00a0df;
 	padding:1em;
@@ -1035,7 +1036,7 @@ section.safetyInfoPage .isiFooter{
 	border: 1px solid white;
 	text-align:center;
 	margin:0;
-	margin-right:.2em;
+	margin-right:.07em;
 	background-color:rgba(0,0,0,.75);
 }
 
